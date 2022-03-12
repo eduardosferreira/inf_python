@@ -1,0 +1,390 @@
+/*
+ * Copyright 1997-2010 Day Management AG
+ * Barfuesserplatz 6, 4001 Basel, Switzerland
+ * All Rights Reserved.
+ *
+ * This software is the confidential and proprietary information of
+ * Day Management AG, ("Confidential Information"). You shall not
+ * disclose such Confidential Information and shall use it only in
+ * accordance with the terms of the license agreement you entered into
+ * with Day.
+ */
+
+// map $CQ to Granite jQuery
+//window.$CQ = _g.$;
+
+
+var headlibs = headlibs || {};
+
+(function() {
+
+    headlibs.version = 1;
+
+})();
+
+/**
+ *  This is the main file for navTop
+ */
+
+// Page load initializer
+//console.log('Start executing navTop.js');
+$(document).ready(function () {
+  initTopNav();
+});
+
+// If script is loaded via Ajax, document ready event may already have been thrown. In this case, use custom event instead
+$(document).on('searchCenterNavReady', function() {
+  initTopNav();
+});
+
+// Finalize determination of BU. Initialize events
+function initTopNav() {
+  //console.log('Executing document ready in navTop.js. Requesting navBarMapping.js from remote host');
+
+  var config = {
+    navBarMapping: {
+      'ip.synopsys.com':                   'Silicon IP',
+      'chipdesign.search.synopsys.com':    'Silicon Design & Verification',
+      'verification.search.synopsys.com':  'Silicon Design & Verification',
+      'silicondesign.search.synopsys.com': 'Silicon Design & Verification',
+      'resources.synopsys.com':            'Software Integrity',
+      'securitylearning.synopsys.com':     'Software Integrity'
+    },
+    topNavLangMap: ["japan", "china", "russia", "taiwan"],
+    nonAemUrlTopNavMapping: {
+      //Blogs Mapping
+      'from-silicon-to-software/' : 'Software Integrity',
+      'looking-past-the-horizon/' : 'Silicon Design & Verification',
+      'customlayoutinsights/' : 'Silicon Design & Verification',
+      'analoginsights/' : 'Silicon Design & Verification',
+      'informal-chat/' : 'Silicon Design & Verification',
+      'vip-central/' : 'Silicon Design & Verification',
+      'viewfromtop/' : 'Silicon Design & Verification',
+      'hittingthemark/' : 'Silicon Design & Verification',
+      'breakingthethreelaws/' : 'Silicon Design & Verification',
+      'expressyourself/' : 'Silicon IP',
+      'tousbornottousb/' : 'Silicon IP',
+      'theeyeshaveit/' : 'Silicon IP',
+      'onthemove/' : 'Silicon IP',
+      //LAMP mapping
+      'apps/protected/':	'Silicon Design & Verification',
+      'apps/subcenter/':	'About Us',
+      'cgi-bin/arc/':	'Silicon IP',
+      'cgi-bin/arcdte/':	'Silicon IP',
+      'cgi-bin/arcmwtk_eval/':	'Silicon IP',
+      'cgi-bin/arcmwtk_lite/':	'Silicon IP',
+      'cgi-bin/arcps2015/':	'Silicon IP',
+      'cgi-bin/arcps2016/':	'Silicon IP',
+      'cgi-bin/arcps2017/':	'Silicon IP',
+      'cgi-bin/arcps2017cn/':	'Silicon IP',
+      'cgi-bin/arcps2018/':	'Silicon IP',
+      'cgi-bin/arcps2018cn/':	'Silicon IP',
+      'cgi-bin/armenia/':	'Silicon Design & Verification',
+      'cgi-bin/armtech/':	'Silicon IP',
+      'cgi-bin/asip/':	'Silicon IP',
+      'cgi-bin/cdmd/':	'Silicon Design & Verification',
+      'cgi-bin/ces/':	'Silicon Design & Verification',
+      'cgi-bin/cndwtb/':	'Silicon IP',
+      'cgi-bin/contactus.cgi':	'About Us',
+      'cgi-bin/dac-ams/':	'Silicon Design & Verification',
+      'cgi-bin/dac-custdesign/':	'Silicon Design & Verification',
+      'cgi-bin/dac-ptsig/':	'Silicon Design & Verification',
+      'cgi-bin/dac-smd/':	'Silicon Design & Verification',
+      'cgi-bin/ddnews/':	'Silicon Design & Verification',
+      'cgi-bin/designware/':	'Silicon IP',
+      'cgi-bin/dwarc/':	'Silicon IP',
+      'cgi-bin/dwarc600/':	'Silicon IP',
+      'cgi-bin/dwarc_prod/':	'Silicon IP',
+      'cgi-bin/dwarcem/':	'Silicon IP',
+      'cgi-bin/dwarcnsim/':	'Silicon IP',
+      'cgi-bin/dwarcot/':	'Silicon IP',
+      'cgi-bin/dwarcsdp/':	'Silicon IP',
+      'cgi-bin/dwarcsw/':	'Silicon IP',
+      'cgi-bin/dwasip_eupdate/':	'Silicon IP',
+      'cgi-bin/dwtb/':	'Silicon IP',
+      'cgi-bin/dwusbuvs/':	'Silicon IP',
+      'cgi-bin/fpga/':	'Silicon Design & Verification',
+      'cgi-bin/fpmm_ea/':	'Silicon Design & Verification',
+      'cgi-bin/fv_ea/':	'Silicon Design & Verification',
+      'cgi-bin/hmd/':	'Silicon Design & Verification',
+      'cgi-bin/hspice/':	'Silicon Design & Verification',
+      'cgi-bin/imp/':	'Silicon Design & Verification',
+      'cgi-bin/ir/':	'About Us',
+      'cgi-bin/mfg/':	'Silicon Design & Verification',
+      'cgi-bin/optical-solutions/':	'Silicon Design & Verification',
+      'cgi-bin/protected/mybingo/':	'Silicon Design & Verification',
+      'cgi-bin/protected/university/':	'Silicon Design & Verification',
+      'cgi-bin/protected/vp/':	'Silicon Design & Verification',
+      'cgi-bin/proto/':	'Silicon Design & Verification',
+      'cgi-bin/pycellstudio/':	'Silicon Design & Verification',
+      'cgi-bin/quantumatk/':	'Silicon Design & Verification',
+      'cgi-bin/rtl/':	'Silicon Design & Verification',
+      'cgi-bin/saber/':	'Silicon Design & Verification',
+      'cgi-bin/saberrd/':	'Silicon Design & Verification',
+      'cgi-bin/sbg/':	'Silicon Design & Verification',
+      'cgi-bin/slcw/':	'Silicon Design & Verification',
+      'cgi-bin/snug/':	'Silicon Design & Verification',
+      'cgi-bin/solutions/':	'Silicon Design & Verification',
+      'cgi-bin/sps/':	'Silicon Design & Verification',
+      'cgi-bin/tapin/':	'Silicon Design & Verification',
+      'cgi-bin/tcad/':	'Silicon Design & Verification',
+      'cgi-bin/test/':	'Silicon Design & Verification',
+      'cgi-bin/university/':	'Silicon Design & Verification',
+      'cgi-bin/verification/':	'Silicon Design & Verification',
+      'cgi-bin/vmmlp_ea/':	'Silicon Design & Verification',
+      'cgi-bin/vp_ea/':	'Silicon Design & Verification',
+      'cgi-bin/webopt/':	'Silicon Design & Verification',
+      'dw/':	'Silicon IP'
+    }
+  };
+
+  var businessUnit,
+    lineOfBusiness,
+    $linesOfBusiness,
+    $defaultBusinessUnitMobile,
+    activeBusinessUnitMobile;
+
+  var $topNav = $('#topNav');
+  var $mobileMenu = $topNav.find('.mobileMenu');
+  var $spaceBar = $topNav.find('.space-bar');
+  var $closeButton = $topNav.find('.close-button');
+  var $navLeftPanels = $('.component-nav-left');
+  var $navLeftMobilePanel = $topNav.find('.nav-left-mobile-wrapper');
+  var $navLeftSearchPanel = $navLeftMobilePanel.find('.search-wrapper');
+  var $navLeftMobileMainMenu = $navLeftMobilePanel.find('.main-menu');
+  var $navLeftMobileMainMenuTitles = $navLeftMobilePanel.find('a.title');
+  var $navLeftMobileMainMenuLinks = $navLeftMobilePanel.find('a.subMenu');
+  var $navLeftMobileSubMenu = $navLeftMobilePanel.find('.sub-menu');
+  var $returnLink = $navLeftMobileSubMenu.find('.returnLink');
+
+  // Desktop 2nd level nav click handler
+  $.each($navLeftPanels, function(index, value) {
+    var $navLeftPanel = $(value);
+    var $navLeftItems = $navLeftPanel.find('.nav-left-item');
+    var $navRightPanels = $navLeftPanel.find('.nav-right-wrapper');
+
+    $navLeftItems.on('click touchend', function() {
+      var $this = $(this);
+      var index = ($this.index() === 0) ? $this.index() : $this.index() - 1; // account for li spacer
+      $navLeftItems.removeClass('active');
+      $this.addClass('active');
+      $navRightPanels.removeClass('active');
+      $navRightPanels.eq(index).addClass('active');
+    });
+  });
+
+  // Mobile nav hamburger click handler
+  $mobileMenu.on('click', function() {
+    $navLeftMobilePanel.addClass('active');
+    $navLeftMobileMainMenu.addClass('active');
+    $navLeftSearchPanel.addClass('active');
+    $defaultBusinessUnitMobile.addClass('active');
+    $mobileMenu.removeClass('active');
+  });
+
+  // Mobile & desktop close button click handler
+  $closeButton.on('click', function() {
+    // Desktop
+    $navLeftPanels.find('.nav-right-wrapper').removeClass('active');
+    $navLeftPanels.find('.nav-left-item').removeClass('active');
+
+    // Mobile
+    $navLeftMobilePanel.removeClass('active');
+    $navLeftMobileMainMenu.removeClass('active');
+    $navLeftSearchPanel.removeClass('active');
+    $navLeftMobileSubMenu.removeClass('active');
+    $mobileMenu.addClass('active');
+  });
+
+  // Mobile title click handler
+  $navLeftMobileMainMenuTitles.on('click', function() {
+    // If no href is set then delegate to "+" click handler
+    if (!$(this).attr('href')) {
+      $(this).prev('.subMenu').click();
+    }
+  });
+
+  // Mobile "+" click handler
+  $navLeftMobileMainMenuLinks.on('click', function() {
+    var $this = $(this),
+      $senderId = $this[0].id,
+      $targetSubMenu = $("[id = 'sub" + $senderId + "']"),
+      $targetSubMenuTitle = $targetSubMenu.find('.nav-group-title');
+
+    // Keep track of 1st level menu item name
+    if ($this.siblings('.nav-group-title').text() === 'All Synopsys') {
+      activeBusinessUnitMobile = $this.next().text();
+    } else if (!$this.parent().parent().find('.returnLink').is(':visible')) {
+      activeBusinessUnitMobile = $this.siblings('.nav-group-title').text();
+    }
+
+    $navLeftMobileMainMenu.removeClass('active');
+    $navLeftMobileSubMenu.removeClass('active');
+    $navLeftSearchPanel.removeClass('active');
+    $targetSubMenu.addClass('active sub');
+
+    // Add 1st level menu item name to submenu title
+    if (activeBusinessUnitMobile && $targetSubMenuTitle.find('span[data-business-unit]').length == 0) {
+      if (activeBusinessUnitMobile !== $targetSubMenuTitle.text()) {
+        $targetSubMenuTitle.html('<span data-business-unit>' + activeBusinessUnitMobile + ' : </span>' + $targetSubMenuTitle.text());
+      }
+    }
+
+    window.scrollTo(0, 0);
+  });
+
+  // Mobile return link click handler
+  $returnLink.on('click', function () {
+    var $this = $(this),
+      returnId = $this[0].id,
+      $targetSubMenu = $("[id = 'sub" + $this[0].id + "']"),
+      targetReturnId = $targetSubMenu.find('.returnLink').attr('id');
+
+    $navLeftMobileSubMenu.removeClass('active');
+    $targetSubMenu.addClass('active');
+
+    // Back on 1st level
+    if (returnId.indexOf("main menu") > -1) {
+      $navLeftMobileMainMenu.addClass('active');
+      $navLeftSearchPanel.addClass('active');
+      $defaultBusinessUnitMobile.addClass('active');
+    }
+  });
+
+  // Mobile & desktop outside of nav click handler
+  $(document).on('click', function(event) {
+    var target = $(event.target);
+    if (target.parents('#topNav').length <= 0 && !target.is('#topNav')) {
+      // Desktop
+      $navLeftPanels.find('.nav-right-wrapper').removeClass('active');
+      $navLeftPanels.find('.nav-left-item').removeClass('active');
+
+      // Mobile
+      $navLeftMobilePanel.removeClass('active');
+      $navLeftMobileMainMenu.removeClass('active');
+      $navLeftSearchPanel.removeClass('active');
+      $navLeftMobileSubMenu.removeClass('active');
+      $mobileMenu.addClass('active');
+    }
+  });
+
+  // Derive BU from navBarMapping
+  var host = window.location.host,
+    path = window.location.pathname,
+    pathParts = window.location.pathname.split('/');
+  businessUnit = config.navBarMapping[host];
+
+  if (!businessUnit) {
+    for (var key in config.nonAemUrlTopNavMapping) {
+      if (config.nonAemUrlTopNavMapping.hasOwnProperty(key)) {
+        if (path.indexOf(key) === 0 || path.indexOf('/' + key) === 0) {
+          businessUnit = config.nonAemUrlTopNavMapping[key];
+        }
+      }
+    }
+  }
+
+  if (!businessUnit) {
+    // Derive LOB from request URL
+    if (pathParts[1] === 'content' && pathParts.length > 2) { // e.g. /content/synopsys/software-integrity.html
+      lineOfBusiness = pathParts[3];
+      lineOfBusiness = lineOfBusiness.match(/^[A-Z][A-Z]-[A-Z][A-Z]/gi) && pathParts[4] ? pathParts[4] : lineOfBusiness;
+      lineOfBusiness = config.topNavLangMap.indexOf(lineOfBusiness) >= 0 ? pathParts[5] : lineOfBusiness;
+    } else if (pathParts.length > 0) { // e.g. /software-integrity.html
+      lineOfBusiness = pathParts[1];
+      lineOfBusiness = lineOfBusiness.match(/^[A-Z][A-Z]-[A-Z][A-Z]/gi) && pathParts[2] ? pathParts[2] : lineOfBusiness;
+      lineOfBusiness = config.topNavLangMap.indexOf(lineOfBusiness) >= 0 ? pathParts[3] : lineOfBusiness;
+    }
+    if (lineOfBusiness && lineOfBusiness.lastIndexOf('.') > 0) {
+      lineOfBusiness = lineOfBusiness.substring(0, lineOfBusiness.lastIndexOf('.'));
+    }
+  }
+
+  if (businessUnit || (lineOfBusiness && !lineOfBusiness.match(/^[A-Z][A-Z]-[A-Z][A-Z]/gi))) {
+    // Prevent main content from jumping down when 2nd level nav displays
+    var style = $('<style class="component-nav-top-padding">@media (min-width: 1130px) {.component-nav-top { min-height: 150px !important; }}</style>');
+    $('html > head').append(style);
+  }
+
+  if (!businessUnit) {
+    // Pick BU based on URL match
+    var businessUnits = [];
+    if (lineOfBusiness) {
+      $linesOfBusiness = $('li[data-path*="' + lineOfBusiness + '"]');
+      $linesOfBusiness.each(function () {
+        var bu = $(this).data('nav-parent');
+        if (businessUnits.indexOf(bu) < 0) {
+          businessUnits.push(bu);
+        }
+      });
+    }
+
+    if (businessUnits.length == 1) {
+      businessUnit = businessUnits[0];
+    } else if (businessUnits.length > 1) { // Pick BU based on URL match
+      // console.log("Ambiguous BU mapping: " + Array.from(businessUnits).join(', '));
+
+      var currentUrlPath = window.location.pathname;
+      currentUrlPath = currentUrlPath.substring(0, currentUrlPath.lastIndexOf('.'));
+      for (var i = 0; i < businessUnits.length; i++) {
+        var bu = businessUnits[i],
+          $businessUnit = $('li[data-business-unit="' + bu + '"]'),
+          businessUnitPath = $businessUnit.find('a').attr('href');
+        businessUnitPath = businessUnitPath.substring(0, businessUnitPath.lastIndexOf('.'));
+        if (currentUrlPath.indexOf(businessUnitPath) == 0) {
+          businessUnit = bu;
+        }
+      }
+      if (!businessUnit) {
+        // No URL match. Pick 1st BU from list
+        businessUnit = businessUnits[0];
+      }
+    } else {
+      // console.log("No BU mapping");
+    }
+  }
+
+  // Update nav based on active BU
+  if (businessUnit) {
+    var $businessUnit = $('li[data-business-unit="' + businessUnit + '"]');
+    $linesOfBusiness = $('li[data-nav-parent="' + businessUnit + '"]');
+
+    if ($businessUnit.length == 1) {
+      $businessUnit.addClass('active');
+      $businessUnit.find('.icon-nav-down-triangle').addClass('active');
+      $linesOfBusiness.closest('.nav-left-wrapper').addClass('active');
+      $spaceBar.addClass('active');
+    } else {
+      //console.log("BU menu item not found: " + businessUnit);
+    }
+
+    // Identify default mobile subnav
+    // Using last match for now. This works well e.g. for /content/synopsys/en-us/software-integrity.html
+    $defaultBusinessUnitMobile = $navLeftMobileSubMenu.find('.nav-group-title').filter(function () {
+      return $(this).text() === businessUnit;
+    }).parent().parent();
+    $defaultBusinessUnitMobile = $($defaultBusinessUnitMobile[$defaultBusinessUnitMobile.length - 1]);
+
+    // Fix up return links to skip BU's overview page
+    $defaultBusinessUnitMobile.find('.subMenu').each(function() {
+      var $subnavReturnLink = $('[id=sub' + $(this).attr('id') + '] .returnLink');
+      $subnavReturnLink.text('< main menu');
+      $subnavReturnLink.attr('id', 'main menu');
+    });
+
+    // Remove the active item from "All Synopsys" group
+    var $activeNavItem = $navLeftMobileMainMenu.find('.nav-group-title').filter(function() {
+      return $(this).text() === 'All Synopsys';
+    }).parent().find('a').filter(function() {
+      return $(this).text() === businessUnit;
+    });
+
+    $activeNavItem.prev().remove();
+    $activeNavItem.remove();
+
+  } else {
+    //console.log("BU not found: " + businessUnit);
+  }
+  $('.component-nav-top-padding').remove();
+  //console.log('Done updating navbar UI');
+}

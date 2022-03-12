@@ -1,0 +1,454 @@
+let dataExclude = true;
+let sellerId = 1;
+let buyerId = 7;
+let pageContent = {
+    'title': '',
+    'content': ''
+};
+let clientLastUrl = '';
+let dspPxlDomain = '';
+
+/* Seller tag config requests */
+const tagApiUrl = "//white-label-tag-api.voxus.com.br";
+const conversionLiftApiUrl = "//creative-data-api.voxus.com.br";
+const conversionLiftPixels = [27736910];
+const apiMethod = "/sellers/tag-config";
+let sellerConfig = null;
+let tagConfigRequestsFinished = 0;
+let tagConfigRequestsOpened = 0;
+let vxSender = null;
+const maximumAllowedTagRequests = 5;
+
+let mainProcess = null;
+
+if (document.readyState !== 'loading')
+    startProcess();
+else
+    document.addEventListener('DOMContentLoaded', startProcess);
+
+function startProcess() {
+    loadDependencies(initializeMain);
+}
+
+function initializeMain() {
+    mainProcess = setInterval(function () {
+        main()
+    }, 2000);
+}
+
+function main() {
+    if(dataExclude || tagConfigRequestsFinished >= maximumAllowedTagRequests) {
+        clearInterval(mainProcess);
+        return;
+    }
+
+    if(sellerConfig == null && !hasErrorOnTagRunTime()) {
+        tagConfigRequestsOpened ++;
+        getSellerConfig(ExecuteTag, logError);
+    } else if (!hasErrorOnTagRunTime()) {
+        ExecuteTag();
+    }
+}
+
+function hasErrorOnTagRunTime() {
+    return tagConfigRequestsFinished !== tagConfigRequestsOpened;
+}
+
+
+function getSellerConfig(successCallback, failureCallback) {
+    const params = "seller_id=" + sellerId;
+    let http = new XMLHttpRequest();
+
+    let response = "";
+    http.open("GET", tagApiUrl + apiMethod + "?" + params, true);
+    http.setRequestHeader('Access-Control-Allow-Origin', '*');
+    http.onreadystatechange = function()
+    {
+        if(http.readyState != 4)
+            return;
+
+        tagConfigRequestsFinished ++;
+        if(http.status == 200) {
+            sellerConfig = JSON.parse(http.responseText);
+            successCallback()
+        } else {
+            response = JSON.stringify(http.responseText);
+            failureCallback(response);
+        }
+    }
+
+    http.send();
+
+    return response;
+}
+
+function logError(error) {
+    // Add error handler
+}
+
+function ExecuteTag() {
+    const clientDomain = sellerConfig.client_domain;
+    const clCookieName = 'cl_' + sellerId + '_' + buyerId;
+
+    let tst = false;
+
+    if(( isClientDomain() || tst) && hasClientUrlChanged()) {
+        loadPageContent();
+        fireSegments();
+    }
+        
+    function getUpdatedClientUrl() {
+        return window.location.href.toLowerCase().replaceAll("#", "");
+    }
+        
+    function hasClientUrlChanged() {
+        return getUpdatedClientUrl() != clientLastUrl;
+    }
+        
+    function updateClientUrl() {
+        clientLastUrl = getUpdatedClientUrl();
+    }
+        
+    function fireSegments() {
+        updateClientUrl();
+
+        let isCL = isNewConversionLiftUser();
+
+        let categoriesKeywordsAsSegments = parseCategoryKeywordsToSegments(sellerConfig.segments.categories);
+        let segments = categoriesKeywordsAsSegments.concat(sellerConfig.segments.keywords);
+
+        for (let i in segments) {
+            if(!hasSegmentOnPageURL(segments[i].name) && !hasSegmentOnPageContent(segments[i].name))
+                continue;
+                   
+            if(isCL && conversionLiftPixels.includes(segments[i].px))
+                addNewConversionLiftUser(segments[i].px);
+            else if(getCookie(clCookieName) === 'cm_user' || getCookie(clCookieName) === '')
+                addNormalUser(segments[i].px);
+        }
+    }
+
+    function isNewConversionLiftUser() {
+        let max = 10;
+        let min = 1;
+        let randomConversionLiftRate = Math.floor(Math.random() * (max - min + 1)) + min;
+        let conversionLiftRate = 5;
+
+        if(getCookie(clCookieName) !== "" || randomConversionLiftRate > conversionLiftRate)
+            return false;
+
+        return !eval(makeGetRequest(conversionLiftApiUrl + '/conversion_lift/is_conversion_lift_full'));
+    }
+
+    function addNormalUser(segmentPixelId) {
+        let generalPixelId = 28836085;
+        firePixel(generalPixelId);
+        firePixel(segmentPixelId);
+
+        if(getCookie(clCookieName) === '')
+            setCookie(clCookieName, 'cm_user', 30);
+    }
+
+    function addNewConversionLiftUser(segmentPixel) {
+        let max = 10;
+        let min = 1;
+        let randomConversionLiftRate = Math.floor(Math.random() * (max - min + 1)) + min;
+        let conversionLiftRate = 5;
+        let clPixelId = 29475400;
+        let clControlPixelId = 29475402;
+
+        setCookie(clCookieName+"_segment_pixel", segmentPixel, 30);
+
+
+        if(!eval(makeGetRequest(conversionLiftApiUrl + '/conversion_lift/is_conversion_lift_control_group_full'))
+            && randomConversionLiftRate < conversionLiftRate) {
+            setCookie(clCookieName, "test_control_group_v2", 30);
+            firePixel(clControlPixelId);
+            sendInitialConversionLiftAnswer("Test Control Group");
+        } else {
+            setCookie(clCookieName, "test_group_v2", 30);
+            firePixel(clPixelId);
+            sendInitialConversionLiftAnswer("Test Group");
+        }
+    }
+
+    function sendInitialConversionLiftAnswer(type){
+        makePostRequestWithJsonPayload(conversionLiftApiUrl + '/conversion_lift/answer', {
+            seller_id: sellerId,
+            buyer_id: buyerId,
+            question_label: 'Initial Entrance: '+ type,
+            answer_number: 0,
+            answer_label: '',
+            time_to_answer: 0,
+            answer_position_to_viewer: 0,
+            answers_available: 0
+        });
+    }
+
+    function firePixel(pixelId) {
+        let general = document.createElement('img');
+        general.src = getDspPxlDomain() + pixelId + '&t=2';
+        general.async = true;
+        general.frameborder = 0;
+        general.style = 'display: none; visibility: hidden';
+        general.height = 0;
+        general.width = 0;
+        general.hspace = 0;
+        general.vspace = 0;
+        general.marginheight = 0;
+        general.marginwidth = 0;
+        general.frameborder = 0;
+        general.scrolling = 'No';
+
+        let generalBls = document.getElementsByTagName('body')[0].lastChild;
+        generalBls.parentNode.insertBefore(general, generalBls);
+    }
+
+    function getKeywordInUrlStandard(segment) {
+        let segmentInUrlStandard = segment.toLowerCase();
+        segmentInUrlStandard = segmentInUrlStandard.replaceAll(/\s\s+/g, ' ');
+        segmentInUrlStandard = segmentInUrlStandard.replaceAll(' ', '-');
+
+        return segmentInUrlStandard;
+    }
+
+    function hasSegmentOnPageURL(segment) {
+        return decodeURLComponentEscaped(clientLastUrl).indexOf(getKeywordInUrlStandard(segment)) !== -1;
+    }
+        
+    function hasSegmentOnPageContent(segment) {
+        return pageContent.content.indexOf(segment.toLowerCase()) !== -1;
+    }
+
+    function parseCategoryKeywordsToSegments(segments){
+        let aliases = []
+
+        for (let i = 0; i < segments.length; i++) {
+            if(segments[i].keywords == null || segments[i].keywords == undefined)
+                continue;
+
+            for(let j = 0; j < segments[i].keywords.length; j++) {
+                let clone = JSON.parse(JSON.stringify(segments[i]));
+                clone.keywords = [];
+                clone.name = segments[i].keywords[j];
+
+                aliases.push(clone);
+            }
+        }
+
+        return segments.concat(aliases);
+    }
+        
+    function getDspPxlDomain() {
+        if(dspPxlDomain != '')
+            return dspPxlDomain;
+        
+        dspPxlDomain = sellerConfig.dsp_pixel_domain;
+        if (!getUpdatedClientUrl().startsWith('https:'))
+            dspPxlDomain = sellerConfig.http_dsp_pixel_domain;;
+
+        return dspPxlDomain;
+    }
+        
+    function isClientDomain() {
+        let currentUrl = getUpdatedClientUrl();
+
+        if(currentUrl.startsWith('https://'))
+            currentUrl = window.location.href.toLowerCase().replace('https://', '');
+        else if(currentUrl.startsWith('http://'))
+            currentUrl = window.location.href.toLowerCase().replace('http://', '');
+        
+        return currentUrl.startsWith(clientDomain);
+    }
+        
+    function decodeURLComponentEscaped(url) {
+        return decodeURIComponent(escape(url));
+    }
+       
+}
+
+function makePostRequestWithJsonPayload(url, json){
+    let xmlHttp = new XMLHttpRequest();
+
+    xmlHttp.open("POST", url);
+    xmlHttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+    xmlHttp.setRequestHeader('Access-Control-Allow-Origin', '*');
+    xmlHttp.send(JSON.stringify(json));
+}
+
+function makeGetRequest(yourUrl){
+    let httpReq = new XMLHttpRequest();
+
+    httpReq.open("GET",yourUrl,false);
+    httpReq.setRequestHeader('Access-Control-Allow-Origin', '*');
+    httpReq.send(null);
+
+    return httpReq.responseText;
+}
+
+function loadDependencies(completeCallBack) {
+    loadListeners();
+
+    let script = document.createElement('iframe');
+    script.src = '//white-label-ads.voxus.tv/inte/index.html';
+    script.id = 'inte_frame';
+    script.frameborder = 0;
+    script.async = true;
+    script.width = script.height = 1;
+    script.style = 'display:none;visibility:hidden';
+
+    let node = document.getElementsByTagName('body')[0].lastChild;
+    node.parentNode.insertBefore(script, node);
+
+    vxSender = document.getElementById('inte_frame').contentWindow;
+
+    function loadListeners() {
+        window.addEventListener('message', function(event) {
+            if(event.data.type !== 'voxus-exclude')
+                return;
+
+            let newDataExclude = event.data.exclude === 'true';
+
+            if(newDataExclude != dataExclude) {
+                dataExclude = newDataExclude;
+                completeCallBack();
+            }
+        });
+    }
+}
+
+function setCookie(cname, cvalue, exdays) {
+    let d = new Date();
+
+    d.setTime(d.getTime() + (exdays*24*60*60*1000));
+
+    let expires = "expires="+ d.toUTCString();
+    let cookieString = cname + "=" + cvalue + "; " + expires + ";path=/;domain=" + sellerConfig.client_domain;
+
+    if (shouldSendSameSiteNone(window.navigator.userAgent))
+        cookieString += ';secure;SameSite=None';
+
+    document.cookie = cookieString;
+
+    sendVxCookieMessage(cname, cvalue, exdays);
+}
+
+function shouldSendSameSiteNone(useragent) {
+    return !isSameSiteNoneIncompatible(useragent);
+}
+
+// Classes of browsers known to be incompatible.
+function isSameSiteNoneIncompatible(useragent) {
+    return hasWebKitSameSiteBug(useragent) ||
+        dropsUnrecognizedSameSiteCookies(useragent);
+}
+
+function hasWebKitSameSiteBug(useragent) {
+    return isIosVersion(12, useragent) ||
+        (isMacosxVersion(10, 14, useragent) &&
+            (isSafari(useragent) || isMacEmbeddedBrowser(useragent)));
+}
+
+function dropsUnrecognizedSameSiteCookies(useragent) {
+    if (isUcBrowser(useragent)) {
+        return !isUcBrowserVersionAtLeast(12, 13, 2, useragent);
+    }
+
+    return isChromiumBased(useragent) &&
+        isChromiumVersionAtLeast(51, useragent) &&
+        !isChromiumVersionAtLeast(67, useragent);
+}
+
+// Regex parsing of User-Agent string. (See note above!)
+function isIosVersion(major, useragent) {
+    const regex = /\(iP.+; CPU .*OS (\d+)[_\d]*.*\) AppleWebKit\//g;
+    // Extract digits from first capturing group.
+    const match = useragent.match(regex);
+    return match && match[0] == major;
+}
+
+function isMacosxVersion(major, minor, useragent) {
+    const regex = /\(Macintosh;.*Mac OS X (\d+)_(\d+)[_\d]*.*\) AppleWebKit\//g;
+    // Extract digits from first and second capturing groups.
+    const match = useragent.match(regex);
+    return match && (match[0] == major) &&
+        (match[1] == minor);
+}
+
+function isSafari(useragent) {
+    const safari_regex = /Version\/.* Safari\//g;
+    return safari_regex.test(useragent) &&
+        !isChromiumBased(useragent);
+}
+
+function isMacEmbeddedBrowser(useragent) {
+    const regex = /^Mozilla\/[\.\d]+ \(Macintosh;.*Mac OS X [_\d]+\) AppleWebKit\/[\.\d]+ \(KHTML, like Gecko\)$/g;
+    return regex.test(useragent);
+}
+
+function isChromiumBased(useragent) {
+    const regex = /Chrom(e|ium)/g;
+    return regex.test(useragent);
+}
+
+function isChromiumVersionAtLeast(major, useragent) {
+    const regex = /Chrom[^ \/]+\/(\d+)[\.\d]* /g;
+    // Extract digits from first capturing group.
+    const version = useragent.match(regex)[0];
+    return version >= major;
+}
+
+function isUcBrowser(useragent) {
+    const regex = /UCBrowser\//g;
+    return regex.test(useragent);
+}
+
+function isUcBrowserVersionAtLeast(major, minor, build, useragent) {
+    const regex = /UCBrowser\/(\d+)\.(\d+)\.(\d+)[\.\d]* /g;
+    // Extract digits from three capturing groups.
+    const major_version = useragent.match(regex)[0];
+    const minor_version = useragent.match(regex)[1];
+    const build_version = useragent.match(regex)[2];
+
+    if (major_version != major)
+        return major_version > major;
+    else if (minor_version != minor)
+        return minor_version > minor;
+
+    return build_version >= build;
+}
+
+function getCookie(cname) {
+    let name = cname + "=";
+    let ca = document.cookie.split(';');
+    for(let i = 0; i <ca.length; i++) {
+        let c = ca[i];
+        while (c.charAt(0)==' ') {
+            c = c.substring(1);
+        }
+
+        if (c.indexOf(name) == 0)
+            return c.substring(name.length,c.length);
+    }
+
+    return "";
+}
+
+function loadPageContent() {
+    let title = document.getElementsByClassName(sellerConfig.title_div)[0];
+    let content = document.getElementsByClassName(sellerConfig.content_div)[0];
+
+    content = content === undefined ? '' : content.innerText.toLowerCase();
+    title = title === undefined ? '' : title.innerText.toLowerCase();
+
+    if(pageContent.title === '' || pageContent.content === '' || pageContent.title != title
+        || pageContent.content != content) {
+        pageContent.title = title;
+        pageContent.content = content;
+    }
+}
+
+function sendVxCookieMessage(name, value, days) {
+    vxSender.postMessage({type: 'st-ck', ck_name: name, ck_value: value, ck_days: days}, "*");
+}
+

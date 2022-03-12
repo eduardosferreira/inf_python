@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<!-- saved from url=(0058)https://flake8.pycqa.org/en/latest/user/configuration.html -->
+<html class=" js flexbox canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers no-applicationcache svg inlinesvg smil svgclippaths" lang="en" style=""><!--<![endif]--><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Configuring Flake8 — flake8 4.0.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="./Configuring Flake8 — flake8 4.0.1 documentation_files/modernizr.min.js.download"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="./Configuring Flake8 — flake8 4.0.1 documentation_files/documentation_options.js.download"></script>
+        <script data-url_root="../" id="documentation_options" src="./Configuring Flake8 — flake8 4.0.1 documentation_files/documentation_options.js.download"></script>
+        <script src="./Configuring Flake8 — flake8 4.0.1 documentation_files/jquery.js.download"></script>
+        <script src="./Configuring Flake8 — flake8 4.0.1 documentation_files/underscore.js.download"></script>
+        <script src="./Configuring Flake8 — flake8 4.0.1 documentation_files/doctools.js.download"></script>
+        <script async="async" src="./Configuring Flake8 — flake8 4.0.1 documentation_files/readthedocs-doc-embed.js.download"></script>
+    
+    <script type="text/javascript" src="./Configuring Flake8 — flake8 4.0.1 documentation_files/theme.js.download"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="./Configuring Flake8 — flake8 4.0.1 documentation_files/theme.css" type="text/css">
+  <link rel="stylesheet" href="./Configuring Flake8 — flake8 4.0.1 documentation_files/pygments.css" type="text/css">
+  <link rel="stylesheet" href="./Configuring Flake8 — flake8 4.0.1 documentation_files/pygments.css" type="text/css">
+  <link rel="stylesheet" href="./Configuring Flake8 — flake8 4.0.1 documentation_files/theme.css" type="text/css">
+    <link rel="index" title="Index" href="https://flake8.pycqa.org/en/latest/genindex.html">
+    <link rel="search" title="Search" href="https://flake8.pycqa.org/en/latest/search.html">
+    <link rel="next" title="Full Listing of Options and Their Descriptions" href="https://flake8.pycqa.org/en/latest/user/options.html">
+    <link rel="prev" title="Invoking Flake8" href="https://flake8.pycqa.org/en/latest/user/invocation.html"> 
+
+<!-- RTD Extra Head -->
+
+<link rel="stylesheet" href="./Configuring Flake8 — flake8 4.0.1 documentation_files/readthedocs-doc-embed.css" type="text/css">
+
+<script type="application/json" id="READTHEDOCS_DATA">{"ad_free": false, "api_host": "https://readthedocs.org", "build_date": "2022-02-10T21:05:33Z", "builder": "sphinx", "canonical_url": null, "commit": "8c1ed247", "docroot": "/docs/source/", "features": {"docsearch_disabled": false}, "global_analytics_code": "UA-17997319-1", "language": "en", "page": "user/configuration", "programming_language": "py", "project": "flake8", "proxied_api_host": "/_", "source_suffix": ".rst", "subprojects": {}, "theme": "sphinx_rtd_theme", "user_analytics_code": "UA-57263828-2", "version": "latest"}</script>
+
+<!--
+Using this variable directly instead of using `JSON.parse` is deprecated.
+The READTHEDOCS_DATA global variable will be removed in the future.
+-->
+<script type="text/javascript">
+READTHEDOCS_DATA = JSON.parse(document.getElementById('READTHEDOCS_DATA').innerHTML);
+</script>
+
+<script type="text/javascript" src="./Configuring Flake8 — flake8 4.0.1 documentation_files/readthedocs-analytics.js.download" async="async"></script>
+
+<!-- end RTD <extrahead> -->
+<script src="./Configuring Flake8 — flake8 4.0.1 documentation_files/ethicalads.min.js.download" type="text/javascript" async="" id="ethicaladsjs"></script><style>[data-ea-publisher].loaded,[data-ea-type].loaded{font-size:14px;font-family:-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;font-weight:normal;font-style:normal;leter-spacing:0px;vertical-align:baseline;line-height:1.3em}[data-ea-publisher].loaded a,[data-ea-type].loaded a{text-decoration:none}[data-ea-publisher].loaded .ea-pixel,[data-ea-type].loaded .ea-pixel{display:none}[data-ea-publisher].loaded .ea-content,[data-ea-type].loaded .ea-content{margin:1em 1em 0.5em 1em;padding:1em;background:rgba(0,0,0,0.03);color:#505050}[data-ea-publisher].loaded .ea-content a:link,[data-ea-type].loaded .ea-content a:link{color:#505050}[data-ea-publisher].loaded .ea-content a:visited,[data-ea-type].loaded .ea-content a:visited{color:#505050}[data-ea-publisher].loaded .ea-content a:hover,[data-ea-type].loaded .ea-content a:hover{color:#373737}[data-ea-publisher].loaded .ea-content a:active,[data-ea-type].loaded .ea-content a:active{color:#373737}[data-ea-publisher].loaded .ea-content a strong,[data-ea-publisher].loaded .ea-content a b,[data-ea-type].loaded .ea-content a strong,[data-ea-type].loaded .ea-content a b{color:#088cdb}[data-ea-publisher].loaded .ea-callout a:link,[data-ea-type].loaded .ea-callout a:link{color:#6a6a6a}[data-ea-publisher].loaded .ea-callout a:visited,[data-ea-type].loaded .ea-callout a:visited{color:#6a6a6a}[data-ea-publisher].loaded .ea-callout a:hover,[data-ea-type].loaded .ea-callout a:hover{color:#505050}[data-ea-publisher].loaded .ea-callout a:active,[data-ea-type].loaded .ea-callout a:active{color:#505050}[data-ea-publisher].loaded .ea-callout a strong,[data-ea-publisher].loaded .ea-callout a b,[data-ea-type].loaded .ea-callout a strong,[data-ea-type].loaded .ea-callout a b{color:#088cdb}[data-ea-publisher].loaded .ea-callout a,[data-ea-type].loaded .ea-callout a{font-size:0.8em}[data-ea-publisher].loaded.dark .ea-content,[data-ea-type].loaded.dark .ea-content{background:rgba(255,255,255,0.05);color:#dcdcdc}[data-ea-publisher].loaded.dark .ea-content a:link,[data-ea-type].loaded.dark .ea-content a:link{color:#dcdcdc}[data-ea-publisher].loaded.dark .ea-content a:visited,[data-ea-type].loaded.dark .ea-content a:visited{color:#dcdcdc}[data-ea-publisher].loaded.dark .ea-content a:hover,[data-ea-type].loaded.dark .ea-content a:hover{color:#f6f6f6}[data-ea-publisher].loaded.dark .ea-content a:active,[data-ea-type].loaded.dark .ea-content a:active{color:#f6f6f6}[data-ea-publisher].loaded.dark .ea-content a strong,[data-ea-publisher].loaded.dark .ea-content a b,[data-ea-type].loaded.dark .ea-content a strong,[data-ea-type].loaded.dark .ea-content a b{color:#50baf9}[data-ea-publisher].loaded.dark .ea-callout a:link,[data-ea-type].loaded.dark .ea-callout a:link{color:#c3c3c3}[data-ea-publisher].loaded.dark .ea-callout a:visited,[data-ea-type].loaded.dark .ea-callout a:visited{color:#c3c3c3}[data-ea-publisher].loaded.dark .ea-callout a:hover,[data-ea-type].loaded.dark .ea-callout a:hover{color:#dcdcdc}[data-ea-publisher].loaded.dark .ea-callout a:active,[data-ea-type].loaded.dark .ea-callout a:active{color:#dcdcdc}[data-ea-publisher].loaded.dark .ea-callout a strong,[data-ea-publisher].loaded.dark .ea-callout a b,[data-ea-type].loaded.dark .ea-callout a strong,[data-ea-type].loaded.dark .ea-callout a b{color:#50baf9}@media (prefers-color-scheme: dark){[data-ea-publisher].loaded.adaptive .ea-content,[data-ea-type].loaded.adaptive .ea-content{background:rgba(255,255,255,0.05);color:#dcdcdc}[data-ea-publisher].loaded.adaptive .ea-content a:link,[data-ea-type].loaded.adaptive .ea-content a:link{color:#dcdcdc}[data-ea-publisher].loaded.adaptive .ea-content a:visited,[data-ea-type].loaded.adaptive .ea-content a:visited{color:#dcdcdc}[data-ea-publisher].loaded.adaptive .ea-content a:hover,[data-ea-type].loaded.adaptive .ea-content a:hover{color:#f6f6f6}[data-ea-publisher].loaded.adaptive .ea-content a:active,[data-ea-type].loaded.adaptive .ea-content a:active{color:#f6f6f6}[data-ea-publisher].loaded.adaptive .ea-content a strong,[data-ea-publisher].loaded.adaptive .ea-content a b,[data-ea-type].loaded.adaptive .ea-content a strong,[data-ea-type].loaded.adaptive .ea-content a b{color:#50baf9}[data-ea-publisher].loaded.adaptive .ea-callout a:link,[data-ea-type].loaded.adaptive .ea-callout a:link{color:#c3c3c3}[data-ea-publisher].loaded.adaptive .ea-callout a:visited,[data-ea-type].loaded.adaptive .ea-callout a:visited{color:#c3c3c3}[data-ea-publisher].loaded.adaptive .ea-callout a:hover,[data-ea-type].loaded.adaptive .ea-callout a:hover{color:#dcdcdc}[data-ea-publisher].loaded.adaptive .ea-callout a:active,[data-ea-type].loaded.adaptive .ea-callout a:active{color:#dcdcdc}[data-ea-publisher].loaded.adaptive .ea-callout a strong,[data-ea-publisher].loaded.adaptive .ea-callout a b,[data-ea-type].loaded.adaptive .ea-callout a strong,[data-ea-type].loaded.adaptive .ea-callout a b{color:#50baf9}}[data-ea-publisher].loaded .ea-content,[data-ea-type].loaded .ea-content{border:0px;border-radius:3px;box-shadow:0px 2px 3px rgba(0,0,0,0.15)}[data-ea-publisher].loaded.raised .ea-content,[data-ea-type].loaded.raised .ea-content{border:0px;border-radius:3px;box-shadow:0px 2px 3px rgba(0,0,0,0.15)}[data-ea-publisher].loaded.bordered .ea-content,[data-ea-type].loaded.bordered .ea-content{border:1px solid rgba(0,0,0,0.04);border-radius:3px;box-shadow:none}[data-ea-publisher].loaded.bordered.dark .ea-content,[data-ea-type].loaded.bordered.dark .ea-content{border:1px solid rgba(255,255,255,0.07)}@media (prefers-color-scheme: dark){[data-ea-publisher].loaded.bordered.adaptive .ea-content,[data-ea-type].loaded.bordered.adaptive .ea-content{border:1px solid rgba(255,255,255,0.07)}}[data-ea-publisher].loaded.flat .ea-content,[data-ea-type].loaded.flat .ea-content{border:0px;border-radius:3px;box-shadow:none}[data-ea-type="image"].loaded,[data-ea-publisher]:not([data-ea-type]).loaded,.ea-type-image{display:inline-block}[data-ea-type="image"].loaded .ea-content,[data-ea-publisher]:not([data-ea-type]).loaded .ea-content,.ea-type-image .ea-content{max-width:180px;overflow:auto;text-align:center}[data-ea-type="image"].loaded .ea-content>a>img,[data-ea-publisher]:not([data-ea-type]).loaded .ea-content>a>img,.ea-type-image .ea-content>a>img{width:120px;height:90px;display:inline-block}[data-ea-type="image"].loaded .ea-content>.ea-text,[data-ea-publisher]:not([data-ea-type]).loaded .ea-content>.ea-text,.ea-type-image .ea-content>.ea-text{margin-top:1em;font-size:1em;text-align:center}[data-ea-type="image"].loaded .ea-callout,[data-ea-publisher]:not([data-ea-type]).loaded .ea-callout,.ea-type-image .ea-callout{max-width:180px;margin:0em 1em 1em 1em;padding-left:1em;padding-right:1em;font-style:italic;text-align:right}[data-ea-type="image"].loaded.horizontal .ea-content,[data-ea-publisher]:not([data-ea-type]).loaded.horizontal .ea-content,.ea-type-image.horizontal .ea-content{max-width:320px}[data-ea-type="image"].loaded.horizontal .ea-content>a>img,[data-ea-publisher]:not([data-ea-type]).loaded.horizontal .ea-content>a>img,.ea-type-image.horizontal .ea-content>a>img{float:left;margin-right:1em}[data-ea-type="image"].loaded.horizontal .ea-content .ea-text,[data-ea-publisher]:not([data-ea-type]).loaded.horizontal .ea-content .ea-text,.ea-type-image.horizontal .ea-content .ea-text{margin-top:0em;text-align:left;overflow:auto}[data-ea-type="image"].loaded.horizontal .ea-callout,[data-ea-publisher]:not([data-ea-type]).loaded.horizontal .ea-callout,.ea-type-image.horizontal .ea-callout{max-width:320px;text-align:right}[data-ea-type="text"].loaded,.ea-type-text{font-size:14px}[data-ea-type="text"].loaded .ea-content,.ea-type-text .ea-content{text-align:left}[data-ea-type="text"].loaded .ea-callout,.ea-type-text .ea-callout{margin:0.5em 1em 1em 1em;padding-left:1em;padding-right:1em;text-align:right;font-style:italic}[data-ea-style="stickybox"].loaded .ea-type-image{z-index:10;position:fixed;bottom:20px;right:20px}[data-ea-style="stickybox"].loaded .ea-type-image .ea-stickybox-hide{cursor:pointer;position:absolute;top:0.75em;right:0.75em;background-color:#fefefe;border:1px solid #088cdb;border-radius:50%;color:#088cdb;font-size:1em;text-align:center;height:1.5em;width:1.5em;line-height:1.5em}@media (max-width: 1300px){[data-ea-style="stickybox"].loaded .ea-type-image{position:static;bottom:0;right:0;margin:auto;text-align:center}[data-ea-style="stickybox"].loaded .ea-type-image .ea-stickybox-hide{display:none}}@media (min-width: 1301px){[data-ea-style="stickybox"].loaded .ea-type-image .ea-content{background:#dcdcdc}[data-ea-style="stickybox"].loaded.dark .ea-type-image .ea-content{background:#505050}}@media (min-width: 1301px) and (prefers-color-scheme: dark){[data-ea-style="stickybox"].loaded.adaptive .ea-type-image .ea-content{background:#505050}}
+</style><script src="./Configuring Flake8 — flake8 4.0.1 documentation_files/saved_resource" type="text/javascript" async=""></script></head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="https://flake8.pycqa.org/en/latest/index.html" class="icon icon-home"> flake8
+          
+
+          
+          </a>
+
+          
+            
+            
+            
+              <div class="version">
+                latest
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="https://flake8.pycqa.org/en/latest/search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs">
+    <input type="hidden" name="check_keywords" value="yes">
+    <input type="hidden" name="area" value="default">
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="https://flake8.pycqa.org/en/latest/faq.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://flake8.pycqa.org/en/latest/glossary.html">Glossary of Terms Used in Flake8 Documentation</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="https://flake8.pycqa.org/en/latest/user/index.html"><span class="toctree-expand"></span>Using Flake8</a><ul class="">
+<li class="toctree-l2"><a class="reference internal" href="https://flake8.pycqa.org/en/latest/user/invocation.html">Invoking Flake8</a></li>
+<li class="toctree-l2 current"><a class="reference internal current" href="https://flake8.pycqa.org/en/latest/user/configuration.html#"><span class="toctree-expand"></span>Configuring Flake8</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="https://flake8.pycqa.org/en/latest/user/configuration.html#configuration-locations"><span class="toctree-expand"></span>Configuration Locations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="https://flake8.pycqa.org/en/latest/user/configuration.html#project-configuration">Project Configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="https://flake8.pycqa.org/en/latest/user/configuration.html#using-local-plugins">Using Local Plugins</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="https://flake8.pycqa.org/en/latest/user/options.html">Full Listing of Options and Their Descriptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://flake8.pycqa.org/en/latest/user/error-codes.html">Error / Violation Codes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://flake8.pycqa.org/en/latest/user/violations.html">Selecting and Ignoring Violations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://flake8.pycqa.org/en/latest/user/using-plugins.html">Using Plugins For Fun and Profit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://flake8.pycqa.org/en/latest/user/using-hooks.html">Using Version Control Hooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://flake8.pycqa.org/en/latest/user/python-api.html">Public Python API</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="https://flake8.pycqa.org/en/latest/plugin-development/index.html">Writing Plugins for Flake8</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="https://flake8.pycqa.org/en/latest/internal/index.html">Exploring Flake8’s Internals</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="https://flake8.pycqa.org/en/latest/release-notes/index.html">Release Notes and History</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="https://flake8.pycqa.org/en/latest/index.html">flake8</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="https://flake8.pycqa.org/en/latest/index.html">Docs</a> »</li>
+        
+          <li><a href="https://flake8.pycqa.org/en/latest/user/index.html">Using Flake8</a> »</li>
+        
+      <li>Configuring Flake8</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com/pycqa/flake8/blob/main/docs/source/user/configuration.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <section id="configuring-flake8">
+<span id="configuration"></span><h1>Configuring Flake8<a class="headerlink" href="https://flake8.pycqa.org/en/latest/user/configuration.html#configuring-flake8" title="Permalink to this headline">¶</a></h1>
+<p>Once you have learned how to <a class="reference internal" href="https://flake8.pycqa.org/en/latest/user/invocation.html#invocation"><span class="std std-ref">invoke</span></a> <strong class="program">Flake8</strong>, you will soon
+want to learn how to configure it so you do not have to specify the same
+options every time you use it.</p>
+<p>This section will show you how to make</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><style type="text/css">
+span.prompt1:before {
+  content: "$ ";
+}
+</style><span class="prompt1">flake8</span>
+</pre></div></div><p>Remember that you want to specify certain options without writing</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1">flake8 --select E123,W456 --enable-extensions H111</span>
+</pre></div></div><section id="configuration-locations">
+<h2>Configuration Locations<a class="headerlink" href="https://flake8.pycqa.org/en/latest/user/configuration.html#configuration-locations" title="Permalink to this headline">¶</a></h2>
+<p><strong class="program">Flake8</strong> supports storing its configuration in your project in one of
+<code class="docutils literal notranslate"><span class="pre">setup.cfg</span></code>, <code class="docutils literal notranslate"><span class="pre">tox.ini</span></code>, or <code class="docutils literal notranslate"><span class="pre">.flake8</span></code>.</p>
+<p>Values set at the command line have highest priority, then those in the
+project configuration file, and finally there are the defaults. However,
+there are additional command line options which can alter this.</p>
+<section id="project-configuration">
+<h3>Project Configuration<a class="headerlink" href="https://flake8.pycqa.org/en/latest/user/configuration.html#project-configuration" title="Permalink to this headline">¶</a></h3>
+<p><strong class="program">Flake8</strong> is written with the understanding that people organize projects into
+sub-directories. Let’s take for example <strong class="program">Flake8</strong>’s own project structure</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>flake8
+├── docs
+│&nbsp;&nbsp; ├── build
+│&nbsp;&nbsp; └── source
+│&nbsp;&nbsp;     ├── _static
+│&nbsp;&nbsp;     ├── _templates
+│&nbsp;&nbsp;     ├── dev
+│&nbsp;&nbsp;     ├── internal
+│&nbsp;&nbsp;     └── user
+├── flake8
+│&nbsp;&nbsp; ├── formatting
+│&nbsp;&nbsp; ├── main
+│&nbsp;&nbsp; ├── options
+│&nbsp;&nbsp; └── plugins
+└── tests
+    ├── fixtures
+    │&nbsp;&nbsp; └── config_files
+    ├── integration
+    └── unit
+</pre></div>
+</div>
+<p>In the top-level <code class="docutils literal notranslate"><span class="pre">flake8</span></code> directory (which contains <code class="docutils literal notranslate"><span class="pre">docs</span></code>, <code class="docutils literal notranslate"><span class="pre">flake8</span></code>,
+and <code class="docutils literal notranslate"><span class="pre">tests</span></code>) there’s also <code class="docutils literal notranslate"><span class="pre">tox.ini</span></code> and <code class="docutils literal notranslate"><span class="pre">setup.cfg</span></code> files. In our case,
+we keep our <strong class="program">Flake8</strong> configuration in <code class="docutils literal notranslate"><span class="pre">tox.ini</span></code>. Regardless of whether you
+keep your config in <code class="docutils literal notranslate"><span class="pre">.flake8</span></code>, <code class="docutils literal notranslate"><span class="pre">setup.cfg</span></code>, or <code class="docutils literal notranslate"><span class="pre">tox.ini</span></code> we expect you
+to use INI to configure <strong class="program">Flake8</strong> (since each of these files already uses INI
+as a format). This means that any <strong class="program">Flake8</strong> configuration you wish to set needs
+to be in the <code class="docutils literal notranslate"><span class="pre">flake8</span></code> section, which means it needs to start like so:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[flake8]</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Each command-line option that you want to specify in your config file can
+be named in either of two ways:</p>
+<ol class="arabic simple">
+<li><p>Using underscores (<code class="docutils literal notranslate"><span class="pre">_</span></code>) instead of hyphens (<code class="docutils literal notranslate"><span class="pre">-</span></code>)</p></li>
+<li><p>Simply using hyphens (without the leading hyphens)</p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Not every <strong class="program">Flake8</strong> command-line option can be specified in the
+configuration file. See <a class="reference internal" href="https://flake8.pycqa.org/en/latest/user/options.html#options-list"><span class="std std-ref">our list of options</span></a> to
+determine which options will be parsed from the configuration files.</p>
+</div>
+<p>Let’s actually look at <strong class="program">Flake8</strong>’s own configuration section:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[flake8]</span><span class="w"></span>
+<span class="na">ignore</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">D203</span><span class="w"></span>
+<span class="na">exclude</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">.git,__pycache__,docs/source/conf.py,old,build,dist</span><span class="w"></span>
+<span class="na">max-complexity</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">10</span><span class="w"></span>
+</pre></div>
+</div>
+<p>This is equivalent to:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1">flake8 --ignore D203 <span class="se">\</span>
+         --exclude .git,__pycache__,docs/source/conf.py,old,build,dist <span class="se">\</span>
+         --max-complexity <span class="m">10</span></span>
+</pre></div></div><p>In our case, if we wanted to, we could also do</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[flake8]</span><span class="w"></span>
+<span class="na">ignore</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">D203</span><span class="w"></span>
+<span class="na">exclude</span><span class="w"> </span><span class="o">=</span><span class="w"></span>
+<span class="w">    </span><span class="na">.git,</span><span class="w"></span>
+<span class="w">    </span><span class="na">__pycache__,</span><span class="w"></span>
+<span class="w">    </span><span class="na">docs/source/conf.py,</span><span class="w"></span>
+<span class="w">    </span><span class="na">old,</span><span class="w"></span>
+<span class="w">    </span><span class="na">build,</span><span class="w"></span>
+<span class="w">    </span><span class="na">dist</span><span class="w"></span>
+<span class="na">max-complexity</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">10</span><span class="w"></span>
+</pre></div>
+</div>
+<p>This allows us to add comments for why we’re excluding items, e.g.</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[flake8]</span><span class="w"></span>
+<span class="na">ignore</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">D203</span><span class="w"></span>
+<span class="na">exclude</span><span class="w"> </span><span class="o">=</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># No need to traverse our git directory</span><span class="w"></span>
+<span class="w">    </span><span class="na">.git,</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># There's no value in checking cache directories</span><span class="w"></span>
+<span class="w">    </span><span class="na">__pycache__,</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># The conf file is mostly autogenerated, ignore it</span><span class="w"></span>
+<span class="w">    </span><span class="na">docs/source/conf.py,</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># The old directory contains Flake8 2.0</span><span class="w"></span>
+<span class="w">    </span><span class="na">old,</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># This contains our built documentation</span><span class="w"></span>
+<span class="w">    </span><span class="na">build,</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># This contains builds of flake8 that we don't want to check</span><span class="w"></span>
+<span class="w">    </span><span class="na">dist</span><span class="w"></span>
+<span class="na">max-complexity</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">10</span><span class="w"></span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Following the recommended settings for
+<a class="reference external" href="https://docs.python.org/3/library/configparser.html#customizing-parser-behaviour">Python’s configparser</a>,
+<strong class="program">Flake8</strong> does not support inline comments for any of the keys. So while
+this is fine:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[flake8]</span><span class="w"></span>
+<span class="na">per-file-ignores</span><span class="w"> </span><span class="o">=</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># imported but unused</span><span class="w"></span>
+<span class="w">    </span><span class="na">__init__.py: F401</span><span class="w"></span>
+</pre></div>
+</div>
+<p>this is not:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[flake8]</span><span class="w"></span>
+<span class="na">per-file-ignores</span><span class="w"> </span><span class="o">=</span><span class="w"></span>
+<span class="w">    </span><span class="na">__init__.py: F401 # imported but unused</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you’re using Python 2, you will notice that we download the
+<a class="reference external" href="https://docs.python.org/3/library/configparser.html#module-configparser" title="(in Python v3.10)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">configparser</span></code></a> backport from PyPI. That backport enables us to
+support this behaviour on all supported versions of Python.</p>
+<p>Please do <strong>not</strong> open issues about this dependency to <strong class="program">Flake8</strong>.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You can also specify <code class="docutils literal notranslate"><span class="pre">--max-complexity</span></code> as <code class="docutils literal notranslate"><span class="pre">max_complexity</span> <span class="pre">=</span> <span class="pre">10</span></code>.</p>
+</div>
+<p>This is also useful if you have a long list of error codes to ignore. Let’s
+look at a portion of a project’s Flake8 configuration in their <code class="docutils literal notranslate"><span class="pre">tox.ini</span></code>:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[flake8]</span><span class="w"></span>
+<span class="c1"># it's not a bug that we aren't using all of hacking, ignore:</span><span class="w"></span>
+<span class="c1"># F812: list comprehension redefines ...</span><span class="w"></span>
+<span class="c1"># H101: Use TODO(NAME)</span><span class="w"></span>
+<span class="c1"># H202: assertRaises Exception too broad</span><span class="w"></span>
+<span class="c1"># H233: Python 3.x incompatible use of print operator</span><span class="w"></span>
+<span class="c1"># H301: one import per line</span><span class="w"></span>
+<span class="c1"># H306: imports not in alphabetical order (time, os)</span><span class="w"></span>
+<span class="c1"># H401: docstring should not start with a space</span><span class="w"></span>
+<span class="c1"># H403: multi line docstrings should end on a new line</span><span class="w"></span>
+<span class="c1"># H404: multi line docstring should start without a leading new line</span><span class="w"></span>
+<span class="c1"># H405: multi line docstring summary not separated with an empty line</span><span class="w"></span>
+<span class="c1"># H501: Do not use self.__dict__ for string formatting</span><span class="w"></span>
+<span class="na">ignore</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">F812,H101,H202,H233,H301,H306,H401,H403,H404,H405,H501</span><span class="w"></span>
+</pre></div>
+</div>
+<p>They use the comments to describe the check but they could also write this as:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[flake8]</span><span class="w"></span>
+<span class="c1"># it's not a bug that we aren't using all of hacking</span><span class="w"></span>
+<span class="na">ignore</span><span class="w"> </span><span class="o">=</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># F812: list comprehension redefines ...</span><span class="w"></span>
+<span class="w">    </span><span class="na">F812,</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># H101: Use TODO(NAME)</span><span class="w"></span>
+<span class="w">    </span><span class="na">H101,</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># H202: assertRaises Exception too broad</span><span class="w"></span>
+<span class="w">    </span><span class="na">H202,</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># H233: Python 3.x incompatible use of print operator</span><span class="w"></span>
+<span class="w">    </span><span class="na">H233,</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># H301: one import per line</span><span class="w"></span>
+<span class="w">    </span><span class="na">H301,</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># H306: imports not in alphabetical order (time, os)</span><span class="w"></span>
+<span class="w">    </span><span class="na">H306,</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># H401: docstring should not start with a space</span><span class="w"></span>
+<span class="w">    </span><span class="na">H401,</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># H403: multi line docstrings should end on a new line</span><span class="w"></span>
+<span class="w">    </span><span class="na">H403,</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># H404: multi line docstring should start without a leading new line</span><span class="w"></span>
+<span class="w">    </span><span class="na">H404,</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># H405: multi line docstring summary not separated with an empty line</span><span class="w"></span>
+<span class="w">    </span><span class="na">H405,</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># H501: Do not use self.__dict__ for string formatting</span><span class="w"></span>
+<span class="w">    </span><span class="na">H501</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Or they could use each comment to describe <strong>why</strong> they’ve ignored the check.
+<strong class="program">Flake8</strong> knows how to parse these lists and will appropriately handle
+these situations.</p>
+</section>
+<section id="using-local-plugins">
+<h3>Using Local Plugins<a class="headerlink" href="https://flake8.pycqa.org/en/latest/user/configuration.html#using-local-plugins" title="Permalink to this headline">¶</a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.5.0.</span></p>
+</div>
+<p><strong class="program">Flake8</strong> allows users to write plugins that live locally in a project. These
+plugins do not need to use setuptools or any of the other overhead associated
+with plugins distributed on PyPI. To use these plugins, users must specify
+them in their configuration file (i.e., <code class="docutils literal notranslate"><span class="pre">.flake8</span></code>, <code class="docutils literal notranslate"><span class="pre">setup.cfg</span></code>, or
+<code class="docutils literal notranslate"><span class="pre">tox.ini</span></code>). This must be configured in a separate INI section named
+<code class="docutils literal notranslate"><span class="pre">flake8:local-plugins</span></code>.</p>
+<p>Users may configure plugins that check source code, i.e., <code class="docutils literal notranslate"><span class="pre">extension</span></code>
+plugins, and plugins that report errors, i.e., <code class="docutils literal notranslate"><span class="pre">report</span></code> plugins.</p>
+<p>An example configuration might look like:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[flake8:local-plugins]</span><span class="w"></span>
+<span class="na">extension</span><span class="w"> </span><span class="o">=</span><span class="w"></span>
+<span class="w">    </span><span class="na">MC1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">project.flake8.checkers:MyChecker1</span><span class="w"></span>
+<span class="w">    </span><span class="na">MC2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">project.flake8.checkers:MyChecker2</span><span class="w"></span>
+<span class="na">report</span><span class="w"> </span><span class="o">=</span><span class="w"></span>
+<span class="w">    </span><span class="na">MR1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">project.flake8.reporters:MyReporter1</span><span class="w"></span>
+<span class="w">    </span><span class="na">MR2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">project.flake8.reporters:MyReporter2</span><span class="w"></span>
+</pre></div>
+</div>
+<p><strong class="program">Flake8</strong> will also, however, allow for commas to separate the plugins for
+example:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[flake8:local-plugins]</span><span class="w"></span>
+<span class="na">extension</span><span class="w"> </span><span class="o">=</span><span class="w"></span>
+<span class="w">    </span><span class="na">MC1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">project.flake8.checkers:MyChecker1,</span><span class="w"></span>
+<span class="w">    </span><span class="na">MC2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">project.flake8.checkers:MyChecker2</span><span class="w"></span>
+<span class="na">report</span><span class="w"> </span><span class="o">=</span><span class="w"></span>
+<span class="w">    </span><span class="na">MR1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">project.flake8.reporters:MyReporter1,</span><span class="w"></span>
+<span class="w">    </span><span class="na">MR2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">project.flake8.reporters:MyReporter2</span><span class="w"></span>
+</pre></div>
+</div>
+<p>These configurations will allow you to select your own custom reporter plugin
+that you’ve designed or will utilize your new check classes.</p>
+<p>If your package is installed in the same virtualenv that <strong class="program">Flake8</strong> will run
+from, and your local plugins are part of that package, you’re all set; <strong class="program">Flake8</strong>
+will be able to import your local plugins. However, if you are working on a
+project that isn’t set up as an installable package, or <strong class="program">Flake8</strong> doesn’t run
+from the same virtualenv your code runs in, you may need to tell <strong class="program">Flake8</strong> where
+to import your local plugins from. You can do this via the <code class="docutils literal notranslate"><span class="pre">paths</span></code> option in
+the <code class="docutils literal notranslate"><span class="pre">local-plugins</span></code> section of your config:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[flake8:local-plugins]</span><span class="w"></span>
+<span class="na">extension</span><span class="w"> </span><span class="o">=</span><span class="w"></span>
+<span class="w">  </span><span class="na">MC1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">myflake8plugin:MyChecker1</span><span class="w"></span>
+<span class="na">paths</span><span class="w"> </span><span class="o">=</span><span class="w"></span>
+<span class="w">  </span><span class="na">./path/to</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Relative paths will be interpreted relative to the config file. Multiple paths
+can be listed (comma separated just like <code class="docutils literal notranslate"><span class="pre">exclude</span></code>) as needed. If your local
+plugins have any dependencies, it’s up to you to ensure they are installed in
+whatever Python environment <strong class="program">Flake8</strong> runs in.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>These plugins otherwise follow the same guidelines as regular plugins.</p>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="https://flake8.pycqa.org/en/latest/user/options.html" class="btn btn-neutral float-right" title="Full Listing of Options and Their Descriptions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="https://flake8.pycqa.org/en/latest/user/invocation.html" class="btn btn-neutral float-left" title="Invoking Flake8" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr><div><div id="rtd-sidebar" data-ea-publisher="readthedocs" data-ea-type="readthedocs-sidebar" data-ea-manual="true" class="ethical-rtd loaded" data-ea-keywords="flake8|mccabe|pep8|pyflakes|python|readthedocs-project-6385|readthedocs-project-flake8|testing" data-ea-campaign-types="community|house|paid"><div class="ethical-sidebar"><div class="ethical-content"><a href="https://server.ethicalads.io/proxy/click/2373/da1f1fb0-0d7d-417d-95f5-96d01fdda740/" rel="nofollow noopener" target="_blank" class="ethical-image-link"><img src="./Configuring Flake8 — flake8 4.0.1 documentation_files/fixer_240_x_180.png" alt="Sponsored: Apilayer"></a><div class="ethical-text"><a href="https://server.ethicalads.io/proxy/click/2373/da1f1fb0-0d7d-417d-95f5-96d01fdda740/" rel="nofollow noopener" target="_blank"><strong>Easy-to-use Currency Conversion JSON API </strong><span>#1 resource for real-time exchange rates.</span><strong> Sign Up Now</strong></a></div></div><div class="ethical-callout"><small><em><a rel="nofollow noopener" target="_blank" href="https://ethicalads.io/?ref=rtd-sidebar">Ad by EthicalAds</a><span> &nbsp; · &nbsp; </span><a rel="nofollow noopener" target="_blank" href="https://www.ethicalads.io/publishers/?ref=rtd-sidebar-join">Monetize your site</a></em></small></div></div></div></div>
+
+  <div role="contentinfo">
+    <p>
+        © Copyright 2016, Ian Stapleton Cordasco
+      
+        <span class="commit">
+          Revision <code>8c1ed247</code>.
+        </span>
+      
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org/">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions"><!-- Inserted RTD Footer -->
+
+<div class="injected">
+
+  
+
+      
+      
+      
+      <dl>
+        <dt>Versões</dt>
+        
+        <dd>
+          <a href="https://flake8.pycqa.org/en/master/user/configuration.html">master</a>
+        </dd>
+        
+        <dd class="rtd-current-item">
+          <a href="https://flake8.pycqa.org/en/latest/user/configuration.html">latest</a>
+        </dd>
+        
+        <dd>
+          <a href="https://flake8.pycqa.org/en/stable/user/configuration.html">stable</a>
+        </dd>
+        
+        <dd>
+          <a href="https://flake8.pycqa.org/en/4.0.1/user/configuration.html">4.0.1</a>
+        </dd>
+        
+        <dd>
+          <a href="https://flake8.pycqa.org/en/4.0.0/user/configuration.html">4.0.0</a>
+        </dd>
+        
+        <dd>
+          <a href="https://flake8.pycqa.org/en/3.9.2/user/configuration.html">3.9.2</a>
+        </dd>
+        
+        <dd>
+          <a href="https://flake8.pycqa.org/en/3.9.1/user/configuration.html">3.9.1</a>
+        </dd>
+        
+        <dd>
+          <a href="https://flake8.pycqa.org/en/3.9.0/user/configuration.html">3.9.0</a>
+        </dd>
+        
+        <dd>
+          <a href="https://flake8.pycqa.org/en/3.8.4/user/configuration.html">3.8.4</a>
+        </dd>
+        
+        <dd>
+          <a href="https://flake8.pycqa.org/en/3.8.3/user/configuration.html">3.8.3</a>
+        </dd>
+        
+        <dd>
+          <a href="https://flake8.pycqa.org/en/3.8.2/user/configuration.html">3.8.2</a>
+        </dd>
+        
+        <dd>
+          <a href="https://flake8.pycqa.org/en/3.8.1/user/configuration.html">3.8.1</a>
+        </dd>
+        
+        <dd>
+          <a href="https://flake8.pycqa.org/en/3.8.0/user/configuration.html">3.8.0</a>
+        </dd>
+        
+        <dd>
+          <a href="https://flake8.pycqa.org/en/3.7.9/user/configuration.html">3.7.9</a>
+        </dd>
+        
+        <dd>
+          <a href="https://flake8.pycqa.org/en/3.7.8/user/configuration.html">3.7.8</a>
+        </dd>
+        
+        <dd>
+          <a href="https://flake8.pycqa.org/en/3.7.7/user/configuration.html">3.7.7</a>
+        </dd>
+        
+        <dd>
+          <a href="https://flake8.pycqa.org/en/3.7.6/user/configuration.html">3.7.6</a>
+        </dd>
+        
+        <dd>
+          <a href="https://flake8.pycqa.org/en/3.7.5/user/configuration.html">3.7.5</a>
+        </dd>
+        
+        <dd>
+          <a href="https://flake8.pycqa.org/en/3.7.4/user/configuration.html">3.7.4</a>
+        </dd>
+        
+        <dd>
+          <a href="https://flake8.pycqa.org/en/3.7.3/user/configuration.html">3.7.3</a>
+        </dd>
+        
+        <dd>
+          <a href="https://flake8.pycqa.org/en/3.7.2/user/configuration.html">3.7.2</a>
+        </dd>
+        
+        <dd>
+          <a href="https://flake8.pycqa.org/en/3.7.1/user/configuration.html">3.7.1</a>
+        </dd>
+        
+        <dd>
+          <a href="https://flake8.pycqa.org/en/3.7.0/user/configuration.html">3.7.0</a>
+        </dd>
+        
+        <dd>
+          <a href="https://flake8.pycqa.org/en/3.6.0/user/configuration.html">3.6.0</a>
+        </dd>
+        
+        <dd>
+          <a href="https://flake8.pycqa.org/en/3.5.0/user/configuration.html">3.5.0</a>
+        </dd>
+        
+        <dd>
+          <a href="https://flake8.pycqa.org/en/3.4.1/user/configuration.html">3.4.1</a>
+        </dd>
+        
+        <dd>
+          <a href="https://flake8.pycqa.org/en/3.3.0/user/configuration.html">3.3.0</a>
+        </dd>
+        
+        <dd>
+          <a href="https://flake8.pycqa.org/en/3.2.1/user/configuration.html">3.2.1</a>
+        </dd>
+        
+        <dd>
+          <a href="https://flake8.pycqa.org/en/3.2.0/user/configuration.html">3.2.0</a>
+        </dd>
+        
+        <dd>
+          <a href="https://flake8.pycqa.org/en/3.1.1/user/configuration.html">3.1.1</a>
+        </dd>
+        
+        <dd>
+          <a href="https://flake8.pycqa.org/en/3.0.4/user/configuration.html">3.0.4</a>
+        </dd>
+        
+        <dd>
+          <a href="https://flake8.pycqa.org/en/3.0.3/user/configuration.html">3.0.3</a>
+        </dd>
+        
+        <dd>
+          <a href="https://flake8.pycqa.org/en/3.0.2/user/configuration.html">3.0.2</a>
+        </dd>
+        
+        <dd>
+          <a href="https://flake8.pycqa.org/en/3.0.1/user/configuration.html">3.0.1</a>
+        </dd>
+        
+        <dd>
+          <a href="https://flake8.pycqa.org/en/3.0.0/user/configuration.html">3.0.0</a>
+        </dd>
+        
+        <dd>
+          <a href="https://flake8.pycqa.org/en/3.0.0b1/user/configuration.html">3.0.0b1</a>
+        </dd>
+        
+        <dd>
+          <a href="https://flake8.pycqa.org/en/2.6.0/user/configuration.html">2.6.0</a>
+        </dd>
+        
+        <dd>
+          <a href="https://flake8.pycqa.org/en/2.5.5/user/configuration.html">2.5.5</a>
+        </dd>
+        
+      </dl>
+      
+      
+
+      
+      
+      <dl>
+        <dt>Downloads</dt>
+        
+        <dd><a href="https://flake8.pycqa.org/_/downloads/en/latest/pdf/">PDF</a></dd>
+        
+        <dd><a href="https://flake8.pycqa.org/_/downloads/en/latest/htmlzip/">HTML</a></dd>
+        
+        <dd><a href="https://flake8.pycqa.org/_/downloads/en/latest/epub/">Epub</a></dd>
+        
+      </dl>
+      
+      
+
+      
+      <dl>
+        
+        <!-- These are kept as relative links for internal installs that are http -->
+        <dt>On Read the Docs</dt>
+        <dd>
+          <a href="https://readthedocs.org/projects/flake8/">Project Home</a>
+        </dd>
+        <dd>
+          <a href="https://readthedocs.org/projects/flake8/builds/">Builds</a>
+        </dd>
+        <dd>
+          <a href="https://readthedocs.org/projects/flake8/downloads/">Downloads</a>
+        </dd>
+      </dl>
+      
+
+      
+
+      
+      <dl>
+        <dt>On GitHub</dt>
+        <dd>
+          <a href="https://github.com/pycqa/flake8/blob/main/docs/source/user/configuration.rst">Visualizar</a>
+        </dd>
+        
+      </dl>
+      
+      
+
+      
+      <dl>
+        <dt>Pesquisar</dt>
+        <dd>
+          <div style="padding: 6px;">
+            
+            <form id="flyout-search-form" class="wy-form" target="_blank" action="https://readthedocs.org/projects/flake8/search/" method="get">
+              <input type="text" name="q" aria-label="Search docs" placeholder="Search docs">
+              </form>
+          </div>
+        </dd>
+      </dl>
+      
+
+      <hr>
+
+      
+        <small>
+          <span>Hosted by <a href="https://readthedocs.org/">Read the Docs</a></span>
+          <span> · </span>
+          <a href="https://docs.readthedocs.io/page/privacy-policy.html">Privacy Policy</a>
+        </small>
+      
+
+      
+
+</div>
+</div>
+  </div>
+
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+   
+
+
+</body></html>

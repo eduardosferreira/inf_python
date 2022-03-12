@@ -1,0 +1,1127 @@
+
+<!-- saved from url=(0063)https://cursos.alura.com.br/course/python-exceptions/task/70602 -->
+<html lang="pt-BR" data-product="alura" style="scroll-behavior: smooth;"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style class="vjs-styles-defaults">
+      .video-js {
+        width: 300px;
+        height: 150px;
+      }
+
+      .vjs-fluid {
+        padding-top: 56.25%
+      }
+    </style><style class="vjs-styles-dimensions">
+      .video-player-dimensions {
+        width: 960px;
+        height: 540px;
+      }
+
+      .video-player-dimensions.vjs-fluid {
+        padding-top: 56.25%;
+      }
+    </style><link rel="stylesheet" type="text/css" href="./Python 3_ entendendo o Tratamento de Erros_ Aula 6 - Atividade 3 Disparo de exceções _ Alura - Cursos online de tecnologia_files/clipper.647d33f8.css">
+<link rel="stylesheet" href="./Python 3_ entendendo o Tratamento de Erros_ Aula 6 - Atividade 3 Disparo de exceções _ Alura - Cursos online de tecnologia_files/back-to-top.9a8b5967.css">
+<link rel="stylesheet" href="./Python 3_ entendendo o Tratamento de Erros_ Aula 6 - Atividade 3 Disparo de exceções _ Alura - Cursos online de tecnologia_files/videoShortcutsModal.e1c7fc31.css">
+<link rel="stylesheet" href="./Python 3_ entendendo o Tratamento de Erros_ Aula 6 - Atividade 3 Disparo de exceções _ Alura - Cursos online de tecnologia_files/modal.509c233d.css">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+
+	
+		
+
+
+
+<!-- Google Tag Manager -->
+<script type="text/javascript" async="" src="./Python 3_ entendendo o Tratamento de Erros_ Aula 6 - Atividade 3 Disparo de exceções _ Alura - Cursos online de tecnologia_files/23465.js.download"></script><script type="text/javascript" async="" src="./Python 3_ entendendo o Tratamento de Erros_ Aula 6 - Atividade 3 Disparo de exceções _ Alura - Cursos online de tecnologia_files/analytics.js.download"></script><script async="" src="./Python 3_ entendendo o Tratamento de Erros_ Aula 6 - Atividade 3 Disparo de exceções _ Alura - Cursos online de tecnologia_files/analytics.js.download"></script><script async="" src="./Python 3_ entendendo o Tratamento de Erros_ Aula 6 - Atividade 3 Disparo de exceções _ Alura - Cursos online de tecnologia_files/gtm.js.download"></script><script>
+	(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+		new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+		j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+		'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+	})(window,document,'script','dataLayer', 'GTM-TN542JN');
+</script>
+<!-- End Google Tag Manager -->
+
+
+	<script type="text/javascript">
+        dataLayer.push({
+            'tipoPagina': 'Aula',
+            'curso': 'Python 3: entendendo o Tratamento de Erros'
+        });
+	</script>
+
+	
+
+	<title>Python 3: entendendo o Tratamento de Erros: Aula 6 - Atividade 3 Disparo de exceções | Alura - Cursos online de tecnologia</title>
+	
+	<link rel="shortcut icon" href="https://cursos.alura.com.br/assets/images/alura/favicon.ico">
+	
+	<link href="./Python 3_ entendendo o Tratamento de Erros_ Aula 6 - Atividade 3 Disparo de exceções _ Alura - Cursos online de tecnologia_files/css" rel="stylesheet">
+	<link rel="preconnect" href="https://fonts.gstatic.com/">
+
+	<link rel="stylesheet" href="./Python 3_ entendendo o Tratamento de Erros_ Aula 6 - Atividade 3 Disparo de exceções _ Alura - Cursos online de tecnologia_files/video-js.5c840c77.css">
+	<link rel="stylesheet" href="./Python 3_ entendendo o Tratamento de Erros_ Aula 6 - Atividade 3 Disparo de exceções _ Alura - Cursos online de tecnologia_files/silvermine-videojs-quality-selector.min.css">
+	<link rel="stylesheet" href="./Python 3_ entendendo o Tratamento de Erros_ Aula 6 - Atividade 3 Disparo de exceções _ Alura - Cursos online de tecnologia_files/prettify.a2c88d69.css">
+
+	<link rel="stylesheet" href="./Python 3_ entendendo o Tratamento de Erros_ Aula 6 - Atividade 3 Disparo de exceções _ Alura - Cursos online de tecnologia_files/base.f643e441.css">
+	<link rel="stylesheet" href="./Python 3_ entendendo o Tratamento de Erros_ Aula 6 - Atividade 3 Disparo de exceções _ Alura - Cursos online de tecnologia_files/formattedText.e58775de.css">
+	
+	<link rel="stylesheet" href="./Python 3_ entendendo o Tratamento de Erros_ Aula 6 - Atividade 3 Disparo de exceções _ Alura - Cursos online de tecnologia_files/container.16466c50.css">
+	<link rel="stylesheet" href="./Python 3_ entendendo o Tratamento de Erros_ Aula 6 - Atividade 3 Disparo de exceções _ Alura - Cursos online de tecnologia_files/classPage.952c11e2.css">
+	<link rel="stylesheet" href="./Python 3_ entendendo o Tratamento de Erros_ Aula 6 - Atividade 3 Disparo de exceções _ Alura - Cursos online de tecnologia_files/menuSettings.7f4d8bd2.css">
+	<link rel="stylesheet" href="./Python 3_ entendendo o Tratamento de Erros_ Aula 6 - Atividade 3 Disparo de exceções _ Alura - Cursos online de tecnologia_files/taskProgress.a5300583.css">
+	<link rel="stylesheet" href="./Python 3_ entendendo o Tratamento de Erros_ Aula 6 - Atividade 3 Disparo de exceções _ Alura - Cursos online de tecnologia_files/taskMessageInfo.67eb9bc6.css">
+	<link rel="stylesheet" href="./Python 3_ entendendo o Tratamento de Erros_ Aula 6 - Atividade 3 Disparo de exceções _ Alura - Cursos online de tecnologia_files/alternativeList.7f369f7b.css">
+	<link rel="stylesheet" href="./Python 3_ entendendo o Tratamento de Erros_ Aula 6 - Atividade 3 Disparo de exceções _ Alura - Cursos online de tecnologia_files/taskFeedback.4bda0782.css">
+	<link rel="stylesheet" href="./Python 3_ entendendo o Tratamento de Erros_ Aula 6 - Atividade 3 Disparo de exceções _ Alura - Cursos online de tecnologia_files/markdown.3ec31c65.css">
+	<link rel="stylesheet" href="./Python 3_ entendendo o Tratamento de Erros_ Aula 6 - Atividade 3 Disparo de exceções _ Alura - Cursos online de tecnologia_files/finishSection.bee005cf.css">
+	<link rel="stylesheet" href="./Python 3_ entendendo o Tratamento de Erros_ Aula 6 - Atividade 3 Disparo de exceções _ Alura - Cursos online de tecnologia_files/phrase.6d459a32.css">
+	<link rel="stylesheet" href="./Python 3_ entendendo o Tratamento de Erros_ Aula 6 - Atividade 3 Disparo de exceções _ Alura - Cursos online de tecnologia_files/hqexplanation.3ed41021.css">
+	<link rel="stylesheet" href="./Python 3_ entendendo o Tratamento de Erros_ Aula 6 - Atividade 3 Disparo de exceções _ Alura - Cursos online de tecnologia_files/openquestion.2889f14f.css">
+	<link rel="stylesheet" href="./Python 3_ entendendo o Tratamento de Erros_ Aula 6 - Atividade 3 Disparo de exceções _ Alura - Cursos online de tecnologia_files/textcontent.7298b79f.css">
+	<link rel="stylesheet" href="./Python 3_ entendendo o Tratamento de Erros_ Aula 6 - Atividade 3 Disparo de exceções _ Alura - Cursos online de tecnologia_files/video.e82ab0eb.css">
+	<link rel="stylesheet" href="./Python 3_ entendendo o Tratamento de Erros_ Aula 6 - Atividade 3 Disparo de exceções _ Alura - Cursos online de tecnologia_files/singlechoice.b545e19f.css">
+	<link rel="stylesheet" href="./Python 3_ entendendo o Tratamento de Erros_ Aula 6 - Atividade 3 Disparo de exceções _ Alura - Cursos online de tecnologia_files/music.8fe6cab6.css">
+	<link rel="stylesheet" href="./Python 3_ entendendo o Tratamento de Erros_ Aula 6 - Atividade 3 Disparo de exceções _ Alura - Cursos online de tecnologia_files/multiplechoice.70f60e4c.css">
+	<link rel="stylesheet" href="./Python 3_ entendendo o Tratamento de Erros_ Aula 6 - Atividade 3 Disparo de exceções _ Alura - Cursos online de tecnologia_files/videodialog.36286910.css">
+	<link rel="stylesheet" href="./Python 3_ entendendo o Tratamento de Erros_ Aula 6 - Atividade 3 Disparo de exceções _ Alura - Cursos online de tecnologia_files/fillintheblank.59273039.css">
+	<link rel="stylesheet" href="./Python 3_ entendendo o Tratamento de Erros_ Aula 6 - Atividade 3 Disparo de exceções _ Alura - Cursos online de tecnologia_files/speakingpractice.13b2c5c5.css">
+	<link rel="stylesheet" href="./Python 3_ entendendo o Tratamento de Erros_ Aula 6 - Atividade 3 Disparo de exceções _ Alura - Cursos online de tecnologia_files/pronunciationpractice.d512f574.css">
+	<link rel="stylesheet" href="./Python 3_ entendendo o Tratamento de Erros_ Aula 6 - Atividade 3 Disparo de exceções _ Alura - Cursos online de tecnologia_files/repetition.52dd893e.css">
+	<link rel="stylesheet" href="./Python 3_ entendendo o Tratamento de Erros_ Aula 6 - Atividade 3 Disparo de exceções _ Alura - Cursos online de tecnologia_files/genericVideo.2a5ae191.css">
+	<link rel="stylesheet" href="./Python 3_ entendendo o Tratamento de Erros_ Aula 6 - Atividade 3 Disparo de exceções _ Alura - Cursos online de tecnologia_files/projectSubmit.4879daff.css">
+	<link rel="stylesheet" href="./Python 3_ entendendo o Tratamento de Erros_ Aula 6 - Atividade 3 Disparo de exceções _ Alura - Cursos online de tecnologia_files/extraContentTask.b2d126e6.css">
+	<link rel="stylesheet" href="./Python 3_ entendendo o Tratamento de Erros_ Aula 6 - Atividade 3 Disparo de exceções _ Alura - Cursos online de tecnologia_files/taskContent.1ef47209.css">
+	<link rel="stylesheet" href="./Python 3_ entendendo o Tratamento de Erros_ Aula 6 - Atividade 3 Disparo de exceções _ Alura - Cursos online de tecnologia_files/taskButtons.ed4fd65b.css">
+	<link rel="stylesheet" href="./Python 3_ entendendo o Tratamento de Erros_ Aula 6 - Atividade 3 Disparo de exceções _ Alura - Cursos online de tecnologia_files/alert.f7efb098.css">
+	<link rel="stylesheet" href="./Python 3_ entendendo o Tratamento de Erros_ Aula 6 - Atividade 3 Disparo de exceções _ Alura - Cursos online de tecnologia_files/markdownEditor.600de57a.css">
+	<link rel="stylesheet" href="./Python 3_ entendendo o Tratamento de Erros_ Aula 6 - Atividade 3 Disparo de exceções _ Alura - Cursos online de tecnologia_files/audioPlayer.0a362c88.css">
+	<link rel="stylesheet" href="./Python 3_ entendendo o Tratamento de Erros_ Aula 6 - Atividade 3 Disparo de exceções _ Alura - Cursos online de tecnologia_files/notes.d6f46832.css">
+	
+	
+	
+
+	<link rel="stylesheet" href="./Python 3_ entendendo o Tratamento de Erros_ Aula 6 - Atividade 3 Disparo de exceções _ Alura - Cursos online de tecnologia_files/dark-mode.cabc3999.css">
+	<link rel="stylesheet" href="./Python 3_ entendendo o Tratamento de Erros_ Aula 6 - Atividade 3 Disparo de exceções _ Alura - Cursos online de tecnologia_files/taskFeedbackAnswer.72669c00.css">
+	<link rel="stylesheet" href="./Python 3_ entendendo o Tratamento de Erros_ Aula 6 - Atividade 3 Disparo de exceções _ Alura - Cursos online de tecnologia_files/theater-mode.1c783503.css">
+	<link rel="stylesheet" href="./Python 3_ entendendo o Tratamento de Erros_ Aula 6 - Atividade 3 Disparo de exceções _ Alura - Cursos online de tecnologia_files/autoplay-videojs.250faf62.css">
+
+	
+	
+	<style type="text/css">
+		.task:before, .video-js .vjs-play-progress {
+			background-color: #2A7AE4;
+		}
+
+
+	</style>
+
+
+	<script async="" src="./Python 3_ entendendo o Tratamento de Erros_ Aula 6 - Atividade 3 Disparo de exceções _ Alura - Cursos online de tecnologia_files/hotjar-1638253.js.download"></script><script src="./Python 3_ entendendo o Tratamento de Erros_ Aula 6 - Atividade 3 Disparo de exceções _ Alura - Cursos online de tecnologia_files/sha256.min.js.download"></script><script async="" src="./Python 3_ entendendo o Tratamento de Erros_ Aula 6 - Atividade 3 Disparo de exceções _ Alura - Cursos online de tecnologia_files/modules.7d8bacab6db9ec11a66d.js.download" charset="utf-8"></script><style type="text/css">iframe#_hjRemoteVarsFrame {display: none !important; width: 1px !important; height: 1px !important; opacity: 0 !important; pointer-events: none !important;}</style></head>
+
+
+
+
+<body class=" theatermode">
+<script src="./Python 3_ entendendo o Tratamento de Erros_ Aula 6 - Atividade 3 Disparo de exceções _ Alura - Cursos online de tecnologia_files/avatarOnError.1a705d33.js.download"></script>
+
+	
+<!-- Google Tag Manager (noscript) -->
+<noscript>
+	<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TN542JN"
+				  height="0" width="0" style="display:none;visibility:hidden"></iframe>
+</noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+
+
+<section class="task  
+" data-allow-answer="true" data-task-section-exam="false" data-task-type="video" data-task-id="70602" data-author-id="811467" data-course-code="python-exceptions" data-section-name="Disparo de Exceções Encadeadas" data-section-id="9924" data-section-number="6" data-domain="cursos.alura.com.br" data-hasfeedbackanswer="false" data-url-prefix="/" data-already-seen-task="false">
+
+	<section class="task-body">
+		
+		
+
+
+
+
+
+
+
+
+
+
+<header class="task-body-header">
+    <div class="container">
+
+        
+            
+            <button title="" aria-label="" type="button" class="theatermode openMenu-button task-menu-button
+                    " id="menu-button-header">
+            </button>
+        
+
+        <h1 class="task-body-header-title">
+            
+            
+            <svg class="task-body-header-title-svg" aria-label="Atividade de Vídeo">
+                <use xlink:href="/assets/images/classPage/icon-menu-icons.svg#VIDEO"></use>
+            </svg>
+            <small>03</small>
+            <span class="task-body-header-title-text"> Disparo de exceções</span>
+        </h1>
+        
+            <div class="task-body-header-actions">
+                <a href="https://cursos.alura.com.br/course/python-exceptions/task/70602/next" aria-hidden="true" class="task-actions-button task-actions-button-next task-submit bootcamp-primary-button-theme" style="background-color: #2A7AE4">Próxima Atividade</a>
+            </div>
+        
+
+
+        
+            
+
+
+
+
+
+
+
+<div class="theater-video settings">
+	<button type="button" class="settings-button" aria-label="Configurações">
+		<svg class="settings-button-icon">
+			<use xlink:href="/assets/images/classPage/icon-menu-icons.svg#MENU_SETTINGS"></use>
+		</svg>
+	</button>
+	<div class="settings-box">
+		<ul class="settings-box-list">
+			
+				<li class="settings-box-item settings-box-item-darkmode">
+					<button class="dark-mode-action">
+						Modo noturno
+					</button>
+				</li>
+			
+			
+				
+				
+				
+					
+						<li class="settings-box-item settings-box-item-player">
+							<a class="video-problems" href="https://cursos.alura.com.br/video/diagnostic?taskId=70602" target="_blank">
+								Problemas com o vídeo?
+								<span hidden="">indisponível</span>
+							</a>
+						</li>
+						<li class="settings-box-item settings-box-item-shortcuts">
+							<button class="shortcuts-action">
+								Atalhos de teclado
+							</button>
+						</li>
+					
+					
+						
+							
+							
+								<li class="settings-box-item settings-box-item-suggestion"><a href="https://cursos.alura.com.br/suggestions/new/python-exceptions/70602/question">Sugerir alteração</a></li>
+							
+						
+					
+				
+				
+			
+			
+		</ul>
+		<span class="settings-box-title"></span>
+	</div>
+</div>
+
+        
+    </div>
+</header>
+		<div class="task-body__wrapper">
+			
+
+
+
+<section class="class-notes">
+    <div class="class-notes-content">
+        <h2 class="class-notes-title">Meu caderno do curso (beta)</h2>
+        <p class="class-notes-description">Este é seu caderno de anotações aqui na Alura. Todo o seu conteúdo fica vísivel apenas para você. Próximos passos para essa funcionalidade  no nosso<a href="https://suporte.alura.com.br/article/308-meu-caderno-como-funciona" class="class-notes-faq-link">FAQ</a></p>
+        <textarea name="text" id="courseNotebook-text" class="class-notes-text" cols="30" rows="10" maxlength="60000"></textarea>
+        <div class="class-notes-save-wrapper">
+            <span>
+                <p class="class-notes-saved-text" aria-hidden="true" style="display: none">Notas salvas</p>
+                <p class="class-notes-limit-text" aria-hidden="true" style="display: none">Não foi possível salvar! Limite de caracteres atingido ({max})!</p>
+            </span>
+            <span class="class-notes-save-button-wrapper">
+                <button class="class-notes-save-button" data-save-text="Salvar caderno" data-saving-text="Salvando">
+                   Salvar caderno</button>
+            </span>
+        </div>
+        <button class="class-notes-close-button"></button>
+    </div>
+</section>
+			<main class="task-body-main container" data-should-warn="false">
+				
+
+
+
+
+
+
+
+	
+	
+	
+	
+		
+
+
+
+
+
+
+
+
+    
+    
+        <section class="video" id="task-content">
+            <div class="container theater-mode">
+                
+
+
+
+
+
+
+
+<div class="video settings">
+	<button type="button" class="settings-button" aria-label="Configurações">
+		<svg class="settings-button-icon">
+			<use xlink:href="/assets/images/classPage/icon-menu-icons.svg#MENU_SETTINGS"></use>
+		</svg>
+	</button>
+	<div class="settings-box">
+		<ul class="settings-box-list">
+			
+				<li class="settings-box-item settings-box-item-darkmode">
+					<button class="dark-mode-action">
+						Modo noturno
+					</button>
+				</li>
+			
+			
+				
+				
+				
+					
+						<li class="settings-box-item settings-box-item-player">
+							<a class="video-problems" href="https://cursos.alura.com.br/video/diagnostic?taskId=70602" target="_blank">
+								Problemas com o vídeo?
+								<span hidden="">indisponível</span>
+							</a>
+						</li>
+						<li class="settings-box-item settings-box-item-shortcuts">
+							<button class="shortcuts-action">
+								Atalhos de teclado
+							</button>
+						</li>
+					
+					
+						
+							
+							
+								<li class="settings-box-item settings-box-item-suggestion"><a href="https://cursos.alura.com.br/suggestions/new/python-exceptions/70602/question">Sugerir alteração</a></li>
+							
+						
+					
+				
+				
+			
+			
+		</ul>
+		<span class="settings-box-title"></span>
+	</div>
+</div>
+
+                
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<section id="video" class="video-container">
+    <div id="video-container-data" data-max-playback-rate="" data-section-id="9924" data-course="python-exceptions" data-playback-rate="2.0" data-task-id="70602" data-quality="sd" data-course-id="1115" data-autoplay-type="NONE" data-autoplay-enabled="false" data-gnarus-name="alura" data-error-message="&lt;p&gt;Não foi possível reproduzir o vídeo. Para ter um diagnóstico mais detalhado entre na &lt;a href=&quot;/video/diagnostic?taskId=70602&quot;&gt;página de diagnóstico de video&lt;/a&gt;&lt;/p&gt;" data-error-label="Não foi possível reproduzir o vídeo. Para ter um diagnóstico mais detalhado entre em /video/diagnostic?taskId=70602 diagnóstico de video">
+
+        
+    
+          <video-js id="video-player" class="video-js vjs-big-play-centered vjs-default-skin video-player-frame video-player vjs-fluid video-player-dimensions vjs-controls-enabled vjs-workinghover vjs-v7 vjs-has-started vjs-playing vjs-user-inactive" oncontextmenu="return false;" preload="auto" controlslist="nodownload" tabindex="-1" role="region" lang="pt-br" translate="no" aria-label="Video Player"><video tabindex="-1" role="application" controlslist="nodownload" preload="auto" oncontextmenu="return false;" class="vjs-tech" id="video-player_html5_api" src="blob:https://cursos.alura.com.br/673d181b-4a98-468d-bc63-fde65c9ede7e"></video>
+           <div class="vjs-poster vjs-hidden" tabindex="-1" aria-disabled="false"></div><div class="vjs-text-track-display" translate="yes" aria-live="off" aria-atomic="true"><div style="position: absolute; inset: 0px; margin: 1.5%;"></div></div><div class="vjs-loading-spinner" dir="ltr"><span class="vjs-control-text">Video Player is loading.</span></div><button class="vjs-big-play-button" type="button" title="Play Video" aria-disabled="false"><span class="vjs-icon-placeholder" aria-hidden="true"></span><span class="vjs-control-text" aria-live="polite">Play Video</span></button><div class="vjs-control-bar" dir="ltr"><div class="vjs-progress-control vjs-control"><div tabindex="0" class="vjs-progress-holder vjs-slider vjs-slider-horizontal" role="slider" aria-valuenow="92.41" aria-valuemin="0" aria-valuemax="100" aria-label="Progress Bar" aria-valuetext="14:14 of 15:24"><div class="vjs-load-progress" style="width: 99.02%;"><span class="vjs-control-text"><span>Loaded</span>: <span class="vjs-control-text-loaded-percentage">99.02%</span></span><div data-start="819.819" data-end="915.8586" style="left: 89.51%; width: 10.49%;"></div></div><div class="vjs-mouse-display" style="left: 602px;"><div class="vjs-time-tooltip" aria-hidden="true" style="right: -22px;">09:25</div></div><div class="vjs-play-progress vjs-slider-bar" aria-hidden="true" style="width: 92.41%;"><div class="vjs-time-tooltip" aria-hidden="true" style="right: -15px;">14:14</div></div></div></div><button class="vjs-play-control vjs-control vjs-button vjs-playing" type="button" title="Pause" aria-disabled="false"><span class="vjs-icon-placeholder" aria-hidden="true"></span><span class="vjs-control-text" aria-live="polite">Pause</span></button><div class="vjs-volume-panel vjs-control vjs-volume-panel-horizontal"><button class="vjs-mute-control vjs-control vjs-button vjs-vol-3" type="button" title="Mute" aria-disabled="false"><span class="vjs-icon-placeholder" aria-hidden="true"></span><span class="vjs-control-text" aria-live="polite">Mute</span></button><div class="vjs-volume-control vjs-control vjs-volume-horizontal"><div tabindex="0" class="vjs-volume-bar vjs-slider-bar vjs-slider vjs-slider-horizontal" role="slider" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" aria-label="Volume Level" aria-live="polite" aria-valuetext="100%"><div class="vjs-mouse-display"><div class="vjs-volume-tooltip" aria-hidden="true"></div></div><div class="vjs-volume-level"><span class="vjs-control-text"></span></div></div></div></div><div class="vjs-current-time vjs-time-control vjs-control"><span class="vjs-control-text" role="presentation">Current Time&nbsp;</span><span class="vjs-current-time-display" aria-live="off" role="presentation">14:14</span></div><div class="vjs-time-control vjs-time-divider" aria-hidden="true"><div><span>/</span></div></div><div class="vjs-duration vjs-time-control vjs-control"><span class="vjs-control-text" role="presentation">Duration&nbsp;</span><span class="vjs-duration-display" aria-live="off" role="presentation">15:24</span></div><div class="vjs-playback-rate vjs-menu-button vjs-menu-button-popup vjs-control vjs-button"><div class="vjs-playback-rate-value" id="vjs-playback-rate-value-label-video-player_component_289">2x</div><button class="vjs-playback-rate vjs-menu-button vjs-menu-button-popup vjs-button" type="button" aria-disabled="false" title="Playback Rate" aria-haspopup="true" aria-expanded="false" aria-describedby="vjs-playback-rate-value-label-video-player_component_289"><span class="vjs-icon-placeholder" aria-hidden="true"></span><span class="vjs-control-text" aria-live="polite">Playback Rate</span></button><div class="vjs-menu"><ul class="vjs-menu-content" role="menu"><li class="vjs-menu-item" tabindex="-1" role="menuitemradio" aria-disabled="false" aria-checked="false"><span class="vjs-menu-item-text">3x</span><span class="vjs-control-text" aria-live="polite"></span></li><li class="vjs-menu-item" tabindex="-1" role="menuitemradio" aria-disabled="false" aria-checked="false"><span class="vjs-menu-item-text">2.5x</span><span class="vjs-control-text" aria-live="polite"></span></li><li class="vjs-menu-item vjs-selected" tabindex="-1" role="menuitemradio" aria-disabled="false" aria-checked="true"><span class="vjs-menu-item-text">2x</span><span class="vjs-control-text" aria-live="polite">, selected</span></li><li class="vjs-menu-item" tabindex="-1" role="menuitemradio" aria-disabled="false" aria-checked="false"><span class="vjs-menu-item-text">1.75x</span><span class="vjs-control-text" aria-live="polite"></span></li><li class="vjs-menu-item" tabindex="-1" role="menuitemradio" aria-disabled="false" aria-checked="false"><span class="vjs-menu-item-text">1.5x</span><span class="vjs-control-text" aria-live="polite"></span></li><li class="vjs-menu-item" tabindex="-1" role="menuitemradio" aria-disabled="false" aria-checked="false"><span class="vjs-menu-item-text">1.25x</span><span class="vjs-control-text" aria-live="polite"></span></li><li class="vjs-menu-item" tabindex="-1" role="menuitemradio" aria-disabled="false" aria-checked="false"><span class="vjs-menu-item-text">1x</span><span class="vjs-control-text" aria-live="polite"></span></li><li class="vjs-menu-item" tabindex="-1" role="menuitemradio" aria-disabled="false" aria-checked="false"><span class="vjs-menu-item-text">0.75x</span><span class="vjs-control-text" aria-live="polite"></span></li><li class="vjs-menu-item" tabindex="-1" role="menuitemradio" aria-disabled="false" aria-checked="false"><span class="vjs-menu-item-text">0.5x</span><span class="vjs-control-text" aria-live="polite"></span></li><li class="vjs-menu-item" tabindex="-1" role="menuitemradio" aria-disabled="false" aria-checked="false"><span class="vjs-menu-item-text">0.25x</span><span class="vjs-control-text" aria-live="polite"></span></li></ul></div></div><div class="vjs-quality-selector vjs-menu-button vjs-menu-button-popup vjs-control vjs-button"><button class="vjs-menu-button vjs-menu-button-popup vjs-button" type="button" aria-disabled="false" aria-haspopup="true" aria-expanded="false" title="Open quality selector menu"><span class="vjs-icon-placeholder" aria-hidden="true"></span><span class="vjs-control-text" aria-live="polite">Open quality selector menu</span></button><div class="vjs-menu"><ul class="vjs-menu-content" role="menu"><li class="vjs-menu-item" tabindex="-1" role="menuitemradio" aria-disabled="false" aria-checked="false"><span class="vjs-menu-item-text">hd</span><span class="vjs-control-text" aria-live="polite"></span></li><li class="vjs-menu-item vjs-selected" tabindex="-1" role="menuitemradio" aria-disabled="false" aria-checked="true"><span class="vjs-menu-item-text">sd</span><span class="vjs-control-text" aria-live="polite">, selected</span></li></ul></div></div><button class="vjs-picture-in-picture-control vjs-control vjs-button" type="button" title="Picture-in-Picture" aria-disabled="false"><span class="vjs-icon-placeholder" aria-hidden="true"></span><span class="vjs-control-text" aria-live="polite">Picture-in-Picture</span></button><button class="vjs-control vjs-button theater-mode-player-icon close" type="button" aria-disabled="false" title="Close Theater Mode"><span class="vjs-icon-placeholder" aria-hidden="true"></span><span class="vjs-control-text" aria-live="polite">Close Theater Mode</span></button><button class="vjs-fullscreen-control vjs-control vjs-button" type="button" title="Fullscreen" aria-disabled="false"><span class="vjs-icon-placeholder" aria-hidden="true"></span><span class="vjs-control-text" aria-live="polite">Fullscreen</span></button></div><div class="vjs-error-display vjs-modal-dialog vjs-hidden " tabindex="-1" aria-describedby="video-player_component_512_description" aria-hidden="true" aria-label="Modal Window" role="dialog"><p class="vjs-modal-dialog-description vjs-control-text" id="video-player_component_512_description">This is a modal window.</p><div class="vjs-modal-dialog-content" role="document"></div></div><div class="vjs-modal-dialog vjs-hidden  vjs-text-track-settings" tabindex="-1" aria-describedby="video-player_component_518_description" aria-hidden="true" aria-label="Caption Settings Dialog" role="dialog"><p class="vjs-modal-dialog-description vjs-control-text" id="video-player_component_518_description">Beginning of dialog window. Escape will cancel and close the window.</p><div class="vjs-modal-dialog-content" role="document"><div class="vjs-track-settings-colors"><fieldset class="vjs-fg-color vjs-track-setting"><legend id="captions-text-legend-video-player_component_518">Text</legend><label id="captions-foreground-color-video-player_component_518" class="vjs-label">Color</label><select aria-labelledby="captions-text-legend-video-player_component_518 captions-foreground-color-video-player_component_518"><option id="captions-foreground-color-video-player_component_518-White" value="#FFF" aria-labelledby="captions-text-legend-video-player_component_518 captions-foreground-color-video-player_component_518 captions-foreground-color-video-player_component_518-White">White</option><option id="captions-foreground-color-video-player_component_518-Black" value="#000" aria-labelledby="captions-text-legend-video-player_component_518 captions-foreground-color-video-player_component_518 captions-foreground-color-video-player_component_518-Black">Black</option><option id="captions-foreground-color-video-player_component_518-Red" value="#F00" aria-labelledby="captions-text-legend-video-player_component_518 captions-foreground-color-video-player_component_518 captions-foreground-color-video-player_component_518-Red">Red</option><option id="captions-foreground-color-video-player_component_518-Green" value="#0F0" aria-labelledby="captions-text-legend-video-player_component_518 captions-foreground-color-video-player_component_518 captions-foreground-color-video-player_component_518-Green">Green</option><option id="captions-foreground-color-video-player_component_518-Blue" value="#00F" aria-labelledby="captions-text-legend-video-player_component_518 captions-foreground-color-video-player_component_518 captions-foreground-color-video-player_component_518-Blue">Blue</option><option id="captions-foreground-color-video-player_component_518-Yellow" value="#FF0" aria-labelledby="captions-text-legend-video-player_component_518 captions-foreground-color-video-player_component_518 captions-foreground-color-video-player_component_518-Yellow">Yellow</option><option id="captions-foreground-color-video-player_component_518-Magenta" value="#F0F" aria-labelledby="captions-text-legend-video-player_component_518 captions-foreground-color-video-player_component_518 captions-foreground-color-video-player_component_518-Magenta">Magenta</option><option id="captions-foreground-color-video-player_component_518-Cyan" value="#0FF" aria-labelledby="captions-text-legend-video-player_component_518 captions-foreground-color-video-player_component_518 captions-foreground-color-video-player_component_518-Cyan">Cyan</option></select><span class="vjs-text-opacity vjs-opacity"><label id="captions-foreground-opacity-video-player_component_518" class="vjs-label">Transparency</label><select aria-labelledby="captions-text-legend-video-player_component_518 captions-foreground-opacity-video-player_component_518"><option id="captions-foreground-opacity-video-player_component_518-Opaque" value="1" aria-labelledby="captions-text-legend-video-player_component_518 captions-foreground-opacity-video-player_component_518 captions-foreground-opacity-video-player_component_518-Opaque">Opaque</option><option id="captions-foreground-opacity-video-player_component_518-SemiTransparent" value="0.5" aria-labelledby="captions-text-legend-video-player_component_518 captions-foreground-opacity-video-player_component_518 captions-foreground-opacity-video-player_component_518-SemiTransparent">Semi-Transparent</option></select></span></fieldset><fieldset class="vjs-bg-color vjs-track-setting"><legend id="captions-background-video-player_component_518">Background</legend><label id="captions-background-color-video-player_component_518" class="vjs-label">Color</label><select aria-labelledby="captions-background-video-player_component_518 captions-background-color-video-player_component_518"><option id="captions-background-color-video-player_component_518-Black" value="#000" aria-labelledby="captions-background-video-player_component_518 captions-background-color-video-player_component_518 captions-background-color-video-player_component_518-Black">Black</option><option id="captions-background-color-video-player_component_518-White" value="#FFF" aria-labelledby="captions-background-video-player_component_518 captions-background-color-video-player_component_518 captions-background-color-video-player_component_518-White">White</option><option id="captions-background-color-video-player_component_518-Red" value="#F00" aria-labelledby="captions-background-video-player_component_518 captions-background-color-video-player_component_518 captions-background-color-video-player_component_518-Red">Red</option><option id="captions-background-color-video-player_component_518-Green" value="#0F0" aria-labelledby="captions-background-video-player_component_518 captions-background-color-video-player_component_518 captions-background-color-video-player_component_518-Green">Green</option><option id="captions-background-color-video-player_component_518-Blue" value="#00F" aria-labelledby="captions-background-video-player_component_518 captions-background-color-video-player_component_518 captions-background-color-video-player_component_518-Blue">Blue</option><option id="captions-background-color-video-player_component_518-Yellow" value="#FF0" aria-labelledby="captions-background-video-player_component_518 captions-background-color-video-player_component_518 captions-background-color-video-player_component_518-Yellow">Yellow</option><option id="captions-background-color-video-player_component_518-Magenta" value="#F0F" aria-labelledby="captions-background-video-player_component_518 captions-background-color-video-player_component_518 captions-background-color-video-player_component_518-Magenta">Magenta</option><option id="captions-background-color-video-player_component_518-Cyan" value="#0FF" aria-labelledby="captions-background-video-player_component_518 captions-background-color-video-player_component_518 captions-background-color-video-player_component_518-Cyan">Cyan</option></select><span class="vjs-bg-opacity vjs-opacity"><label id="captions-background-opacity-video-player_component_518" class="vjs-label">Transparency</label><select aria-labelledby="captions-background-video-player_component_518 captions-background-opacity-video-player_component_518"><option id="captions-background-opacity-video-player_component_518-Opaque" value="1" aria-labelledby="captions-background-video-player_component_518 captions-background-opacity-video-player_component_518 captions-background-opacity-video-player_component_518-Opaque">Opaque</option><option id="captions-background-opacity-video-player_component_518-SemiTransparent" value="0.5" aria-labelledby="captions-background-video-player_component_518 captions-background-opacity-video-player_component_518 captions-background-opacity-video-player_component_518-SemiTransparent">Semi-Transparent</option><option id="captions-background-opacity-video-player_component_518-Transparent" value="0" aria-labelledby="captions-background-video-player_component_518 captions-background-opacity-video-player_component_518 captions-background-opacity-video-player_component_518-Transparent">Transparent</option></select></span></fieldset><fieldset class="vjs-window-color vjs-track-setting"><legend id="captions-window-video-player_component_518">Window</legend><label id="captions-window-color-video-player_component_518" class="vjs-label">Color</label><select aria-labelledby="captions-window-video-player_component_518 captions-window-color-video-player_component_518"><option id="captions-window-color-video-player_component_518-Black" value="#000" aria-labelledby="captions-window-video-player_component_518 captions-window-color-video-player_component_518 captions-window-color-video-player_component_518-Black">Black</option><option id="captions-window-color-video-player_component_518-White" value="#FFF" aria-labelledby="captions-window-video-player_component_518 captions-window-color-video-player_component_518 captions-window-color-video-player_component_518-White">White</option><option id="captions-window-color-video-player_component_518-Red" value="#F00" aria-labelledby="captions-window-video-player_component_518 captions-window-color-video-player_component_518 captions-window-color-video-player_component_518-Red">Red</option><option id="captions-window-color-video-player_component_518-Green" value="#0F0" aria-labelledby="captions-window-video-player_component_518 captions-window-color-video-player_component_518 captions-window-color-video-player_component_518-Green">Green</option><option id="captions-window-color-video-player_component_518-Blue" value="#00F" aria-labelledby="captions-window-video-player_component_518 captions-window-color-video-player_component_518 captions-window-color-video-player_component_518-Blue">Blue</option><option id="captions-window-color-video-player_component_518-Yellow" value="#FF0" aria-labelledby="captions-window-video-player_component_518 captions-window-color-video-player_component_518 captions-window-color-video-player_component_518-Yellow">Yellow</option><option id="captions-window-color-video-player_component_518-Magenta" value="#F0F" aria-labelledby="captions-window-video-player_component_518 captions-window-color-video-player_component_518 captions-window-color-video-player_component_518-Magenta">Magenta</option><option id="captions-window-color-video-player_component_518-Cyan" value="#0FF" aria-labelledby="captions-window-video-player_component_518 captions-window-color-video-player_component_518 captions-window-color-video-player_component_518-Cyan">Cyan</option></select><span class="vjs-window-opacity vjs-opacity"><label id="captions-window-opacity-video-player_component_518" class="vjs-label">Transparency</label><select aria-labelledby="captions-window-video-player_component_518 captions-window-opacity-video-player_component_518"><option id="captions-window-opacity-video-player_component_518-Transparent" value="0" aria-labelledby="captions-window-video-player_component_518 captions-window-opacity-video-player_component_518 captions-window-opacity-video-player_component_518-Transparent">Transparent</option><option id="captions-window-opacity-video-player_component_518-SemiTransparent" value="0.5" aria-labelledby="captions-window-video-player_component_518 captions-window-opacity-video-player_component_518 captions-window-opacity-video-player_component_518-SemiTransparent">Semi-Transparent</option><option id="captions-window-opacity-video-player_component_518-Opaque" value="1" aria-labelledby="captions-window-video-player_component_518 captions-window-opacity-video-player_component_518 captions-window-opacity-video-player_component_518-Opaque">Opaque</option></select></span></fieldset></div><div class="vjs-track-settings-font"><fieldset class="vjs-font-percent vjs-track-setting"><legend id="captions-font-size-video-player_component_518" class="">Font Size</legend><select aria-labelledby="captions-font-size-video-player_component_518"><option id="captions-font-size-video-player_component_518-50" value="0.50" aria-labelledby="captions-font-size-video-player_component_518 captions-font-size-video-player_component_518-50">50%</option><option id="captions-font-size-video-player_component_518-75" value="0.75" aria-labelledby="captions-font-size-video-player_component_518 captions-font-size-video-player_component_518-75">75%</option><option id="captions-font-size-video-player_component_518-100" value="1.00" aria-labelledby="captions-font-size-video-player_component_518 captions-font-size-video-player_component_518-100">100%</option><option id="captions-font-size-video-player_component_518-125" value="1.25" aria-labelledby="captions-font-size-video-player_component_518 captions-font-size-video-player_component_518-125">125%</option><option id="captions-font-size-video-player_component_518-150" value="1.50" aria-labelledby="captions-font-size-video-player_component_518 captions-font-size-video-player_component_518-150">150%</option><option id="captions-font-size-video-player_component_518-175" value="1.75" aria-labelledby="captions-font-size-video-player_component_518 captions-font-size-video-player_component_518-175">175%</option><option id="captions-font-size-video-player_component_518-200" value="2.00" aria-labelledby="captions-font-size-video-player_component_518 captions-font-size-video-player_component_518-200">200%</option><option id="captions-font-size-video-player_component_518-300" value="3.00" aria-labelledby="captions-font-size-video-player_component_518 captions-font-size-video-player_component_518-300">300%</option><option id="captions-font-size-video-player_component_518-400" value="4.00" aria-labelledby="captions-font-size-video-player_component_518 captions-font-size-video-player_component_518-400">400%</option></select></fieldset><fieldset class="vjs-edge-style vjs-track-setting"><legend id="video-player_component_518" class="">Text Edge Style</legend><select aria-labelledby="video-player_component_518"><option id="video-player_component_518-None" value="none" aria-labelledby="video-player_component_518 video-player_component_518-None">None</option><option id="video-player_component_518-Raised" value="raised" aria-labelledby="video-player_component_518 video-player_component_518-Raised">Raised</option><option id="video-player_component_518-Depressed" value="depressed" aria-labelledby="video-player_component_518 video-player_component_518-Depressed">Depressed</option><option id="video-player_component_518-Uniform" value="uniform" aria-labelledby="video-player_component_518 video-player_component_518-Uniform">Uniform</option><option id="video-player_component_518-Dropshadow" value="dropshadow" aria-labelledby="video-player_component_518 video-player_component_518-Dropshadow">Dropshadow</option></select></fieldset><fieldset class="vjs-font-family vjs-track-setting"><legend id="captions-font-family-video-player_component_518" class="">Font Family</legend><select aria-labelledby="captions-font-family-video-player_component_518"><option id="captions-font-family-video-player_component_518-ProportionalSansSerif" value="proportionalSansSerif" aria-labelledby="captions-font-family-video-player_component_518 captions-font-family-video-player_component_518-ProportionalSansSerif">Proportional Sans-Serif</option><option id="captions-font-family-video-player_component_518-MonospaceSansSerif" value="monospaceSansSerif" aria-labelledby="captions-font-family-video-player_component_518 captions-font-family-video-player_component_518-MonospaceSansSerif">Monospace Sans-Serif</option><option id="captions-font-family-video-player_component_518-ProportionalSerif" value="proportionalSerif" aria-labelledby="captions-font-family-video-player_component_518 captions-font-family-video-player_component_518-ProportionalSerif">Proportional Serif</option><option id="captions-font-family-video-player_component_518-MonospaceSerif" value="monospaceSerif" aria-labelledby="captions-font-family-video-player_component_518 captions-font-family-video-player_component_518-MonospaceSerif">Monospace Serif</option><option id="captions-font-family-video-player_component_518-Casual" value="casual" aria-labelledby="captions-font-family-video-player_component_518 captions-font-family-video-player_component_518-Casual">Casual</option><option id="captions-font-family-video-player_component_518-Script" value="script" aria-labelledby="captions-font-family-video-player_component_518 captions-font-family-video-player_component_518-Script">Script</option><option id="captions-font-family-video-player_component_518-SmallCaps" value="small-caps" aria-labelledby="captions-font-family-video-player_component_518 captions-font-family-video-player_component_518-SmallCaps">Small Caps</option></select></fieldset></div><div class="vjs-track-settings-controls"><button type="button" class="vjs-default-button" title="restore all settings to the default values">Reset<span class="vjs-control-text"> restore all settings to the default values</span></button><button type="button" class="vjs-done-button">Done</button></div></div><button class="vjs-close-button vjs-control vjs-button" type="button" aria-disabled="false" title="Close Modal Dialog"><span class="vjs-icon-placeholder" aria-hidden="true"></span><span class="vjs-control-text" aria-live="polite">Close Modal Dialog</span></button><p class="vjs-control-text">End of dialog window.</p></div></video-js>
+        </div>
+</section>
+                
+                    <section id="transcription" class="video-transcription transcription-toggle">
+                        
+                            <h2 class="video-transcription-title">Transcrição</h2>
+                        
+                        <div class="formattedText" data-external-links="">
+                                <p>[00:00] Trabalharemos nas informações de saque, utilizadas em “transferir”, mantendo-as privadas. Desta forma, quando uma pessoa operadora estiver realizando diversas transferências e ocorrer um erro de “SaldoInsuficienteError”, apenas uma mensagem simples será exibida. Faremos para melhorarmos as regras do negócio, escondendo essas informações. Em Python temos diversas formas de fazermos isso. </p>
+<p>[00:25] Olhando a documentação do trecho referente à [EXCEPTION HANDLING], na documentação oficial nós temos algumas informações importantes, como: os argumentos passados para uma exceção ficam armazenadas em “args” e que exceções implementam por padrão o método mágico “str”, utilizado para printar os argumentos sem que precisemos referenciar o“.args”, diretamente para isso. </p>
+<p>[00:53] Com isso descobrimos que ao se printar a mensagem de uma exceção do “traceback”, na verdade se está exibindo o “.args” dela e a mensagem é um desses argumentos também, então para verificarmos isso, iremos voltar ao código com “breakpoint” dentro do bloco de exceção no “main.py”. </p>
+<p>[01:13] Vamos remover tudo isso, vamos colocar um “breakpoint()” e vamos colocar um “pass” aqui. É importante colocarmos o “pass” após o “breakpoint”, porque a chamada não é bloqueante - a chamada do “breakpoint”. </p>
+<p>[01:32] Ou seja, o ponto de parada será o ponto da próxima sentença a ser executada. Se nós não colocamos o “pass” o “breakpoint” vai colocar a próxima execução para fora do escopo do “main.py” e como não tem nada, vai encerrar a aplicação, então é importante colocar o “pass” nesse cenário. </p>
+<p>[01:52] Vamos executar! Se digitarmos “p E”, nós temos o impresso do objeto “SaldoInsuficienteError” e ele dá os argumentos. Todos que nós já vimos que ele exibe. </p>
+<p>[02:12] Se nós colocamos “p E.args”, esse “p” é para printar a sentença que vem a frente, é semelhante ao “print” apesar de ser diferente. O “print” não é um comando do “pdb”. Se nós colocarmos “p E.args”, nós vemos que a saída é bem semelhante. </p>
+<p>[02:39] Vamos fazer mais uma coisa, vamos fazer com que o “E.args” seja impresso o seu “type”, só por via das dúvidas. Interessante. Precisamos melhorar o sigilo das informações de “saldo” sendo propagados por “sacar” agora, dentro de “transferir”. </p>
+<p>[03:02] Nós podemos capturar a exceção e alterar o “args”, já que nós sabemos que uma tupla nós podemos seguir esse padrão omitindo as informações e manter o padrão da tupla. Dentro do método “transferir”, nós podemos vir em “E.args”.</p>
+<p>[03:20] Primeiro nós podemos remover essa execução do “traceback.print_exc()” e “import traceback”. Podemos vir em “E.args = ("Operação não finalizada")”. </p>
+<p>[03:40] Eu estou passando uma tupla com primeiro argumento dela sendo uma “string”, que seria a mensagem "A operação não finalizada". Executamos novamente. Vamos primeiro sair daqui apertando a tecla “Q”. Nós saímos do “breakpoint”, executamos novamente e vamos fazer o seguinte: </p>
+<p>[04:00] Vamos fazer um “import traceback” e imprimir a mensagem do “traceback”. Olhe só, interessante: ele disse que não tem um atributo, então vamos fazer uma tentativa, colocar a cláusula mágica e olhe só! Deu certo! </p>
+<p>[04:22] Vale ressaltar o seguinte: por que deu certo eu colocar aqui um “?”? O operador mágico, a tecla “?” aqui, antes do “traceback” - “print exception” diz para o “pdb” pular a etapa de análise da sentença e interpretar o código como Python puro. </p>
+<p>[04:40] Isso nos evita um problema de interação entre o módulo “traceback” e o “pdb”. Olhe só, aqui nós estamos vendo a mensagem do “traceback” e a mensagem do “SaldoInsuficienteError” impressa para o “traceback”, foi alternada. </p>
+<p>[04:56] Nós fizemos isso dentro do “transferir” e o mais importante, nós não perdemos nenhuma informação da pilha de execução. Nós temos todo o rastreio, além do mais, nem dos atributos nós perdemos, de saldo e valor de saque da exceção, pois eles foram armazenados como atributos do objeto no momento da sua construção. </p>
+<p>[05:19] Vamos tirar essa dúvida? Nós digitamos: “E.saldo” e nós temos impresso o saldo. “E.valor” e temos impresso o valor da mesma maneira. </p>
+<p>[05:31] A flexibilidade do Python, nos permite fazer praticamente quaisquer manipulações nos objetos e tudo em Python é objeto, porém vai pensar que talvez alterar a mensagem de uma exceção que já foi criada, não seja uma boa ideia. </p>
+<p>[05:45] Dessa forma, estamos perdendo uma informação que descreve com mais detalhes o erro ocorrido. Podemos voltar a definição da exceção “SaldoInsuficienteError” e guardar a mensagem também em um atributo interno. </p>
+<p>[06:01] Desta forma, todos os dados passados por argumento ficam preservados internamente, então nós podemos fazer isso: colocar um “self.msg = message or msg”, e aqui nós não precisamos mais disso porque essa atribuição já está sendo feita aqui assim e podemos chamar diretamente o atributo “msg” da “class SaldoInsuficienteError”. Dessa forma, nós alteramos a mensagem exibida sem perder as informações passadas no momento do disparo. </p>
+<p>[06:42] Afinal de contas, em “transferir” nós estamos alterando a mensagem, então agora nós estamos guardando a que nós formatamos ou a mensagem que foi passada fora do escopo de “transferir”, além do mais, o operador - em caso de se deparar com problema na hora da transferência - não verá mais na tela informações sensíveis de saldo da conta destino, porém, se refletirmos melhor aqui, “transferir” está se deparando com um problema próprio. </p>
+<p>[07:14] Por isso, seria coerente se além da exceção emitida por “sacar”, emitir uma exceção que defina o encalço de “transferir”. Nós podemos utilizar dos “.args” para encapsular a exceção dentro de outra simulando o comportamento de exceções internas da seguinte maneira: </p>
+<p>[07:33] Aqui nós podemos fazer um “raise Exception ("Operação não finalizada", E)” e passar essa exceção que veio do tratamento do “except”, no caso “SaldoInsuficienteError”. </p>
+<p>[07:50] E aqui nós não precisamos mais dessa mensagem. Nós podemos mandar uma tupla vazia para a exceção de “SaldoInsuficienteError”, porém isso nos traz uns problemas. Nós estamos utilizando o tipo “Exception”, que já vimos que é uma má ideia, é um tipo genérico para expressar um problema de “transferir”. Nesse caso, podemos melhorar ainda mais a legibilidade do “traceback” e a coerência, sem sacrificarmos as informações de “SaldoInsuficienteError”. </p>
+<p>[08:23] Utilizando o recurso de exceções encadeadas. Isso se torna possível e a partir do Python, a sentença “raise from” foi inserida solucionando esses problemas, trazendo uma série de benefícios, porém, antes de utilizarmos ela, vamos parar para refletir sobre o problema de “transferir” aqui. Claramente utilizar “Exception” para expressar o problema de transferir é um pouco errado, é muito vago, portanto, criaremos uma classe específica para isso. </p>
+<p>[08:54] Então vamos voltar no “Exception” e vamos criar uma classe chamada “class OperaçãoFinanceiraError”, - afinal de contas, as exceções estão muito voltadas para problemas de operação financeira, então os problemas estão aumentando, os cenários estão se diversificando e é importante nós termos mais opções de exceções para isso, então vamos criar uma classe “class OperacaoFinanceiraError (Exception):” e no seu corpo não terá nada. Excelente.</p>
+<p>[09:35] Nós criamos a classe simples, declaramos a “OperacaoFinanceiraError” que herda todos os comportamentos padrões de “Exception” com herança, então voltamos no “transferir” e vamos alterar o “except”. </p>
+<p>[09:50] Vamos colocar “raise OperacaoFinanceiraError ("Operação não finalizada ")”. No lugar de colocar de forma encapsulada, o “Exception” de “SaldoInsuficienteError”, nós colocaremos “from E”. Antes disso, nós precisamos importar “OperacaoFinanceiraError”, então subindo no início do “main.py”, nós podemos fazer o “import” de “OperacaoFinanceiraError”. </p>
+<p>[10:20] Voltamos no “transferir”, verificamos se está como desejamos, - “from E”-  e vamos executar agora. Olhe só! Nós temos um “traceback” diferente, um “traceback” com a “stack” completa das exceções, exemplificando que “SaldoInsuficienteError” é a causa da seguinte exceção. </p>
+<p>[10:49] Isso é bem interessante, além do fato de que as mensagens das duas exceções, é impresso, então o que nos força a limpar os “args” da primeira, como nós fizemos anteriormente. </p>
+<p>[11:02] Como os “args” das duas são impressas nós tivemos que fazer essa limpeza dos “args” de “SaldoInsuficienteError”, mas nós não estamos perdendo os dados delas, - das mensagens e dos argumentos de “SaldoInsuficienteError” - porque todas elas estão guardadas internamente. Vamos fazer um pequeno teste: vamos alterar o “except” do “main.py” para capturar a “OperacaoFinanceiraError” agora. </p>
+<p>[11:41] “except OperacaoFinanceiraError as E:” e ao executarmos, as informações da exceção interna de “OperacaoFinanceiraError”, no caso “SaldoInsuficienteError” vão ser acessíveis agora através do atributo mágico “<strong>context</strong>”. Como assim? Vamos lá!</p>
+<p>[11:59] Vamos digitar “E.<strong>context</strong>” e olhe só! Nós temos o objeto “SaldoInsuficienteError”. É bem interessante! Agora se nós fizermos “E.<strong>context</strong>.saldo”, por exemplo, temos o saldo de “SaldoInsuficienteError”, valor por exemplo, agora temos o valor de “SaldoInsuficienteError”. </p>
+<p>[12:23] Lembrando que o “E” é a exceção de “OperacaoFinanceira”Error, ou seja, durante a exceção, durante o tratamento de “SaldoInsuficienteError” nós disparamos uma exceção do tipo “OperacaoFinanceira” e dizemos que ela foi a causa de “SaldoInsuficienteError”, com a cláusula “from E”. O saldo virou uma variável acessível pelo contexto da exceção de “OperacaoFinanceira” e nós podemos fazer o acesso pela variável mágica “<strong>context</strong>”. Excelente. </p>
+<p>[13:03] Nós preservamos as informações de saldo, valor no método “transferir” – omitidos - criamos uma exceção particular para o problema do tipo “OperacaoFinanceiraError” e ainda mantemos um “traceback” legível, preservando o rastreio de ambas as exceções. </p>
+<p>[13:20] Nós podemos melhorar ainda mais o “SaldoInsuficienteError”, fazendo a herança de “OperacaoFinanceiraError”. Agora, sabendo que “SaldoInsuficienteError” também é um problema de “OperacaoFinanceira” nós podemos fazer com que ele herde de “OperacaoFinanceiraError”. </p>
+<p>[13:37] Vamos fazer um teste agora de um saque problemático? Perfeito! Vamos sair daqui do “breakpoint”, vamos executar novamente. Olhe só, vamos dar um “import traceback” para vermos as mensagens da pilha de execução, mas precisamos colocar “!traceback.print_exc()”. Olhe só: nós temos agora o “SaldoInsuficienteError” sendo capturado apenas. </p>
+<p>[14:29] Então faz todo o sentido agora, nós estamos capturando “OperacaoFinanceira”, porém “SaldoInsuficienteError” faz parte da hierarquia de “OperacaoFinanceira”, então se nós estamos capturando “OperacaoFinanceiraError” e está sendo disparado “SaldoInsuficienteError” por “sacar”, ela também será capturada e deverá ser tratada no bloco “except”. Excelente, ele funciona!</p>
+<p>[14:59] Nós temos impressas as informações de um saque malsucedido capturados por um bloco de exceção que é de “OperacaoFinanceiraError” e faz sentido vermos essas informações, pois nós estamos fazendo operações de saque, então tudo indica que nós somos o dono dessa conta corrente. Afinal, diferentemente da transferência são dados úteis para o operador do ByteBank.</p>
+                        </div>
+                    </section>
+                    
+                        <button class="video-transcription-button transcription-toggle" aria-hidden="true" style="display: none;">
+                            <span class="video-transcription-button-text">
+                                    continuar lendo</span>
+                        </button>
+                    
+                
+            </div>
+        </section>
+    
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+				
+					
+
+
+
+
+
+
+	
+	
+		<section class="task-actions">
+			<div class="container">
+				
+
+
+
+
+
+
+    
+        
+        <a href="https://cursos.alura.com.br/forum/curso-python-exceptions/exercicio-disparo-de-excecoes/70602/novo" class=" task-actions-button task-actions-button-forum bootcamp-secondary-button-theme" target="_blank">
+            
+                
+                
+                    Discutir no Forum
+                
+            
+        </a>
+    
+
+
+
+				
+				
+				
+				
+					<a href="https://cursos.alura.com.br/course/python-exceptions/task/70602/next" style="background-color: #2A7AE4" class="task-actions-button task-body-actions-button task-actions-button-next bootcamp-next-button bootcamp-primary-button-theme">Próxima Atividade</a>
+				
+			</div>
+		</section>
+	
+
+
+				
+				
+					
+
+
+
+
+<div class="modalContainer">
+    <div class="modal" tabindex="-1" role="dialog">
+        <div class="modal-content">
+            <section class="modal-content-header">
+                <h4 class="modal-content-header-title">Atalhos de teclado</h4>
+                <button type="button" class="modal-content-header-close" aria-label="Fechar modal"></button>
+            </section>
+            <section class="modal-body">
+                <div class="normal-shortcut-keys">
+                    <table class="dashboard-table bootcamp-text-color-gray shortcut-table">
+                        <tbody>
+                        <tr>
+                            <td><img src="./Python 3_ entendendo o Tratamento de Erros_ Aula 6 - Atividade 3 Disparo de exceções _ Alura - Cursos online de tecnologia_files/k-key.svg" alt="Letra k do teclado"> </td>
+                            <td>Tocar/Pausar o vídeo</td>
+                        </tr>
+                        <tr>
+                            <td><img src="./Python 3_ entendendo o Tratamento de Erros_ Aula 6 - Atividade 3 Disparo de exceções _ Alura - Cursos online de tecnologia_files/m-key.svg" alt="Letra m do teclado"></td>
+                            <td>Mutar/Desmutar o vídeo</td>
+                        </tr>
+                        <tr>
+                            <td><img src="./Python 3_ entendendo o Tratamento de Erros_ Aula 6 - Atividade 3 Disparo de exceções _ Alura - Cursos online de tecnologia_files/f-key.svg" alt="Letra f do teclado"></td>
+                            <td>Ativar/Desativar a tela cheia (full screen)</td>
+                        </tr>
+                        <tr>
+                            <td><img src="./Python 3_ entendendo o Tratamento de Erros_ Aula 6 - Atividade 3 Disparo de exceções _ Alura - Cursos online de tecnologia_files/left-key.svg" alt="Seta para a esquerda"></td>
+                            <td>Voltar 10 segundos a reprodução do vídeo</td>
+                        </tr>
+                        <tr>
+                            <td><img src="./Python 3_ entendendo o Tratamento de Erros_ Aula 6 - Atividade 3 Disparo de exceções _ Alura - Cursos online de tecnologia_files/right-key.svg" alt="Seta para a direita"></td>
+                            <td>Avançar 10 segundos a reprodução do vídeo</td>
+                        </tr>
+                        <tr>
+                            <td><img src="./Python 3_ entendendo o Tratamento de Erros_ Aula 6 - Atividade 3 Disparo de exceções _ Alura - Cursos online de tecnologia_files/up-key.svg" alt="Seta para cima"></td>
+                            <td>Aumentar o volume em 5%</td>
+                        </tr>
+                        <tr>
+                            <td><img src="./Python 3_ entendendo o Tratamento de Erros_ Aula 6 - Atividade 3 Disparo de exceções _ Alura - Cursos online de tecnologia_files/down-key.svg" alt="Seta para baixo"></td>
+                            <td>Diminuir o volume em 5%</td>
+                        </tr>
+                        <tr>
+                            <td><img src="./Python 3_ entendendo o Tratamento de Erros_ Aula 6 - Atividade 3 Disparo de exceções _ Alura - Cursos online de tecnologia_files/space-key.svg" alt="Tecla espaço"></td>
+                            <td>Toca/Pausa o vídeo quando nenhum botão estiver em foco (selecionado).</td>
+                        </tr>
+                        <tr>
+                            <td><img src="./Python 3_ entendendo o Tratamento de Erros_ Aula 6 - Atividade 3 Disparo de exceções _ Alura - Cursos online de tecnologia_files/space-key.svg" alt="Tecla espaço"></td>
+                            <td>Ativar/Desativar a função do botão que estiver em foco.</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="function-shortcut-keys">
+                    <table class="dashboard-table bootcamp-text-color-gray shortcut-table">
+                        <caption class="shortcuts-keys-title">Teclas de função</caption>
+                        <tbody>
+                            <tr>
+                                <td><img src="./Python 3_ entendendo o Tratamento de Erros_ Aula 6 - Atividade 3 Disparo de exceções _ Alura - Cursos online de tecnologia_files/play-key.svg" alt="Tecla multimídia Play"></td>
+                                <td>Tocar o vídeo</td>
+                            </tr>
+                            <tr>
+                                <td><img src="./Python 3_ entendendo o Tratamento de Erros_ Aula 6 - Atividade 3 Disparo de exceções _ Alura - Cursos online de tecnologia_files/pause-key.svg" alt="Tecla multimídia Pause"></td>
+                                <td>Pausar o vídeo</td>
+                            </tr>
+                            <tr>
+                                <td><img src="./Python 3_ entendendo o Tratamento de Erros_ Aula 6 - Atividade 3 Disparo de exceções _ Alura - Cursos online de tecnologia_files/stop-key.svg" alt="Tecla multimídia Stop"></td>
+                                <td>Parar o vídeo</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+
+				
+			</main>
+		</div>
+	</section>
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<button title="Abrir menu/Fechar menu" aria-label="Abrir menu/Fechar menu" type="button" class="openMenu-button task-body-button ">
+</button>
+
+<aside class="task-menu task-menu-iframe" style="position: fixed; transform: translateY(-200px);">
+	<section class="task-menu-header">
+		<button title="Fechar menu" aria-label="Fechar menu" type="button" class="openMenu-button task-menu-button "></button>
+		<div class="task-menu-header-info">
+			<a class="task-menu-header-info-title" href="https://cursos.alura.com.br/course/python-exceptions" title="Ir para página do curso">
+				
+					
+					
+						<img src="./Python 3_ entendendo o Tratamento de Erros_ Aula 6 - Atividade 3 Disparo de exceções _ Alura - Cursos online de tecnologia_files/python-exceptions.svg" alt="ícone Python 3: entendendo o Tratamento de Erros" class="task-menu-header-info-title-icon " width="37.5px" height="37.5px">
+					
+				
+				<h2 class="task-menu-header-info-title-text">Python 3: entendendo o Tratamento de Erros</h2>
+			</a>
+			
+				<div class="task-menu-header-info-progress">
+					
+					<span class="task-menu-header-info-progress-percentage ">75%</span>
+					
+						
+						
+						
+							
+						
+					
+					<span class="task-menu-header-info-progress-bar" style="background-image: linear-gradient(to right, #9de482, #9de482 75%, transparent 75%);"></span>
+				</div>
+			
+
+		</div>
+	</section>
+	
+		<form class="task-menu-header-search" target="_blank" action="https://cursos.alura.com.br/search/course/python-exceptions" method="get">
+			<label class="task-menu-header-search-title" for="query">Buscar neste curso</label>
+			<input class="task-menu-header-search-input" name="query" id="query" type="text" required="">
+			<button class="task-menu-header-search-button">Buscar <img aria-hidden="true" class="task-menu-header-search-button-img" src="./Python 3_ entendendo o Tratamento de Erros_ Aula 6 - Atividade 3 Disparo de exceções _ Alura - Cursos online de tecnologia_files/icon-new-page.svg"></button>
+		</form>
+	
+	
+	<section class="task-menu-section sr-only">
+		<div class="task-menu-section-title">
+			<span class="task-menu-section-title-number ">Aula<strong>06</strong>
+				<span>de 07</span>
+			</span>
+			<h3 class="task-menu-section-title-text">
+				Disparo de Exceções Encadeadas
+			</h3>
+		</div>
+	</section>
+	<section class="task-menu-sections">
+		<h2 class="task-menu-sections-title">
+			Aula Atual
+		</h2>
+		<select class="task-menu-sections-select" onchange="location.href=&#39;/course/python-exceptions/section/&#39;+this.value+&#39;/tasks&#39;;">
+			
+				<option value="9666">01. Primeiros passos com exceções</option>
+			
+				<option value="9920">02. Propagação e Disparo de Exceções</option>
+			
+				<option value="9921">03. Argumentos e Alias</option>
+			
+				<option value="9922">04. Debugando via Linha de Comando</option>
+			
+				<option value="9923">05. Enriquecendo as Exceções</option>
+			
+				<option value="9924" selected="">06. Disparo de Exceções Encadeadas</option>
+			
+				<option value="9925">07. Liberando Recursos com With</option>
+			
+		</select>
+	</section>
+	<nav class="task-menu-nav">
+		<h2 class="task-menu-nav-title">
+			Atividades
+			<span>3 de 5</span>
+		</h2>
+		<ul class="task-menu-nav-list">
+			
+				
+				<li class="task-menu-nav-item ">
+					<a href="https://cursos.alura.com.br/course/python-exceptions/task/73172" class="task-menu-nav-item-link task-menu-nav-item-link-HQ_EXPLANATION">
+						
+						
+					<svg class="task-menu-nav-item-svg task-menu-nav-item-svg--done" aria-label="Atividade de Explicação concluída">
+						<use xlink:href="/assets/images/classPage/icon-menu-icons.svg#HQ_EXPLANATION"></use>
+					</svg>
+					<span class="task-menu-nav-item-number">01</span>
+					<span class="task-menu-nav-item-text">
+						<span class="task-menu-nav-item-title" title="Projeto da aula anterior">
+							Projeto da aula anterior
+						</span>
+						
+					</span></a>
+				</li>
+			
+				
+				<li class="task-menu-nav-item ">
+					<a href="https://cursos.alura.com.br/course/python-exceptions/task/70601" class="task-menu-nav-item-link task-menu-nav-item-link-VIDEO">
+						
+						
+					<svg class="task-menu-nav-item-svg task-menu-nav-item-svg--done" aria-label="Atividade de Vídeo concluída">
+						<use xlink:href="/assets/images/classPage/icon-menu-icons.svg#VIDEO"></use>
+					</svg>
+					<span class="task-menu-nav-item-number">02</span>
+					<span class="task-menu-nav-item-text">
+						<span class="task-menu-nav-item-title" title="Traceback">
+							Traceback
+						</span>
+						
+						<span class="task-menu-nav-item-infos">
+							
+								<span class="task-menu-nav-item-videoDuration" title="Ir para o Vídeo">12min</span>
+							
+						</span>
+					</span>
+					
+					</a>
+				</li>
+			
+				
+				<li class="task-menu-nav-item task-menu-nav-item--selected">
+					<a href="https://cursos.alura.com.br/course/python-exceptions/task/70602" class="task-menu-nav-item-link task-menu-nav-item-link-VIDEO">
+						
+						
+					<svg class="task-menu-nav-item-svg task-menu-nav-item-svg--done" aria-label="Atividade de Vídeo não concluída">
+						<use xlink:href="/assets/images/classPage/icon-menu-icons.svg#VIDEO"></use>
+					</svg>
+					<span class="task-menu-nav-item-number">03</span>
+					<span class="task-menu-nav-item-text">
+						<span class="task-menu-nav-item-title" title="Disparo de exceções">
+							Disparo de exceções
+						</span>
+						
+						<span class="task-menu-nav-item-infos">
+							
+								<span class="task-menu-nav-item-videoDuration" title="Ir para o Vídeo">16min</span>
+							
+						</span>
+					</span>
+					
+					</a>
+				</li>
+			
+				
+				<li class="task-menu-nav-item ">
+					<a href="https://cursos.alura.com.br/course/python-exceptions/task/73010" class="task-menu-nav-item-link task-menu-nav-item-link-MULTIPLE_CHOICE">
+						
+						
+					<svg class="task-menu-nav-item-svg " aria-label="Atividade de Múltipla escolha não concluída">
+						<use xlink:href="/assets/images/classPage/icon-menu-icons.svg#MULTIPLE_CHOICE"></use>
+					</svg>
+					<span class="task-menu-nav-item-number">04</span>
+					<span class="task-menu-nav-item-text">
+						<span class="task-menu-nav-item-title" title="Lidando com informações">
+							Lidando com informações
+						</span>
+						
+					</span></a>
+				</li>
+			
+				
+				<li class="task-menu-nav-item ">
+					<a href="https://cursos.alura.com.br/course/python-exceptions/task/73011" class="task-menu-nav-item-link task-menu-nav-item-link-HQ_EXPLANATION">
+						
+						
+					<svg class="task-menu-nav-item-svg " aria-label="Atividade de Explicação não concluída">
+						<use xlink:href="/assets/images/classPage/icon-menu-icons.svg#WHAT_WE_LEARNED"></use>
+					</svg>
+					<span class="task-menu-nav-item-number">05</span>
+					<span class="task-menu-nav-item-text">
+						<span class="task-menu-nav-item-title" title="O que aprendemos?">
+							O que aprendemos?
+						</span>
+						
+					</span></a>
+				</li>
+			
+			
+		</ul>
+	</nav>
+	<section class="task-menu-others">
+		<h2 class="task-menu-others-title ">
+			Outros Links
+		</h2>
+		
+			
+			<a href="https://cursos.alura.com.br/forum/curso-python-exceptions/todos" class="task-menu-others-link task-menu-others-link-forum" title="Ir para o fórum do curso" target="_blank">
+				
+					
+					
+						Fórum do curso
+					
+				
+			</a>
+		
+		<a href="https://cursos.alura.com.br/dashboard" class="task-menu-others-link task-menu-others-link-curso" title="Ir para a página principal">Voltar para Dashboard</a>
+		<section class="task-container-flex ">
+			
+				<div class="task-group-border ">
+					<button class="task-edit-mode settings-box-item-darkmode">Modo noturno</button>
+				</div>
+			
+			
+				<div class="task-group-border ">
+					<button class="class-notes-button">Abrir caderno</button>
+				</div>
+			
+		</section>
+	</section>
+	<section class="task-menu-footer">
+		<a class="task-menu-footer-user" href="https://cursos.alura.com.br/user/marcelom2" title="Ir para sua página de usuário">
+			<img src="./Python 3_ entendendo o Tratamento de Erros_ Aula 6 - Atividade 3 Disparo de exceções _ Alura - Cursos online de tecnologia_files/d09ba3a601fc3b0b286fbc4e63d39c71.png" alt="Gravatar de Marcelo Mazetti Gomes" class="task-menu-footer-img" width="40px" height="40px">
+			
+				<p class="task-menu-footer-detalhes">
+					<span class="task-menu-footer-detalhes-nome">Marcelo Mazetti Gomes</span>
+					<span class="task-menu-footer-detalhes-xp">
+						40.8k xp
+					</span>
+				</p>
+			
+			<input type="hidden" value="">
+			<input type="hidden" value="">
+		</a>
+		<a href="https://cursos.alura.com.br/dashboard" class="task-menu-footer-logo">
+			<img src="./Python 3_ entendendo o Tratamento de Erros_ Aula 6 - Atividade 3 Disparo de exceções _ Alura - Cursos online de tecnologia_files/icon-menu-alura.svg" alt="Logo da Alura" class="task-menu-footer-logo-image" width="19px" height="32px" title="Ir para a página principal">
+		</a>
+	</section>
+</aside>
+
+
+
+</section><div class="full-screen__panel" style="display: none;">
+				<img id="full-screen__image" class="full-screen__image" src="https://cursos.alura.com.br/course/python-exceptions/task/70602" alt="">
+				<div class="full-screen__actions">
+				<button class="button buttonAction partitura-download">Anterior</button><button class="button buttonAction partitura-download">Sair</button><button class="button buttonAction partitura-download">Próximo</button></div> 
+			</div>
+
+
+
+
+
+
+
+
+
+
+	
+		
+		<!-- Hotjar Tracking Code for https://cursos.alura.com.br -->
+		<script>
+			(function(h,o,t,j,a,r){
+				h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+				h._hjSettings={hjid:1638253,hjsv:6};
+				a=o.getElementsByTagName('head')[0];
+				r=o.createElement('script');r.async=1;
+				r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+				a.appendChild(r);
+			})(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+		</script>
+	
+
+	<script src="./Python 3_ entendendo o Tratamento de Erros_ Aula 6 - Atividade 3 Disparo de exceções _ Alura - Cursos online de tecnologia_files/jquery-3.6.0.min.js.download"></script>
+	<script src="./Python 3_ entendendo o Tratamento de Erros_ Aula 6 - Atividade 3 Disparo de exceções _ Alura - Cursos online de tecnologia_files/buttonToggle.js.download"></script>
+	<script src="./Python 3_ entendendo o Tratamento de Erros_ Aula 6 - Atividade 3 Disparo de exceções _ Alura - Cursos online de tecnologia_files/sectionMenu.2bb600e2.js.download" async=""></script>
+
+
+    <script src="./Python 3_ entendendo o Tratamento de Erros_ Aula 6 - Atividade 3 Disparo de exceções _ Alura - Cursos online de tecnologia_files/purify.min.js.download"></script>
+
+	<script src="./Python 3_ entendendo o Tratamento de Erros_ Aula 6 - Atividade 3 Disparo de exceções _ Alura - Cursos online de tecnologia_files/caret.js.download" async=""></script>
+	<script src="./Python 3_ entendendo o Tratamento de Erros_ Aula 6 - Atividade 3 Disparo de exceções _ Alura - Cursos online de tecnologia_files/keydownWatchers.fdc4ec79.js.download" async=""></script>
+	<script src="./Python 3_ entendendo o Tratamento de Erros_ Aula 6 - Atividade 3 Disparo de exceções _ Alura - Cursos online de tecnologia_files/prettify.min.js.download" async=""></script>
+
+	<script src="./Python 3_ entendendo o Tratamento de Erros_ Aula 6 - Atividade 3 Disparo de exceções _ Alura - Cursos online de tecnologia_files/preventsMultipleInteractions.19502e19.js.download" async=""></script>
+	<script src="./Python 3_ entendendo o Tratamento de Erros_ Aula 6 - Atividade 3 Disparo de exceções _ Alura - Cursos online de tecnologia_files/assessment.78d1fb98.js.download" async=""></script>
+
+	<script src="./Python 3_ entendendo o Tratamento de Erros_ Aula 6 - Atividade 3 Disparo de exceções _ Alura - Cursos online de tecnologia_files/menuSettings.fb011b3b.js.download"></script>
+	<script src="./Python 3_ entendendo o Tratamento de Erros_ Aula 6 - Atividade 3 Disparo de exceções _ Alura - Cursos online de tecnologia_files/aria.c6966b53.js.download"></script>
+	<script src="./Python 3_ entendendo o Tratamento de Erros_ Aula 6 - Atividade 3 Disparo de exceções _ Alura - Cursos online de tecnologia_files/ProjectSubmit.949766d0.js.download"></script>
+	<script src="./Python 3_ entendendo o Tratamento de Erros_ Aula 6 - Atividade 3 Disparo de exceções _ Alura - Cursos online de tecnologia_files/classPage.1fa116eb.js.download"></script>
+	<script src="./Python 3_ entendendo o Tratamento de Erros_ Aula 6 - Atividade 3 Disparo de exceções _ Alura - Cursos online de tecnologia_files/phrase.dfd04ee1.js.download"></script>
+	<script src="./Python 3_ entendendo o Tratamento de Erros_ Aula 6 - Atividade 3 Disparo de exceções _ Alura - Cursos online de tecnologia_files/feedback.7962df4a.js.download"></script>
+	<script src="./Python 3_ entendendo o Tratamento de Erros_ Aula 6 - Atividade 3 Disparo de exceções _ Alura - Cursos online de tecnologia_files/ExtraContentProgressRequest.e868061c.js.download"></script>
+	
+	
+		<!-- video specific -->
+		<script src="./Python 3_ entendendo o Tratamento de Erros_ Aula 6 - Atividade 3 Disparo de exceções _ Alura - Cursos online de tecnologia_files/video.min.js.download"></script>
+		<script src="./Python 3_ entendendo o Tratamento de Erros_ Aula 6 - Atividade 3 Disparo de exceções _ Alura - Cursos online de tecnologia_files/silvermine-videojs-quality-selector.min.js.download"></script>
+		<script src="./Python 3_ entendendo o Tratamento de Erros_ Aula 6 - Atividade 3 Disparo de exceções _ Alura - Cursos online de tecnologia_files/vimeo.min.js.download"></script>
+		<script src="./Python 3_ entendendo o Tratamento de Erros_ Aula 6 - Atividade 3 Disparo de exceções _ Alura - Cursos online de tecnologia_files/dash.all.min.js.download"></script>
+		<script src="./Python 3_ entendendo o Tratamento de Erros_ Aula 6 - Atividade 3 Disparo de exceções _ Alura - Cursos online de tecnologia_files/videojs-dash.min.js.download"></script>
+		<script src="./Python 3_ entendendo o Tratamento de Erros_ Aula 6 - Atividade 3 Disparo de exceções _ Alura - Cursos online de tecnologia_files/transcriptionToggle.afde441e.js.download"></script>
+
+		
+
+		<script src="./Python 3_ entendendo o Tratamento de Erros_ Aula 6 - Atividade 3 Disparo de exceções _ Alura - Cursos online de tecnologia_files/lastMomentManager.d55e2b94.js.download"></script>
+		<script src="./Python 3_ entendendo o Tratamento de Erros_ Aula 6 - Atividade 3 Disparo de exceções _ Alura - Cursos online de tecnologia_files/VideoPlayer.5fe111a6.js.download"></script>
+		<script src="./Python 3_ entendendo o Tratamento de Erros_ Aula 6 - Atividade 3 Disparo de exceções _ Alura - Cursos online de tecnologia_files/scroll-top.acd0a474.js.download"></script>
+		<script>
+			new VideoPlayer().build();
+		</script>
+		
+			<script src="./Python 3_ entendendo o Tratamento de Erros_ Aula 6 - Atividade 3 Disparo de exceções _ Alura - Cursos online de tecnologia_files/TheaterMode.881eac55.js.download"></script>
+			<script>new TheaterModeToggler().registerTheaterModeComponentOnVideoJS();</script>
+		
+	
+
+	
+	
+	
+	
+
+	<script src="./Python 3_ entendendo o Tratamento de Erros_ Aula 6 - Atividade 3 Disparo de exceções _ Alura - Cursos online de tecnologia_files/partitura.d5cb1e7e.js.download"></script>
+	<script src="./Python 3_ entendendo o Tratamento de Erros_ Aula 6 - Atividade 3 Disparo de exceções _ Alura - Cursos online de tecnologia_files/audioProgress.422af45b.js.download"></script>
+	<script src="./Python 3_ entendendo o Tratamento de Erros_ Aula 6 - Atividade 3 Disparo de exceções _ Alura - Cursos online de tecnologia_files/audioPlayer.a98712ad.js.download"></script>
+
+		
+	<script src="./Python 3_ entendendo o Tratamento de Erros_ Aula 6 - Atividade 3 Disparo de exceções _ Alura - Cursos online de tecnologia_files/VideoTranscription.22ea2382.js.download"></script>
+	<script src="./Python 3_ entendendo o Tratamento de Erros_ Aula 6 - Atividade 3 Disparo de exceções _ Alura - Cursos online de tecnologia_files/MarkdownProcessing.0eb1da12.js.download"></script>
+	<script src="./Python 3_ entendendo o Tratamento de Erros_ Aula 6 - Atividade 3 Disparo de exceções _ Alura - Cursos online de tecnologia_files/clipboard.min.js.download"></script>
+	<script src="./Python 3_ entendendo o Tratamento de Erros_ Aula 6 - Atividade 3 Disparo de exceções _ Alura - Cursos online de tecnologia_files/Clipper.ef194f3f.js.download"></script>
+	<script src="./Python 3_ entendendo o Tratamento de Erros_ Aula 6 - Atividade 3 Disparo de exceções _ Alura - Cursos online de tecnologia_files/scroll-to-top.47438d71.js.download"></script>
+	<script src="./Python 3_ entendendo o Tratamento de Erros_ Aula 6 - Atividade 3 Disparo de exceções _ Alura - Cursos online de tecnologia_files/shortcuts-action.bf83d10d.js.download"></script>
+	<script>
+		new VideoTranscription();
+		new MarkdownProcessing("https://cursos.alura.com.br").onLoad();
+		new Clipper("Copiar código", "Código copiado!", "Falha ao copiar o código!");
+		window.addEventListener('load', () => new BackToTopButton().init());
+	</script>
+
+
+
+	
+
+	<script src="./Python 3_ entendendo o Tratamento de Erros_ Aula 6 - Atividade 3 Disparo de exceções _ Alura - Cursos online de tecnologia_files/darkMode.6a4f1e0c.js.download"></script>
+
+	
+		
+
+
+
+
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    
+    ga('create', 'UA-42101548-1', 'alura.com.br');
+
+    
+        ga('set', 'userId', '811467');
+    
+
+    ga('require', 'displayfeatures');
+    
+    ga('send', 'pageview');
+    
+    
+</script>
+	
+
+	<script>new DarkModeToggler().refreshListener()</script>
+
+	<script src="./Python 3_ entendendo o Tratamento de Erros_ Aula 6 - Atividade 3 Disparo de exceções _ Alura - Cursos online de tecnologia_files/ClassNotes.c71ce871.js.download">
+	</script>
+<script>
+	new ClassNotes(false).refreshListeners();
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="./Python 3_ entendendo o Tratamento de Erros_ Aula 6 - Atividade 3 Disparo de exceções _ Alura - Cursos online de tecnologia_files/uploadImages.7c1a29db.css" rel="stylesheet">
+
+<script src="./Python 3_ entendendo o Tratamento de Erros_ Aula 6 - Atividade 3 Disparo de exceções _ Alura - Cursos online de tecnologia_files/UploadProgress.7b7f16b7.js.download"></script>
+<script src="./Python 3_ entendendo o Tratamento de Erros_ Aula 6 - Atividade 3 Disparo de exceções _ Alura - Cursos online de tecnologia_files/ImagesClient.b2cf24f1.js.download"></script>
+
+<script src="./Python 3_ entendendo o Tratamento de Erros_ Aula 6 - Atividade 3 Disparo de exceções _ Alura - Cursos online de tecnologia_files/marked.min.js.download"></script>
+
+<script src="./Python 3_ entendendo o Tratamento de Erros_ Aula 6 - Atividade 3 Disparo de exceções _ Alura - Cursos online de tecnologia_files/enableForumButtons.6631eabb.js.download"></script>
+
+<script>
+    var IMAGE_UPLOAD_MESSAGES = {
+        imageUploadMessageInit: `Anexe arquivos arrastando e soltando`,
+        imageUploadMessageDragEnter: `Solte a imagem para fazer o upload`,
+        imageUploadMessageDrop: `Enviando a imagem #images_names#`,
+        imageUploadMessageProgress: `Enviando a imagem #images_names#: #progress#%`,
+        imageUploadMessageUploaded: `Imagem enviada com sucesso!`,
+        imageUploadMessageSizeUnits: `MB`,
+        imageUploadMessageTag: `![Insira aqui a descrição dessa imagem para ajudar na acessibilidade](#url#) `
+    }
+</script>
+
+
+    
+        <link href="./Python 3_ entendendo o Tratamento de Erros_ Aula 6 - Atividade 3 Disparo de exceções _ Alura - Cursos online de tecnologia_files/hackeditor.min.css" rel="stylesheet">
+        <link href="./Python 3_ entendendo o Tratamento de Erros_ Aula 6 - Atividade 3 Disparo de exceções _ Alura - Cursos online de tecnologia_files/hackeditor.custom.css" rel="stylesheet">
+
+
+        <script src="./Python 3_ entendendo o Tratamento de Erros_ Aula 6 - Atividade 3 Disparo de exceções _ Alura - Cursos online de tecnologia_files/hackeditor.min.js.download"></script>
+        <script src="./Python 3_ entendendo o Tratamento de Erros_ Aula 6 - Atividade 3 Disparo de exceções _ Alura - Cursos online de tecnologia_files/hackeditor.custom.js.download"></script>
+        <script>
+            const setupEditorsOnPage = (e) => {
+                const toolbarActionsHints = {
+                    toggleHeadingActionHint: `Título`,
+                    toggleBoldActionHint: `Negrito`,
+                    toggleItalicActionHint: `Itálico`,
+                    toggleOrderedListActionHint: `Lista ordenada`,
+                    toggleUnorderedListActionHint: `Lista não ordenada`,
+                    togglePreviewActionHint: `Pré-visualizar`,
+                    drawTableActionHint: `Inserir Tabela`,
+                    drawCodeActionHint: `Inserir bloco de código`,
+                    drawLinkActionHint: `Inserir Link`,
+                    drawImageActionHint: `Inserir Imagem`,
+                    drawUploadedImageActionHint: `Upload de imagem`,
+                    undoActionHint: `Desfazer`,
+                    redoActionHint: `Refazer`
+                }
+
+                const imageUploadErrors = {
+                    imageErrorLimit: `Você só pode inserir 5 imagens por vez!`,
+                    imageFileNotAllowed: `O arquivo filename não é permitido, apenas imagens!`,
+                    imageVeryLarge: `O arquivo filename é maior que o limite de 2 MB.`,
+                    imageMaliciousFile: `O arquivo filename contém conteúdo malicioso.`
+                }
+
+                window.editors = window.editors || [];
+
+                const textAreaEditors = Array.from(document.querySelectorAll('.hackeditor > textarea'));
+
+                const editorsElements = window.editors.map(ed => ed.element.name);
+
+                textAreaEditors
+                    .filter(e => e.closest('.taskForms') == null)
+                    .filter(e => editorsElements.length == 0 ? true : !editorsElements.includes(e.name))
+                    .forEach(editorTextArea => {
+                        const editor = setupHackEditor({
+                            editorOptions: {
+                                element: editorTextArea,
+                                initialValue: editorTextArea.innerText,
+                                syncPreview: true,
+                                maxHeight: "300px",
+                                toolbarActionsHints,
+                                imageUploadMessages: IMAGE_UPLOAD_MESSAGES,
+                                imageUploadErrors,
+                                imageUploadClient: new ImagesClient(
+                                    'https://www.gnarususercontent.com.br/images',
+                                    'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2MTY0NDM0MzQsImtleSI6IjdiMjcwMTliLWRlNDgtNGQyZi1iOTYyLTFkOWYyMzcyZjliNyJ9.ZBnDO5eAPNeO8zVrIZiYM0RiHiFkaQMkGR3jHKyltD0',
+                                    1,
+                                    811467
+                                ),
+                                allowImageUpload: editorTextArea.dataset.allowImageUpload
+                                },
+                                extensions: {
+                                    DOMPurify,
+                                    marked,
+                                }
+                        });
+
+                        window.editors.push({
+                            instance: editor,
+                            element: editorTextArea,
+                        });
+
+                        enableForumButtons();
+                });
+            }
+
+            window.addEventListener('DOMContentLoaded', setupEditorsOnPage);
+            document.addEventListener('change', setupEditorsOnPage);
+        </script>
+    
+    
+
+<script src="./Python 3_ entendendo o Tratamento de Erros_ Aula 6 - Atividade 3 Disparo de exceções _ Alura - Cursos online de tecnologia_files/IframeChecker.acaeeeab.js.download"></script>
+
+
+
+
+<script type="text/javascript" id="">elements=document.querySelectorAll("input, select");elements.forEach(function(b,c){b.addEventListener("change",function(a){a=this.getAttribute("name");dataLayer.push({event:"gaEvent",eventCategory:"Formul\u00e1rios",eventAction:"Altera\u00e7\u00e3o",eventLabel:a})})});</script>
+<script type="text/javascript" id="">var key="Think_Again45984$%";function log(a){console.log(a)}function getPars(){var a={};window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi,function(b,c,d){a[c]=d});return a}function userId(a){a=sha256.hmac(key,a);dataLayer.push({event:"userId",userId:a})}var script=document.createElement("script");script.onload=function(){var a=getPars().e;a&&userId(a);a=document.querySelectorAll('[type\x3d"email"]');for(var b=0;b<a.length;b++)a[b].onchange=function(){userId(this.value)}};script.src="https://cdnjs.cloudflare.com/ajax/libs/js-sha256/0.9.0/sha256.min.js";
+document.head.appendChild(script);</script><iframe name="_hjRemoteVarsFrame" title="_hjRemoteVarsFrame" id="_hjRemoteVarsFrame" src="./Python 3_ entendendo o Tratamento de Erros_ Aula 6 - Atividade 3 Disparo de exceções _ Alura - Cursos online de tecnologia_files/box-acca23410e696f2ca3087d947271c3d0.html" style="display: none !important; width: 1px !important; height: 1px !important; opacity: 0 !important; pointer-events: none !important;"></iframe><button class="back-to-top" type="button" style="display: none;"><span class="back-to-top__text">Voltar ao topo</span></button></body></html>

@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<!-- saved from url=(0085)http://python-notes.curiousefficiency.org/en/latest/python_concepts/import_traps.html -->
+<html class="js flexbox canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers no-applicationcache svg inlinesvg smil svgclippaths translated-ltr" lang="pt" style=""><!--<![endif]--><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Armadilhas para os incautos no sistema de importação do Python — documentação do Python Notes 1.0 de Nick Coghlan</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" async="" src="./Armadilhas para os incautos no sistema de importação do Python — documentação do Python Notes 1.0 de Nick Coghlan_files/ga.js.download"></script><script type="text/javascript" src="./Armadilhas para os incautos no sistema de importação do Python — documentação do Python Notes 1.0 de Nick Coghlan_files/modernizr.min.js.download"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="./Armadilhas para os incautos no sistema de importação do Python — documentação do Python Notes 1.0 de Nick Coghlan_files/documentation_options.js.download"></script>
+        <script type="text/javascript" src="./Armadilhas para os incautos no sistema de importação do Python — documentação do Python Notes 1.0 de Nick Coghlan_files/jquery.js.download"></script>
+        <script type="text/javascript" src="./Armadilhas para os incautos no sistema de importação do Python — documentação do Python Notes 1.0 de Nick Coghlan_files/underscore.js.download"></script>
+        <script type="text/javascript" src="./Armadilhas para os incautos no sistema de importação do Python — documentação do Python Notes 1.0 de Nick Coghlan_files/doctools.js.download"></script>
+        <script type="text/javascript" src="./Armadilhas para os incautos no sistema de importação do Python — documentação do Python Notes 1.0 de Nick Coghlan_files/language_data.js.download"></script>
+        <script type="text/javascript" src="./Armadilhas para os incautos no sistema de importação do Python — documentação do Python Notes 1.0 de Nick Coghlan_files/readthedocs-doc-embed.js.download"></script>
+    
+    <script type="text/javascript" src="./Armadilhas para os incautos no sistema de importação do Python — documentação do Python Notes 1.0 de Nick Coghlan_files/theme.js.download"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="./Armadilhas para os incautos no sistema de importação do Python — documentação do Python Notes 1.0 de Nick Coghlan_files/theme.css" type="text/css">
+  <link rel="stylesheet" href="./Armadilhas para os incautos no sistema de importação do Python — documentação do Python Notes 1.0 de Nick Coghlan_files/pygments.css" type="text/css">
+    <link rel="index" title="Índice" href="http://python-notes.curiousefficiency.org/en/latest/genindex.html">
+    <link rel="search" title="Procurar" href="http://python-notes.curiousefficiency.org/en/latest/search.html">
+    <link rel="next" title="Outras cláusulas sobre instruções de loop" href="http://python-notes.curiousefficiency.org/en/latest/python_concepts/break_else.html">
+    <link rel="prev" title="Conceitos Python" href="http://python-notes.curiousefficiency.org/en/latest/python_concepts/index.html"> 
+
+<!-- RTD Extra Head -->
+
+<!-- 
+Always link to the latest version, as canonical.
+http://docs.readthedocs.org/en/latest/canonical.html
+-->
+<link rel="canonical" href="http://python-notes.curiousefficiency.org/en/latest/python_concepts/import_traps.html">
+
+<link rel="stylesheet" href="./Armadilhas para os incautos no sistema de importação do Python — documentação do Python Notes 1.0 de Nick Coghlan_files/readthedocs-doc-embed.css" type="text/css">
+
+<script type="text/javascript" src="./Armadilhas para os incautos no sistema de importação do Python — documentação do Python Notes 1.0 de Nick Coghlan_files/readthedocs-data.js.download"></script>
+
+<!-- Add page-specific data, which must exist in the page js, not global -->
+<script type="text/javascript">
+READTHEDOCS_DATA['page'] = "python_concepts/import_traps"
+READTHEDOCS_DATA['source_suffix'] = ".rst"
+</script>
+
+<script type="text/javascript" src="./Armadilhas para os incautos no sistema de importação do Python — documentação do Python Notes 1.0 de Nick Coghlan_files/readthedocs-analytics.js.download"></script>
+
+<!-- end RTD <extrahead> -->
+<script type="text/javascript" async="" src="./Armadilhas para os incautos no sistema de importação do Python — documentação do Python Notes 1.0 de Nick Coghlan_files/embed.js.download"></script><script async="" src="./Armadilhas para os incautos no sistema de importação do Python — documentação do Python Notes 1.0 de Nick Coghlan_files/count.js.download"></script><script src="./Armadilhas para os incautos no sistema de importação do Python — documentação do Python Notes 1.0 de Nick Coghlan_files/ethicalads.min.js.download" type="text/javascript" async="" id="ethicaladsjs"></script><link rel="prefetch" as="style" href="https://c.disquscdn.com/next/embed/styles/lounge.7ab903feba7624935283ca4c7d8c7203.css"><link rel="prefetch" as="script" href="https://c.disquscdn.com/next/embed/common.bundle.f612a596225060ba8aa2aa903e502caf.js"><link rel="prefetch" as="script" href="https://c.disquscdn.com/next/embed/lounge.bundle.5f3d5b71b99f75f63da3fc29addba53d.js"><link rel="prefetch" as="script" href="https://disqus.com/next/config.js"><link type="text/css" rel="stylesheet" charset="UTF-8" href="./Armadilhas para os incautos no sistema de importação do Python — documentação do Python Notes 1.0 de Nick Coghlan_files/translateelement.css"><style>[data-ea-publisher].loaded,[data-ea-type].loaded{font-size:14px;font-family:-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;font-weight:normal;font-style:normal;leter-spacing:0px;vertical-align:baseline;line-height:1.3em}[data-ea-publisher].loaded a,[data-ea-type].loaded a{text-decoration:none}[data-ea-publisher].loaded .ea-pixel,[data-ea-type].loaded .ea-pixel{display:none}[data-ea-publisher].loaded .ea-content,[data-ea-type].loaded .ea-content{margin:1em 1em 0.5em 1em;padding:1em;background:rgba(0,0,0,0.03);color:#505050}[data-ea-publisher].loaded .ea-content a:link,[data-ea-type].loaded .ea-content a:link{color:#505050}[data-ea-publisher].loaded .ea-content a:visited,[data-ea-type].loaded .ea-content a:visited{color:#505050}[data-ea-publisher].loaded .ea-content a:hover,[data-ea-type].loaded .ea-content a:hover{color:#373737}[data-ea-publisher].loaded .ea-content a:active,[data-ea-type].loaded .ea-content a:active{color:#373737}[data-ea-publisher].loaded .ea-content a strong,[data-ea-publisher].loaded .ea-content a b,[data-ea-type].loaded .ea-content a strong,[data-ea-type].loaded .ea-content a b{color:#088cdb}[data-ea-publisher].loaded .ea-callout a:link,[data-ea-type].loaded .ea-callout a:link{color:#6a6a6a}[data-ea-publisher].loaded .ea-callout a:visited,[data-ea-type].loaded .ea-callout a:visited{color:#6a6a6a}[data-ea-publisher].loaded .ea-callout a:hover,[data-ea-type].loaded .ea-callout a:hover{color:#505050}[data-ea-publisher].loaded .ea-callout a:active,[data-ea-type].loaded .ea-callout a:active{color:#505050}[data-ea-publisher].loaded .ea-callout a strong,[data-ea-publisher].loaded .ea-callout a b,[data-ea-type].loaded .ea-callout a strong,[data-ea-type].loaded .ea-callout a b{color:#088cdb}[data-ea-publisher].loaded .ea-callout a,[data-ea-type].loaded .ea-callout a{font-size:0.8em}[data-ea-publisher].loaded.dark .ea-content,[data-ea-type].loaded.dark .ea-content{background:rgba(255,255,255,0.05);color:#dcdcdc}[data-ea-publisher].loaded.dark .ea-content a:link,[data-ea-type].loaded.dark .ea-content a:link{color:#dcdcdc}[data-ea-publisher].loaded.dark .ea-content a:visited,[data-ea-type].loaded.dark .ea-content a:visited{color:#dcdcdc}[data-ea-publisher].loaded.dark .ea-content a:hover,[data-ea-type].loaded.dark .ea-content a:hover{color:#f6f6f6}[data-ea-publisher].loaded.dark .ea-content a:active,[data-ea-type].loaded.dark .ea-content a:active{color:#f6f6f6}[data-ea-publisher].loaded.dark .ea-content a strong,[data-ea-publisher].loaded.dark .ea-content a b,[data-ea-type].loaded.dark .ea-content a strong,[data-ea-type].loaded.dark .ea-content a b{color:#50baf9}[data-ea-publisher].loaded.dark .ea-callout a:link,[data-ea-type].loaded.dark .ea-callout a:link{color:#c3c3c3}[data-ea-publisher].loaded.dark .ea-callout a:visited,[data-ea-type].loaded.dark .ea-callout a:visited{color:#c3c3c3}[data-ea-publisher].loaded.dark .ea-callout a:hover,[data-ea-type].loaded.dark .ea-callout a:hover{color:#dcdcdc}[data-ea-publisher].loaded.dark .ea-callout a:active,[data-ea-type].loaded.dark .ea-callout a:active{color:#dcdcdc}[data-ea-publisher].loaded.dark .ea-callout a strong,[data-ea-publisher].loaded.dark .ea-callout a b,[data-ea-type].loaded.dark .ea-callout a strong,[data-ea-type].loaded.dark .ea-callout a b{color:#50baf9}@media (prefers-color-scheme: dark){[data-ea-publisher].loaded.adaptive .ea-content,[data-ea-type].loaded.adaptive .ea-content{background:rgba(255,255,255,0.05);color:#dcdcdc}[data-ea-publisher].loaded.adaptive .ea-content a:link,[data-ea-type].loaded.adaptive .ea-content a:link{color:#dcdcdc}[data-ea-publisher].loaded.adaptive .ea-content a:visited,[data-ea-type].loaded.adaptive .ea-content a:visited{color:#dcdcdc}[data-ea-publisher].loaded.adaptive .ea-content a:hover,[data-ea-type].loaded.adaptive .ea-content a:hover{color:#f6f6f6}[data-ea-publisher].loaded.adaptive .ea-content a:active,[data-ea-type].loaded.adaptive .ea-content a:active{color:#f6f6f6}[data-ea-publisher].loaded.adaptive .ea-content a strong,[data-ea-publisher].loaded.adaptive .ea-content a b,[data-ea-type].loaded.adaptive .ea-content a strong,[data-ea-type].loaded.adaptive .ea-content a b{color:#50baf9}[data-ea-publisher].loaded.adaptive .ea-callout a:link,[data-ea-type].loaded.adaptive .ea-callout a:link{color:#c3c3c3}[data-ea-publisher].loaded.adaptive .ea-callout a:visited,[data-ea-type].loaded.adaptive .ea-callout a:visited{color:#c3c3c3}[data-ea-publisher].loaded.adaptive .ea-callout a:hover,[data-ea-type].loaded.adaptive .ea-callout a:hover{color:#dcdcdc}[data-ea-publisher].loaded.adaptive .ea-callout a:active,[data-ea-type].loaded.adaptive .ea-callout a:active{color:#dcdcdc}[data-ea-publisher].loaded.adaptive .ea-callout a strong,[data-ea-publisher].loaded.adaptive .ea-callout a b,[data-ea-type].loaded.adaptive .ea-callout a strong,[data-ea-type].loaded.adaptive .ea-callout a b{color:#50baf9}}[data-ea-publisher].loaded .ea-content,[data-ea-type].loaded .ea-content{border:0px;border-radius:3px;box-shadow:0px 2px 3px rgba(0,0,0,0.15)}[data-ea-publisher].loaded.raised .ea-content,[data-ea-type].loaded.raised .ea-content{border:0px;border-radius:3px;box-shadow:0px 2px 3px rgba(0,0,0,0.15)}[data-ea-publisher].loaded.bordered .ea-content,[data-ea-type].loaded.bordered .ea-content{border:1px solid rgba(0,0,0,0.04);border-radius:3px;box-shadow:none}[data-ea-publisher].loaded.bordered.dark .ea-content,[data-ea-type].loaded.bordered.dark .ea-content{border:1px solid rgba(255,255,255,0.07)}@media (prefers-color-scheme: dark){[data-ea-publisher].loaded.bordered.adaptive .ea-content,[data-ea-type].loaded.bordered.adaptive .ea-content{border:1px solid rgba(255,255,255,0.07)}}[data-ea-publisher].loaded.flat .ea-content,[data-ea-type].loaded.flat .ea-content{border:0px;border-radius:3px;box-shadow:none}[data-ea-type="image"].loaded,[data-ea-publisher]:not([data-ea-type]).loaded,.ea-type-image{display:inline-block}[data-ea-type="image"].loaded .ea-content,[data-ea-publisher]:not([data-ea-type]).loaded .ea-content,.ea-type-image .ea-content{max-width:180px;overflow:auto;text-align:center}[data-ea-type="image"].loaded .ea-content>a>img,[data-ea-publisher]:not([data-ea-type]).loaded .ea-content>a>img,.ea-type-image .ea-content>a>img{width:120px;height:90px;display:inline-block}[data-ea-type="image"].loaded .ea-content>.ea-text,[data-ea-publisher]:not([data-ea-type]).loaded .ea-content>.ea-text,.ea-type-image .ea-content>.ea-text{margin-top:1em;font-size:1em;text-align:center}[data-ea-type="image"].loaded .ea-callout,[data-ea-publisher]:not([data-ea-type]).loaded .ea-callout,.ea-type-image .ea-callout{max-width:180px;margin:0em 1em 1em 1em;padding-left:1em;padding-right:1em;font-style:italic;text-align:right}[data-ea-type="image"].loaded.horizontal .ea-content,[data-ea-publisher]:not([data-ea-type]).loaded.horizontal .ea-content,.ea-type-image.horizontal .ea-content{max-width:320px}[data-ea-type="image"].loaded.horizontal .ea-content>a>img,[data-ea-publisher]:not([data-ea-type]).loaded.horizontal .ea-content>a>img,.ea-type-image.horizontal .ea-content>a>img{float:left;margin-right:1em}[data-ea-type="image"].loaded.horizontal .ea-content .ea-text,[data-ea-publisher]:not([data-ea-type]).loaded.horizontal .ea-content .ea-text,.ea-type-image.horizontal .ea-content .ea-text{margin-top:0em;text-align:left;overflow:auto}[data-ea-type="image"].loaded.horizontal .ea-callout,[data-ea-publisher]:not([data-ea-type]).loaded.horizontal .ea-callout,.ea-type-image.horizontal .ea-callout{max-width:320px;text-align:right}[data-ea-type="text"].loaded,.ea-type-text{font-size:14px}[data-ea-type="text"].loaded .ea-content,.ea-type-text .ea-content{text-align:left}[data-ea-type="text"].loaded .ea-callout,.ea-type-text .ea-callout{margin:0.5em 1em 1em 1em;padding-left:1em;padding-right:1em;text-align:right;font-style:italic}[data-ea-style="stickybox"].loaded .ea-type-image{z-index:10;position:fixed;bottom:20px;right:20px}[data-ea-style="stickybox"].loaded .ea-type-image .ea-stickybox-hide{cursor:pointer;position:absolute;top:0.75em;right:0.75em;background-color:#fefefe;border:1px solid #088cdb;border-radius:50%;color:#088cdb;font-size:1em;text-align:center;height:1.5em;width:1.5em;line-height:1.5em}@media (max-width: 1300px){[data-ea-style="stickybox"].loaded .ea-type-image{position:static;bottom:0;right:0;margin:auto;text-align:center}[data-ea-style="stickybox"].loaded .ea-type-image .ea-stickybox-hide{display:none}}@media (min-width: 1301px){[data-ea-style="stickybox"].loaded .ea-type-image .ea-content{background:#dcdcdc}[data-ea-style="stickybox"].loaded.dark .ea-type-image .ea-content{background:#505050}}@media (min-width: 1301px) and (prefers-color-scheme: dark){[data-ea-style="stickybox"].loaded.adaptive .ea-type-image .ea-content{background:#505050}}
+</style><script src="./Armadilhas para os incautos no sistema de importação do Python — documentação do Python Notes 1.0 de Nick Coghlan_files/saved_resource" type="text/javascript" async=""></script></head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="http://python-notes.curiousefficiency.org/en/latest/index.html" class="icon icon-home"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Notas Python de Nick Coghlan
+          
+
+          
+          </font></font></a>
+
+          
+            
+            
+            
+              <div class="version"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                Mais recentes
+              </font></font></div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="http://python-notes.curiousefficiency.org/en/latest/search.html" method="get">
+    <input type="text" name="q" placeholder="Pesquisar documentos">
+    <input type="hidden" name="check_keywords" value="yes">
+    <input type="hidden" name="area" value="default">
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navegação Principal">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="http://python-notes.curiousefficiency.org/en/latest/python3/index.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Python 3</font></font></a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="http://python-notes.curiousefficiency.org/en/latest/python_concepts/index.html"><span class="toctree-expand"></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Conceitos Python</font></font></a><ul class="">
+<li class="toctree-l2 current"><a class="reference internal current" href="http://python-notes.curiousefficiency.org/en/latest/python_concepts/import_traps.html#"><span class="toctree-expand"></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Armadilhas para os incautos no sistema de importação do Python</font></font></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="http://python-notes.curiousefficiency.org/en/latest/python_concepts/import_traps.html#the-missing-init-py-trap"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">A armadilha __init__.py ausente</font></font></a></li>
+<li class="toctree-l3"><a class="reference internal" href="http://python-notes.curiousefficiency.org/en/latest/python_concepts/import_traps.html#the-init-py-trap"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">A armadilha __init__.py</font></font></a></li>
+<li class="toctree-l3"><a class="reference internal" href="http://python-notes.curiousefficiency.org/en/latest/python_concepts/import_traps.html#the-double-import-trap"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">A armadilha de importação dupla</font></font></a></li>
+<li class="toctree-l3"><a class="reference internal" href="http://python-notes.curiousefficiency.org/en/latest/python_concepts/import_traps.html#executing-the-main-module-twice"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Executando o módulo principal duas vezes</font></font></a></li>
+<li class="toctree-l3"><a class="reference internal" href="http://python-notes.curiousefficiency.org/en/latest/python_concepts/import_traps.html#the-name-shadowing-trap"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">A armadilha da sombra do nome</font></font></a></li>
+<li class="toctree-l3"><a class="reference internal" href="http://python-notes.curiousefficiency.org/en/latest/python_concepts/import_traps.html#the-stale-bytecode-file-trap"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">A armadilha de arquivo de bytecode obsoleto</font></font></a></li>
+<li class="toctree-l3"><a class="reference internal" href="http://python-notes.curiousefficiency.org/en/latest/python_concepts/import_traps.html#the-submodules-are-added-to-the-package-namespace-trap"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Os submódulos são adicionados à armadilha de namespace do pacote</font></font></a></li>
+<li class="toctree-l3"><a class="reference internal" href="http://python-notes.curiousefficiency.org/en/latest/python_concepts/import_traps.html#more-exotic-traps"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Mais armadilhas exóticas</font></font></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="http://python-notes.curiousefficiency.org/en/latest/python_concepts/break_else.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Outras cláusulas sobre instruções de loop</font></font></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="http://python-notes.curiousefficiency.org/en/latest/pep_ideas/index.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Várias ideias para Python e CPython</font></font></a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://python-notes.curiousefficiency.org/en/latest/python_kerberos.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Usando o módulo Python Kerberos</font></font></a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://python-notes.curiousefficiency.org/en/latest/linux/index.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Notas gerais do Linux</font></font></a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://python-notes.curiousefficiency.org/en/latest/conferences/index.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Conferências Python</font></font></a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="navegação superior">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="http://python-notes.curiousefficiency.org/en/latest/index.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Notas Python de Nick Coghlan</font></font></a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="navegação de migalhas de pão">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="http://python-notes.curiousefficiency.org/en/latest/index.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Documentos</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">»</font></font></li>
+        
+          <li><a href="http://python-notes.curiousefficiency.org/en/latest/python_concepts/index.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Conceitos Python</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">»</font></font></li>
+        
+      <li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Armadilhas para os incautos no sistema de importação do Python</font></font></li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com/ncoghlan/misc/blob/master/notes/python_concepts/import_traps.rst" class="fa fa-github"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Editar no GitHub</font></font></a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+
+  <div class="section" id="traps-for-the-unwary-in-python-s-import-system">
+<h1><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Armadilhas para os incautos no sistema de importação do Python</font></font><a class="headerlink" href="http://python-notes.curiousefficiency.org/en/latest/python_concepts/import_traps.html#traps-for-the-unwary-in-python-s-import-system" title="Link permanente para este título"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">¶</font></font></a></h1>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">O sistema de importação do Python é poderoso, mas também bastante complicado. </font><font style="vertical-align: inherit;">Até o lançamento do Python 3.3, não havia uma explicação abrangente da semântica de importação esperada e, mesmo após o lançamento do 3.3, os detalhes de como
+ </font></font><code class="docutils literal notranslate"><span class="pre">sys.path</span></code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">é inicializado ainda são um pouco desafiadores para descobrir.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Mesmo que o 3.3 tenha limpado muitas coisas, ele ainda tem que lidar com vários problemas de compatibilidade com versões anteriores que podem causar um comportamento estranho e podem precisar ser entendidos para descobrir como alguns frameworks de terceiros operam.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Além disso, mesmo sem invocar nenhum dos recursos mais exóticos do sistema de importação, existem alguns erros comuns que surgem regularmente em listas de discussão e sites de perguntas e respostas como o Stack Overflow.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Este ensaio cobre oficialmente apenas as versões do Python até o Python 2.6. </font><font style="vertical-align: inherit;">Muito disso também se aplica a versões anteriores, mas não qualificarei nenhuma das explicações com detalhes da versão antes da 2.6.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Como em todos os meus ensaios neste site, sugestões de melhoria ou pedidos de esclarecimento podem ser postados no </font></font><a class="reference external" href="https://bitbucket.org/ncoghlan/misc/issues"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">BitBucket</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> .</font></font></p>
+<div class="section" id="the-missing-init-py-trap">
+<h2><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">A armadilha __init__.py ausente</font></font><a class="headerlink" href="http://python-notes.curiousefficiency.org/en/latest/python_concepts/import_traps.html#the-missing-init-py-trap" title="Link permanente para este título"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">¶</font></font></a></h2>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Essa armadilha específica se aplica a versões 2.x, bem como a versões 3.x até 3.2, inclusive.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Antes do Python 3.3, os diretórios do sistema de arquivos e os diretórios dentro dos arquivos zip
+ </font></font><em><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">tinham</font></font></em><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> que conter um </font></font><code class="docutils literal notranslate"><span class="pre">__init__.py</span></code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">para serem reconhecidos como diretórios de pacotes do Python. </font><font style="vertical-align: inherit;">Mesmo que não haja código de inicialização a ser executado quando o pacote for importado, um </font></font><code class="docutils literal notranslate"><span class="pre">__init__.py</span></code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">arquivo vazio ainda será necessário para que o interpretador encontre quaisquer módulos ou subpacotes nesse diretório.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Isso mudou no Python 3.3: agora qualquer diretório </font></font><code class="docutils literal notranslate"><span class="pre">sys.path</span></code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">com um nome que corresponda ao nome do pacote que está sendo procurado será reconhecido como módulos e subpacotes contribuintes para esse pacote.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Considere este layout de diretório:</font></font></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">project</span><span class="o">/</span>
+    <span class="n">example</span><span class="o">/</span>
+        <span class="n">foo</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Onde </font></font><code class="docutils literal notranslate"><span class="pre">foo.py</span></code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">contém o código fonte:</font></font></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">"Hello from "</span><span class="p">,</span> <span class="vm">__name__</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Com esse layout e o diretório de trabalho atual sendo </font></font><code class="docutils literal notranslate"><span class="pre">project</span></code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, o Python 2.7 fornece o seguinte comportamento:</font></font></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ python2 -c "import example.foo"
+Traceback (most recent call last):
+  File "&lt;string&gt;", line 1, in &lt;module&gt;
+ImportError: No module named example.foo
+</pre></div>
+</div>
+<p>While Python 3.3+ is able to import the submodule without any problems:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ python3 -c "import example.foo"
+Hello from  example.foo
+</pre></div>
+</div>
+</div>
+<div class="section" id="the-init-py-trap">
+<h2>The __init__.py trap<a class="headerlink" href="http://python-notes.curiousefficiency.org/en/latest/python_concepts/import_traps.html#the-init-py-trap" title="Link permanente para este título">¶</a></h2>
+<p>This is an all new trap added in Python 3.3 as a consequence of fixing the
+previous trap: if a subdirectory encountered on <code class="docutils literal notranslate"><span class="pre">sys.path</span></code> as part of
+a package import contains an <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code> file, then the Python
+interpreter will create a <em>single directory</em> package containing only
+modules from that directory, rather than finding all appropriately
+named subdirectories as described in the previous section.</p>
+<p>This happens <em>even if</em> there are other preceding subdirectories on
+<code class="docutils literal notranslate"><span class="pre">sys.path</span></code> that match the desired package name, but do not include an
+<code class="docutils literal notranslate"><span class="pre">__init__.py</span></code> file.</p>
+<p>Let’s take the preceding layout, and add a second project that <em>also</em> has
+an <code class="docutils literal notranslate"><span class="pre">example</span></code> directory, but includes an <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code> file in it,
+as well as a <code class="docutils literal notranslate"><span class="pre">bar.py</span></code> file with the same contents as <code class="docutils literal notranslate"><span class="pre">foo.py</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">project</span><span class="o">/</span>
+    <span class="n">example</span><span class="o">/</span>
+        <span class="n">foo</span><span class="o">.</span><span class="n">py</span>
+<span class="n">project2</span><span class="o">/</span>
+    <span class="n">example</span><span class="o">/</span>
+        <span class="fm">__init__</span><span class="o">.</span><span class="n">py</span>
+        <span class="n">bar</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<p>If we explicitly add the second project to <code class="docutils literal notranslate"><span class="pre">PYTHONPATH</span></code>, we find that
+Python 3.3+ can’t find <code class="docutils literal notranslate"><span class="pre">example.foo</span></code> either, as the directory containing
+<code class="docutils literal notranslate"><span class="pre">__init__.py</span></code> file prevents the creation of a multi-directory namespace
+package:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ PYTHONPATH=../project2 python3 -c "import example.bar"
+Hello from  example.bar
+$ PYTHONPATH=../project2 python3 -c "import example.foo"
+Traceback (most recent call last):
+  File "&lt;string&gt;", line 1, in &lt;module&gt;
+ImportError: No module named 'example.foo'
+</pre></div>
+</div>
+<p>However, if we remove the offending <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code> file, Python 3.3+ will
+automatically create a namespace package and be able to see both submodules:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ rm ../project2/example/__init__.py
+$ PYTHONPATH=../project2 python3 -c "import example.bar"
+Hello from  example.bar
+$ PYTHONPATH=../project2 python3 -c "import example.foo"
+Hello from  example.foo
+</pre></div>
+</div>
+<p>This complexity is primarily forced on us by backwards compatibility
+constraints - without it, some existing code would have broken when Python
+3.3 made the presence of <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code> files in packages optional.</p>
+<p>However, it is also useful in that it makes it possible to explicitly
+declare that a package is closed to additional contributions. All of
+the standard library currently works that way, although some packages
+may open up their namespaces to third party contributions in future
+releases (the key challenge with that idea is that namespace packages
+can’t offer any package level functionality, which creates a major
+backwards compatibility problem for existing standard library packages).</p>
+</div>
+<div class="section" id="the-double-import-trap">
+<h2>The double import trap<a class="headerlink" href="http://python-notes.curiousefficiency.org/en/latest/python_concepts/import_traps.html#the-double-import-trap" title="Link permanente para este título">¶</a></h2>
+<p>This next trap exists in all current versions of Python, including 3.3, and
+can be summed up in the following general guideline: “Never add a package
+directory, or any directory inside a package, directly to the Python path”.</p>
+<p>The reason this is problematic is that every module in that directory is
+now potentially accessible under two different names: as a top level module
+(since the directory is on <code class="docutils literal notranslate"><span class="pre">sys.path</span></code>) and as a submodule of the
+package (if the higher level directory containing the package itself is
+also on <code class="docutils literal notranslate"><span class="pre">sys.path</span></code>).</p>
+<p>As an example, Django (up to and including version 1.3) used to be guilty of setting
+up exactly this situation for site-specific applications - the application
+ends up being accessible as both <code class="docutils literal notranslate"><span class="pre">app</span></code> and <code class="docutils literal notranslate"><span class="pre">site.app</span></code> in the module
+namespace, and these are actually two <em>different</em> copies of the module. This
+is a recipe for confusion if there is any meaningful mutable module level
+state, so this behaviour was eliminated from the default project layout
+in version 1.4 (site-specific apps now always need to be fully qualified
+with the site name, as described in the <a class="reference external" href="https://docs.djangoproject.com/en/dev/releases/1.4/#updated-default-project-layout-and-manage-py">release notes</a>).</p>
+<p>Unfortunately, this is still a <em>really</em> easy guideline to violate, as it
+happens automatically if you attempt to run a module inside a package from
+the command line by filename rather than using the <code class="docutils literal notranslate"><span class="pre">-m</span></code> switch.</p>
+<p>Consider a project &amp; package layout like the following (I typically use package
+layouts along these lines in my own projects - a lot of people hate nesting
+tests inside package directories like this, and prefer a parallel hierarchy,
+but I favour the ability to use explicit relative imports to keep module
+tests independent of the package name):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">project</span><span class="o">/</span>
+    <span class="n">setup</span><span class="o">.</span><span class="n">py</span>
+    <span class="n">example</span><span class="o">/</span>
+        <span class="fm">__init__</span><span class="o">.</span><span class="n">py</span>
+        <span class="n">foo</span><span class="o">.</span><span class="n">py</span>
+        <span class="n">tests</span><span class="o">/</span>
+            <span class="fm">__init__</span><span class="o">.</span><span class="n">py</span>
+            <span class="n">test_foo</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<p>What’s surprising about this layout is that all of the following
+ways to invoke <code class="docutils literal notranslate"><span class="pre">test_foo.py</span></code> <em>probably won’t work</em> due to broken imports
+(either failing to find <code class="docutils literal notranslate"><span class="pre">example</span></code> for absolute imports like
+<code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">example.foo</span></code> or <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">example</span> <span class="pre">import</span> <span class="pre">foo</span></code>, complaining about
+relative imports in a non-package or beyond the top-level package for
+explicit relative imports like <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">..</span> <span class="pre">import</span> <span class="pre">foo</span></code>, or issuing even more
+obscure errors if some other submodule happens to shadow the name of a
+top-level module used by the test, such as an <code class="docutils literal notranslate"><span class="pre">example.json</span></code> module
+that handled serialisation or an <code class="docutils literal notranslate"><span class="pre">example.tests.unittest</span></code> test runner):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># These commands will most likely *FAIL* due to problems with the way</span>
+<span class="c1"># the import state gets initialised, even if the test code is correct</span>
+
+<span class="c1"># working directory: project/example/tests</span>
+<span class="o">./</span><span class="n">test_foo</span><span class="o">.</span><span class="n">py</span>
+<span class="n">python</span> <span class="n">test_foo</span><span class="o">.</span><span class="n">py</span>
+<span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">test_foo</span>
+<span class="n">python</span> <span class="o">-</span><span class="n">c</span> <span class="s2">"from test_foo import main; main()"</span>
+
+<span class="c1"># working directory: project/example</span>
+<span class="n">tests</span><span class="o">/</span><span class="n">test_foo</span><span class="o">.</span><span class="n">py</span>
+<span class="n">python</span> <span class="n">tests</span><span class="o">/</span><span class="n">test_foo</span><span class="o">.</span><span class="n">py</span>
+<span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">tests</span><span class="o">.</span><span class="n">test_foo</span>
+<span class="n">python</span> <span class="o">-</span><span class="n">c</span> <span class="s2">"from tests.test_foo import main; main()"</span>
+
+<span class="c1"># working directory: project</span>
+<span class="n">example</span><span class="o">/</span><span class="n">tests</span><span class="o">/</span><span class="n">test_foo</span><span class="o">.</span><span class="n">py</span>
+<span class="n">python</span> <span class="n">example</span><span class="o">/</span><span class="n">tests</span><span class="o">/</span><span class="n">test_foo</span><span class="o">.</span><span class="n">py</span>
+
+<span class="c1"># working directory: project/..</span>
+<span class="n">project</span><span class="o">/</span><span class="n">example</span><span class="o">/</span><span class="n">tests</span><span class="o">/</span><span class="n">test_foo</span><span class="o">.</span><span class="n">py</span>
+<span class="n">python</span> <span class="n">project</span><span class="o">/</span><span class="n">example</span><span class="o">/</span><span class="n">tests</span><span class="o">/</span><span class="n">test_foo</span><span class="o">.</span><span class="n">py</span>
+<span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">project</span><span class="o">.</span><span class="n">example</span><span class="o">.</span><span class="n">tests</span><span class="o">.</span><span class="n">test_foo</span>
+<span class="n">python</span> <span class="o">-</span><span class="n">c</span> <span class="s2">"from project.example.tests.test_foo import main; main()"</span>
+</pre></div>
+</div>
+<p>That’s right, that long list is of all the methods of invocation that are
+quite likely to <em>break</em> if you try them, and the error messages won’t make
+any sense if you’re not already intimately familiar not only with the way
+Python’s import system works, but also with how it gets initialised. (Note
+that if the project exclusively uses explicit relative imports for
+intra-package references, the last two commands shown may actually work
+for Python 3.3 and later versions. Any absolute imports that expect
+“example” to be a top level package will still break though).</p>
+<p>For a long time, the only way to get <code class="docutils literal notranslate"><span class="pre">sys.path</span></code> right with this kind of
+setup was to either set it manually in <code class="docutils literal notranslate"><span class="pre">test_foo.py</span></code> itself (hardly
+something novice, or even many veteran, Python programmers are going to
+know how to do) or else to make sure to import the module instead of
+executing it directly:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># working directory: project</span>
+<span class="n">python</span> <span class="o">-</span><span class="n">c</span> <span class="s2">"from example.tests.test_foo import main; main()"</span>
+</pre></div>
+</div>
+<p>Since Python 2.6, however, the following also works properly:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># working directory: project</span>
+<span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">example</span><span class="o">.</span><span class="n">tests</span><span class="o">.</span><span class="n">test_foo</span>
+</pre></div>
+</div>
+<p>This last approach is actually how I prefer to use my shell when
+programming in Python - leave my working directory set to the project
+directory, and then use the <code class="docutils literal notranslate"><span class="pre">-m</span></code> switch to execute relevant submodules
+like tests or command line tools. If I need to work in a different
+directory for some reason, well, that’s why I also like to have multiple
+shell sessions open.</p>
+<p>While I’m using an embedded test case as an example here, similar issues
+arise any time you execute a script directly from inside a package without
+using the <code class="docutils literal notranslate"><span class="pre">-m</span></code> switch from the parent directory in order to ensure that
+<code class="docutils literal notranslate"><span class="pre">sys.path</span></code> is initialised correctly (e.g. the pre-1.4 Django project
+layout gets into trouble by running <code class="docutils literal notranslate"><span class="pre">manage.py</span></code> from inside a package,
+which puts the package directory on <code class="docutils literal notranslate"><span class="pre">sys.path</span></code> and leads to this double
+import problem - the 1.4+ layout solves that by moving <code class="docutils literal notranslate"><span class="pre">manage.py</span></code> outside
+the package directory).</p>
+<p>The fact that most methods of invoking Python code from the command line
+break when that code is inside a package, and the two that do work are highly
+sensitive to the current working directory is all thoroughly confusing for a
+beginner. I personally believe it is one of the key factors leading
+to the perception that Python packages are complicated and hard to get right.</p>
+<p>This problem isn’t even limited to the command line - if <code class="docutils literal notranslate"><span class="pre">test_foo.py</span></code> is
+open in Idle and you attempt to run it by pressing F5, or if you try to run
+it by clicking on it in a graphical filebrowser, then it will fail in just
+the same way it would if run directly from the command line.</p>
+<p>There’s a reason the general “no package directories on <code class="docutils literal notranslate"><span class="pre">sys.path</span></code>”
+guideline exists, and the fact that the interpreter itself doesn’t follow
+it when determining <code class="docutils literal notranslate"><span class="pre">sys.path[0]</span></code> is the root cause of all sorts of grief.</p>
+<p>However, even if there are improvements in this area in future versions of
+Python, this trap will still exist in all current versions.</p>
+</div>
+<div class="section" id="executing-the-main-module-twice">
+<h2>Executing the main module twice<a class="headerlink" href="http://python-notes.curiousefficiency.org/en/latest/python_concepts/import_traps.html#executing-the-main-module-twice" title="Link permanente para este título">¶</a></h2>
+<p>This is a variant of the above double import problem that doesn’t require any
+erroneous <code class="docutils literal notranslate"><span class="pre">sys.path</span></code> entries.</p>
+<p>It’s specific to the situation where the main module is <em>also</em> imported as
+an ordinary module, effectively creating two instances of the same module
+under different names.</p>
+<p>As with any double-import problem, if the state stored in <code class="docutils literal notranslate"><span class="pre">__main__</span></code> is
+significant to the correct operation of the program, or if there is
+top-level code in the main module that has undesirable side effects if
+executed more than once, then this duplication can cause obscure and
+surprising errors.</p>
+<p>This is just one more reason why main modules in more complex applications
+should be kept fairly minimal - it’s generally far more robust to move most
+of the functionality to a function or object in a separate module, and just
+import that module from the main module. That way, inadvertently executing
+the main module twice becomes harmless. Keeping main modules small and
+simple also helps to avoid a few potential problems with object
+serialisation as well as with the multiprocessing package.</p>
+</div>
+<div class="section" id="the-name-shadowing-trap">
+<h2>The name shadowing trap<a class="headerlink" href="http://python-notes.curiousefficiency.org/en/latest/python_concepts/import_traps.html#the-name-shadowing-trap" title="Link permanente para este título">¶</a></h2>
+<p>Another common trap, especially for beginners, is using a local module name
+that shadows the name of a standard library or third party package or module
+that the application relies on. One particularly surprising way to run afoul
+of this trap is by using such a name for a <em>script</em>, as this then combines
+with the previous “executing the main module twice” trap to cause trouble.
+For example, if experimenting to learn more about Python’s <a class="reference external" href="https://docs.python.org/3/library/socket.html#module-socket" title="(em Python v3.8)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">socket</span></code></a>
+module, you may be inclined to call your experimental script <code class="docutils literal notranslate"><span class="pre">socket.py</span></code>.
+It turns out this is a really bad idea, as using such a name means the
+Python interpreter can no longer find the <em>real</em> socket module in the
+standard library, as the apparent socket module in the current directory
+gets in the way:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ python -c 'from socket import socket; print("OK!")'
+OK!
+$ echo 'from socket import socket; print("OK!")' &gt; socket.py
+$ python socket.py
+Traceback (most recent call last):
+  File "socket.py", line 1, in &lt;module&gt;
+    from socket import socket
+  File "/home/ncoghlan/devel/socket.py", line 1, in &lt;module&gt;
+    from socket import socket
+ImportError: cannot import name socket
+</pre></div>
+</div>
+</div>
+<div class="section" id="the-stale-bytecode-file-trap">
+<h2>The stale bytecode file trap<a class="headerlink" href="http://python-notes.curiousefficiency.org/en/latest/python_concepts/import_traps.html#the-stale-bytecode-file-trap" title="Link permanente para este título">¶</a></h2>
+<p>Following on from the example in the previous section, suppose we decide to
+fix our poor choice of script name by renaming the file. In Python 2, we’ll
+find that still doesn’t work:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ mv socket.py socket_play.py
+$ python socket_play.py
+Traceback (most recent call last):
+  File "socket_play.py", line 1, in &lt;module&gt;
+    from socket import socket
+  File "/home/ncoghlan/devel/socket.py", line 1, in &lt;module&gt;
+    # Wrapper module for _socket, providing some additional facilities
+ImportError: cannot import name socket
+</pre></div>
+</div>
+<p>There’s clearly something strange going on here, as we’re seeing a traceback
+that claims to be caused by a <em>comment</em> line. In reality, what has happened
+is that the cached bytecode file from our previous failed import attempt is
+still present and causing trouble, but when Python tries to display the
+source line for the traceback, it finds the source line from the standard
+library module instead. Removing the stale bytecode file makes things work as
+expected:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ rm socket.pyc
+$ python socket_play.py
+OK!
+</pre></div>
+</div>
+<p>This particular trap has been largely eliminated in Python 3.2 and later. In
+those versions, the interpreter makes a distinction between standalone
+bytecode files (such as <code class="docutils literal notranslate"><span class="pre">socket.pyc</span></code> above) and cached bytecode files
+(stored in automatically created <code class="docutils literal notranslate"><span class="pre">__pycache__</span></code> directories). The latter
+will be ignored by the interpreter if the corresponding source file is
+missing, so the above renaming of the source file works as intended:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ echo 'from socket import socket; print("OK!")' &gt; socket.py
+$ python3 socket.py
+Traceback (most recent call last):
+  File "socket.py", line 1, in &lt;module&gt;
+    from socket import socket
+  File "/home/ncoghlan/devel/socket.py", line 1, in &lt;module&gt;
+    from socket import socket
+ImportError: cannot import name socket
+$ mv socket.py socket_play.py
+$ python3 socket_play.py
+</pre></div>
+</div>
+<p>Note, however, that mixing Python 2 and Python 3 can cause trouble if
+Python 2 has left a standalone bytecode file lying around:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ python3 socket_play.py
+Traceback (most recent call last):
+  File "socket_play.py", line 1, in &lt;module&gt;
+    from socket import socket; print("OK!")
+ImportError: Bad magic number in /home/ncoghlan/devel/socket.pyc
+</pre></div>
+</div>
+<p>If you’re not a core developer on a Python implementation, the problem of
+importing stale bytecode is most likely to arise when renaming Python source
+files. For Python implementation developers, it can also arise any time
+we’re working on the compiler components that are responsible for
+generating the bytecode in the first place - that’s the main reason
+the CPython <code class="docutils literal notranslate"><span class="pre">Makefile</span></code> includes a <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">pycremoval</span></code> target.</p>
+</div>
+<div class="section" id="the-submodules-are-added-to-the-package-namespace-trap">
+<h2>The submodules are added to the package namespace trap<a class="headerlink" href="http://python-notes.curiousefficiency.org/en/latest/python_concepts/import_traps.html#the-submodules-are-added-to-the-package-namespace-trap" title="Link permanente para este título">¶</a></h2>
+<p>Many users will have experienced the issue of trying to use a submodule
+when only importing the package that it is in:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ python3
+&gt;&gt;&gt; import logging
+&gt;&gt;&gt; logging.config
+Traceback (most recent call last):
+  File "&lt;stdin&gt;", line 1, in &lt;module&gt;
+AttributeError: 'module' object has no attribute 'config'
+</pre></div>
+</div>
+<p>But it is less common knowledge that when a submodule is loaded <em>anywhere</em>
+it is automatically added to the global namespace of the package:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ echo "import logging.config" &gt; weirdimport.py
+$ python3
+&gt;&gt;&gt; import weirdimport
+&gt;&gt;&gt; import logging
+&gt;&gt;&gt; logging.config
+&lt;module 'logging.config' from '/usr/local/Cellar/python3/3.4.3/Frameworks/Python.framework/Versions/3.4/lib/python3.4/logging/config.py'&gt;
+</pre></div>
+</div>
+<p>This is most likely to surprise you when in an <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code> and you are
+importing or defining a value that has the same name as a submodule of the
+current package. If the submodule is loaded by <em>any</em> module at any point
+after the import or definition of the same name, it will shadow the
+imported or defined name in the <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code>’s global namespace.</p>
+</div>
+<div class="section" id="more-exotic-traps">
+<h2>More exotic traps<a class="headerlink" href="http://python-notes.curiousefficiency.org/en/latest/python_concepts/import_traps.html#more-exotic-traps" title="Link permanente para este título">¶</a></h2>
+<p>The above are the common traps, but there are others, especially if you
+start getting into the business of extending or overriding the default
+import system.</p>
+<p>I may add more details on each of these over time:</p>
+<ul class="simple">
+<li>the weird signature of <code class="docutils literal notranslate"><span class="pre">__import__</span></code></li>
+<li>the influence of the module globals (<code class="docutils literal notranslate"><span class="pre">__import__</span></code>, <code class="docutils literal notranslate"><span class="pre">__path__</span></code>,
+<code class="docutils literal notranslate"><span class="pre">__package__</span></code>)</li>
+<li><a class="reference external" href="http://docs.python.org/2/library/threading#importing-in-threaded-code">issues with threads</a> prior to 3.3</li>
+<li>the lack of PEP 302 support in the default machinery prior to 3.3</li>
+<li>non-cooperative package portions in pre-3.3 namespace packages</li>
+<li>sys.path[0] initialisation variations</li>
+<li>more on the issues with pickle, multiprocessing and the main module
+(see PEP 395)</li>
+<li><code class="docutils literal notranslate"><span class="pre">__main__</span></code> is not always a top level module (thanks to <code class="docutils literal notranslate"><span class="pre">-m</span></code>)</li>
+<li>the fact modules are allowed to replace themselves in sys.modules
+during import</li>
+<li><code class="docutils literal notranslate"><span class="pre">__file__</span></code> may not refer to a real filesystem location</li>
+<li>since 3.2, you can’t just add <code class="docutils literal notranslate"><span class="pre">c</span></code> or <code class="docutils literal notranslate"><span class="pre">o</span></code> to get the cached bytecode
+filename</li>
+</ul>
+</div>
+</div>
+
+
+<div id="disqus_thread"><iframe id="dsq-app9204" name="dsq-app9204" allowtransparency="true" frameborder="0" scrolling="no" tabindex="0" title="Disqus" width="100%" src="./Armadilhas para os incautos no sistema de importação do Python — documentação do Python Notes 1.0 de Nick Coghlan_files/saved_resource.html" style="width: 1px !important; min-width: 100% !important; border: none !important; overflow: hidden !important; height: 386px !important;" horizontalscrolling="no" verticalscrolling="no"></iframe><iframe id="indicator-north" name="indicator-north" allowtransparency="true" frameborder="0" scrolling="no" tabindex="0" title="Disqus" style="width: 696px !important; border: none !important; overflow: hidden !important; top: 0px !important; min-width: 696px !important; max-width: 696px !important; position: fixed !important; z-index: 2147483646 !important; height: 0px !important; min-height: 0px !important; max-height: 0px !important; display: none !important;" src="./Armadilhas para os incautos no sistema de importação do Python — documentação do Python Notes 1.0 de Nick Coghlan_files/saved_resource(1).html"></iframe><iframe id="indicator-south" name="indicator-south" allowtransparency="true" frameborder="0" scrolling="no" tabindex="0" title="Disqus" style="width: 696px !important; border: none !important; overflow: hidden !important; bottom: 0px !important; min-width: 696px !important; max-width: 696px !important; position: fixed !important; z-index: 2147483646 !important; height: 0px !important; min-height: 0px !important; max-height: 0px !important; display: none !important;" src="./Armadilhas para os incautos no sistema de importação do Python — documentação do Python Notes 1.0 de Nick Coghlan_files/saved_resource(2).html"></iframe></div>
+<script type="text/javascript">
+  /**
+    * var disqus_identifier; [Optional but recommended: Define a unique identifier (e.g. post id or slug) for this thread]
+    */
+  (function() {
+   var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+   dsq.src = 'https://ncoghlan-dev-python-notes.disqus.com/embed.js';
+   (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript=ncoghlan-dev-python-notes">comments powered by Disqus.</a></noscript>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="navegação de rodapé">
+      
+        <a href="http://python-notes.curiousefficiency.org/en/latest/python_concepts/break_else.html" class="btn btn-neutral float-right" title="Outras cláusulas sobre instruções de loop" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="http://python-notes.curiousefficiency.org/en/latest/python_concepts/index.html" class="btn btn-neutral float-left" title="Conceitos Python" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr><div><div id="rtd-sidebar" data-ea-publisher="readthedocs" data-ea-type="readthedocs-sidebar" data-ea-manual="true" class="ethical-rtd loaded" data-ea-keywords="python|readthedocs-project-3916|readthedocs-project-nick-coghlans-python-notes" data-ea-campaign-types="community|house|paid"><div class="ethical-sidebar"><div class="ethical-content"><a href="https://server.ethicalads.io/proxy/click/2009/2c839546-03a2-41ff-ad21-6e5b74613745/" rel="nofollow noopener" target="_blank" class="ethical-image-link"><img src="./Armadilhas para os incautos no sistema de importação do Python — documentação do Python Notes 1.0 de Nick Coghlan_files/ea-blue-community-logo.png" alt="Patrocinado: EthicalAds"></a><div class="ethical-text"><a href="https://server.ethicalads.io/proxy/click/2009/2c839546-03a2-41ff-ad21-6e5b74613745/" rel="nofollow noopener" target="_blank"><strong>Love Python? </strong><span>We do too which is why we used Python to build our</span><strong> Open Source Ad Network - Learn more</strong></a></div></div><div class="ethical-callout"><small><em><a rel="nofollow noopener" target="_blank" href="https://ethicalads.io/?ref=rtd-sidebar">Ad by EthicalAds</a><span> &nbsp; · &nbsp; </span><a rel="nofollow noopener" target="_blank" href="https://www.ethicalads.io/publishers/?ref=rtd-sidebar-join">Monetize your site</a></em></small></div></div></div></div>
+
+  <div role="contentinfo">
+    <p>
+        © Copyright 2011, Nick Coghlan
+      
+        <span class="commit">
+          Revision <code>2fb5e696</code>.
+        </span>
+      
+
+    </p>
+  </div><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+  Construído com </font></font><a href="http://sphinx-doc.org/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Sphinx</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> usando um </font></font><a href="https://github.com/rtfd/sphinx_rtd_theme"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">tema</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> fornecido por </font></font><a href="https://readthedocs.org/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Read the Docs</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> . 
+
+</font></font></footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versões">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Leia os documentos</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+      v: mais recente
+      </font></font><span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions"><!-- Inserted RTD Footer -->
+
+<div class="injected">
+
+  
+
+      
+      
+      
+      <dl>
+        <dt><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Versões</font></font></dt>
+        
+        <dd class="rtd-current-item">
+          <a href="http://python-notes.curiousefficiency.org/en/latest/python_concepts/import_traps.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Mais recentes</font></font></a>
+        </dd>
+        
+      </dl>
+      
+      
+
+      
+      
+      <dl>
+        <dt><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Transferências</font></font></dt>
+        
+        <dd><a href="http://python-notes.curiousefficiency.org/_/downloads/en/latest/pdf/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">PDF</font></font></a></dd>
+        
+        <dd><a href="http://python-notes.curiousefficiency.org/_/downloads/en/latest/htmlzip/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">HTML</font></font></a></dd>
+        
+        <dd><a href="http://python-notes.curiousefficiency.org/_/downloads/en/latest/epub/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Epub</font></font></a></dd>
+        
+      </dl>
+      
+      
+
+      
+      <dl>
+        
+        <!-- These are kept as relative links for internal installs that are http -->
+        <dt><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Em Leia os documentos</font></font></dt>
+        <dd>
+          <a href="http://readthedocs.org/projects/nick-coghlans-python-notes/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Página inicial do projeto</font></font></a>
+        </dd>
+        <dd>
+          <a href="http://readthedocs.org/projects/nick-coghlans-python-notes/builds/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Construções</font></font></a>
+        </dd>
+        <dd>
+          <a href="http://readthedocs.org/projects/nick-coghlans-python-notes/downloads/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Transferências</font></font></a>
+        </dd>
+      </dl>
+      
+
+      
+
+      
+      <dl>
+        <dt><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">No GitHub</font></font></dt>
+        <dd>
+          <a href="https://github.com/ncoghlan/misc/blob/master/notes/python_concepts/import_traps.rst"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Exibir Exibir</font></font></a>
+        </dd>
+        
+      </dl>
+      
+      
+
+      
+      <dl>
+        <dt><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Pesquisar</font></font></dt>
+        <dd>
+          <div style="padding: 6px;">
+            
+            <form id="flyout-search-form" class="wy-form" target="_blank" action="http://readthedocs.org/projects/nick-coghlans-python-notes/search/" method="get">
+              <input type="text" name="q" aria-label="Pesquisar documentos" placeholder="Pesquisar documentos">
+              </form>
+          </div>
+        </dd>
+      </dl>
+      
+
+      <hr>
+
+      
+        <small>
+          <span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Hospedado por </font></font><a href="https://readthedocs.org/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Leia os Documentos</font></font></a></span>
+          <span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> · </font></font></span>
+          <a href="https://docs.readthedocs.io/page/privacy-policy.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Política de Privacidade</font></font></a>
+        </small>
+      
+
+      
+
+</div>
+</div>
+  </div>
+
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+ 
+<script type="text/javascript">
+/* DISQUS Settings */
+var disqus_shortname = 'ncoghlan-dev-python-notes';
+(function () {
+  var s = document.createElement('script'); s.async = true;
+  s.src = 'https://disqus.com/forums/ncoghlan-dev-python-notes/count.js';
+  (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+}());
+
+/* Google Analytics */
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-122762-1']);
+_gaq.push(['_setDomainName', 'boredomandlaziness.org']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'https://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+</script>
+
+
+
+<div id="goog-gt-tt" class="skiptranslate" dir="ltr"><div style="padding: 8px;"><div><div class="logo"><img src="./Armadilhas para os incautos no sistema de importação do Python — documentação do Python Notes 1.0 de Nick Coghlan_files/translate_24dp.png" width="20" height="20" alt="Google Tradutor"></div></div></div><div class="top" style="padding: 8px; float: left; width: 100%;"><h1 class="title gray">Texto original</h1></div><div class="middle" style="padding: 8px;"><div class="original-text"></div></div><div class="bottom" style="padding: 8px;"><div class="activity-links"><span class="activity-link">Sugerir uma tradução melhor</span><span class="activity-link"></span></div><div class="started-activity-container"><hr style="color: #CCC; background-color: #CCC; height: 1px; border: none;"><div class="activity-root"></div></div></div><div class="status-message" style="display: none;"></div></div><iframe style="display: none;" src="./Armadilhas para os incautos no sistema de importação do Python — documentação do Python Notes 1.0 de Nick Coghlan_files/saved_resource(3).html"></iframe><div class="goog-te-spinner-pos"><div class="goog-te-spinner-animation"><svg xmlns="http://www.w3.org/2000/svg" class="goog-te-spinner" width="96px" height="96px" viewBox="0 0 66 66"><circle class="goog-te-spinner-path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle></svg></div></div></body></html>

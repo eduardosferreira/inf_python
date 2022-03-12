@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+<!-- saved from url=(0125)https://www.freecodecamp.org/portuguese/news/ler-arquivos-json-em-python-como-usar-load-loads-e-dump-dumps-com-arquivos-json/ -->
+<html lang="pt-br"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        
+        
+            <title>Ler arquivos JSON em Python – Como usar load/loads e dump/dumps com arquivos JSON</title>
+        
+        <meta name="HandheldFriendly" content="True">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="preconnect" href="https://fonts.googleapis.com/">
+        <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+        
+            <link rel="stylesheet" as="style" onload="this.onload=null;this.rel=&#39;stylesheet&#39;" href="./Ler arquivos JSON em Python – Como usar load_loads e dump_dumps com arquivos JSON_files/css2">
+        
+
+        
+        
+    <link rel="stylesheet" as="style" onload="this.onload=null;this.rel=&#39;stylesheet&#39;" href="./Ler arquivos JSON em Python – Como usar load_loads e dump_dumps com arquivos JSON_files/prism.min.css">
+<noscript><link rel="stylesheet" href="https://cdn.freecodecamp.org/news-assets/prism-1-16-0/prism.min.css"></noscript>
+<link rel="stylesheet" as="style" onload="this.onload=null;this.rel=&#39;stylesheet&#39;" href="./Ler arquivos JSON em Python – Como usar load_loads e dump_dumps com arquivos JSON_files/prism-unescaped-markup.css">
+<noscript><link rel="stylesheet" href="https://cdn.freecodecamp.org/news-assets/prism-1-16-0/prism-unescaped-markup.css"></noscript>
+
+<script src="./Ler arquivos JSON em Python – Como usar load_loads e dump_dumps com arquivos JSON_files/f(5).txt"></script><script src="./Ler arquivos JSON em Python – Como usar load_loads e dump_dumps com arquivos JSON_files/f(6).txt" id="google_shimpl"></script><script type="text/javascript" async="" src="./Ler arquivos JSON em Python – Como usar load_loads e dump_dumps com arquivos JSON_files/analytics.js.download"></script><script async="" src="./Ler arquivos JSON em Python – Como usar load_loads e dump_dumps com arquivos JSON_files/gtm.js.download"></script><script defer="" type="text/javascript" src="./Ler arquivos JSON em Python – Como usar load_loads e dump_dumps com arquivos JSON_files/prism.min.js.download"></script>
+<script defer="" type="text/javascript" src="./Ler arquivos JSON em Python – Como usar load_loads e dump_dumps com arquivos JSON_files/prism-unescaped-markup.min.js.download"></script>
+<script defer="" type="text/javascript" src="./Ler arquivos JSON em Python – Como usar load_loads e dump_dumps com arquivos JSON_files/prism-markup-templating.min.js.download"></script>
+<script defer="" type="text/javascript" src="./Ler arquivos JSON em Python – Como usar load_loads e dump_dumps com arquivos JSON_files/prism-bash.min.js.download"></script>
+<script defer="" type="text/javascript" src="./Ler arquivos JSON em Python – Como usar load_loads e dump_dumps com arquivos JSON_files/prism-c.min.js.download"></script>
+<script defer="" type="text/javascript" src="./Ler arquivos JSON em Python – Como usar load_loads e dump_dumps com arquivos JSON_files/prism-clojure.min.js.download"></script>
+<script defer="" type="text/javascript" src="./Ler arquivos JSON em Python – Como usar load_loads e dump_dumps com arquivos JSON_files/prism-cpp.min.js.download"></script>
+<script defer="" type="text/javascript" src="./Ler arquivos JSON em Python – Como usar load_loads e dump_dumps com arquivos JSON_files/prism-csharp.min.js.download"></script>
+<script defer="" type="text/javascript" src="./Ler arquivos JSON em Python – Como usar load_loads e dump_dumps com arquivos JSON_files/prism-css.min.js.download"></script>
+<script defer="" type="text/javascript" src="./Ler arquivos JSON em Python – Como usar load_loads e dump_dumps com arquivos JSON_files/prism-docker.min.js.download"></script>
+<script defer="" type="text/javascript" src="./Ler arquivos JSON em Python – Como usar load_loads e dump_dumps com arquivos JSON_files/prism-elixir.min.js.download"></script>
+<script defer="" type="text/javascript" src="./Ler arquivos JSON em Python – Como usar load_loads e dump_dumps com arquivos JSON_files/prism-erlang.min.js.download"></script>
+<script defer="" type="text/javascript" src="./Ler arquivos JSON em Python – Como usar load_loads e dump_dumps com arquivos JSON_files/prism-git.min.js.download"></script>
+<script defer="" type="text/javascript" src="./Ler arquivos JSON em Python – Como usar load_loads e dump_dumps com arquivos JSON_files/prism-go.min.js.download"></script>
+<script defer="" type="text/javascript" src="./Ler arquivos JSON em Python – Como usar load_loads e dump_dumps com arquivos JSON_files/prism-graphql.min.js.download"></script>
+<script defer="" type="text/javascript" src="./Ler arquivos JSON em Python – Como usar load_loads e dump_dumps com arquivos JSON_files/prism-haskell.min.js.download"></script>
+<script defer="" type="text/javascript" src="./Ler arquivos JSON em Python – Como usar load_loads e dump_dumps com arquivos JSON_files/prism-java.min.js.download"></script>
+<script defer="" type="text/javascript" src="./Ler arquivos JSON em Python – Como usar load_loads e dump_dumps com arquivos JSON_files/prism-javascript.min.js.download"></script>
+<script defer="" type="text/javascript" src="./Ler arquivos JSON em Python – Como usar load_loads e dump_dumps com arquivos JSON_files/prism-json.min.js.download"></script>
+<script defer="" type="text/javascript" src="./Ler arquivos JSON em Python – Como usar load_loads e dump_dumps com arquivos JSON_files/prism-jsx.min.js.download"></script>
+<script defer="" type="text/javascript" src="./Ler arquivos JSON em Python – Como usar load_loads e dump_dumps com arquivos JSON_files/prism-kotlin.min.js.download"></script>
+<script defer="" type="text/javascript" src="./Ler arquivos JSON em Python – Como usar load_loads e dump_dumps com arquivos JSON_files/prism-lua.min.js.download"></script>
+<script defer="" type="text/javascript" src="./Ler arquivos JSON em Python – Como usar load_loads e dump_dumps com arquivos JSON_files/prism-markup.min.js.download"></script>
+<script defer="" type="text/javascript" src="./Ler arquivos JSON em Python – Como usar load_loads e dump_dumps com arquivos JSON_files/prism-php.min.js.download"></script>
+<script defer="" type="text/javascript" src="./Ler arquivos JSON em Python – Como usar load_loads e dump_dumps com arquivos JSON_files/prism-python.min.js.download"></script>
+<script defer="" type="text/javascript" src="./Ler arquivos JSON em Python – Como usar load_loads e dump_dumps com arquivos JSON_files/prism-r.min.js.download"></script>
+<script defer="" type="text/javascript" src="./Ler arquivos JSON em Python – Como usar load_loads e dump_dumps com arquivos JSON_files/prism-ruby.min.js.download"></script>
+<script defer="" type="text/javascript" src="./Ler arquivos JSON em Python – Como usar load_loads e dump_dumps com arquivos JSON_files/prism-rust.min.js.download"></script>
+<script defer="" type="text/javascript" src="./Ler arquivos JSON em Python – Como usar load_loads e dump_dumps com arquivos JSON_files/prism-scala.min.js.download"></script>
+<script defer="" type="text/javascript" src="./Ler arquivos JSON em Python – Como usar load_loads e dump_dumps com arquivos JSON_files/prism-sql.min.js.download"></script>
+<script defer="" type="text/javascript" src="./Ler arquivos JSON em Python – Como usar load_loads e dump_dumps com arquivos JSON_files/prism-swift.min.js.download"></script>
+<script defer="" type="text/javascript" src="./Ler arquivos JSON em Python – Como usar load_loads e dump_dumps com arquivos JSON_files/prism-typescript.min.js.download"></script>
+<script defer="" type="text/javascript" src="./Ler arquivos JSON em Python – Como usar load_loads e dump_dumps com arquivos JSON_files/prism-yaml.min.js.download"></script>
+
+
+
+        
+        <link rel="stylesheet" as="style" onload="this.onload=null;this.rel=&#39;stylesheet&#39;" href="./Ler arquivos JSON em Python – Como usar load_loads e dump_dumps com arquivos JSON_files/global-26e2f3cde9.css">
+        <link rel="stylesheet" type="text/css" href="./Ler arquivos JSON em Python – Como usar load_loads e dump_dumps com arquivos JSON_files/screen-97a02bcdc5.css">
+        <link rel="stylesheet" type="text/css" href="./Ler arquivos JSON em Python – Como usar load_loads e dump_dumps com arquivos JSON_files/search-bar-124f5f949c.css">
+
+        
+        <script defer="" src="./Ler arquivos JSON em Python – Como usar load_loads e dump_dumps com arquivos JSON_files/algoliasearch.min.js.download"></script>
+        <script defer="" src="./Ler arquivos JSON em Python – Como usar load_loads e dump_dumps com arquivos JSON_files/autocomplete.min.js.download"></script>
+
+        
+        <script defer="" src="./Ler arquivos JSON em Python – Como usar load_loads e dump_dumps com arquivos JSON_files/dayjs.min.js.download"></script>
+        <script defer="" src="./Ler arquivos JSON em Python – Como usar load_loads e dump_dumps com arquivos JSON_files/localizedFormat.min.js.download"></script>
+        <script defer="" src="./Ler arquivos JSON em Python – Como usar load_loads e dump_dumps com arquivos JSON_files/relativeTime.min.js.download"></script>
+
+        
+        
+            <script defer="" src="./Ler arquivos JSON em Python – Como usar load_loads e dump_dumps com arquivos JSON_files/pt-br.min.js.download"></script>
+        
+
+        
+        <script>let client,index;document.addEventListener("DOMContentLoaded",(()=>{client=algoliasearch("QMJYL5WYTI","89770b24481654192d7a5c402c6ad9a0"),index=client.initIndex("news-pt-br")})),document.addEventListener("DOMContentLoaded",(()=>{const e=window.screen.width,t=window.screen.height,n=e>=767&&t>=768?8:5,o=document.getElementById("search-form"),s=document.getElementById("search-input"),a=document.getElementById("dropdown-container");let i,d,r;s.addEventListener("input",(e=>{i=e.target.value})),o.addEventListener("submit",(e=>{e.preventDefault(),function(){if(d=document.getElementsByClassName("aa-cursor")[0],d&&i){const e=d.querySelector("a").href;window.location.assign(e)}else!d&&i&&r&&window.location.assign(`https://www.freecodecamp.org/portuguese/news/search?query=${i}`)}()}));const c=autocomplete("#search-input",{hint:!1,keyboardShortcuts:["s",191],openOnFocus:!0,appendTo:a,debug:!0},[{source:autocomplete.sources.hits(index,{hitsPerPage:n}),debounce:250,templates:{suggestion:e=>(r=!0,`\n            <a href="${e.url}">\n              <div class="algolia-result">\n                <span>${e._highlightResult.title.value}</span>\n              </div>\n            </a>\n          `),empty:()=>(r=!1,'\n            <div class="aa-suggestion footer-suggestion no-hits-footer">\n              <div class="algolia-result">\n                <span>\n                  Não foram encontrados tutoriais\n                </span>\n              </div>\n            </div>\n          '),footer:e=>{if(!e.isEmpty)return`\n              <div class="aa-suggestion footer-suggestion">\n                <a id="algolia-footer-selector" href="https://www.freecodecamp.org/portuguese/news/search?query=${i}">\n                  <div class="algolia-result algolia-footer">\n                    Ver todos os resultados para ${i}\n                  </div>\n                </a>\n              </div>\n            `}}}]).on("autocomplete:selected",((e,t,n,o)=>{d=t?t.url:`https://www.freecodecamp.org/portuguese/news/search?query=${i}`,"click"!==o.selectionMethod&&"tabKey"!==o.selectionMethod&&r&&window.location.assign(d)}));document.addEventListener("click",(e=>{e.target!==s&&c.autocomplete.close()}))})),document.addEventListener("DOMContentLoaded",(()=>{dayjs.extend(dayjs_plugin_localizedFormat),dayjs.extend(dayjs_plugin_relativeTime),dayjs.locale("pt-br")}));</script>
+
+        
+        
+    
+        <script data-ad-client="ca-pub-9482786369113753" src="./Ler arquivos JSON em Python – Como usar load_loads e dump_dumps com arquivos JSON_files/f(7).txt" crossorigin="anonymous" async="" data-checked-head="true"></script>
+        <script defer="" src="./Ler arquivos JSON em Python – Como usar load_loads e dump_dumps com arquivos JSON_files/toggle-ad-layout-3b2b04f448.js.download"></script>
+    
+
+
+        
+        
+    <script defer="" src="./Ler arquivos JSON em Python – Como usar load_loads e dump_dumps com arquivos JSON_files/fitvids-5d12072cbf.js.download"></script>
+    
+    <script>document.addEventListener("DOMContentLoaded",(()=>{const t=document.querySelector(".post-full-content");t&&fitVids(t)}));</script>
+
+
+        
+        
+
+        <link rel="icon" href="https://cdn.freecodecamp.org/universal/favicons/favicon.ico" type="image/png">
+        
+        
+            <link rel="canonical" href="https://www.freecodecamp.org/portuguese/news/ler-arquivos-json-em-python-como-usar-load-loads-e-dump-dumps-com-arquivos-json/">
+        
+        <meta name="referrer" content="no-referrer-when-downgrade">
+
+        
+
+        
+    <link rel="amphtml" href="https://www.freecodecamp.org/portuguese/news/ler-arquivos-json-em-python-como-usar-load-loads-e-dump-dumps-com-arquivos-json/amp/">
+    <meta name="description" content="Artigo original escrito por Estefania Cassingena Navone [https://www.freecodecamp.org/news/author/estefaniacn/] Artigo original: Python Read JSON File – How to Load JSON from a File and Parse Dumps [https://www.freecodecamp.org/news/python-read-json-file-how-to-load-json-from-a-file-and-parse-dumps/] Traduzido e adaptado por Daniel Rosa [/portuguese/news/author/daniel] Boas vindas! Se quiserem aprender a trabalhar com arquivos JSON em Python, este artigo é para vocês.">
+
+    
+    <meta property="og:site_name" content="freeCodeCamp.org">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Ler arquivos JSON em Python – Como usar load/loads e dump/dumps com arquivos JSON">
+    
+        <meta property="og:description" content="Artigo original escrito por Estefania Cassingena Navone [https://www.freecodecamp.org/news/author/estefaniacn/] Artigo original: Python Read JSON File – How to Load JSON from a File and Parse Dumps [https://www.freecodecamp.org/news/python-read-json-file-how-to-load-json-from-a-file-and-parse-dumps/] Traduzido e adaptado por Daniel Rosa [/portuguese/news/author/daniel] Boas vindas! Se quiserem aprender a trabalhar com arquivos JSON em Python, este artigo é para vocês.">
+    
+    <meta property="og:url" content="https://www.freecodecamp.org/portuguese/news/ler-arquivos-json-em-python-como-usar-load-loads-e-dump-dumps-com-arquivos-json/">
+    <meta property="og:image" content="https://www.freecodecamp.org/portuguese/news/content/images/2022/01/Read-JSON-image.png">
+    <meta property="article:published_time" content="2022-01-10T12:12:51.000Z">
+    <meta property="article:modified_time" content="2022-01-12T13:33:57.000Z">
+    
+        <meta property="article:tag" content="Python">
+    
+    <meta property="article:publisher" content="https://www.facebook.com/freecodecamp">
+    
+
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Ler arquivos JSON em Python – Como usar load/loads e dump/dumps com arquivos JSON">
+    
+        <meta name="twitter:description" content="Artigo original escrito por Estefania Cassingena Navone [https://www.freecodecamp.org/news/author/estefaniacn/] Artigo original: Python Read JSON File – How to Load JSON from a File and Parse Dumps [https://www.freecodecamp.org/news/python-read-json-file-how-to-load-json-from-a-file-and-parse-dumps/] Traduzido e adaptado por Daniel Rosa [/portuguese/news/author/daniel] Boas vindas! Se quiserem aprender a trabalhar com arquivos JSON em Python, este artigo é para vocês.">
+    
+    <meta name="twitter:url" content="https://www.freecodecamp.org/portuguese/news/ler-arquivos-json-em-python-como-usar-load-loads-e-dump-dumps-com-arquivos-json/">
+    <meta name="twitter:image" content="https://www.freecodecamp.org/portuguese/news/content/images/2022/01/Read-JSON-image.png">
+    <meta name="twitter:label1" content="Written by">
+    <meta name="twitter:data1" content="Daniel Rosa">
+    <meta name="twitter:label2" content="Filed under">
+    <meta name="twitter:data2" content="Python">
+    <meta name="twitter:site" content="@freecodecampPT">
+    
+        <meta name="twitter:creator" content="@Daniel__Rosa">
+    
+
+    <meta property="og:image:width" content="1505">
+    <meta property="og:image:height" content="788">
+
+
+        
+    <script type="application/ld+json">{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "freeCodeCamp.org",
+		"url": "https://www.freecodecamp.org/portuguese/news/",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://cdn.freecodecamp.org/platform/universal/fcc_primary.svg",
+			"width": 2100,
+			"height": 240
+		}
+	},
+	"image": {
+		"@type": "ImageObject",
+		"url": "https://www.freecodecamp.org/portuguese/news/content/images/2022/01/Read-JSON-image.png",
+		"width": 1505,
+		"height": 788
+	},
+	"url": "https://www.freecodecamp.org/portuguese/news/ler-arquivos-json-em-python-como-usar-load-loads-e-dump-dumps-com-arquivos-json/",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "https://www.freecodecamp.org/portuguese/news/"
+	},
+	"datePublished": "2022-01-10T12:12:51.000Z",
+	"dateModified": "2022-01-12T13:33:57.000Z",
+	"keywords": "Python",
+	"description": "Artigo original escrito por Estefania Cassingena Navone\n[https://www.freecodecamp.org/news/author/estefaniacn/]\nArtigo original: Python Read JSON File – How to Load JSON from a File and Parse\nDumps\n[https://www.freecodecamp.org/news/python-read-json-file-how-to-load-json-from-a-file-and-parse-dumps/]\nTraduzido e adaptado por Daniel Rosa [/portuguese/news/author/daniel]\n\nBoas vindas! Se quiserem aprender a trabalhar com arquivos JSON em Python, este\nartigo é para vocês.\n\nNele, vocês aprenderão:\n\n",
+	"headline": "Ler arquivos JSON em Python – Como usar load/loads e dump/dumps com arquivos JSON",
+	"author": {
+		"@type": "Person",
+		"name": "Daniel Rosa",
+		"url": "https://www.freecodecamp.org/portuguese/news/author/daniel/",
+		"sameAs": [
+			"https://twitter.com/Daniel__Rosa"
+		],
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://www.freecodecamp.org/portuguese/news/content/images/2021/09/0.jpg",
+			"width": 200,
+			"height": 200
+		}
+	}
+}</script>
+
+
+        <meta name="generator" content="Eleventy">
+        <link rel="alternate" type="application/rss+xml" title="freeCodeCamp.org" href="https://www.freecodecamp.org/portuguese/news/rss/">
+
+        <link rel="preconnect" href="https://fonts.gstatic.com/">
+
+<!-- Web Monetization (https://webmonetization.org/) -->
+<meta name="monetization" content="$ilp.uphold.com/LJmbPn7WD4JB">
+<!-- end Web Monetization -->
+
+
+<!-- GAP -->
+
+<!-- end of GAP -->
+
+<!-- Google Tag Manager -->
+<link rel="preconnect" href="https://www.googletagmanager.com/">
+<script>
+  // Set up dataLayer with data if provided
+  window.dataLayer = window.dataLayer || [{ gaPropertyId: 'UA-55446531-20' }];
+
+  // Initialized GTM via gtag
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'UA-55446531-20');
+
+  // Configure and initialize GTM
+  (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl+'&gtm_cookies_win=x';f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer', 'GTM-5D6RKKP');
+</script>
+<!-- End Google Tag Manager -->
+        
+    <style id="fit-vids-style">.fluid-width-video-container{flex-grow: 1;width:100%;}.fluid-width-video-wrapper{width:100%;position:relative;padding:0;}.fluid-width-video-wrapper iframe,.fluid-width-video-wrapper object,.fluid-width-video-wrapper embed {position:absolute;top:0;left:0;width:100%;height:100%;}</style><meta http-equiv="origin-trial" content="AxujKG9INjsZ8/gUq8+dTruNvk7RjZQ1oFhhgQbcTJKDnZfbzSTE81wvC2Hzaf3TW4avA76LTZEMdiedF1vIbA4AAABueyJvcmlnaW4iOiJodHRwczovL2ltYXNkay5nb29nbGVhcGlzLmNvbTo0NDMiLCJmZWF0dXJlIjoiVHJ1c3RUb2tlbnMiLCJleHBpcnkiOjE2NTI3NzQ0MDAsImlzVGhpcmRQYXJ0eSI6dHJ1ZX0="><meta http-equiv="origin-trial" content="Azuce85ORtSnWe1MZDTv68qpaW3iHyfL9YbLRy0cwcCZwVnePnOmkUJlG8HGikmOwhZU22dElCcfrfX2HhrBPAkAAAB7eyJvcmlnaW4iOiJodHRwczovL2RvdWJsZWNsaWNrLm5ldDo0NDMiLCJmZWF0dXJlIjoiVHJ1c3RUb2tlbnMiLCJleHBpcnkiOjE2NTI3NzQ0MDAsImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9"><meta http-equiv="origin-trial" content="A16nvcdeoOAqrJcmjLRpl1I6f3McDD8EfofAYTt/P/H4/AWwB99nxiPp6kA0fXoiZav908Z8etuL16laFPUdfQsAAACBeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXRhZ3NlcnZpY2VzLmNvbTo0NDMiLCJmZWF0dXJlIjoiVHJ1c3RUb2tlbnMiLCJleHBpcnkiOjE2NTI3NzQ0MDAsImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9"><meta http-equiv="origin-trial" content="AxBHdr0J44vFBQtZUqX9sjiqf5yWZ/OcHRcRMN3H9TH+t90V/j3ENW6C8+igBZFXMJ7G3Pr8Dd13632aLng42wgAAACBeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXN5bmRpY2F0aW9uLmNvbTo0NDMiLCJmZWF0dXJlIjoiVHJ1c3RUb2tlbnMiLCJleHBpcnkiOjE2NTI3NzQ0MDAsImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9"><meta http-equiv="origin-trial" content="A88BWHFjcawUfKU3lIejLoryXoyjooBXLgWmGh+hNcqMK44cugvsI5YZbNarYvi3roc1fYbHA1AVbhAtuHZflgEAAAB2eyJvcmlnaW4iOiJodHRwczovL2dvb2dsZS5jb206NDQzIiwiZmVhdHVyZSI6IlRydXN0VG9rZW5zIiwiZXhwaXJ5IjoxNjUyNzc0NDAwLCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlfQ=="><meta http-equiv="origin-trial" content="A8FHS1NmdCwGqD9DwOicnHHY+y27kdWfxKa0YHSGDfv0CSpDKRHTQdQmZVPDUdaFWUsxdgVxlwAd6o+dhJykPA0AAACWeyJvcmlnaW4iOiJodHRwczovL2RvdWJsZWNsaWNrLm5ldDo0NDMiLCJmZWF0dXJlIjoiQ29udmVyc2lvbk1lYXN1cmVtZW50IiwiZXhwaXJ5IjoxNjQzMTU1MTk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlLCJ1c2FnZSI6InN1YnNldCJ9"><meta http-equiv="origin-trial" content="A8zdXi6dr1hwXEUjQrYiyYQGlU3557y5QWDnN0Lwgj9ePt66XMEvNkVWOEOWPd7TP9sBQ25X0Q15Lr1Nn4oGFQkAAACceyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXN5bmRpY2F0aW9uLmNvbTo0NDMiLCJmZWF0dXJlIjoiQ29udmVyc2lvbk1lYXN1cmVtZW50IiwiZXhwaXJ5IjoxNjQzMTU1MTk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlLCJ1c2FnZSI6InN1YnNldCJ9"><meta http-equiv="origin-trial" content="A4/Htern2udN9w3yJK9QgWQxQFruxOXsXL7cW60DyCl0EZFGCSme/J33Q/WzF7bBkVvhEWDlcBiUyZaim5CpFQwAAACceyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXRhZ3NlcnZpY2VzLmNvbTo0NDMiLCJmZWF0dXJlIjoiQ29udmVyc2lvbk1lYXN1cmVtZW50IiwiZXhwaXJ5IjoxNjQzMTU1MTk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlLCJ1c2FnZSI6InN1YnNldCJ9"><link rel="preload" href="./Ler arquivos JSON em Python – Como usar load_loads e dump_dumps com arquivos JSON_files/f(8).txt" as="script"><script type="text/javascript" src="./Ler arquivos JSON em Python – Como usar load_loads e dump_dumps com arquivos JSON_files/f(8).txt"></script><link rel="preload" href="./Ler arquivos JSON em Python – Como usar load_loads e dump_dumps com arquivos JSON_files/f(9).txt" as="script"><script type="text/javascript" src="./Ler arquivos JSON em Python – Como usar load_loads e dump_dumps com arquivos JSON_files/f(9).txt"></script><link rel="preload" href="./Ler arquivos JSON em Python – Como usar load_loads e dump_dumps com arquivos JSON_files/f(8).txt" as="script"><script type="text/javascript" src="./Ler arquivos JSON em Python – Como usar load_loads e dump_dumps com arquivos JSON_files/f(8).txt"></script><link rel="preload" href="./Ler arquivos JSON em Python – Como usar load_loads e dump_dumps com arquivos JSON_files/f(9).txt" as="script"><script type="text/javascript" src="./Ler arquivos JSON em Python – Como usar load_loads e dump_dumps com arquivos JSON_files/f(9).txt"></script><link rel="preload" href="./Ler arquivos JSON em Python – Como usar load_loads e dump_dumps com arquivos JSON_files/f(8).txt" as="script"><script type="text/javascript" src="./Ler arquivos JSON em Python – Como usar load_loads e dump_dumps com arquivos JSON_files/f(8).txt"></script><link rel="preload" href="./Ler arquivos JSON em Python – Como usar load_loads e dump_dumps com arquivos JSON_files/f(9).txt" as="script"><script type="text/javascript" src="./Ler arquivos JSON em Python – Como usar load_loads e dump_dumps com arquivos JSON_files/f(9).txt"></script><link rel="preload" href="./Ler arquivos JSON em Python – Como usar load_loads e dump_dumps com arquivos JSON_files/f(8).txt" as="script"><script type="text/javascript" src="./Ler arquivos JSON em Python – Como usar load_loads e dump_dumps com arquivos JSON_files/f(8).txt"></script><link rel="preload" href="./Ler arquivos JSON em Python – Como usar load_loads e dump_dumps com arquivos JSON_files/f(9).txt" as="script"><script type="text/javascript" src="./Ler arquivos JSON em Python – Como usar load_loads e dump_dumps com arquivos JSON_files/f(9).txt"></script><link rel="preload" href="./Ler arquivos JSON em Python – Como usar load_loads e dump_dumps com arquivos JSON_files/f(8).txt" as="script"><script type="text/javascript" src="./Ler arquivos JSON em Python – Como usar load_loads e dump_dumps com arquivos JSON_files/f(8).txt"></script><link rel="preload" href="./Ler arquivos JSON em Python – Como usar load_loads e dump_dumps com arquivos JSON_files/f(9).txt" as="script"><script type="text/javascript" src="./Ler arquivos JSON em Python – Como usar load_loads e dump_dumps com arquivos JSON_files/f(9).txt"></script><link rel="preload" href="./Ler arquivos JSON em Python – Como usar load_loads e dump_dumps com arquivos JSON_files/f(8).txt" as="script"><script type="text/javascript" src="./Ler arquivos JSON em Python – Como usar load_loads e dump_dumps com arquivos JSON_files/f(8).txt"></script><link rel="preload" href="./Ler arquivos JSON em Python – Como usar load_loads e dump_dumps com arquivos JSON_files/f(9).txt" as="script"><script type="text/javascript" src="./Ler arquivos JSON em Python – Como usar load_loads e dump_dumps com arquivos JSON_files/f(9).txt"></script><link rel="preload" href="./Ler arquivos JSON em Python – Como usar load_loads e dump_dumps com arquivos JSON_files/f(8).txt" as="script"><script type="text/javascript" src="./Ler arquivos JSON em Python – Como usar load_loads e dump_dumps com arquivos JSON_files/f(8).txt"></script><link rel="preload" href="./Ler arquivos JSON em Python – Como usar load_loads e dump_dumps com arquivos JSON_files/f(9).txt" as="script"><script type="text/javascript" src="./Ler arquivos JSON em Python – Como usar load_loads e dump_dumps com arquivos JSON_files/f(9).txt"></script><link rel="preload" href="./Ler arquivos JSON em Python – Como usar load_loads e dump_dumps com arquivos JSON_files/f(8).txt" as="script"><script type="text/javascript" src="./Ler arquivos JSON em Python – Como usar load_loads e dump_dumps com arquivos JSON_files/f(8).txt"></script><link rel="preload" href="./Ler arquivos JSON em Python – Como usar load_loads e dump_dumps com arquivos JSON_files/f(9).txt" as="script"><script type="text/javascript" src="./Ler arquivos JSON em Python – Como usar load_loads e dump_dumps com arquivos JSON_files/f(9).txt"></script><link rel="preload" href="./Ler arquivos JSON em Python – Como usar load_loads e dump_dumps com arquivos JSON_files/f(8).txt" as="script"><script type="text/javascript" src="./Ler arquivos JSON em Python – Como usar load_loads e dump_dumps com arquivos JSON_files/f(8).txt"></script><link rel="preload" href="./Ler arquivos JSON em Python – Como usar load_loads e dump_dumps com arquivos JSON_files/f(9).txt" as="script"><script type="text/javascript" src="./Ler arquivos JSON em Python – Como usar load_loads e dump_dumps com arquivos JSON_files/f(9).txt"></script></head>
+    
+    
+        <body class="home-template">
+    
+        <div class="site-wrapper" style="height: auto !important; min-height: 0px !important;">
+            <nav class="site-nav nav-padding">
+    <div class="site-nav-left">
+        <form id="search-form" data-test-label="search-bar">
+  <div role="search" class="searchbox__wrapper">
+    <label class="fcc_sr_only" for="search-input">
+      Buscar
+    </label>
+    <input type="search" placeholder="Buscar tutoriais" id="search-input" class="aa-input" autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="true" aria-owns="algolia-autocomplete-listbox-0" dir="auto" style=""><pre aria-hidden="true" style="position: absolute; visibility: hidden; white-space: pre; font-family: Lato, sans-serif; font-size: 18px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: normal; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre>
+    <button type="submit" class="ais-SearchBox-submit">
+      <svg class="ais-SearchBox-submitIcon" xmlns="https://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 40 40">
+    <path d="M26.804 29.01c-2.832 2.34-6.465 3.746-10.426 3.746C7.333 32.756 0 25.424 0 16.378 0 7.333 7.333 0 16.378 0c9.046 0 16.378 7.333 16.378 16.378 0 3.96-1.406 7.594-3.746 10.426l10.534 10.534c.607.607.61 1.59-.004 2.202-.61.61-1.597.61-2.202.004L26.804 29.01zm-10.426.627c7.323 0 13.26-5.936 13.26-13.26 0-7.32-5.937-13.257-13.26-13.257C9.056 3.12 3.12 9.056 3.12 16.378c0 7.323 5.936 13.26 13.258 13.26z"></path>
+</svg>
+
+      <span class="fcc_sr_only">Envie sua consulta de pesquisa</span>
+    </button>
+    <div id="dropdown-container"><span class="algolia-autocomplete" style="position: absolute; z-index: 100; direction: ltr; display: none; width: 449.797px; top: 32px; left: 25px;"><span class="aa-dropdown-menu" role="listbox" id="algolia-autocomplete-listbox-0" style="display: block; left: 0px; right: auto;"><div class="aa-dataset-1"></div></span></span></div>
+  </div>
+</form>
+
+    </div>
+    <div class="site-nav-middle">
+        <a class="site-nav-logo" href="https://www.freecodecamp.org/portuguese/news"><img src="./Ler arquivos JSON em Python – Como usar load_loads e dump_dumps com arquivos JSON_files/fcc_primary.svg" alt="freeCodeCamp.org"></a>
+    </div>
+    <div class="site-nav-right">
+        <div class="nav-group">
+            <a class="nav-forum" id="nav-forum" rel="noopener noreferrer" href="https://forum.freecodecamp.org/c/portugues/534" target="_blank" data-test-label="forum-button">Fórum</a>
+            <a class="toggle-button-nav" id="nav-donate" rel="noopener noreferrer" href="https://www.freecodecamp.org/portuguese/donate/" target="_blank" data-test-label="donate-button">Doar</a>
+        </div>
+    </div>
+</nav>
+
+
+            
+            <a class="banner" id="banner" data-test-label="banner" rel="noopener noreferrer" href="https://chat.freecodecamp.org/home" target="_blank">
+    <p>
+        <span>Converse com outros desenvolvedores em português</span>
+    </p>
+</a>
+
+
+            <div id="error-message"></div>
+
+            
+    <main id="site-main" class="post-template site-main outer" style="height: auto !important;">
+        <div class="inner ad-layout" style="height: auto !important;">
+            <article class="post-full post " style="height: auto !important;">
+                <header class="post-full-header">
+                    <section class="post-full-meta">
+                        <time class="post-full-meta-date" datetime="Mon Jan 10 2022 12:12:51 GMT+0000 (Coordinated Universal Time)">
+                            10 de janeiro de 2022
+                        </time>
+                        
+                            <span class="date-divider">/</span>
+                            <a href="https://www.freecodecamp.org/portuguese/news/tag/python/">
+                                #Python
+                            </a>
+                        
+                    </section>
+                    <h1 class="post-full-title">Ler arquivos JSON em Python – Como usar load/loads e dump/dumps com arquivos JSON</h1>
+                </header>
+                <div class="post-full-author-header">
+                    
+                        
+                            
+    
+    
+
+    <section class="author-card">
+        
+            
+    <img srcset="https://www.freecodecamp.org/portuguese/news/content/images/size/w60/2021/09/0.jpg 60w" sizes="60px" src="./Ler arquivos JSON em Python – Como usar load_loads e dump_dumps com arquivos JSON_files/0.jpg" class="author-profile-image" alt="Daniel Rosa" width="200" height="200" onerror="this.style.display=&#39;none&#39;">
+  
+        
+
+        <section class="author-card-content author-card-content-no-bio">
+            <span class="author-card-name">
+                <a href="https://www.freecodecamp.org/portuguese/news/author/daniel/">
+                    
+                        Daniel Rosa
+                    
+                </a>
+            </span>
+            
+        </section>
+    </section>
+
+                        
+                    
+                </div>
+                
+                    <figure class="post-full-image">
+                        
+    <picture>
+      <source media="(max-width: 700px)" sizes="1px" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7 1w">
+      <source media="(min-width: 701px)" sizes="(max-width: 800px) 400px, (max-width: 1170px) 700px, 1400px" srcset="https://www.freecodecamp.org/portuguese/news/content/images/size/w300/2022/01/Read-JSON-image.png 300w,https://www.freecodecamp.org/portuguese/news/content/images/size/w600/2022/01/Read-JSON-image.png 600w,https://www.freecodecamp.org/portuguese/news/content/images/size/w1000/2022/01/Read-JSON-image.png 1000w,https://www.freecodecamp.org/portuguese/news/content/images/size/w2000/2022/01/Read-JSON-image.png 2000w">
+      <img onerror="this.style.display=&#39;none&#39;" src="./Ler arquivos JSON em Python – Como usar load_loads e dump_dumps com arquivos JSON_files/Read-JSON-image.png" alt="Ler arquivos JSON em Python – Como usar load/loads e dump/dumps com arquivos JSON" ,="" width="1505" height="788">
+    </picture>
+  
+                    </figure>
+                
+                <section class="post-full-content" style="height: auto !important; min-height: 0px !important;">
+                    <div class="post-and-sidebar" style="height: auto !important;">
+                        <section class="post-content ">
+                            
+<p>Artigo original escrito por <a href="https://www.freecodecamp.org/news/author/estefaniacn/">Estefania Cassingena Navone</a><br>Artigo original: <a href="https://www.freecodecamp.org/news/python-read-json-file-how-to-load-json-from-a-file-and-parse-dumps/">Python Read JSON File – How to Load JSON from a File and Parse Dumps</a><br>Traduzido e adaptado por <a href="https://www.freecodecamp.org/portuguese/news/author/daniel">Daniel Rosa</a></p><p>Boas vindas! Se quiserem aprender a trabalhar com arquivos JSON em Python, este artigo é para vocês.</p><p><strong>Nele, vocês aprenderão<strong>:</strong></strong></p><ul><li>O motivo de o formato JSON ser tão importante.</li><li>Sua estrutura básica e tipos de dados.</li><li>Como o JSON e dicionários em Python funcionam juntos na linguagem.</li><li>Como trabalhar com o módulo <code>json</code> integrado do Python.</li><li>Como converter strings do JSON em objetos do Python e vice-versa.</li><li>Como usar <code>loads()</code> e <code>dumps()</code></li><li>Como indentar as strings do JSON automaticamente.</li><li>Como ler os arquivos JSON em Python usando <code>load()</code></li><li>Como gravar em arquivos JSON no Python usando <code>dump()</code></li><li>E mais!</li></ul><p>Estão prontos? Vamos começar! ✨</p><h2 id="-introdu-o-o-que-json"><strong><strong>🔹 Introdu</strong>ção<strong>: </strong>O que é <strong>JSON?</strong></strong></h2><figure class="kg-card kg-image-card"><img src="./Ler arquivos JSON em Python – Como usar load_loads e dump_dumps com arquivos JSON_files/image-98.png" class="kg-image" alt="image-98" srcset="https://www.freecodecamp.org/portuguese/news/content/images/size/w600/2022/01/image-98.png 600w, https://www.freecodecamp.org/portuguese/news/content/images/2022/01/image-98.png 959w" sizes="(min-width: 720px) 720px" width="959" height="106" loading="lazy"></figure><p>O formato JSON foi inspirado originalmente na sintaxe do JavaScript (uma linguagem de programação usada em desenvolvimento para a web). Porém, desde então, ele se tornou um <strong>formato de dados independente de linguagem<strong> </strong></strong>e a maioria das linguagens de programação que utilizamos hoje pode gerar e ler JSON.</p><h3 id="import-ncia-e-casos-de-uso-do-json"><strong><strong>Import</strong>ância e casos de uso do <strong>JSON</strong></strong></h3><p>O JSON é, basicamente, um formato usado para armazenam ou representar dados. É comum que os casos de uso incluam o desenvolvimento para a web e arquivos de configuração.</p><p>Vejamos o motivo:</p><ul><li><strong><strong>De</strong>senvolvimento para a web<strong>:</strong></strong> o JSON normalmente é usado para enviar dados do servidor para o client e vice-versa em aplicações para a web.</li></ul><figure class="kg-card kg-image-card kg-width-wide"><img src="./Ler arquivos JSON em Python – Como usar load_loads e dump_dumps com arquivos JSON_files/image-65.png" class="kg-image" alt="image-65" srcset="https://www.freecodecamp.org/portuguese/news/content/images/size/w600/2022/01/image-65.png 600w, https://www.freecodecamp.org/portuguese/news/content/images/2022/01/image-65.png 861w" width="861" height="284" loading="lazy"></figure><ul><li><strong>Arquivos de configuração<strong>: </strong>o </strong>JSON também é usado para armazenar configurações e definições. Por exemplo, para criar um <a href="https://developer.chrome.com/apps/first_app#one">app do Google Chrome</a>, você precisa incluir um arquivo no formato JSON chamado <code>manifest.json</code> para especificar o nome do app, sua descrição, versão atual e outras propriedades e definições.</li></ul><figure class="kg-card kg-image-card kg-width-wide"><img src="./Ler arquivos JSON em Python – Como usar load_loads e dump_dumps com arquivos JSON_files/image-99.png" class="kg-image" alt="image-99" srcset="https://www.freecodecamp.org/portuguese/news/content/images/size/w600/2022/01/image-99.png 600w, https://www.freecodecamp.org/portuguese/news/content/images/2022/01/image-99.png 859w" width="859" height="263" loading="lazy"></figure><h2 id="-estrutura-e-formato-do-json"><strong><strong>🔸 </strong>Estrutura e formato do <strong>JSON</strong></strong></h2><p>Agora que você sabe para que o formato JSON é usado, vejamos sua estrutura básica com um exemplo que representa os dados de um pedido de pizza:</p><figure class="kg-card kg-code-card"><pre class=" language-json"><code class=" language-json"><span class="token punctuation">{</span> 
+	<span class="token property">"size"</span><span class="token operator">:</span> <span class="token string">"medium"</span><span class="token punctuation">,</span>
+	<span class="token property">"price"</span><span class="token operator">:</span> <span class="token number">15.67</span><span class="token punctuation">,</span>
+	<span class="token property">"toppings"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"mushrooms"</span><span class="token punctuation">,</span> <span class="token string">"pepperoni"</span><span class="token punctuation">,</span> <span class="token string">"basil"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+	<span class="token property">"extra_cheese"</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+	<span class="token property">"delivery"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+	<span class="token property">"client"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+		<span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"Jane Doe"</span><span class="token punctuation">,</span>
+		<span class="token property">"phone"</span><span class="token operator">:</span> <span class="token null keyword">null</span><span class="token punctuation">,</span>
+		<span class="token property">"email"</span><span class="token operator">:</span> <span class="token string">"janedoe@email.com"</span>
+	<span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre><figcaption>Exemplo de arquivo .json</figcaption></figure><p>Essas são as características principais do formato JSON:</p><ul><li>Há uma sequência de pares chave-valor envolvidos por chaves <code>{}</code>.</li><li>Cada chave é mapeada para um valor específico usando este formato:</li></ul><pre><code>"chave": &lt;valor&gt; </code></pre><p>💡 <strong>Dica<strong>:</strong></strong> Os valores que exigem aspas precisam ser envolvidos por aspas duplas.</p><ul><li>Pares chave-valor são separados por uma vírgula. Somente o último par não é seguido por uma vírgula.</li></ul><pre class=" language-json"><code class=" language-json"><span class="token punctuation">{</span>
+	<span class="token property">"size"</span><span class="token operator">:</span> <span class="token string">"medium"</span><span class="token punctuation">,</span> # Vírgula!
+	<span class="token property">"price"</span><span class="token operator">:</span> <span class="token number">15.67</span>
+<span class="token punctuation">}</span></code></pre><p>💡 <strong>Dica<strong>:</strong></strong> Tipicamente, formatamos o JSON com níveis diferentes de indentação para tornar os dados mais fáceis de ler. Neste artigo, aprenderemos como adicionar a indentação automaticamente com o Python.</p><h3 id="tipos-de-dados-do-json-chaves-e-valores"><strong>Tipos de dados do <strong>JSON: </strong>chaves e valores</strong></h3><p>Os arquivos JSON têm regras específicas que determinam que tipos de dados são válidos como chaves e valores.</p><ul><li><strong>Chaves<strong> </strong></strong>devem ser strings.</li><li><strong><strong>Val</strong>ore<strong>s </strong></strong>podem ser strings, números, um array, um valor booleano (<code>true</code>/ <code>false</code>), <code>null</code> ou um objeto JSON.</li></ul><p>De acordo com a <a href="https://docs.python.org/pt-br/3/library/json.html#json.dumps">documentação do Python</a>:</p><blockquote>Chaves nos pares chave/valor de JSON são sempre do tipo <a href="https://docs.python.org/3/library/stdtypes.html#str"><code>str</code></a>. Quando um dicionário é convertido para JSON, todas as chaves são convertidas para strings.</blockquote><h3 id="guia-de-estilo"><strong>Guia de estilo</strong></h3><p>De acordo com o <a href="https://google.github.io/styleguide/jsoncstyleguide.xml">Guia de estilo de JSON do Google</a> (em inglês):</p><ul><li>Sempre escolha nomes significativos.</li><li>Tipos de array devem ter nomes de chave no plural. Todos os outros nomes de chave devem estar no singular. Por exemplo: use <code>"orders"</code> em vez de <code>"order"</code> se o valor correspondente for um array.</li><li>Não deve haver comentários em objetos JSON.</li></ul><h2 id="-json-x-dicion-rios-em-python"><strong><strong>🔹 JSON </strong>x<strong> </strong>dicionários em <strong>Python</strong></strong></h2><p>Arquivos JSON e dicionários podem parecer muito semelhantes para começar (visualmente), mas eles são bem diferentes. Vamos ver como eles estão "conectados" e como eles se complementam para tornar o Python uma ferramenta poderosa de trabalho com arquivos JSON.</p><p>JSON é um formato de arquivo usado para representar e armazenar dados, enquanto um dicionário em Python é a estrutura de dados de fato (o objeto) que é mantida na memória enquanto um programa em Python é executado.</p><h3 id="como-funcionam-juntos-o-json-e-os-dicion-rios-em-python"><strong>Como funcionam juntos o <strong>JSON </strong>e os dicionários em<strong> Python</strong></strong></h3><figure class="kg-card kg-image-card kg-width-wide"><img src="./Ler arquivos JSON em Python – Como usar load_loads e dump_dumps com arquivos JSON_files/image-100.png" class="kg-image" alt="image-100" srcset="https://www.freecodecamp.org/portuguese/news/content/images/size/w600/2022/01/image-100.png 600w, https://www.freecodecamp.org/portuguese/news/content/images/2022/01/image-100.png 808w" width="808" height="153" loading="lazy"></figure><p>Quando trabalhamos com arquivos JSON em Python, não podemos simplesmente ler e usar os dados em nosso programa diretamente. Isso ocorre porque o arquivo inteiro seria representado como uma única string e não conseguiríamos acessar os valores de chave-valor de modo individual.</p><p>A não ser que...</p><p>usássemos os pares chave-valor do arquivo JSON para criar um dicionário em Python que pudéssemos usar em nosso programa para ler os dados, usá-los e modificá-los (se necessário).</p><p>Essa é a conexão principal entre o JSON e os dicionários em Python. O JSON é a representação em formato string dos dados e os dicionários são as estruturas de dados que estão de fato na memória e que são criadas quando o programa é executado.</p><p>Ótimo. Agora que sabemos mais sobre o JSON, vamos nos aprofundar nos aspectos práticos de como você pode trabalhar com o JSON em Python.</p><h2 id="-o-m-dulo-json"><strong><strong>🔸 </strong>O módulo <strong>JSON</strong></strong></h2><p>Para nossa sorte, o Python vem com um módulo integrado chamado <code>json</code>. Ele é instalado automaticamente quando você instala o Python e inclui funções para ajudá-lo a trabalhar com arquivos e strings em JSON.</p><p>Usaremos esse módulo nos próximos exemplos.</p><h3 id="como-importar-o-m-dulo-json"><strong>Como importar o módulo <strong>JSON</strong></strong></h3><p>Para usar o <code>json</code> em nosso programa, somente precisamos escrever uma instrução import na parte superior do arquivo.</p><p>Assim:</p><figure class="kg-card kg-image-card kg-width-wide"><img src="./Ler arquivos JSON em Python – Como usar load_loads e dump_dumps com arquivos JSON_files/image-73.png" class="kg-image" alt="image-73" srcset="https://www.freecodecamp.org/portuguese/news/content/images/size/w600/2022/01/image-73.png 600w, https://www.freecodecamp.org/portuguese/news/content/images/2022/01/image-73.png 904w" width="904" height="63" loading="lazy"></figure><p>Com esta linha, você terá acesso às funções definidas no módulo. Usaremos várias delas nos exemplos.</p><p><strong><strong>💡 </strong>Dica<strong>: </strong></strong>Se você escrever essa instrução import, precisará usar a sintaxe abaixo para chamar uma função definida no módulo <code>json</code>:</p><figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="./Ler arquivos JSON em Python – Como usar load_loads e dump_dumps com arquivos JSON_files/image-76.png" class="kg-image" alt="image-76" srcset="https://www.freecodecamp.org/portuguese/news/content/images/size/w600/2022/01/image-76.png 600w, https://www.freecodecamp.org/portuguese/news/content/images/size/w1000/2022/01/image-76.png 1000w, https://www.freecodecamp.org/portuguese/news/content/images/2022/01/image-76.png 1336w" sizes="(min-width: 1200px) 1200px" width="1336" height="421" loading="lazy"><figcaption>json.&lt;função&gt;(&lt;args&gt;), onde json é o módulo e args são os argumentos da função</figcaption></figure><h2 id="-python-e-strings-em-json"><strong><strong>🔹 Python </strong>e strings em <strong>JSON</strong></strong></h2><p>Para ilustrar como algumas das mais importantes funções do módulo <code>json</code> funcionam, usaremos uma string de várias linhas com o formato de JSON.</p><h3 id="string-em-json"><strong>String em <strong>JSON</strong></strong></h3><p>Usaremos essa string específica nos exemplos. É apenas uma string em várias linhas normal em Python que segue o formato de JSON.</p><figure class="kg-card kg-code-card"><pre class=" language-python"><code class=" language-python">data_JSON <span class="token operator">=</span>  <span class="token triple-quoted-string string">"""
+{
+	"size": "Medium",
+	"price": 15.67,
+	"toppings": ["Mushrooms", "Extra Cheese", "Pepperoni", "Basil"],
+	"client": {
+		"name": "Jane Doe",
+		"phone": "455-344-234",
+		"email": "janedoe@email.com"
+	}
+}
+"""</span></code></pre><figcaption>String em JSON</figcaption></figure><ul><li>Para definir uma string de várias linhas em Python, usamos aspas triplas.</li><li>Em seguida, atribuímos a string à variável <code>data_JSON</code>.</li></ul><p>💡 <strong>Dica<strong>: </strong></strong>O <a href="https://www.python.org/dev/peps/pep-0008/#string-quotes">guia de estilo do Python</a> recomenda usar caracteres de aspas duplas para as aspas triplas ( """ em vez de ''').</p><h3 id="da-string-em-json-ao-dicion-rio-em-python"><strong>Da string em <strong>JSON </strong>ao dicionário em<strong> Python</strong></strong></h3><p>Usaremos a string com formato JSON para criar um dicionário em Python que possamos acessar, trabalhar com ele e modificá-lo.</p><p>Para fazer isso, usaremos a função <code>loads()</code> do módulo <code>json</code>, passando a string como argumento.</p><p>Esta é a sintaxe básica:</p><figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="./Ler arquivos JSON em Python – Como usar load_loads e dump_dumps com arquivos JSON_files/image-77.png" class="kg-image" alt="image-77" srcset="https://www.freecodecamp.org/portuguese/news/content/images/size/w600/2022/01/image-77.png 600w, https://www.freecodecamp.org/portuguese/news/content/images/2022/01/image-77.png 958w" width="958" height="288" loading="lazy"><figcaption>json.loads(&lt;JSON_string&gt;), onde json é o módulo, loads é a função e &lt;JSON_string&gt; é a string no formato JSON</figcaption></figure><p>Aqui está o código:</p><pre class=" language-python"><code class=" language-python"><span class="token comment"># Importar o módulo</span>
+<span class="token keyword">import</span> json
+
+<span class="token comment"># String em formato JSON</span>
+data_JSON <span class="token operator">=</span>  <span class="token triple-quoted-string string">"""
+{
+	"size": "Medium",
+	"price": 15.67,
+	"toppings": ["Mushrooms", "Extra Cheese", "Pepperoni", "Basil"],
+	"client": {
+		"name": "Jane Doe",
+		"phone": "455-344-234",
+		"email": "janedoe@email.com"
+	}
+}
+"""</span>
+
+<span class="token comment"># Converter a string em JSON em um dicionário</span>
+data_dict <span class="token operator">=</span> json<span class="token punctuation">.</span>loads<span class="token punctuation">(</span>data_JSON<span class="token punctuation">)</span>
+</code></pre><p>Vamos nos concentrar nessa linha:</p><pre class=" language-python"><code class=" language-python">data_dict <span class="token operator">=</span> json<span class="token punctuation">.</span>loads<span class="token punctuation">(</span>data_JSON<span class="token punctuation">)</span></code></pre><ul><li><code>json.loads(data_JSON)</code> cria um novo dicionário com os pares chave-valor da string em JSON e retorna esse novo dicionário.</li><li>Em seguida, o dicionário retornado é atribuído à variável <code>data_dict</code>.</li></ul><p><strong>Ótimo<strong>! </strong></strong>Se imprimirmos o dicionário, veremos esse resultado:</p><pre class=" language-python"><code class=" language-python"><span class="token punctuation">{</span><span class="token string">'size'</span><span class="token punctuation">:</span> <span class="token string">'Medium'</span><span class="token punctuation">,</span> <span class="token string">'price'</span><span class="token punctuation">:</span> <span class="token number">15.67</span><span class="token punctuation">,</span> <span class="token string">'toppings'</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'Mushrooms'</span><span class="token punctuation">,</span> <span class="token string">'Extra Cheese'</span><span class="token punctuation">,</span> <span class="token string">'Pepperoni'</span><span class="token punctuation">,</span> <span class="token string">'Basil'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token string">'client'</span><span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token string">'name'</span><span class="token punctuation">:</span> <span class="token string">'Jane Doe'</span><span class="token punctuation">,</span> <span class="token string">'phone'</span><span class="token punctuation">:</span> <span class="token string">'455-344-234'</span><span class="token punctuation">,</span> <span class="token string">'email'</span><span class="token punctuation">:</span> <span class="token string">'janedoe@email.com'</span><span class="token punctuation">}</span><span class="token punctuation">}</span></code></pre><p>O dicionário foi preenchido com os dados da string em JSON. Cada par chave-valor foi adicionado com sucesso.</p><p>Agora, vamos ver o que acontece quando tentamos acessar os valores dos pares chave-valor com a mesma sintaxe que usaríamos para acessar um dicionário comum em Python:</p><pre class=" language-python"><code class=" language-python"><span class="token keyword">print</span><span class="token punctuation">(</span>data_dict<span class="token punctuation">[</span><span class="token string">"size"</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>data_dict<span class="token punctuation">[</span><span class="token string">"price"</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>data_dict<span class="token punctuation">[</span><span class="token string">"toppings"</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>data_dict<span class="token punctuation">[</span><span class="token string">"client"</span><span class="token punctuation">]</span><span class="token punctuation">)</span></code></pre><p>O resultado é:</p><pre><code>Medium
+15.67
+['Mushrooms', 'Extra Cheese', 'Pepperoni', 'Basil']
+{'name': 'Jane Doe', 'phone': '455-344-234', 'email': 'janedoe@email.com'}</code></pre><p>Exatamente aquilo que esperávamos. Cada chave pode ser usada para acessar seu valor correspondente.</p><p>💡 <strong>Dica<strong>:</strong></strong> Podemos usar esse dicionário como qualquer outro dicionário em Python. Por exemplo, podemos chamar métodos de dicionário, adicionar, atualizar, remover pares de chave-valor e muito mais. Também podemos usá-lo em um laço for.</p><h3 id="de-json-para-python-convers-o-de-tipo"><strong>De <strong>JSON </strong>para<strong> Python: </strong>conversão de tipo</strong></h3><p>Quando você usar <code>loads()</code> para criar um dicionário em Python a partir de uma string em JSON, perceberá que alguns valores serão convertidos em seus valores e tipos de dados em Python correspondentes.</p><p>Esta tabela apresentada na <a href="https://docs.python.org/pt-br/3/library/json.html#encoders-and-decoders">documentação do Python</a> para o módulo <code>json</code> resume a correspondência dos tipos de dados e valores em JSON para os tipos de dados e valores no Python:</p><figure class="kg-card kg-image-card kg-card-hascaption"><img src="./Ler arquivos JSON em Python – Como usar load_loads e dump_dumps com arquivos JSON_files/image-79.png" class="kg-image" alt="image-79" srcset="https://www.freecodecamp.org/portuguese/news/content/images/size/w600/2022/01/image-79.png 600w, https://www.freecodecamp.org/portuguese/news/content/images/size/w1000/2022/01/image-79.png 1000w, https://www.freecodecamp.org/portuguese/news/content/images/2022/01/image-79.png 1019w" sizes="(min-width: 720px) 720px" width="1019" height="589" loading="lazy"><figcaption>Tabela apresentada na <a href="https://docs.python.org/pt-br/3/library/json.html#encoders-and-decoders">documentação do módulo JSON</a> oficial</figcaption></figure><p><strong><strong>💡 </strong>Dica<strong>:</strong></strong> A mesma tabela de conversão se aplica ao trabalhar com arquivos JSON.</p><h3 id="do-dicion-rio-em-python-para-a-string-em-json"><strong>Do dicionário em <strong>Python </strong>para a string em<strong> JSON</strong></strong></h3><p>Agora você sabe como criar um dicionário em Python a partir de uma string no formato JSON.</p><p>Haverá vezes, no entanto, em que poderemos precisar fazer exatamente o contrário, criar uma string em formato JSON a partir de um objeto (por exemplo, um dicionário) para imprimi-lo, exibi-lo, armazená-lo ou trabalhar com ele como uma string.</p><p>Para fazer isso, podemos usar a função <code>dumps</code> do módulo <code>json</code>, passando o objeto como argumento:</p><figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="./Ler arquivos JSON em Python – Como usar load_loads e dump_dumps com arquivos JSON_files/image-80.png" class="kg-image" alt="image-80" srcset="https://www.freecodecamp.org/portuguese/news/content/images/size/w600/2022/01/image-80.png 600w, https://www.freecodecamp.org/portuguese/news/content/images/2022/01/image-80.png 848w" width="848" height="303" loading="lazy"><figcaption>json.dumps(&lt;obj&gt;), onde json é o módulo, dumps é a função e obj é o objeto passado como argumento</figcaption></figure><p><strong><strong>💡 </strong>Dica<strong>:</strong></strong> Essa função retornará uma string.</p><p>Este é um exemplo onde convertemos o dicionário em Python <code>client</code> para uma string como o formato JSON e a armazenamos em uma variável:</p><pre class=" language-python"><code class=" language-python"><span class="token comment"># Dicionário em Python</span>
+client <span class="token operator">=</span> <span class="token punctuation">{</span>
+    <span class="token string">"name"</span><span class="token punctuation">:</span> <span class="token string">"Nora"</span><span class="token punctuation">,</span>
+    <span class="token string">"age"</span><span class="token punctuation">:</span> <span class="token number">56</span><span class="token punctuation">,</span>
+    <span class="token string">"id"</span><span class="token punctuation">:</span> <span class="token string">"45355"</span><span class="token punctuation">,</span>
+    <span class="token string">"eye_color"</span><span class="token punctuation">:</span> <span class="token string">"green"</span><span class="token punctuation">,</span>
+    <span class="token string">"wears_glasses"</span><span class="token punctuation">:</span> <span class="token boolean">False</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment"># Obter uma string formatada em JSON</span>
+client_JSON <span class="token operator">=</span> json<span class="token punctuation">.</span>dumps<span class="token punctuation">(</span>client<span class="token punctuation">)</span></code></pre><p>Vamos nos concentrar nesta linha:</p><pre class=" language-python"><code class=" language-python">client_JSON <span class="token operator">=</span> json<span class="token punctuation">.</span>dumps<span class="token punctuation">(</span>client<span class="token punctuation">)</span></code></pre><ul><li><code>json.dumps(client)</code> cria e retorna uma string com todos os pares chave-valor do dicionário no formato JSON.</li><li>Em seguida, essa string é atribuída à variável <code>client_JSON</code>.</li></ul><p>Se imprimirmos essa string, veremos o seguinte resultado:</p><pre class=" language-python"><code class=" language-python"><span class="token punctuation">{</span><span class="token string">"name"</span><span class="token punctuation">:</span> <span class="token string">"Nora"</span><span class="token punctuation">,</span> <span class="token string">"age"</span><span class="token punctuation">:</span> <span class="token number">56</span><span class="token punctuation">,</span> <span class="token string">"id"</span><span class="token punctuation">:</span> <span class="token string">"45355"</span><span class="token punctuation">,</span> <span class="token string">"eye_color"</span><span class="token punctuation">:</span> <span class="token string">"green"</span><span class="token punctuation">,</span> <span class="token string">"wears_glasses"</span><span class="token punctuation">:</span> false<span class="token punctuation">}</span></code></pre><p>💡 <strong>Dica<strong>:</strong></strong> Perceba que o último valor (<code>false</code>) foi alterado. No dicionário em Python, este valor era <code>False</code>, mas, em JSON, o valor equivalente é <code>false</code>. Isso nos ajuda a confirmar que, de fato, o dicionário original agora está representado como uma string no formato JSON.</p><p>Se verificarmos o tipo de dados dessa variável, veremos que:</p><pre class=" language-python"><code class=" language-python"><span class="token operator">&lt;</span><span class="token keyword">class</span> <span class="token string">'str'</span><span class="token operator">&gt;</span></code></pre><p>Assim, o valor retornado por essa função foi, definitivamente, uma string.</p><h3 id="de-python-para-json-convers-o-de-tipo"><strong>De <strong>Python </strong>para<strong> JSON: </strong>conversão de tipo</strong></h3><p>Um processo de conversão de tipo também ocorre quando convertemos um dicionário em uma string em JSON. Esta tabela da <a href="https://docs.python.org/pt-br/3/library/json.html#json.JSONEncoder">documentação do Python</a> ilustra os valores correspondentes:</p><figure class="kg-card kg-image-card kg-card-hascaption"><img src="./Ler arquivos JSON em Python – Como usar load_loads e dump_dumps com arquivos JSON_files/image-81.png" class="kg-image" alt="image-81" srcset="https://www.freecodecamp.org/portuguese/news/content/images/size/w600/2022/01/image-81.png 600w, https://www.freecodecamp.org/portuguese/news/content/images/size/w1000/2022/01/image-81.png 1000w, https://www.freecodecamp.org/portuguese/news/content/images/2022/01/image-81.png 1228w" sizes="(min-width: 720px) 720px" width="1228" height="536" loading="lazy"><figcaption>Tabela da <a href="https://docs.python.org/pt-br/3/library/json.html#json.JSONEncoder">documentação oficial do módulo JSON</a>.</figcaption></figure><h3 id="como-imprimir-o-json-com-indenta-o"><strong>Como imprimir o <strong>JSON </strong>com indentação</strong></h3><p>Se usarmos a função <code>dumps</code> e imprimirmos a string que obtivemos no exemplo anterior, veremos o seguinte:</p><pre class=" language-python"><code class=" language-python"><span class="token punctuation">{</span><span class="token string">"name"</span><span class="token punctuation">:</span> <span class="token string">"Nora"</span><span class="token punctuation">,</span> <span class="token string">"age"</span><span class="token punctuation">:</span> <span class="token number">56</span><span class="token punctuation">,</span> <span class="token string">"id"</span><span class="token punctuation">:</span> <span class="token string">"45355"</span><span class="token punctuation">,</span> <span class="token string">"eye_color"</span><span class="token punctuation">:</span> <span class="token string">"green"</span><span class="token punctuation">,</span> <span class="token string">"wears_glasses"</span><span class="token punctuation">:</span> false<span class="token punctuation">}</span></code></pre><p>Isso, contudo, não está muito legível, certo?</p><p>podemos melhorar a legibilidade da string em JSON adicionando <strong><strong>indenta</strong>ção</strong>.</p><p>Para fazer isso automaticamente, somente precisamos passar um segundo argumento para especificar o número de espaços que queremos usar na indentação da string em JSON:</p><figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="./Ler arquivos JSON em Python – Como usar load_loads e dump_dumps com arquivos JSON_files/image-111.png" class="kg-image" alt="image-111" srcset="https://www.freecodecamp.org/portuguese/news/content/images/size/w600/2022/01/image-111.png 600w, https://www.freecodecamp.org/portuguese/news/content/images/2022/01/image-111.png 966w" width="966" height="261" loading="lazy"><figcaption>json.dumps(&lt;obj&gt;, indent=&lt;spaces&gt;), onde &lt;spaces&gt; são os espaços usados para indentação</figcaption></figure><p><strong><strong>💡 </strong>Dica<strong>:</strong></strong> o segundo argumento tem de ser um número inteiro não negativo (número de espaços) ou uma string. Se a indentação for uma string (como <code>"\t"</code>), aquela string será usada para indentar cada nível (<a href="https://docs.python.org/pt-br/3/library/json.html#json.dump">fonte</a>).</p><p>Agora, se chamarmos <code>dumps</code> com esse segundo argumento:</p><pre class=" language-python"><code class=" language-python">client_JSON <span class="token operator">=</span> json<span class="token punctuation">.</span>dumps<span class="token punctuation">(</span>client<span class="token punctuation">,</span> indent<span class="token operator">=</span><span class="token number">4</span><span class="token punctuation">)</span></code></pre><p>O resultado da impressão de <code>client_JSON</code> será:</p><pre class=" language-python"><code class=" language-python"><span class="token punctuation">{</span>
+    <span class="token string">"name"</span><span class="token punctuation">:</span> <span class="token string">"Nora"</span><span class="token punctuation">,</span>
+    <span class="token string">"age"</span><span class="token punctuation">:</span> <span class="token number">56</span><span class="token punctuation">,</span>
+    <span class="token string">"id"</span><span class="token punctuation">:</span> <span class="token string">"45355"</span><span class="token punctuation">,</span>
+    <span class="token string">"eye_color"</span><span class="token punctuation">:</span> <span class="token string">"green"</span><span class="token punctuation">,</span>
+    <span class="token string">"wears_glasses"</span><span class="token punctuation">:</span> false
+<span class="token punctuation">}</span></code></pre><p>Ficou muito melhor, certo? Agora, nossa string está formatada corretamente. Isso será muito útil quando quisermos começar a trabalhar com arquivos para armazenar os dados em um formato legível por seres humanos.</p><h3 id="como-ordenar-as-chaves"><strong>Como ordenar as chaves</strong></h3><p>Você também pode ordenar as chaves em ordem alfabética, se precisar. Para fazer isso, somente precisa escrever o nome do parâmetro <code>sort_keys</code> e passar o valor <code>True</code>:</p><figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="./Ler arquivos JSON em Python – Como usar load_loads e dump_dumps com arquivos JSON_files/image-84.png" class="kg-image" alt="image-84" srcset="https://www.freecodecamp.org/portuguese/news/content/images/size/w600/2022/01/image-84.png 600w, https://www.freecodecamp.org/portuguese/news/content/images/size/w1000/2022/01/image-84.png 1000w, https://www.freecodecamp.org/portuguese/news/content/images/2022/01/image-84.png 1192w" width="1192" height="319" loading="lazy"><figcaption>json.dumps(&lt;obj&gt;, sort_keys=True), onde o valor True em sort_keys significa que as chaves devem ficar em ordem alfabética</figcaption></figure><p>💡 <strong>Dica<strong>:</strong></strong> O valor de <code>sort_keys</code> é <code>False</code> por padrão se você não passar um valor.</p><p>Por exemplo:</p><pre class=" language-python"><code class=" language-python">client_JSON <span class="token operator">=</span> json<span class="token punctuation">.</span>dumps<span class="token punctuation">(</span>client<span class="token punctuation">,</span> sort_keys<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span></code></pre><p>Isso retorna uma string com as chaves ordenadas alfabeticamente:</p><pre class=" language-python"><code class=" language-python"><span class="token punctuation">{</span><span class="token string">"age"</span><span class="token punctuation">:</span> <span class="token number">56</span><span class="token punctuation">,</span> <span class="token string">"eye_color"</span><span class="token punctuation">:</span> <span class="token string">"green"</span><span class="token punctuation">,</span> <span class="token string">"id"</span><span class="token punctuation">:</span> <span class="token string">"45355"</span><span class="token punctuation">,</span> <span class="token string">"name"</span><span class="token punctuation">:</span> <span class="token string">"Nora"</span><span class="token punctuation">,</span> <span class="token string">"wears_glasses"</span><span class="token punctuation">:</span> false<span class="token punctuation">}</span></code></pre><h3 id="como-ordenar-alfabeticamente-e-indentar-ao-mesmo-tempo-"><strong>Como ordenar alfabeticamente e indentar<strong> (a</strong>o mesmo tempo<strong>)</strong></strong></h3><p>Para gerar uma string em JSON que seja ordenada alfabeticamente e indentada, você precisa apenas passar os dois argumentos:</p><figure class="kg-card kg-image-card kg-width-wide"><img src="./Ler arquivos JSON em Python – Como usar load_loads e dump_dumps com arquivos JSON_files/image-104.png" class="kg-image" alt="image-104" srcset="https://www.freecodecamp.org/portuguese/news/content/images/size/w600/2022/01/image-104.png 600w, https://www.freecodecamp.org/portuguese/news/content/images/size/w1000/2022/01/image-104.png 1000w, https://www.freecodecamp.org/portuguese/news/content/images/2022/01/image-104.png 1318w" sizes="(min-width: 1200px) 1200px" width="1318" height="108" loading="lazy"></figure><p>Neste caso, o resultado será:</p><pre class=" language-python"><code class=" language-python"><span class="token punctuation">{</span>
+    <span class="token string">"age"</span><span class="token punctuation">:</span> <span class="token number">56</span><span class="token punctuation">,</span>
+    <span class="token string">"eye_color"</span><span class="token punctuation">:</span> <span class="token string">"green"</span><span class="token punctuation">,</span>
+    <span class="token string">"id"</span><span class="token punctuation">:</span> <span class="token string">"45355"</span><span class="token punctuation">,</span>
+    <span class="token string">"name"</span><span class="token punctuation">:</span> <span class="token string">"Nora"</span><span class="token punctuation">,</span>
+    <span class="token string">"wears_glasses"</span><span class="token punctuation">:</span> false
+<span class="token punctuation">}</span></code></pre><p><strong><strong>💡 </strong>Dica<strong>:</strong></strong> você pode passar esses argumentos em qualquer ordem (em relação um ao outro), mas o objeto precisa ser o primeiro argumento da lista.</p><p>Bem, agora que você sabe como trabalhar com strings em JSON, vamos ver como você pode trabalhar com arquivos JSON em seus programas em Python.</p><h2 id="-json-e-arquivos"><strong><strong>🔸 JSON </strong>e arquivos</strong></h2><p>Tipicamente, o JSON é usado para armazenar dados em arquivos. Por isso, o Python nos dá as ferramentas de que precisamos para ler esses tipos de arquivo em nosso programa, trabalhar com seus dados e escrever dados novos.</p><p><strong><strong>💡 </strong>Dica<strong>:</strong></strong> um arquivo JSON tem uma extensão <code>.json</code>:</p><figure class="kg-card kg-image-card kg-width-wide"><img src="./Ler arquivos JSON em Python – Como usar load_loads e dump_dumps com arquivos JSON_files/image-62.png" class="kg-image" alt="image-62" srcset="https://www.freecodecamp.org/portuguese/news/content/images/size/w600/2022/01/image-62.png 600w, https://www.freecodecamp.org/portuguese/news/content/images/2022/01/image-62.png 915w" width="915" height="88" loading="lazy"></figure><p>Vamos ver como trabalhar com arquivos <code>.json</code> em Python.</p><h3 id="como-ler-um-arquivo-json-em-python"><strong>Como ler um arquivo <strong>JSON </strong>em<strong> Python</strong></strong></h3><p>Digamos que nós tenhamos criado o arquivo <code>orders.json</code> com esses dados, que representam dois pedidos em uma pizzaria:</p><figure class="kg-card kg-code-card"><pre class=" language-python"><code class=" language-python"><span class="token punctuation">{</span>
+	<span class="token string">"orders"</span><span class="token punctuation">:</span> <span class="token punctuation">[</span> 
+		<span class="token punctuation">{</span>
+			<span class="token string">"size"</span><span class="token punctuation">:</span> <span class="token string">"medium"</span><span class="token punctuation">,</span>
+			<span class="token string">"price"</span><span class="token punctuation">:</span> <span class="token number">15.67</span><span class="token punctuation">,</span>
+			<span class="token string">"toppings"</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">"mushrooms"</span><span class="token punctuation">,</span> <span class="token string">"pepperoni"</span><span class="token punctuation">,</span> <span class="token string">"basil"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+			<span class="token string">"extra_cheese"</span><span class="token punctuation">:</span> false<span class="token punctuation">,</span>
+			<span class="token string">"delivery"</span><span class="token punctuation">:</span> true<span class="token punctuation">,</span>
+			<span class="token string">"client"</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
+				<span class="token string">"name"</span><span class="token punctuation">:</span> <span class="token string">"Jane Doe"</span><span class="token punctuation">,</span>
+				<span class="token string">"phone"</span><span class="token punctuation">:</span> null<span class="token punctuation">,</span>
+				<span class="token string">"email"</span><span class="token punctuation">:</span> <span class="token string">"janedoe@email.com"</span>
+			<span class="token punctuation">}</span>
+		<span class="token punctuation">}</span><span class="token punctuation">,</span>
+		<span class="token punctuation">{</span>
+			<span class="token string">"size"</span><span class="token punctuation">:</span> <span class="token string">"small"</span><span class="token punctuation">,</span>
+			<span class="token string">"price"</span><span class="token punctuation">:</span> <span class="token number">6.54</span><span class="token punctuation">,</span>
+			<span class="token string">"toppings"</span><span class="token punctuation">:</span> null<span class="token punctuation">,</span>
+			<span class="token string">"extra_cheese"</span><span class="token punctuation">:</span> true<span class="token punctuation">,</span>
+			<span class="token string">"delivery"</span><span class="token punctuation">:</span> false<span class="token punctuation">,</span>
+			<span class="token string">"client"</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
+				<span class="token string">"name"</span><span class="token punctuation">:</span> <span class="token string">"Foo Jones"</span><span class="token punctuation">,</span>
+				<span class="token string">"phone"</span><span class="token punctuation">:</span> <span class="token string">"556-342-452"</span><span class="token punctuation">,</span>
+				<span class="token string">"email"</span><span class="token punctuation">:</span> null
+			<span class="token punctuation">}</span>
+		<span class="token punctuation">}</span>
+	<span class="token punctuation">]</span>
+<span class="token punctuation">}</span></code></pre><figcaption>orders.json</figcaption></figure><p>Aproveite esse momento para analisar a estrutura desse arquivo JSON.</p><p>Aqui estão algumas dicas rápidas:</p><ul><li>Observe os tipos de dados dos valores, a indentação e a estrutura geral do arquivo.</li><li>O valor da chave principal, <code>"orders"</code>, é um array de objetos JSON (esse array será representado como uma lista em Python). Cada objeto JSON tem os dados de um pedido de pizza.</li></ul><p>Se quisermos ler esse arquivo em Python, precisamos apenas usar a instrução <code>with</code>:</p><figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="./Ler arquivos JSON em Python – Como usar load_loads e dump_dumps com arquivos JSON_files/image-87.png" class="kg-image" alt="image-87" srcset="https://www.freecodecamp.org/portuguese/news/content/images/size/w600/2022/01/image-87.png 600w, https://www.freecodecamp.org/portuguese/news/content/images/2022/01/image-87.png 945w" width="945" height="422" loading="lazy"><figcaption>with open("orders.json") as file: data = json.load(file), onde open("orders.json") abre o arquivo orders.json em modo leitura, file é o objeto e json.load(file) lê o arquivo JSON "file" e cria um dicionário</figcaption></figure><p>💡 <strong>Dica<strong>:</strong></strong> Na sintaxe acima, podemos atribuir qualquer nome a <code>file</code> (caixa verde). Essa é uma variável que podemos usar na instrução <code>with</code> para nos referirmos ao objeto "file" (arquivo).</p><p>A linha principal de código nessa sintaxe é:</p><pre><code>data = json.load(file)</code></pre><ul><li><code>json.load(file)</code> cria e retorna um novo dicionário em Python com os pares-chave-valor no arquivo JSON.</li><li>Depois, esse dicionário é atribuído à variável <code>data</code>.</li></ul><p>💡 <strong>Dica<strong>:</strong></strong> Observe que estamos usando <code>load()</code> em vez de <code>loads()</code>. Essa é uma função diferente no módulo <code>json</code>. Você aprenderá mais sobre as diferenças &nbsp;entre eles ao final desse artigo.</p><p>Quando temos o conteúdo do arquivo JSON armazenado na variável <code>data</code> como um dicionário, podemos usá-lo para fazer, basicamente, o que quisermos.</p><h3 id="exemplos"><strong><strong>Ex</strong>emplos</strong></h3><p>Por exemplo, se escrevermos:</p><pre class=" language-python"><code class=" language-python"><span class="token keyword">print</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>data<span class="token punctuation">[</span><span class="token string">"orders"</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre><p>O resultado é <code>2</code>, pois o valor da chave principal <code>"orders"</code> é uma lista com dois elementos.</p><p>Também podemos usar as chaves para acessar seus valores correspondentes. Isso é o que normalmente fazemos ao trabalhar com arquivos JSON.</p><p>Por exemplo, para acessar os sabores (toppings, em inglês) do primeiro pedido (order), escreveríamos:</p><pre><code>data["orders"][0]["toppings"]</code></pre><ul><li>Primeiro, selecionamos a chave principal <code>"orders"</code></li><li>Em seguida, selecionamos o primeiro elemento na lista (índice <code>0</code>).</li><li>Por fim, selecionamos o valor que corresponde à chave <code>"toppings"</code></li></ul><p>Você pode ver esse "caminho" graficamente no diagrama abaixo:</p><figure class="kg-card kg-image-card kg-width-wide"><img src="./Ler arquivos JSON em Python – Como usar load_loads e dump_dumps com arquivos JSON_files/image-101.png" class="kg-image" alt="image-101" srcset="https://www.freecodecamp.org/portuguese/news/content/images/size/w600/2022/01/image-101.png 600w, https://www.freecodecamp.org/portuguese/news/content/images/2022/01/image-101.png 767w" width="767" height="731" loading="lazy"></figure><p>Se imprimirmos esse valor, o resultado é:</p><pre class=" language-python"><code class=" language-python"><span class="token punctuation">[</span><span class="token string">'mushrooms'</span><span class="token punctuation">,</span> <span class="token string">'pepperoni'</span><span class="token punctuation">,</span> <span class="token string">'basil'</span><span class="token punctuation">]</span></code></pre><p>É exatamente aquilo que esperávamos. Você só precisa "mergulhar mais fundo" na estrutura do dicionário usando as chaves e índices necessários. É possível usar a string/arquivo JSON original como uma referência visual. Desse modo, você pode acessar, modificar ou excluir qualquer valor.</p><p><strong><strong>💡 </strong>Dica<strong>:</strong></strong> Lembre-se de que estamos trabalhando com o novo dicionário. As alterações feitas a esse dicionário não afetarão o arquivo JSON. Para atualizar o conteúdo do arquivo, precisamos gravar os dados nele.</p><h3 id="como-gravar-dados-em-um-arquivo-json"><strong>Como gravar dados em um arquivo <strong>JSON</strong></strong></h3><p>Vamos ver como podemos gravar em um arquivo JSON.</p><p>A primeira linha da instrução <code>with</code> é bem semelhante. A única mudança é o fato de que você precisa abrir o arquivo em modo <code>'w'</code> (write, ou gravação) para poder modificá-lo.</p><figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="./Ler arquivos JSON em Python – Como usar load_loads e dump_dumps com arquivos JSON_files/image-105.png" class="kg-image" alt="image-105" srcset="https://www.freecodecamp.org/portuguese/news/content/images/size/w600/2022/01/image-105.png 600w, https://www.freecodecamp.org/portuguese/news/content/images/2022/01/image-105.png 968w" width="968" height="302" loading="lazy"><figcaption>with open("orders.json", 'w') as file: data = json.load(file), onde o 'w' abre o objeto de arquivo 'file' em modo de gravação</figcaption></figure><p><strong><strong>💡 </strong>Dica<strong>:</strong></strong> Se o arquivo já não existir no diretório (pasta) de trabalho atual, ele será criado automaticamente. Usando o modo <code>'w'</code>, substituiremos todo o conteúdo do arquivo se ele já existir.</p><p>Há duas alternativas para gravar em um arquivo JSON no corpo da instrução <code>with</code>:</p><ul><li><code>dump</code></li><li><code>dumps</code></li></ul><p>Vamos vê-las em detalhes.</p><p><strong>Primeira abordagem<strong>: <code>dump</code></strong></strong></p><p>Essa é uma função que recebe dois argumentos:</p><ul><li>O objeto que será armazenado no formato JSON (por exemplo, um dicionário).</li><li>O arquivo onde ele será armazenado (um objeto de arquivo).</li></ul><figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="./Ler arquivos JSON em Python – Como usar load_loads e dump_dumps com arquivos JSON_files/image-91.png" class="kg-image" alt="image-91" srcset="https://www.freecodecamp.org/portuguese/news/content/images/size/w600/2022/01/image-91.png 600w, https://www.freecodecamp.org/portuguese/news/content/images/2022/01/image-91.png 954w" width="954" height="420" loading="lazy"><figcaption>json.dump(&lt;obj&gt;, &lt;file&gt;), onde &lt;obj&gt; é o objeto a ser armazenado como JSON e &lt;file&gt; é o arquivo onde ele será armazenado</figcaption></figure><p>Digamos que a pizzaria quer remover os dados dos clientes do arquivo JSON e criar um novo arquivo JSON chamado <code>orders_new.json</code> com essa nova versão.</p><p>Podemos fazer isso com esse código:</p><pre class=" language-python"><code class=" language-python"><span class="token comment"># Abrir o arquivo orders.json</span>
+<span class="token keyword">with</span> <span class="token builtin">open</span><span class="token punctuation">(</span><span class="token string">"orders.json"</span><span class="token punctuation">)</span> <span class="token keyword">as</span> <span class="token builtin">file</span><span class="token punctuation">:</span>
+    <span class="token comment"># Carregar seu conteúdo e torná-lo um novo dicionário</span>
+    data <span class="token operator">=</span> json<span class="token punctuation">.</span>load<span class="token punctuation">(</span><span class="token builtin">file</span><span class="token punctuation">)</span>
+
+    <span class="token comment"># Excluir o par chave-valor "client" de cada pedido</span>
+    <span class="token keyword">for</span> order <span class="token keyword">in</span> data<span class="token punctuation">[</span><span class="token string">"orders"</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
+        <span class="token keyword">del</span> order<span class="token punctuation">[</span><span class="token string">"client"</span><span class="token punctuation">]</span>
+
+<span class="token comment"># Abrir (ou criar) um arquivo orders_new.json </span>
+<span class="token comment"># e armazenar a nova versão dos dados.</span>
+<span class="token keyword">with</span> <span class="token builtin">open</span><span class="token punctuation">(</span><span class="token string">"orders_new.json"</span><span class="token punctuation">,</span> <span class="token string">'w'</span><span class="token punctuation">)</span> <span class="token keyword">as</span> <span class="token builtin">file</span><span class="token punctuation">:</span>
+    json<span class="token punctuation">.</span>dump<span class="token punctuation">(</span>data<span class="token punctuation">,</span> <span class="token builtin">file</span><span class="token punctuation">)</span></code></pre><p>Essa era a versão original dos dados no arquivo <code>orders.json</code>. Observe que o par chave-valor <code>"client"</code> existe.</p><figure class="kg-card kg-code-card"><pre class=" language-python"><code class=" language-python"><span class="token punctuation">{</span>
+	<span class="token string">"orders"</span><span class="token punctuation">:</span> <span class="token punctuation">[</span> 
+		<span class="token punctuation">{</span>
+			<span class="token string">"size"</span><span class="token punctuation">:</span> <span class="token string">"medium"</span><span class="token punctuation">,</span>
+			<span class="token string">"price"</span><span class="token punctuation">:</span> <span class="token number">15.67</span><span class="token punctuation">,</span>
+			<span class="token string">"toppings"</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">"mushrooms"</span><span class="token punctuation">,</span> <span class="token string">"pepperoni"</span><span class="token punctuation">,</span> <span class="token string">"basil"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+			<span class="token string">"extra_cheese"</span><span class="token punctuation">:</span> false<span class="token punctuation">,</span>
+			<span class="token string">"delivery"</span><span class="token punctuation">:</span> true<span class="token punctuation">,</span>
+			<span class="token string">"client"</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
+				<span class="token string">"name"</span><span class="token punctuation">:</span> <span class="token string">"Jane Doe"</span><span class="token punctuation">,</span>
+				<span class="token string">"phone"</span><span class="token punctuation">:</span> null<span class="token punctuation">,</span>
+				<span class="token string">"email"</span><span class="token punctuation">:</span> <span class="token string">"janedoe@email.com"</span>
+			<span class="token punctuation">}</span>
+		<span class="token punctuation">}</span><span class="token punctuation">,</span>
+		<span class="token punctuation">{</span>
+			<span class="token string">"size"</span><span class="token punctuation">:</span> <span class="token string">"small"</span><span class="token punctuation">,</span>
+			<span class="token string">"price"</span><span class="token punctuation">:</span> <span class="token number">6.54</span><span class="token punctuation">,</span>
+			<span class="token string">"toppings"</span><span class="token punctuation">:</span> null<span class="token punctuation">,</span>
+			<span class="token string">"extra_cheese"</span><span class="token punctuation">:</span> true<span class="token punctuation">,</span>
+			<span class="token string">"delivery"</span><span class="token punctuation">:</span> false<span class="token punctuation">,</span>
+			<span class="token string">"client"</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
+				<span class="token string">"name"</span><span class="token punctuation">:</span> <span class="token string">"Foo Jones"</span><span class="token punctuation">,</span>
+				<span class="token string">"phone"</span><span class="token punctuation">:</span> <span class="token string">"556-342-452"</span><span class="token punctuation">,</span>
+				<span class="token string">"email"</span><span class="token punctuation">:</span> null
+			<span class="token punctuation">}</span>
+		<span class="token punctuation">}</span>
+	<span class="token punctuation">]</span>
+<span class="token punctuation">}</span>
+</code></pre><figcaption>orders.json</figcaption></figure><p>Essa é a nova versão no arquivo <code>orders_new.json</code>:</p><figure class="kg-card kg-code-card"><pre class=" language-python"><code class=" language-python"><span class="token punctuation">{</span><span class="token string">"orders"</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span><span class="token string">"size"</span><span class="token punctuation">:</span> <span class="token string">"medium"</span><span class="token punctuation">,</span> <span class="token string">"price"</span><span class="token punctuation">:</span> <span class="token number">15.67</span><span class="token punctuation">,</span> <span class="token string">"toppings"</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">"mushrooms"</span><span class="token punctuation">,</span> <span class="token string">"pepperoni"</span><span class="token punctuation">,</span> <span class="token string">"basil"</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token string">"extra_cheese"</span><span class="token punctuation">:</span> false<span class="token punctuation">,</span> <span class="token string">"delivery"</span><span class="token punctuation">:</span> true<span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">{</span><span class="token string">"size"</span><span class="token punctuation">:</span> <span class="token string">"small"</span><span class="token punctuation">,</span> <span class="token string">"price"</span><span class="token punctuation">:</span> <span class="token number">6.54</span><span class="token punctuation">,</span> <span class="token string">"toppings"</span><span class="token punctuation">:</span> null<span class="token punctuation">,</span> <span class="token string">"extra_cheese"</span><span class="token punctuation">:</span> true<span class="token punctuation">,</span> <span class="token string">"delivery"</span><span class="token punctuation">:</span> false<span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">}</span></code></pre><figcaption>orders_new.json</figcaption></figure><p>Se você analisar com cuidado, verá que o par chave-valor <code>"client"</code> foi removido de todos os pedidos.</p><p>No entanto, está faltando algo nesse arquivo, não é?</p><p>Pense um pouco a respeito... o que pode ser?</p><p>A indentação, é claro!</p><p>O arquivo não parece realmente com um arquivo JSON, mas podemos consertar isso facilmente passando o argumento <code>indentation=4</code> para <code>dump()</code>.</p><figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="./Ler arquivos JSON em Python – Como usar load_loads e dump_dumps com arquivos JSON_files/image-92.png" class="kg-image" alt="image-92" srcset="https://www.freecodecamp.org/portuguese/news/content/images/size/w600/2022/01/image-92.png 600w, https://www.freecodecamp.org/portuguese/news/content/images/2022/01/image-92.png 967w" width="967" height="219" loading="lazy"><figcaption>json.dump(&lt;obj&gt;, &lt;file&gt;, indent=4), onde 4 será a indentação</figcaption></figure><p>Agora, o conteúdo do arquivo terá essa aparência:</p><figure class="kg-card kg-code-card"><pre class=" language-python"><code class=" language-python"><span class="token punctuation">{</span>
+    <span class="token string">"orders"</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>
+        <span class="token punctuation">{</span>
+            <span class="token string">"size"</span><span class="token punctuation">:</span> <span class="token string">"medium"</span><span class="token punctuation">,</span>
+            <span class="token string">"price"</span><span class="token punctuation">:</span> <span class="token number">15.67</span><span class="token punctuation">,</span>
+            <span class="token string">"toppings"</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>
+                <span class="token string">"mushrooms"</span><span class="token punctuation">,</span>
+                <span class="token string">"pepperoni"</span><span class="token punctuation">,</span>
+                <span class="token string">"basil"</span>
+            <span class="token punctuation">]</span><span class="token punctuation">,</span>
+            <span class="token string">"extra_cheese"</span><span class="token punctuation">:</span> false<span class="token punctuation">,</span>
+            <span class="token string">"delivery"</span><span class="token punctuation">:</span> true
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token punctuation">{</span>
+            <span class="token string">"size"</span><span class="token punctuation">:</span> <span class="token string">"small"</span><span class="token punctuation">,</span>
+            <span class="token string">"price"</span><span class="token punctuation">:</span> <span class="token number">6.54</span><span class="token punctuation">,</span>
+            <span class="token string">"toppings"</span><span class="token punctuation">:</span> null<span class="token punctuation">,</span>
+            <span class="token string">"extra_cheese"</span><span class="token punctuation">:</span> true<span class="token punctuation">,</span>
+            <span class="token string">"delivery"</span><span class="token punctuation">:</span> false
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">]</span>
+<span class="token punctuation">}</span></code></pre><figcaption>orders_new.json</figcaption></figure><p>Que diferença! Essa seria exatamente a aparência esperada de um arquivo JSON.</p><p>Agora você sabe como ler e grava em arquivos JSON usando <code>load()</code> e <code>dump()</code>. Vamos ver as diferenças entre essas funções e as funções com as quais gostaríamos de trabalhar com as strings em JSON.</p><h2 id="-load-x-loads-"><strong><strong>🔹 load() </strong>x<strong> loads()</strong></strong></h2><p>Essa tabela resume as principais diferenças entre essas duas funções:</p><figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="./Ler arquivos JSON em Python – Como usar load_loads e dump_dumps com arquivos JSON_files/image-110.png" class="kg-image" alt="image-110" srcset="https://www.freecodecamp.org/portuguese/news/content/images/size/w600/2022/01/image-110.png 600w, https://www.freecodecamp.org/portuguese/news/content/images/2022/01/image-110.png 858w" width="858" height="464" loading="lazy"><figcaption>Enquanto load() cria um objeto em Python a partir de um arquivo JSON e tem como argumento um arquivo JSON, loads() cria um objeto em Python a partir de uma string e tem uma string como argumento. Ambos têm como valor de retorno um objeto em Python</figcaption></figure><p>💡 <strong>Dica<strong>:</strong></strong> Imagine <code>loads()</code> como "LOAD (carregar) String" e isso ajudará você a se lembrar de qual função serve para qual finalidade.</p><h2 id="-dump-x-dumps-"><strong><strong>🔸 dump() </strong>x<strong> dumps()</strong></strong></h2><p>Aqui temos uma tabela que resume as diferenças principais entre essas duas funções:</p><figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="./Ler arquivos JSON em Python – Como usar load_loads e dump_dumps com arquivos JSON_files/image-109.png" class="kg-image" alt="image-109" srcset="https://www.freecodecamp.org/portuguese/news/content/images/size/w600/2022/01/image-109.png 600w, https://www.freecodecamp.org/portuguese/news/content/images/2022/01/image-109.png 864w" width="864" height="467" loading="lazy"><figcaption>Enquanto dump() grava um objeto em formato JSON em um arquivo tem como argumento o objeto e o arquivo, dumps() obtém uma string JSON a partir de um objeto e tem um objeto como argumento. dump() não tem valor de retorno, enquanto dumps() retorna uma string</figcaption></figure><p>💡 <strong>Dica<strong>:</strong></strong> Imagine <code>dumps()</code> como "DUMP (gerar) String" e isso ajudará você a se lembrar de qual função serve para qual finalidade.</p><h2 id="-terminologia-importante-em-json"><strong><strong>🔹 </strong>Terminologia importante em<strong> JSON</strong></strong></h2><p>Por fim, há dois termos importantes que você precisa conhecer ao trabalhar com JSON:</p><ul><li><strong><strong>Serializa</strong>ção<strong>:</strong></strong> converter um objeto em uma string em JSON.</li><li><strong><strong>De</strong>s<strong>serializa</strong>ção<strong>:</strong></strong> converter uma string em JSON em um objeto.</li></ul><h2 id="-em-resumo"><strong><strong>🔸 </strong>Em resumo</strong></h2><ul><li>O JSON (JavaScript Object Notation) é um formato usado para representar e armazenar dados.</li><li>Ele é normalmente usado para transferir dados da web e armazenar definições de configuração.</li><li>Os arquivos JSON têm uma extensão <code>.json</code>.</li><li>Você pode converter strings em JSON em objetos em Python e vice-versa.</li><li>Você pode ler arquivos em JSON e criar objetos em Python a partir de seus pares chave-valor.</li><li>Você pode gravar em arquivos JSON para armazenar o conteúdo de objetos em Python em formato JSON.</li></ul><p><strong>Espero realmente que você tenha gostado desse artigo e que o tenha achado útil<strong><strong><strong>. </strong></strong></strong></strong>Agora, você sabe como trabalhar com JSON em Python. Siga a autora no Twitter, <a href="https://twitter.com/EstefaniaCassN">@EstefaniaCassN</a>, e <a href="https://www.udemy.com/user/estefania-cn/">confira os cursos on-line da autora</a> (em inglês).</p>
+
+                        </section>
+                        
+                            <div class="sidebar" style="height: auto !important;">
+                                
+                                    <div class="ad-container">
+    <ins class="adsbygoogle" style="display: block; height: 600px;" data-ad-client="ca-pub-9482786369113753" data-ad-slot="5720086888" data-ad-format="auto" data-adsbygoogle-status="done" data-ad-status="filled"><ins id="aswift_1_expand" tabindex="0" title="Advertisement" aria-label="Advertisement" style="border: none; height: 600px; width: 300px; margin: 0px; padding: 0px; position: relative; visibility: visible; background-color: transparent; display: inline-table;"><ins id="aswift_1_anchor" style="border: none; height: 600px; width: 300px; margin: 0px; padding: 0px; position: relative; visibility: visible; background-color: transparent; display: block; overflow: visible;"><iframe id="aswift_1" name="aswift_1" style="left:0;position:absolute;top:0;border:0;width:300px;height:600px" sandbox="allow-forms allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts allow-top-navigation-by-user-activation" width="300" height="600" frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" src="./Ler arquivos JSON em Python – Como usar load_loads e dump_dumps com arquivos JSON_files/ads.html" data-google-container-id="a!2" data-google-query-id="CKPwo4yBtPYCFeczuQYdMrUGvA" data-load-complete="true"></iframe></ins></ins></ins>
+</div>
+<script>
+    window.addEventListener('load', () => {
+        if (notAuthenticated) (adsbygoogle = window.adsbygoogle || []).push({});
+    });
+</script>
+
+                                
+                                    <div class="ad-container" style="width: 300px; height: 600px;">
+    <ins class="adsbygoogle" style="display: block; height: 600px; width: 300px;" data-ad-client="ca-pub-9482786369113753" data-ad-slot="5720086888" data-ad-format="auto" data-adsbygoogle-status="done" data-ad-status="filled"><ins id="aswift_2_expand" tabindex="0" title="Advertisement" aria-label="Advertisement" style="border: none; height: 600px; width: 300px; margin: 0px; padding: 0px; position: relative; visibility: visible; background-color: transparent; display: inline-table;"><ins id="aswift_2_anchor" style="border: none; height: 600px; width: 300px; margin: 0px; padding: 0px; position: relative; visibility: visible; background-color: transparent; display: block; overflow: hidden;"><iframe id="aswift_2" name="aswift_2" style="left:0;position:absolute;top:0;border:0;width:300px;height:600px" sandbox="allow-forms allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts allow-top-navigation-by-user-activation" width="300" height="600" frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" src="./Ler arquivos JSON em Python – Como usar load_loads e dump_dumps com arquivos JSON_files/ads(1).html" data-google-container-id="a!3" data-google-query-id="COPI8YyBtPYCFeY4uQYdKzgOZw" data-load-complete="true"></iframe></ins></ins></ins>
+</div>
+<script>
+    window.addEventListener('load', () => {
+        if (notAuthenticated) (adsbygoogle = window.adsbygoogle || []).push({});
+    });
+</script>
+
+                                
+                                    <div class="ad-container" style="width: 300px; height: 600px;">
+    <ins class="adsbygoogle" style="display: block; height: 600px; width: 300px;" data-ad-client="ca-pub-9482786369113753" data-ad-slot="5720086888" data-ad-format="auto" data-adsbygoogle-status="done" data-ad-status="filled"><ins id="aswift_3_expand" tabindex="0" title="Advertisement" aria-label="Advertisement" style="border: none; height: 600px; width: 300px; margin: 0px; padding: 0px; position: relative; visibility: visible; background-color: transparent; display: inline-table;"><ins id="aswift_3_anchor" style="border: none; height: 600px; width: 300px; margin: 0px; padding: 0px; position: relative; visibility: visible; background-color: transparent; display: block; overflow: hidden;"><iframe id="aswift_3" name="aswift_3" style="left:0;position:absolute;top:0;border:0;width:300px;height:600px" sandbox="allow-forms allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts allow-top-navigation-by-user-activation" width="300" height="600" frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" src="./Ler arquivos JSON em Python – Como usar load_loads e dump_dumps com arquivos JSON_files/ads(2).html" data-google-container-id="a!4" data-google-query-id="CP77wJCBtPYCFRs5uQYdrNcBow" data-load-complete="true"></iframe></ins></ins></ins>
+</div>
+<script>
+    window.addEventListener('load', () => {
+        if (notAuthenticated) (adsbygoogle = window.adsbygoogle || []).push({});
+    });
+</script>
+
+                                
+                                    <div class="ad-container">
+    <ins class="adsbygoogle" style="display: block; height: 600px;" data-ad-client="ca-pub-9482786369113753" data-ad-slot="5720086888" data-ad-format="auto" data-adsbygoogle-status="done" data-ad-status="filled"><ins id="aswift_4_expand" tabindex="0" title="Advertisement" aria-label="Advertisement" style="border: none; height: 600px; width: 300px; margin: 0px; padding: 0px; position: relative; visibility: visible; background-color: transparent; display: inline-table;"><ins id="aswift_4_anchor" style="border: none; height: 600px; width: 300px; margin: 0px; padding: 0px; position: relative; visibility: visible; background-color: transparent; display: block; overflow: visible;"><iframe id="aswift_4" name="aswift_4" style="left:0;position:absolute;top:0;border:0;width:300px;height:600px" sandbox="allow-forms allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts allow-top-navigation-by-user-activation" width="300" height="600" frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" src="./Ler arquivos JSON em Python – Como usar load_loads e dump_dumps com arquivos JSON_files/ads(3).html" data-google-container-id="a!5" data-google-query-id="CKmAv5SBtPYCFRwDuQYda5cDEg" data-load-complete="true"></iframe></ins></ins></ins>
+</div>
+<script>
+    window.addEventListener('load', () => {
+        if (notAuthenticated) (adsbygoogle = window.adsbygoogle || []).push({});
+    });
+</script>
+
+                                
+                                    <div class="ad-container">
+    <ins class="adsbygoogle" style="display: block; height: 600px;" data-ad-client="ca-pub-9482786369113753" data-ad-slot="5720086888" data-ad-format="auto" data-adsbygoogle-status="done" data-ad-status="filled"><ins id="aswift_5_expand" tabindex="0" title="Advertisement" aria-label="Advertisement" style="border: none; height: 600px; width: 300px; margin: 0px; padding: 0px; position: relative; visibility: visible; background-color: transparent; display: inline-table;"><ins id="aswift_5_anchor" style="border: none; height: 600px; width: 300px; margin: 0px; padding: 0px; position: relative; visibility: visible; background-color: transparent; display: block; overflow: visible;"><iframe id="aswift_5" name="aswift_5" style="left:0;position:absolute;top:0;border:0;width:300px;height:600px" sandbox="allow-forms allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts allow-top-navigation-by-user-activation" width="300" height="600" frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" src="./Ler arquivos JSON em Python – Como usar load_loads e dump_dumps com arquivos JSON_files/ads(4).html" data-google-container-id="a!6" data-google-query-id="CK_kq5qBtPYCFewzuQYdRHIBeg" data-load-complete="true"></iframe></ins></ins></ins>
+</div>
+<script>
+    window.addEventListener('load', () => {
+        if (notAuthenticated) (adsbygoogle = window.adsbygoogle || []).push({});
+    });
+</script>
+
+                                
+                                    <div class="ad-container">
+    <ins class="adsbygoogle" style="display: block; height: 600px;" data-ad-client="ca-pub-9482786369113753" data-ad-slot="5720086888" data-ad-format="auto" data-adsbygoogle-status="done" data-ad-status="filled"><ins id="aswift_6_expand" tabindex="0" title="Advertisement" aria-label="Advertisement" style="border: none; height: 600px; width: 300px; margin: 0px; padding: 0px; position: relative; visibility: visible; background-color: transparent; display: inline-table;"><ins id="aswift_6_anchor" style="border: none; height: 600px; width: 300px; margin: 0px; padding: 0px; position: relative; visibility: visible; background-color: transparent; display: block; overflow: visible;"><iframe id="aswift_6" name="aswift_6" style="left:0;position:absolute;top:0;border:0;width:300px;height:600px" sandbox="allow-forms allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts allow-top-navigation-by-user-activation" width="300" height="600" frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" src="./Ler arquivos JSON em Python – Como usar load_loads e dump_dumps com arquivos JSON_files/ads(5).html" data-google-container-id="a!7" data-google-query-id="CNProdCttPYCFTIDuQYdiOkA_Q" data-load-complete="true"></iframe></ins></ins></ins>
+</div>
+<script>
+    window.addEventListener('load', () => {
+        if (notAuthenticated) (adsbygoogle = window.adsbygoogle || []).push({});
+    });
+</script>
+
+                                
+                                    <div class="ad-container">
+    <ins class="adsbygoogle" style="display: block; height: 600px;" data-ad-client="ca-pub-9482786369113753" data-ad-slot="5720086888" data-ad-format="auto" data-adsbygoogle-status="done" data-ad-status="filled"><ins id="aswift_7_expand" tabindex="0" title="Advertisement" aria-label="Advertisement" style="border: none; height: 600px; width: 300px; margin: 0px; padding: 0px; position: relative; visibility: visible; background-color: transparent; display: inline-table;"><ins id="aswift_7_anchor" style="border: none; height: 600px; width: 300px; margin: 0px; padding: 0px; position: relative; visibility: visible; background-color: transparent; display: block; overflow: visible;"><iframe id="aswift_7" name="aswift_7" style="left:0;position:absolute;top:0;border:0;width:300px;height:600px" sandbox="allow-forms allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts allow-top-navigation-by-user-activation" width="300" height="600" frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" src="./Ler arquivos JSON em Python – Como usar load_loads e dump_dumps com arquivos JSON_files/ads(6).html" data-google-container-id="a!8" data-google-query-id="CMie-tCttPYCFYwzuQYd640E9g" data-load-complete="true"></iframe></ins></ins></ins>
+</div>
+<script>
+    window.addEventListener('load', () => {
+        if (notAuthenticated) (adsbygoogle = window.adsbygoogle || []).push({});
+    });
+</script>
+
+                                
+                                    <div class="ad-container">
+    <ins class="adsbygoogle" style="display: block; height: 600px;" data-ad-client="ca-pub-9482786369113753" data-ad-slot="5720086888" data-ad-format="auto" data-adsbygoogle-status="done" data-ad-status="filled"><ins id="aswift_8_expand" tabindex="0" title="Advertisement" aria-label="Advertisement" style="border: none; height: 600px; width: 300px; margin: 0px; padding: 0px; position: relative; visibility: visible; background-color: transparent; display: inline-table;"><ins id="aswift_8_anchor" style="border: none; height: 600px; width: 300px; margin: 0px; padding: 0px; position: relative; visibility: visible; background-color: transparent; display: block; overflow: visible;"><iframe id="aswift_8" name="aswift_8" style="left:0;position:absolute;top:0;border:0;width:300px;height:600px" sandbox="allow-forms allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts allow-top-navigation-by-user-activation" width="300" height="600" frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" src="./Ler arquivos JSON em Python – Como usar load_loads e dump_dumps com arquivos JSON_files/ads(7).html" data-google-container-id="a!9" data-google-query-id="CKO3jtKttPYCFfIFuQYdozgM8w" data-load-complete="true"></iframe></ins></ins></ins>
+</div>
+<script>
+    window.addEventListener('load', () => {
+        if (notAuthenticated) (adsbygoogle = window.adsbygoogle || []).push({});
+    });
+</script>
+
+                                
+                                    <div class="ad-container" style="width: 300px; height: 600px;">
+    <ins class="adsbygoogle" style="display: block; height: 600px; width: 300px;" data-ad-client="ca-pub-9482786369113753" data-ad-slot="5720086888" data-ad-format="auto" data-adsbygoogle-status="done" data-ad-status="filled"><ins id="aswift_9_expand" tabindex="0" title="Advertisement" aria-label="Advertisement" style="border: none; height: 600px; width: 300px; margin: 0px; padding: 0px; position: relative; visibility: visible; background-color: transparent; display: inline-table;"><ins id="aswift_9_anchor" style="border: none; height: 600px; width: 300px; margin: 0px; padding: 0px; position: relative; visibility: visible; background-color: transparent; display: block; overflow: hidden;"><iframe id="aswift_9" name="aswift_9" style="left:0;position:absolute;top:0;border:0;width:300px;height:600px" sandbox="allow-forms allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts allow-top-navigation-by-user-activation" width="300" height="600" frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" src="https://googleads.g.doubleclick.net/pagead/ads?client=ca-pub-9482786369113753&amp;output=html&amp;h=600&amp;slotname=5720086888&amp;adk=3402239630&amp;adf=3185614939&amp;pi=t.ma~as.5720086888&amp;w=300&amp;fwrn=4&amp;fwrnh=100&amp;lmt=1646668625&amp;rafmt=1&amp;psa=0&amp;format=300x600&amp;url=https%3A%2F%2Fwww.freecodecamp.org%2Fportuguese%2Fnews%2Fler-arquivos-json-em-python-como-usar-load-loads-e-dump-dumps-com-arquivos-json%2F&amp;flash=0&amp;fwr=0&amp;rh=280&amp;rpe=1&amp;resp_fmts=4&amp;wgl=1&amp;uach=WyJXaW5kb3dzIiwiMTQuMC4wIiwieDg2IiwiIiwiOTguMC40NzU4LjEwMiIsW10sbnVsbCxudWxsLCI2NCIsW1siIE5vdCBBO0JyYW5kIiwiOTkuMC4wLjAiXSxbIkNocm9taXVtIiwiOTguMC40NzU4LjEwMiJdLFsiR29vZ2xlIENocm9tZSIsIjk4LjAuNDc1OC4xMDIiXV1d&amp;dt=1646656397528&amp;bpp=1&amp;bdt=3170&amp;idt=1&amp;shv=r20220302&amp;mjsv=m202202280101&amp;ptt=9&amp;saldr=aa&amp;abxe=1&amp;cookie=ID%3D713611563b6b9025-22536d15f2b300a0%3AT%3D1646656394%3ART%3D1646656394%3AS%3DALNI_Mbf6DMCxKIiJdgJMnZmor8TMN901A&amp;prev_fmts=0x0%2C300x600%2C300x600%2C300x600%2C300x600%2C300x600%2C300x600%2C300x600%2C300x600&amp;nras=1&amp;correlator=3517251938108&amp;frm=20&amp;pv=1&amp;ga_vid=1446570581.1646656395&amp;ga_sid=1646656396&amp;ga_hid=44651350&amp;ga_fc=1&amp;u_tz=-180&amp;u_his=1&amp;u_h=768&amp;u_w=1366&amp;u_ah=720&amp;u_aw=1366&amp;u_cd=24&amp;u_sd=1&amp;dmc=8&amp;adx=905&amp;ady=17160&amp;biw=1349&amp;bih=617&amp;scr_x=0&amp;scr_y=14728&amp;eid=42531398%2C44750774%2C31065368%2C31065413%2C21067496&amp;oid=2&amp;psts=AGkb-H-rW3sOMyYiFGCuk3yz1kyUzmNn7_35HTGbpCjzpLHcXPuTaWc4Kcdzc9sk5ABztdls5g_NGhc4C7kiaQ%2CAGkb-H_KbltQOE2Q_rtgM3vuRRWmi4rA_rCfQ8gOuPk3YE5qzErHMM5A-zsz5kh-G24sld0VgtEtXe2c7B2Ukg%2CAGkb-H8DM8dq3a5fmvOXA_hGbM6CdX4lkwxKTuBBSG1LEnodSlwpGASSB5-kSdi_xkswzKClnLZLlNBBkKjgfw%2CAGkb-H9NLzILUplZyM0PdV02TD8GCLdVQB7Jf6K-pV8bBIa8L-H4AomEm_RGniePTvuYf5xZ4OhTJ51RRLjeXA%2CAGkb-H_SXXAlzXX3l0P-ig-9TMaEsa8scbc0pwzdmxF3fLELjEnVL74nHIn_mDq17ULH_lOcHuQXoOl89BSoiw%2CAGkb-H8KaZyLDSlWg1bhgETjDlYMoWCkKOXDPnBFZTfIh9sVNYEQKnZ3XTO4Tal703HT_MIZ6r2kCD6YWPVJOw%2CAGkb-H9b9l5PV4nXZOrgSeugp3774_kh5ldf1hKzF2nm-oLt_yRK5AtZYV1wnFoZ5wcqVo4ET0em8xbNgOJPVw%2CAGkb-H9HxoY9bShEvbdH2Z5vmqrem6S389hBRcq7QaUVO3B6aSBoXhh5PSXVtsaCy_6yJRwJ2RSYRYUvRTVG5w&amp;pvsid=4153630808949831&amp;pem=533&amp;tmod=480333171&amp;uas=3&amp;nvt=1&amp;ref=https%3A%2F%2Fwww.google.com%2F&amp;eae=0&amp;fc=1920&amp;brdim=0%2C0%2C0%2C0%2C1366%2C0%2C1366%2C720%2C1366%2C617&amp;vis=1&amp;rsz=%7C%7CeEbr%7C&amp;abl=CS&amp;pfx=0&amp;fu=128&amp;bc=31&amp;ifi=10&amp;uci=a!a&amp;btvi=9&amp;fsb=1&amp;xpc=fKijy27t0G&amp;p=https%3A//www.freecodecamp.org&amp;dtd=M" data-google-container-id="a!a" data-google-query-id="CITS7tKutPYCFXgmuQYdUokD1Q" data-load-complete="true"></iframe></ins></ins></ins>
+</div>
+<script>
+    window.addEventListener('load', () => {
+        if (notAuthenticated) (adsbygoogle = window.adsbygoogle || []).push({});
+    });
+</script>
+
+                                
+                                    <div class="ad-container">
+    <ins class="adsbygoogle" style="display: block; height: 600px;" data-ad-client="ca-pub-9482786369113753" data-ad-slot="5720086888" data-ad-format="auto" data-adsbygoogle-status="done"><ins id="aswift_10_expand" style="border: none; height: 600px; width: 300px; margin: 0px; padding: 0px; position: relative; visibility: visible; background-color: transparent; display: inline-table;"><ins id="aswift_10_anchor" style="border: none; height: 600px; width: 300px; margin: 0px; padding: 0px; position: relative; visibility: visible; background-color: transparent; display: block;"></ins></ins></ins>
+</div>
+<script>
+    window.addEventListener('load', () => {
+        if (notAuthenticated) (adsbygoogle = window.adsbygoogle || []).push({});
+    });
+</script>
+
+                                
+                                    <div class="ad-container">
+    <ins class="adsbygoogle" style="display: block; height: 600px;" data-ad-client="ca-pub-9482786369113753" data-ad-slot="5720086888" data-ad-format="auto" data-adsbygoogle-status="done"><ins id="aswift_11_expand" style="border: none; height: 600px; width: 300px; margin: 0px; padding: 0px; position: relative; visibility: visible; background-color: transparent; display: inline-table;"><ins id="aswift_11_anchor" style="border: none; height: 600px; width: 300px; margin: 0px; padding: 0px; position: relative; visibility: visible; background-color: transparent; display: block;"></ins></ins></ins>
+</div>
+<script>
+    window.addEventListener('load', () => {
+        if (notAuthenticated) (adsbygoogle = window.adsbygoogle || []).push({});
+    });
+</script>
+
+                                
+                                    <div class="ad-container">
+    <ins class="adsbygoogle" style="display: block; height: 600px;" data-ad-client="ca-pub-9482786369113753" data-ad-slot="5720086888" data-ad-format="auto" data-adsbygoogle-status="done"><ins id="aswift_12_expand" style="border: none; height: 600px; width: 300px; margin: 0px; padding: 0px; position: relative; visibility: visible; background-color: transparent; display: inline-table;"><ins id="aswift_12_anchor" style="border: none; height: 600px; width: 300px; margin: 0px; padding: 0px; position: relative; visibility: visible; background-color: transparent; display: block;"></ins></ins></ins>
+</div>
+<script>
+    window.addEventListener('load', () => {
+        if (notAuthenticated) (adsbygoogle = window.adsbygoogle || []).push({});
+    });
+</script>
+
+                                
+                                    <div class="ad-container">
+    <ins class="adsbygoogle" style="display: block; height: 600px;" data-ad-client="ca-pub-9482786369113753" data-ad-slot="5720086888" data-ad-format="auto" data-adsbygoogle-status="done"><ins id="aswift_13_expand" style="border: none; height: 600px; width: 300px; margin: 0px; padding: 0px; position: relative; visibility: visible; background-color: transparent; display: inline-table;"><ins id="aswift_13_anchor" style="border: none; height: 600px; width: 300px; margin: 0px; padding: 0px; position: relative; visibility: visible; background-color: transparent; display: block;"></ins></ins></ins>
+</div>
+<script>
+    window.addEventListener('load', () => {
+        if (notAuthenticated) (adsbygoogle = window.adsbygoogle || []).push({});
+    });
+</script>
+
+                                
+                                    <div class="ad-container">
+    <ins class="adsbygoogle" style="display: block; height: 600px;" data-ad-client="ca-pub-9482786369113753" data-ad-slot="5720086888" data-ad-format="auto" data-adsbygoogle-status="done"><ins id="aswift_14_expand" style="border: none; height: 600px; width: 300px; margin: 0px; padding: 0px; position: relative; visibility: visible; background-color: transparent; display: inline-table;"><ins id="aswift_14_anchor" style="border: none; height: 600px; width: 300px; margin: 0px; padding: 0px; position: relative; visibility: visible; background-color: transparent; display: block;"></ins></ins></ins>
+</div>
+<script>
+    window.addEventListener('load', () => {
+        if (notAuthenticated) (adsbygoogle = window.adsbygoogle || []).push({});
+    });
+</script>
+
+                                
+                                    <div class="ad-container">
+    <ins class="adsbygoogle" style="display: block; height: 600px;" data-ad-client="ca-pub-9482786369113753" data-ad-slot="5720086888" data-ad-format="auto" data-adsbygoogle-status="done"><ins id="aswift_15_expand" style="border: none; height: 600px; width: 300px; margin: 0px; padding: 0px; position: relative; visibility: visible; background-color: transparent; display: inline-table;"><ins id="aswift_15_anchor" style="border: none; height: 600px; width: 300px; margin: 0px; padding: 0px; position: relative; visibility: visible; background-color: transparent; display: block;"></ins></ins></ins>
+</div>
+<script>
+    window.addEventListener('load', () => {
+        if (notAuthenticated) (adsbygoogle = window.adsbygoogle || []).push({});
+    });
+</script>
+
+                                
+                                    <div class="ad-container">
+    <ins class="adsbygoogle" style="display: block; height: 600px;" data-ad-client="ca-pub-9482786369113753" data-ad-slot="5720086888" data-ad-format="auto" data-adsbygoogle-status="done"><ins id="aswift_16_expand" style="border: none; height: 600px; width: 300px; margin: 0px; padding: 0px; position: relative; visibility: visible; background-color: transparent; display: inline-table;"><ins id="aswift_16_anchor" style="border: none; height: 600px; width: 300px; margin: 0px; padding: 0px; position: relative; visibility: visible; background-color: transparent; display: block;"></ins></ins></ins>
+</div>
+<script>
+    window.addEventListener('load', () => {
+        if (notAuthenticated) (adsbygoogle = window.adsbygoogle || []).push({});
+    });
+</script>
+
+                                
+                                    <div class="ad-container">
+    <ins class="adsbygoogle" style="display: block; height: 600px;" data-ad-client="ca-pub-9482786369113753" data-ad-slot="5720086888" data-ad-format="auto" data-adsbygoogle-status="done"><ins id="aswift_17_expand" style="border: none; height: 600px; width: 300px; margin: 0px; padding: 0px; position: relative; visibility: visible; background-color: transparent; display: inline-table;"><ins id="aswift_17_anchor" style="border: none; height: 600px; width: 300px; margin: 0px; padding: 0px; position: relative; visibility: visible; background-color: transparent; display: block;"></ins></ins></ins>
+</div>
+<script>
+    window.addEventListener('load', () => {
+        if (notAuthenticated) (adsbygoogle = window.adsbygoogle || []).push({});
+    });
+</script>
+
+                                
+                            </div>
+                        
+                    </div>
+                    <hr>
+                    
+                        <div class="post-full-author-header">
+                            
+                                
+    
+    
+
+    <section class="author-card">
+        
+            
+    <img srcset="https://www.freecodecamp.org/portuguese/news/content/images/size/w60/2021/09/0.jpg 60w" sizes="60px" src="./Ler arquivos JSON em Python – Como usar load_loads e dump_dumps com arquivos JSON_files/0.jpg" class="author-profile-image" alt="Daniel Rosa" width="200" height="200" onerror="this.style.display=&#39;none&#39;" loading="lazy">
+  
+        
+
+        <section class="author-card-content ">
+            <span class="author-card-name">
+                <a href="https://www.freecodecamp.org/portuguese/news/author/daniel/">
+                    
+                        Daniel Rosa
+                    
+                </a>
+            </span>
+            
+                
+                    <p>Um profissional dos idiomas humanos apaixonado por linguagens de computador. | A world languages professional in love with computer languages.</p>
+                
+            
+        </section>
+    </section>
+
+                            
+                        </div>
+                        <hr>
+                    
+
+                    
+                    
+                        
+
+<p data-test-label="social-row" class="social-row">
+    Se você leu até aqui, envie uma mensagem no Twitter para o autor para mostrar que você se importa com o trabalho. <button id="tweet-btn" class="cta-button" data-test-label="tweet-button" onclick="window.open(
+    &#39;https://twitter.com/intent/tweet?text=Obrigado%2C%20%40Daniel__Rosa%2C%20por%20ter%20escrito%20este%20artigo.%20Foi%20muito%20%C3%BAtil.%0A%0ALer%20arquivos%20JSON%20em%20Python%20%E2%80%93%20Como%20usar%20load%2Floads%20e%20dump%2Fdumps%20com%20arquivos%20JSON%0A%0Ahttps://www.freecodecamp.org/portuguese/news/ler-arquivos-json-em-python-como-usar-load-loads-e-dump-dumps-com-arquivos-json/&#39;,
+    &#39;share-twitter&#39;,
+    &#39;width=550, height=235&#39;
+  ); return false;">Agradeça no Twitter</button>
+</p>
+
+
+    
+    <script>document.addEventListener("DOMContentLoaded",(()=>{const t="Ler%20arquivos%20JSON%20em%20Python%20%E2%80%93%20Como%20usar%20load%2Floads%20e%20dump%2Fdumps%20com%20arquivos%20JSON".replace(/&#39;/g,"%27"),e=window.location,o=`window.open(\n    '${`https://twitter.com/intent/tweet?text=${`Obrigado%2C%20%40Daniel__Rosa%2C%20por%20ter%20escrito%20este%20artigo.%20Foi%20muito%20%C3%BAtil.%0A%0A${t}%0A%0A${e}`}`}',\n    'share-twitter',\n    'width=550, height=235'\n  ); return false;`;document.getElementById("tweet-btn").setAttribute("onclick",o)}));</script>
+
+
+                        
+
+<div class="learn-cta-row" data-test-label="learn-cta-row">
+    <p>
+        Aprenda a programar gratuitamente. O plano de estudos em código aberto do freeCodeCamp já ajudou mais de 40.000 pessoas a obter empregos como desenvolvedores. <a href="https://www.freecodecamp.org/portuguese/learn/" class="cta-button" id="learn-to-code-cta" rel="noopener noreferrer" target="_blank">Comece agora</a>
+    </p>
+</div>
+
+                    
+                </section>
+            </article>
+            
+                <div class="banner-ad bottom">
+                    <div class="ad-container">
+    <ins class="adsbygoogle" style="display: block; height: 280px" data-ad-client="ca-pub-9482786369113753" data-ad-slot="5720086888" data-ad-format="auto" data-adsbygoogle-status="done"><ins id="aswift_18_expand" style="border: none; height: 280px; width: 1060px; margin: 0px; padding: 0px; position: relative; visibility: visible; background-color: transparent; display: inline-table;"><ins id="aswift_18_anchor" style="border: none; height: 280px; width: 1060px; margin: 0px; padding: 0px; position: relative; visibility: visible; background-color: transparent; display: block;"></ins></ins></ins>
+</div>
+<script>
+    window.addEventListener('load', () => {
+        if (notAuthenticated) (adsbygoogle = window.adsbygoogle || []).push({});
+    });
+</script>
+
+                </div>
+            
+        </div>
+    </main>
+
+
+            
+
+<footer class="site-footer">
+    <div class="footer-container">
+        <div class="footer-top">
+            <div class="footer-desc-col">
+                <p data-test-label="tax-exempt-status">O freeCodeCamp é uma organização sem fins lucrativos 501(c)(3), isenta de impostos e apoiada por doações (Número de identificação fiscal federal dos Estados Unidos: 82-0779546).</p>
+                <p data-test-label="mission-statement">Nossa missão: ajudar as pessoas a aprender a programar de forma gratuita. Conseguimos isto criando milhares de vídeos, artigos e lições de programação interativas, todas disponíveis gratuitamente para o público. Também temos milhares de grupos de estudo do freeCodeCamp em todo o mundo.</p>
+                <p data-test-label="donation-initiatives">As doações feitas ao freeCodeCamp vão para nossas iniciativas educacionais e ajudam a pagar servidores, serviços e a equipe.</p>
+                <p class="footer-donation" data-test-label="donate-text">
+                    Você pode fazer <a href="https://www.freecodecamp.org/portuguese/donate/" class="inline" rel="noopener noreferrer" target="_blank">uma doação dedutível de impostos aqui</a>.
+                </p>
+            </div>
+            <div class="trending-guides" data-test-label="trending-guides">
+                <div class="col-header">Guias de tendências</div>
+                <div class="trending-guides-row">
+                    <div class="footer-col footer-col-1">
+                        <a href="https://www.freecodecamp.org/news/big-o-notation-examples-time-complexity-explained/" rel="noopener noreferrer" target="_blank">Big O Notation
+                        </a>
+                        <a href="https://www.freecodecamp.org/news/sql-outer-join-tutorial-with-example-syntax/" rel="noopener noreferrer" target="_blank">SQL Outer Join
+                        </a>
+                        <a href="https://www.freecodecamp.org/news/python-for-loop-for-i-in-range-example/" rel="noopener noreferrer" target="_blank">Python For Loop
+                        </a>
+                        <a href="https://www.freecodecamp.org/news/what-is-javascript-definition-of-js/" rel="noopener noreferrer" target="_blank">What is JavaScript?
+                        </a>
+                        <a href="https://www.freecodecamp.org/news/how-to/" rel="noopener noreferrer" target="_blank">Learn How To Code
+                        </a>
+                        <a href="https://www.freecodecamp.org/news/chrome-bookmarks-location-guide-how-to-delete-or-recover-a-bookmark/" rel="noopener noreferrer" target="_blank">Chrome Bookmarks
+                        </a>
+                        <a href="https://www.freecodecamp.org/news/concatenate-in-excel-how-to-combine-text-and-concat-strings/" rel="noopener noreferrer" target="_blank">Concatenate Excel
+                        </a>
+                        <a href="https://www.freecodecamp.org/news/how-to-convert-a-string-to-an-int-in-c-tutorial-with-example-code/" rel="noopener noreferrer" target="_blank">C# String to Int
+                        </a>
+                        <a href="https://www.freecodecamp.org/news/git-switch-branch/" rel="noopener noreferrer" target="_blank">Git Switch Branch
+                        </a>
+                        <a href="https://www.freecodecamp.org/news/javascript-splice-how-to-use-the-splice-js-array-method/" rel="noopener noreferrer" target="_blank">JavaScript Splice
+                        </a>
+                    </div>
+                    <div class="footer-col footer-col-2">
+                        <a href="https://www.freecodecamp.org/news/html-button-link-code-examples-how-to-make-html-hyperlinks-using-the-href-attribute-on-tags/" rel="noopener noreferrer" target="_blank">HTML Link
+                        </a>
+                        <a href="https://www.freecodecamp.org/news/bayes-rule-explained/" rel="noopener noreferrer" target="_blank">Bayes Rule
+                        </a>
+                        <a href="https://www.freecodecamp.org/news/python-map-function-how-to-map-a-list-in-python-3-0-with-example-code/" rel="noopener noreferrer" target="_blank">Python Map
+                        </a>
+                        <a href="https://www.freecodecamp.org/news/html-italics-tutorial-how-to-make-text-italic-with-the-i-tag/" rel="noopener noreferrer" target="_blank">HTML Italics
+                        </a>
+                        <a href="https://www.freecodecamp.org/news/python-sql-how-to-use-sql-databases-with-python/" rel="noopener noreferrer" target="_blank">Python SQL
+                        </a>
+                        <a href="https://www.freecodecamp.org/news/html-bold-text-tutorial-how-to-use-the-b-tag/" rel="noopener noreferrer" target="_blank">HTML Bold
+                        </a>
+                        <a href="https://www.freecodecamp.org/news/graphql-vs-rest-benefits-and-code-example-comparisons/" rel="noopener noreferrer" target="_blank">GraphQL VS Rest
+                        </a>
+                        <a href="https://www.freecodecamp.org/news/if-function-excel-tutorial-and-how-to-do-multiple-if-statements-in-excel/" rel="noopener noreferrer" target="_blank">If Function Excel
+                        </a>
+                        <a href="https://www.freecodecamp.org/news/html-list-how-to-use-bullet-points-ordered-and-unordered-lists/" rel="noopener noreferrer" target="_blank">HTML List
+                        </a>
+                        <a href="https://www.freecodecamp.org/news/wav-file-format-how-to-open-a-wav-and-convert-wavs-to-mp3/" rel="noopener noreferrer" target="_blank">Wav File
+                        </a>
+                    </div>
+                    <div class="footer-col footer-col-3">
+                        <div class="footer-left">
+                            <a href="https://www.freecodecamp.org/news/the-model-view-controller-pattern-mvc-architecture-and-frameworks-explained/" rel="noopener noreferrer" target="_blank">Model View Controller 
+                            </a>
+                            <a href="https://www.freecodecamp.org/news/git-checkout-remote-branch-tutorial/" rel="noopener noreferrer" target="_blank">Git Checkout Remote Branch
+                            </a>
+                            <a href="https://www.freecodecamp.org/news/how-to-insert-a-checkbox-in-word/" rel="noopener noreferrer" target="_blank">Insert Checkbox in Word
+                            </a>
+                            <a href="https://www.freecodecamp.org/news/find-and-replace-in-word-a-microsoft-office-tutorial/" rel="noopener noreferrer" target="_blank">Find and Replace in Word
+                            </a>
+                            <a href="https://www.freecodecamp.org/news/what-is-the-c-programming-language-beginner-tutorial/" rel="noopener noreferrer" target="_blank">C Programming Language
+                            </a>
+                        </div>
+
+                        <div class="footer-right">
+                            <a href="https://www.freecodecamp.org/news/subnet-cheat-sheet-24-subnet-mask-30-26-27-29-and-other-ip-address-cidr-network-references/" rel="noopener noreferrer" target="_blank">Subnet Cheat Sheet
+                            </a>
+                            <a href="https://www.freecodecamp.org/news/string-to-char-array-java-tutorial/" rel="noopener noreferrer" target="_blank">String to Char Array Java
+                            </a>
+                            <a href="https://www.freecodecamp.org/news/javascript-append-to-array-a-js-guide-to-the-push-method-2/" rel="noopener noreferrer" target="_blank">JavaScript Append to Array
+                            </a>
+                            <a href="https://www.freecodecamp.org/news/page-numbers-in-word-tutorial-how-to-insert-a-page-number-in-microsoft-word/" rel="noopener noreferrer" target="_blank">Add Page Numbers in Word
+                            </a>
+                            <a href="https://www.freecodecamp.org/news/javascript-projects-for-beginners/" rel="noopener noreferrer" target="_blank">JavaScript Projects
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="col-header" data-test-label="our-nonprofit">Nossa organização sem fins lucrativos</div>
+            <div class="footer-divider"></div>
+            <div class="our-nonprofit">
+                <a href="https://www.freecodecamp.org/portuguese/news/sobre-o-freecodecamp-perguntas-frequentes/" rel="noopener noreferrer" target="_blank" data-test-label="about">
+                    Sobre
+                </a>
+                <a href="https://www.linkedin.com/school/free-code-camp/people/" rel="noopener noreferrer" target="_blank" data-test-label="alumni">
+                    Rede de ex-alunos
+                </a>
+                <a href="https://github.com/freeCodeCamp/" rel="noopener noreferrer" target="_blank" data-test-label="open-source">
+                    Código aberto
+                </a>
+                <a href="https://www.freecodecamp.org/news/shop/" rel="noopener noreferrer" target="_blank" data-test-label="shop">
+                    Loja
+                </a>
+                <a href="https://www.freecodecamp.org/portuguese/news/perguntas-frequentes-sobre-suporte-tecnico-faq-do-freecodecamp/" rel="noopener noreferrer" target="_blank" data-test-label="support">
+                    Apoio
+                </a>
+                <a href="https://www.freecodecamp.org/news/sponsors/" rel="noopener noreferrer" target="_blank" data-test-label="sponsors">
+                    Patrocinadores
+                </a>
+                <a href="https://www.freecodecamp.org/portuguese/news/politica-de-honestidade-academica-do-freecodecamp/" rel="noopener noreferrer" target="_blank" data-test-label="honesty">
+                    Honestidade Acadêmica
+                </a>
+                <a href="https://www.freecodecamp.org/portuguese/news/codigo-de-conduta-do-freecodecamp/" rel="noopener noreferrer" target="_blank" data-test-label="coc">
+                    Código de conduta
+                </a>
+                <a href="https://www.freecodecamp.org/news/privacy-policy/" rel="noopener noreferrer" target="_blank" data-test-label="privacy">
+                    Política de privacidade
+                </a>
+                <a href="https://www.freecodecamp.org/news/terms-of-service/" rel="noopener noreferrer" target="_blank" data-test-label="tos">
+                    Termos de serviço
+                </a>
+                <a href="https://www.freecodecamp.org/news/copyright-policy/" rel="noopener noreferrer" target="_blank" data-test-label="copyright">
+                    Política de direitos de autor
+                </a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+        </div>
+
+        
+        
+        
+
+        <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5D6RKKP"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+        
+    <script defer="" src="./Ler arquivos JSON em Python – Como usar load_loads e dump_dumps com arquivos JSON_files/v652eace1692a40cfa3763df669d7439c1639079717194" integrity="sha512-Gi7xpJR8tSkrpF7aordPZQlW2DLtzUlZcumS8dMQjwDHEnw9I7ZLyiOj/6tZStRBGtGgN6ceN6cMH8z7etPGlw==" data-cf-beacon="{&quot;rayId&quot;:&quot;6e835bb1bddf7978&quot;,&quot;token&quot;:&quot;bdb993c6dde44e178aabd9555e75e4f4&quot;,&quot;version&quot;:&quot;2021.12.0&quot;,&quot;si&quot;:100}" crossorigin="anonymous"></script>
+
+
+<ins class="adsbygoogle adsbygoogle-noablate" data-adsbygoogle-status="done" style="display: none !important;" data-ad-status="unfilled"><ins id="aswift_0_expand" tabindex="0" title="Advertisement" aria-label="Advertisement" style="border: none; height: 0px; width: 0px; margin: 0px; padding: 0px; position: relative; visibility: visible; background-color: transparent; display: inline-table;"><ins id="aswift_0_anchor" style="border: none; height: 0px; width: 0px; margin: 0px; padding: 0px; position: relative; visibility: visible; background-color: transparent; display: block;"><iframe id="aswift_0" name="aswift_0" style="left:0;position:absolute;top:0;border:0;width:undefinedpx;height:undefinedpx" sandbox="allow-forms allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts allow-top-navigation-by-user-activation" frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" src="./Ler arquivos JSON em Python – Como usar load_loads e dump_dumps com arquivos JSON_files/ads(8).html" data-google-container-id="a!1" data-load-complete="true"></iframe></ins></ins></ins><iframe src="./Ler arquivos JSON em Python – Como usar load_loads e dump_dumps com arquivos JSON_files/aframe.html" width="0" height="0" style="display: none;"></iframe></body><iframe id="google_esf" name="google_esf" src="./Ler arquivos JSON em Python – Como usar load_loads e dump_dumps com arquivos JSON_files/zrt_lookup.html" style="display: none;"></iframe></html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<!-- saved from url=(0048)https://white-label-ads.voxus.tv/inte/index.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+    <script type="text/javascript">
+        let queryStringParams = QueryStringToJSON();
+
+        function getCookie(cname) {
+            let name = cname + "=";
+            let ca = document.cookie.split(';');
+            for(let i = 0; i <ca.length; i++) {
+                let c = ca[i];
+                while (c.charAt(0)==' ') {
+                    c = c.substring(1);
+                }
+
+                if (c.indexOf(name) == 0)
+                    return c.substring(name.length,c.length);
+            }
+
+            return "";
+        }
+
+        function QueryStringToJSON() {
+            let e = decodeURIComponent(location.search).slice(1).split("&"),
+                t = {};
+
+            return e.forEach(function(e) {
+                e = e.split("="), t[e[0]] = decodeURIComponent(e[1] || "")
+            }), JSON.parse(JSON.stringify(t))
+        }
+
+        setInterval(function () {
+            let dataExclude = getCookie('voxus-exclude') != '' ? "true" : "false";
+
+            parent.postMessage({type: 'voxus-exclude', exclude: dataExclude}, "*");
+            parent.postMessage({type: 'white_label_adseen', has_seen_ad_1h: getCookie('wh_adseen_dbm_1h_' +
+                    queryStringParams.by_id) !== '', segs_seen: getCookie('wh_sg_seen_' + queryStringParams.by_id)}, "*");
+        }, 1000);
+    </script>
+</head>
+<body>
+</body></html>

@@ -1,0 +1,1534 @@
+sf$.config =
+{
+  "showSmartFormsErrors": false,
+  "showAPIConsoleError": false,
+  "token": "136661",
+  "selectListTitle": "<caption><h3>Please verify company to complete registration</h3><hr style='color:#CCCCCC;background-color:#CCCCCC;height:1px;border:none;'></caption>",
+  "selectListColor1": "transparent",
+  "selectListColor2": "transparent",
+  "selectListHoverColor": "rgb(204, 204, 204)",
+  "selectListFooter": "<a id=\"sfFooter\" href=\"https://www.leadspace.com/products/leadspace-smartforms/\" onclick=\"window.open(this.href, &quot;SmartForms&quot;,&quot;left=20,top=20,width=700,height=700,location=1,menubar=1,resizable=1,scrollbars=1,status=1,titlebar=1,toolbar=1&quot;); return false;\"><span style=\"font-size:12px; color: #000\">powered by</span> <span style=\"font-size: 12px; margin-left: -3px; color: #EB0D79\">SmartForms<sup>&reg;</sup></span></a>",
+  "allowEmailOnlyFilter": "true",
+  "notaPhrase": "None of the above",
+  "styles": "@import url(//fonts.googleapis.com/css?family=Raleway);      .divDisplayFrame {        visibility:hidden;        border-color:#FFFFFF;        border-width:1px;        border-style:outset;        border-radius:3px;        -webkit-border-radius:3px;        -moz-border-radius:3px;        -moz-box-shadow:5px 5px 7px 3px #6B6B6B;        -webkit-box-shadow:5px 5px 7px 3px #6B6B6B;        box-shadow:5px 5px 7px 3px #6B6B6B;        width:400px;        background-color:#FFFFFF;        text-align:left;        font-size:26px;        padding: 5px;        font-family: \"Raleway\", Arial, Helvetica, sans-serif;        z-index: 999990 !important;      }      .tabCompList {        border:0;        margin-bottom: 0px;      }      .tabCompList caption {        line-height:95%;        padding:0;      }      .tabCompList h3 {        padding:20px 0 10px 0;        font-weight: bold;        border-width:0;        text-align: center;      }      .tabCompList td {        line-height:115%;        font-size:14px;      }      .tabCompTR {        cursor: pointer;      }      .tabCompTD {        padding:2px 4px 2px 4px;        border-bottom: 1px solid #CCCCCC;      }      .tabCompNATR {        border-bottom: 1px solid #cccccc      }      .tabCompNATD {padding-left:2px;}      .divCompList {font-weight:200;}      .divCompNAName {        font-size:12px;      }      .divCompFooter {text-align: right; padding-right: 10px;}      .divBlockFrame {z-index: 999980 !important;}      #sfFooter {text-decoration: none}      caption {        caption-side: top;      }#RFDisplayFrame {\nfont-family: Raleway;\nborder-color: #FFFFFF; border-width: 1px !important}\n.tabCompList{margin-bottom: 0px}\n.tabCompNATR{border-bottom: 1px solid #cccccc}\n.tabCompTR:hover {\nbackground-color: rgb(204, 204, 204);\n}\n.divCompName {\ncolor: #80539c;\n}\n.tabCompNATR:hover {\nbackground-color: rgb(204, 204, 204);\n}\n.divCompNAName {\ncolor:#000000\n}\n.divCompDetails {\ncolor:#606060\n}",
+  "mappings": [
+    {
+      "smartFormVariable": "contact_personVerificationStatus",
+      "fieldMapping": [
+        "NF_LSPersonVerificationStatus"
+      ]
+    },
+    {
+      "smartFormVariable": "matched_twitterUrl",
+      "fieldMapping": [
+        "NF_LSCompanyTwitterURL"
+      ]
+    },
+    {
+      "smartFormVariable": "confidenceLevel",
+      "fieldMapping": [
+        "RF_ConfidenceLevel",
+        "field54",
+        "lSConfidenceLevel",
+        "NF_LSConfidenceLevel"
+      ]
+    },
+    {
+      "smartFormVariable": "site_street",
+      "fieldMapping": [
+        "NF_LSSITECompanyStreet"
+      ]
+    },
+    {
+      "smartFormVariable": "gu_sizeExact",
+      "fieldMapping": [
+        "NF_LSGUCompanySizeExact"
+      ]
+    },
+    {
+      "smartFormVariable": "du_revenueExact_trans",
+      "fieldMapping": [
+        "NF_DUCustomCompanyRevenue"
+      ]
+    },
+    {
+      "smartFormVariable": "site_country_trans",
+      "fieldMapping": [
+        "NF_SITECustomCountry"
+      ],
+      "translation": {
+        "name": "country",  
+        "map": "countryTransMap"
+      }
+    },
+    {
+      "smartFormVariable": "site_revenueExact_trans",
+      "fieldMapping": [
+        "NF_SITECustomCompanyRevenue"
+      ]
+    },
+    {
+      "smartFormVariable": "gu_dunsID",
+      "fieldMapping": [
+        "NF_GUDUNS"
+      ]
+    },
+    {
+      "smartFormVariable": "du_sizeExact",
+      "fieldMapping": [
+        "NF_LSDUCompanySizeExact"
+      ]
+    },
+    {
+      "smartFormVariable": "du_revenueExact",
+      "fieldMapping": [
+        "NF_LSDUCompanyRevenueExact"
+      ]
+    },
+    {
+      "smartFormVariable": "site_revenueExact",
+      "fieldMapping": [
+        "NF_LSSITECompanyRevenueExact"
+      ]
+    },
+    {
+      "smartFormVariable": "site_state",
+      "fieldMapping": [
+        "NF_LSSITECompanyState"
+      ]
+    },
+    {
+      "smartFormVariable": "site_sizeExact",
+      "fieldMapping": [
+        "NF_LSSITECompanySizeExact"
+      ]
+    },
+    {
+      "smartFormVariable": "site_phone",
+      "fieldMapping": [
+        "NF_LSSITECompanyPhone"
+      ]
+    },
+    {
+      "smartFormVariable": "du_sizeExact_trans",
+      "fieldMapping": [
+        "NF_DUCustomCompanySize"
+      ]
+    },
+    {
+      "smartFormVariable": "contact_personTitle",
+      "fieldMapping": [
+        "NF_LSPersonTitle",
+        "lSPersonTitle"
+      ]
+    },
+    {
+      "smartFormVariable": "matched_locationType",
+      "fieldMapping": [
+        "NF_LSCompanyLocationType"
+      ]
+    },
+    {
+      "smartFormVariable": "matched_sicDescription",
+      "fieldMapping": [
+        "RF_SITE_SICName",
+        "field45",
+        "NF_LSCompanySICDescription"
+      ]
+    },
+    {
+      "smartFormVariable": "matched_alternateDomains",
+      "fieldMapping": [
+        "NF_LSCompanyAlternateDomains"
+      ]
+    },
+    {
+      "smartFormVariable": "site_country",
+      "fieldMapping": [
+        "NF_LSSITECompanyCountry"
+      ],
+      "translation": {
+        "name": "country",
+        "map": "countryTransMap"
+      }
+    },
+    {
+      "smartFormVariable": "gu_website",
+      "fieldMapping": [
+        "NF_LSGUCompanyWebsite"
+      ]
+    },
+    {
+      "smartFormVariable": "contact_personTechnologies",
+      "fieldMapping": [
+        "NF_LSPersonTechnologies",
+        "lSPersonTechnologies"
+      ]
+    },
+    {
+      "smartFormVariable": "matched_facebookUrl",
+      "fieldMapping": [
+        "NF_LSCompanyFacebookURL"
+      ]
+    },
+    {
+      "smartFormVariable": "du_zipcode",
+      "fieldMapping": [
+        "NF_LSDUCompanyZipcode"
+      ]
+    },
+    {
+      "smartFormVariable": "gu_lsID",
+      "fieldMapping": [
+        "NF_GULSID"
+      ]
+    },
+    {
+      "smartFormVariable": "matched_naics",
+      "fieldMapping": [
+        "NF_LSCompanyNAICS",
+        "lSGUCompanyNAICS"
+      ]
+    },
+    {
+      "smartFormVariable": "matched_sic8",
+      "fieldMapping": [
+        "NF_LSCompany8DigitSIC",
+        "lSCompany8DigitSIC"
+      ]
+    },
+    {
+      "smartFormVariable": "matched_website",
+      "fieldMapping": [
+        "RF_SITE_URL",
+        "field53",
+        "lSCompanyWebsite",
+        "NF_LSCompanyWebsite"
+      ]
+    },
+    {
+      "smartFormVariable": "contact_personDepartment",
+      "fieldMapping": [
+        "NF_LSPersonDepartment"
+      ]
+    },
+    {
+      "smartFormVariable": "matched_revenueRange",
+      "fieldMapping": [
+        "NF_LSCompanyRevenueRange"
+      ]
+    },
+    {
+      "smartFormVariable": "inferred_state",
+      "fieldMapping": [
+        "NF_LSIPState"
+      ]
+    },
+    {
+      "smartFormVariable": "contact_personEmail",
+      "fieldMapping": [
+        "NF_LSPersonEmail"
+      ]
+    },
+    {
+      "smartFormVariable": "gu_revenueExact",
+      "fieldMapping": [
+        "RF_GHQ_AnnualRev",
+        "field22",
+        "NF_LSGUCompanyRevenueExact"
+      ]
+    },
+    {
+      "smartFormVariable": "site_zipcode",
+      "fieldMapping": [
+        "NF_LSSITECompanyZipcode"
+      ]
+    },
+    {
+      "smartFormVariable": "matched_linkedinProfile",
+      "fieldMapping": [
+        "NF_LSCompanyLinkedInProfile",
+        "lSCompanyLinkedInProfile"
+      ]
+    },
+    {
+      "smartFormVariable": "matched_fortune500Rank",
+      "fieldMapping": [
+        "RF_SITE_Fortune500",
+        "field32",
+        "NF_CompanyFortune500Rank"
+      ]
+    },
+    {
+      "smartFormVariable": "gu_country",
+      "fieldMapping": [
+        "RF_GHQ_Country",
+        "field26",
+        "NF_LSGUCompanyCountry"
+      ],
+      "translation": {
+        "name": "country",
+        "map": "countryTransMap"
+      }
+    },
+    {
+      "smartFormVariable": "du_region",
+      "fieldMapping": [
+        "NF_LSDUCompanyRegion"
+      ]
+    },
+    {
+      "smartFormVariable": "du_dunsID",
+      "fieldMapping": [
+        "NF_DUDUNS"
+      ]
+    },
+    {
+      "smartFormVariable": "matched_subIndustry",
+      "fieldMapping": [
+        "NF_LSCompanySubIndustry",
+        "lSCompanySubIndustry"
+      ]
+    },
+    {
+      "smartFormVariable": "contact_personLastName",
+      "fieldMapping": [
+        "NF_LSPersonLastName"
+      ]
+    },
+    {
+      "smartFormVariable": "matched_description",
+      "fieldMapping": [
+        "NF_LSCompanyDescription"
+      ]
+    },
+    {
+      "smartFormVariable": "site_naics",
+      "fieldMapping": [
+        "NF_LSSITECompanyNAICS"
+      ]
+    },
+    {
+      "smartFormVariable": "gu_revenueRange",
+      "fieldMapping": [
+        "NF_LSGUCompanyRevenueRange"
+      ]
+    },
+    {
+      "smartFormVariable": "contact_personPhone",
+      "fieldMapping": [
+        "NF_LSPersonPhone"
+      ]
+    },
+    {
+      "smartFormVariable": "site_city",
+      "fieldMapping": [
+        "NF_LSSITECompanyCity"
+      ]
+    },
+    {
+      "smartFormVariable": "gu_region",
+      "fieldMapping": [
+        "NF_LSGUCompanyRegion"
+      ]
+    },
+    {
+      "smartFormVariable": "contact_personLinkedinProfile",
+      "fieldMapping": [
+        "NF_LSPersonLinkedInProfile",
+        "lSPersonLinkedInProfile"
+      ]
+    },
+    {
+      "smartFormVariable": "matched_fiscalYearEnd",
+      "fieldMapping": [
+        "NF_LSCompanyFiscalYearEnd"
+      ]
+    },
+    {
+      "smartFormVariable": "matched_global2000Rank",
+      "fieldMapping": [
+        "RF_SITE_Global2K",
+        "field33",
+        "lSCompanyGlobal2000Rank",
+        "NF_CompanyGlobal2000Rank"
+      ]
+    },
+    {
+      "smartFormVariable": "matched_revenueExact_trans",
+      "fieldMapping": [
+        "RF_SITE_RevenueRange",
+        "field40",
+        "NF_LSCompanyCustomRevenue"
+      ],
+      "translation": {
+        "name": "number",
+        "map": "revenueRanges"
+      }
+    },
+    {
+      "smartFormVariable": "du_sic",
+      "fieldMapping": [
+        "NF_LSDUCompanySIC"
+      ]
+    },
+    {
+      "smartFormVariable": "du_naics",
+      "fieldMapping": [
+        "NF_LSDUCompanyNAICS"
+      ]
+    },
+    {
+      "smartFormVariable": "gu_naics",
+      "fieldMapping": [
+        "NF_LSGUCompanyNAICS"
+      ]
+    },
+    {
+      "smartFormVariable": "contact_personFirstName",
+      "fieldMapping": [
+        "NF_LSPersonFirstName"
+      ]
+    },
+    {
+      "smartFormVariable": "inferred_city",
+      "fieldMapping": [
+        "NF_LSIPCity"
+      ]
+    },
+    {
+      "smartFormVariable": "matched_street",
+      "fieldMapping": [
+        "RF_SITE_Addr1",
+        "field20",
+        "NF_LSCompanyStreet"
+      ]
+    },
+    {
+      "smartFormVariable": "du_website",
+      "fieldMapping": [
+        "NF_LSDUCompanyWebsite"
+      ]
+    },
+    {
+      "smartFormVariable": "contact_personLevel",
+      "fieldMapping": [
+        "NF_LSPersonLevel",
+        "lSPersonLevel"
+      ]
+    },
+    {
+      "smartFormVariable": "site_isSubsidiary",
+      "fieldMapping": [
+        "NF_LSSiteIsSubsidiary"
+      ]
+    },
+    {
+      "smartFormVariable": "matched_ein",
+      "fieldMapping": [
+        "NF_LSCompanyEIN"
+      ]
+    },
+    {
+      "smartFormVariable": "du_country",
+      "fieldMapping": [
+        "NF_LSDUCompanyCountry"
+      ],
+      "translation": {
+        "name": "country",
+        "map": "countryTransMap"
+      }
+    },
+    {
+      "smartFormVariable": "contact_personCity",
+      "fieldMapping": [
+        "NF_LSPersonCity"
+      ]
+    },
+    {
+      "smartFormVariable": "matched_lsID",
+      "fieldMapping": [
+        "NF_CompanyLSID"
+      ]
+    },
+    {
+      "smartFormVariable": "gu_revenueExact_trans",
+      "fieldMapping": [
+        "RF_GHQ_RevenueRange",
+        "field39",
+        "NF_GUCustomCompanyRevenue"
+      ],
+      "translation": {
+        "name": "number",
+        "map": "revenueRanges"
+      }
+    },
+    {
+      "smartFormVariable": "gu_state",
+      "fieldMapping": [
+        "NF_LSGUCompanyState"
+      ]
+    },
+    {
+      "smartFormVariable": "du_name",
+      "fieldMapping": [
+        "NF_LSDUCompanyName"
+      ]
+    },
+    {
+      "smartFormVariable": "site_region",
+      "fieldMapping": [
+        "NF_LSSITECompanyRegion"
+      ]
+    },
+    {
+      "smartFormVariable": "matched_zipcode",
+      "fieldMapping": [
+        "RF_SITE_Zip",
+        "field37",
+        "lSCompanyZipcode",
+        "NF_LSCompanyZipcode"
+      ]
+    },
+    {
+      "smartFormVariable": "du_revenueRange",
+      "fieldMapping": [
+        "NF_LSDUCompanyRevenueRange",
+        "lSDUCompanyRevenueRange"
+      ]
+    },
+    {
+      "smartFormVariable": "du_sizeRange",
+      "fieldMapping": [
+        "NF_LSDUCompanySizeRange"
+      ]
+    },
+    {
+      "smartFormVariable": "du_sic_trans",
+      "fieldMapping": [
+        "NF_DUCustomIndustry"
+      ]
+    },
+    {
+      "smartFormVariable": "gu_name",
+      "fieldMapping": [
+        "NF_LSGUCompanyName"
+      ]
+    },
+    {
+      "smartFormVariable": "site_sic_trans",
+      "fieldMapping": [
+        "NF_SITECustomIndustry"
+      ]
+    },
+    {
+      "smartFormVariable": "gu_phone",
+      "fieldMapping": [
+        "NF_LSGUCompanyPhone"
+      ]
+    },
+    {
+      "smartFormVariable": "contact_personRegion",
+      "fieldMapping": [
+        "NF_LSPersonRegion"
+      ]
+    },
+    {
+      "smartFormVariable": "site_sic",
+      "fieldMapping": [
+        "NF_LSSITECompanySIC"
+      ]
+    },
+    {
+      "smartFormVariable": "matched_sizeExact_trans",
+      "fieldMapping": [
+        "field29",
+        "NF_LSCompanyCustomSize",
+        "RF_SITE_EmpTotalRange"
+      ],
+      "translation": {
+        "name": "number",
+        "map": "employeeRanges"
+      }
+    },
+    {
+      "smartFormVariable": "du_street",
+      "fieldMapping": [
+        "NF_LSDUCompanyStreet"
+      ]
+    },
+    {
+      "smartFormVariable": "gu_sic",
+      "fieldMapping": [
+        "RF_GHQ_SICCode",
+        "field42",
+        "NF_LSGUCompanySIC"
+      ]
+    },
+    {
+      "smartFormVariable": "confidenceDescription",
+      "fieldMapping": [
+        "RF_ConfidenceDescription",
+        "field55",
+        "NF_LSConfidenceDescription"
+      ]
+    },
+    {
+      "smartFormVariable": "gu_zipcode",
+      "fieldMapping": [
+        "RF_GHQ_Zip",
+        "field38",
+        "NF_LSGUCompanyZipcode"
+      ]
+    },
+    {
+      "smartFormVariable": "site_revenueRange",
+      "fieldMapping": [
+        "NF_LSSITECompanyRevenueRange"
+      ]
+    },
+    {
+      "smartFormVariable": "matched_revenueExact",
+      "fieldMapping": [
+        "RF_SITE_AnnualRev",
+        "field23",
+        "NF_LSCompanyRevenueExact"
+      ]
+    },
+    {
+      "smartFormVariable": "inferred_country",
+      "fieldMapping": [
+        "NF_LSIPCountry"
+      ]
+    },
+    {
+      "smartFormVariable": "du_city",
+      "fieldMapping": [
+        "NF_LSDUCompanyCity"
+      ]
+    },
+    {
+      "smartFormVariable": "matched_name",
+      "fieldMapping": [
+        "RF_SITE_Company",
+        "field17",
+        "lSCompanyName",
+        "NF_LSCompanyName"
+      ]
+    },
+    {
+      "smartFormVariable": "matched_ticker",
+      "fieldMapping": [
+        "NF_LSCompanyTicker"
+      ]
+    },
+    {
+      "smartFormVariable": "gu_city",
+      "fieldMapping": [
+        "RF_GHQ_City",
+        "field24",
+        "NF_LSGUCompanyCity"
+      ]
+    },
+    {
+      "smartFormVariable": "contact_personVerificationSource",
+      "fieldMapping": [
+        "NF_LSPersonVerificationSource"
+      ]
+    },
+    {
+      "smartFormVariable": "site_sizeExact_trans",
+      "fieldMapping": [
+        "NF_SITECustomCompanySize"
+      ]
+    },
+    {
+      "smartFormVariable": "site_name",
+      "fieldMapping": [
+        "NF_LSSITECompanyName"
+      ]
+    },
+    {
+      "smartFormVariable": "matchScore",
+      "fieldMapping": [
+        "NF_LSMatchScore"
+      ]
+    },
+    {
+      "smartFormVariable": "gu_sic_trans",
+      "fieldMapping": [
+        "NF_GUCustomIndustry"
+      ]
+    },
+    {
+      "smartFormVariable": "du_country_trans",
+      "fieldMapping": [
+        "NF_DUCustomCountry"
+      ],
+      "translation": {
+        "name": "country",
+        "map": "countryTransMap"
+      }
+    },
+    {
+      "smartFormVariable": "du_state",
+      "fieldMapping": [
+        "NF_LSDUCompanyState"
+      ]
+    },
+    {
+      "smartFormVariable": "matched_country",
+      "fieldMapping": [
+        "RF_SITE_Country",
+        "field27",
+        "lSCompanyCountry",
+        "NF_LSCompanyCountry"
+      ],
+      "translation": {
+        "name": "country",
+        "map": "countryTransMap"
+      }
+    },
+    {
+      "smartFormVariable": "gu_sizeRange",
+      "fieldMapping": [
+        "NF_LSGUCompanySizeRange"
+      ]
+    },
+    {
+      "smartFormVariable": "matched_phone",
+      "fieldMapping": [
+        "RF_SITE_Phone",
+        "field36",
+        "lSCompanyPhone",
+        "NF_LSCompanyPhone"
+      ]
+    },
+    {
+      "smartFormVariable": "contact_personCountry",
+      "fieldMapping": [
+        "NF_LSPersonCountry"
+      ]
+    },
+    {
+      "smartFormVariable": "matched_city",
+      "fieldMapping": [
+        "RF_SITE_City",
+        "field25",
+        "lSCompanyCity",
+        "NF_LSCompanyCity"
+      ]
+    },
+    {
+      "smartFormVariable": "gu_street",
+      "fieldMapping": [
+        "RF_GHQ_Addr1",
+        "field18",
+        "NF_LSGUCompanyStreet"
+      ]
+    },
+    {
+      "smartFormVariable": "matched_sizeExact",
+      "fieldMapping": [
+        "RF_SITE_EmployeesTotal",
+        "field31",
+        "NF_LSCompanySizeExact"
+      ]
+    },
+    {
+      "smartFormVariable": "matched_naicsDescription",
+      "fieldMapping": [
+        "NF_LSCompanyNAICSDescription"
+      ]
+    },
+    {
+      "smartFormVariable": "site_dunsID",
+      "fieldMapping": [
+        "NF_SITEDUNS"
+      ]
+    },
+    {
+      "smartFormVariable": "site_website",
+      "fieldMapping": [
+        "NF_LSSITECompanyWebsite"
+      ]
+    },
+    {
+      "smartFormVariable": "enrichmentStatus",
+      "fieldMapping": [
+        "NF_LSEnrichmentStatus"
+      ]
+    },
+    {
+      "smartFormVariable": "du_lsID",
+      "fieldMapping": [
+        "NF_DULSID"
+      ]
+    },
+    {
+      "smartFormVariable": "matched_ownership",
+      "fieldMapping": [
+        "NF_LSCompanyOwnership"
+      ]
+    },
+    {
+      "smartFormVariable": "contact_personJobFunctions",
+      "fieldMapping": [
+        "NF_LSPersonJobFunctions"
+      ]
+    },
+    {
+      "smartFormVariable": "matched_country_trans",
+      "fieldMapping": [
+        "NF_LSCompanyCustomCountry"
+      ],
+      "translation": {
+        "name": "country",
+        "map": "countryTransMap"
+      }
+    },
+    {
+      "smartFormVariable": "matched_sic_trans",
+      "fieldMapping": [
+        "NF_LSCompanyCustomIndustry"
+      ]
+    },
+    {
+      "smartFormVariable": "matched_industry",
+      "fieldMapping": [
+        "NF_LSCompanyIndustry",
+        "lSCompanyIndustry"
+      ]
+    },
+    {
+      "smartFormVariable": "du_phone",
+      "fieldMapping": [
+        "NF_LSDUCompanyPhone"
+      ]
+    },
+    {
+      "smartFormVariable": "matched_sic",
+      "fieldMapping": [
+        "RF_SITE_SICCode",
+        "field43",
+        "NF_LSCompanySIC"
+      ]
+    },
+    {
+      "smartFormVariable": "matched_region",
+      "fieldMapping": [
+        "NF_LSCompanyRegion"
+      ]
+    },
+    {
+      "smartFormVariable": "site_lsID",
+      "fieldMapping": [
+        "NF_SITELSID"
+      ]
+    },
+    {
+      "smartFormVariable": "matched_sizeRange",
+      "fieldMapping": [
+        "NF_LSCompanySizeRange",
+        "lSCompanySizeRange"
+        
+      ]
+    },
+    {
+      "smartFormVariable": "matched_state",
+      "fieldMapping": [
+        "NF_LSCompanyState",
+        "lSCompanyState"
+      ]
+    },
+    {
+      "smartFormVariable": "site_sizeRange",
+      "fieldMapping": [
+        "NF_LSSITECompanySizeRange"
+      ]
+    },
+    {
+      "smartFormVariable": "gu_country_trans",
+      "fieldMapping": [
+        "NF_GUCustomCountry"
+      ],
+      "translation": {
+        "name": "country",
+        "map": "countryTransMap"
+      }
+    },
+    {
+      "smartFormVariable": "gu_sizeExact_trans",
+      "fieldMapping": [
+        "RF_GHQ_EmpTotalRange",
+        "field28",
+        "NF_GUCustomCompanySize"
+      ],
+      "translation": {
+        "name": "number",
+        "map": "employeeRanges"
+      }
+    },
+    {
+      "smartFormVariable": "contact_personState",
+      "fieldMapping": [
+        "NF_LSPersonState",
+        "lSPersonState"
+      ]
+    },
+    {
+      "smartFormVariable": "gu_state_nametrans",
+      "fieldMapping": [
+        "RF_GHQ_State",
+        "field50",
+        "HiddenRFStateName-GlobalHQ"
+      ],
+      "translation": {
+        "name": "mapFunction",
+        "smartFormVariableDependency": "gu_country",
+        "map": "stateTransMap"
+      }
+    },
+    {
+      "smartFormVariable": "matched_state_nametrans",
+      "fieldMapping": [
+        "RF_SITE_State",
+        "field51",
+        "HiddenRFStateName-Site"
+      ],
+      "translation": {
+        "name": "mapFunction",
+        "smartFormVariableDependency": "matched_country",
+        "map": "stateTransMap"
+      }
+    },
+    {
+      "smartFormVariable": "vis_city",
+      "fieldMapping": [
+        "RF_VIS_City"
+      ]
+    },
+    {
+      "smartFormVariable": "vis_company",
+      "fieldMapping": [
+        "company",
+        "Company"
+      ]
+    },
+    {
+      "smartFormVariable": "vis_country",
+      "fieldMapping": [
+        "country",
+        "webFormCountry"
+      ]
+    },
+    {
+      "smartFormVariable": "vis_email",
+      "fieldMapping": [
+        "email",
+        "emailAddress"
+      ]
+    },
+    {
+      "smartFormVariable": "vis_firstName",
+      "fieldMapping": [
+        "FirstName",
+        "firstName"
+      ]
+    },
+    {
+      "smartFormVariable": "vis_lastName",
+      "fieldMapping": [
+        "LastName",
+        "lastName"
+      ]
+    },
+    {
+      "smartFormVariable": "vis_phone",
+      "fieldMapping": [
+        "phone"
+      ]
+    },
+    {
+      "smartFormVariable": "vis_state",
+      "fieldMapping": [
+        "state"
+      ]
+    },
+    {
+      "smartFormVariable": "vis_title",
+      "fieldMapping": [
+        "RF_VIS_Title"
+      ]
+    }
+  ],
+  "countryTransMap": {
+    "Antigua and Barbuda": "Antigua & Barbuda",
+    "Falkland Islands (Malvinas)": "Falkland Islands",
+    "United States": "USA",
+    "Virgin Islands (British)": "Virgin Islands UK",
+    "Northern Mariana Islands": "Northern Mariana Is",
+    "Sao Tome and Principe": "Sao Tome & Principe",
+    "Russia": "Russian Federation",
+    "Saint Lucia": "St Lucia",
+    "Saint Vincent and the Grenadines": "St Vincent",
+    "UAE": "United Arab Emirates",
+    "Trinidad and Tobago": "Trinidad & Tobago",
+    "Turks and Caicos Islands": "Turks & Caicos Is",
+    "Central African Republic": "Central African Rep",
+    "Bosnia and Herzegovina": "Bosnia-herzegovina",
+    "Saint Kitts and Nevis": "St Kitts-nevis",
+    "Saint Helena": "St Helena",
+    "Korea": "Korea Rep Of"
+  },
+  "employeeRanges": [
+    {
+      "highNumber": 10,
+      "lowNumber": 1,
+      "returnValue": "1-10"
+    },
+    {
+      "highNumber": 50,
+      "lowNumber": 11,
+      "returnValue": "11-50"
+    },
+    {
+      "highNumber": 200,
+      "lowNumber": 51,
+      "returnValue": "51-200"
+    },
+    {
+      "highNumber": 500,
+      "lowNumber": 201,
+      "returnValue": "201-500"
+    },
+    {
+      "highNumber": 750,
+      "lowNumber": 501,
+      "returnValue": "501-750"
+    },
+    {
+      "highNumber": 1000,
+      "lowNumber": 751,
+      "returnValue": "751-1000"
+    },
+
+    {
+      "highNumber": 5000,
+      "lowNumber": 1001,
+      "returnValue": "1001-5000"
+    },
+    {
+      "highNumber": 10000,
+      "lowNumber": 5001,
+      "returnValue": "5001-10,000"
+    },
+    {
+      "lowNumber": 10000,
+      "returnValue": "10,000+"
+    }
+  ],
+  "revenueRanges": [
+    {
+      "highNumber": 21000000,
+      "lowNumber": 0,
+      "returnValue": "$0-20 Million"
+    },
+    {
+      "highNumber": 101000000,
+      "lowNumber": 21000000,
+      "returnValue": "$21 - 100 Million"
+    },
+    {
+      "highNumber": 251000000,
+      "lowNumber": 101000000,
+      "returnValue": "$101 - 250 Million"
+    },
+    {
+      "highNumber": 501000000,
+      "lowNumber": 251000000,
+      "returnValue": "$251 - 500 Million"
+    },
+    {
+      "highNumber": 1000000000,
+      "lowNumber": 501000000,
+      "returnValue": "$501 - 1 Billion"
+    },
+    {
+      "lowNumber": 1000000000,
+      "returnValue": "1 billion or more"
+    }
+  ],
+  "queryFieldsByDataMapping": false,
+  "countryMap": {
+    "Antigua and Barbuda": "Antigua & Barbuda",
+    "Falkland Islands (Malvinas)": "Falkland Islands",
+    "United States": "USA",
+    "Virgin Islands (British)": "Virgin Islands UK",
+    "Northern Mariana Islands": "Northern Mariana Is",
+    "Sao Tome and Principe": "Sao Tome & Principe",
+    "Russia": "Russian Federation",
+    "Saint Lucia": "St Lucia",
+    "Saint Vincent and the Grenadines": "St Vincent",
+    "UAE": "United Arab Emirates",
+    "Trinidad and Tobago": "Trinidad & Tobago",
+    "Turks and Caicos Islands": "Turks & Caicos Is",
+    "Central African Republic": "Central African Rep",
+    "Bosnia and Herzegovina": "Bosnia-herzegovina",
+    "Saint Kitts and Nevis": "St Kitts-nevis",
+    "Saint Helena": "St Helena",
+    "Korea": "Korea Rep Of"
+  },
+  "stateTransMap": {
+    "Taiwan-PIN": "Pingtung",
+    "United States-WY": "WY",
+    "Mexico-CHIH": "CHIHUAHUA",
+    "Italy-NA": "NAPOLI",
+    "Italy-MS": "MASSA",
+    "Italy-MT": "MATERA",
+    "Argentina-BUE": "BUENOS AIRES",
+    "India-RJ": "Rajasthan",
+    "United States-WI": "WI",
+    "Italy-MN": "MANTOVA",
+    "Mexico-TAMPS": "TAMAULIPAS",
+    "Italy-MO": "MODENA",
+    "Malaysia-JHR": "JOHOR",
+    "Italy-MC": "MACERATA",
+    "Italy-ME": "MESSINA",
+    "Japan-SZO": "SHIZUOKA",
+    "South Africa-FS": "Free State",
+    "Italy-MI": "MILANO",
+    "HONG KONG-KLN": "KOWLOON",
+    "United States-WV": "WV",
+    "Swaziland-SS": "Shiselweni",
+    "Japan-WAK": "WAKAYAMA",
+    "Swaziland-SM": "Manzini",
+    "Italy-LT": "LATINA",
+    "Italy-LU": "LUCCA",
+    "Mexico-SLP": "SAN LUIS POTOSI",
+    "Mexico-Q ROO": "QUINTANA ROO",
+    "Italy-LO": "LODI",
+    "Swaziland-SL": "Lubombo",
+    "Italy-LC": "LECCO",
+    "Mexico-GTO": "GUANAJUATO",
+    "Italy-LE": "LECCE",
+    "Swaziland-SH": "Hhohho",
+    "Mexico-NAY": "NAYARIT",
+    "Italy-LI": "LIVORNO",
+    "Peru-AC": "ANCASH",
+    "Italy-PA": "PALERMO",
+    "Italy-PC": "PIACENZA",
+    "Taiwan-KAO": "Kaohsiung",
+    "Italy-PD": "PADOVA",
+    "Italy-PE": "PESCARA",
+    "India-TR": "Tripura",
+    "India-TS": "Telangana",
+    "Mexico-SON": "SONORA",
+    "United States-VA": "VA",
+    "India-TN": "Tamil Nadu",
+    "Italy-OR": "ORISTANO",
+    "Italy-OT": "OLBIA-TEMPIO",
+    "Italy-OG": "OGLIASTRA",
+    "Mexico-COL": "COLIMA",
+    "United States-UT": "UT",
+    "Australia-QLD": "QUEENSLAND",
+    "Malaysia-PRK": "PERAK",
+    "Malaysia-MLC": "MELAKA",
+    "Italy-NU": "NUORO",
+    "United States-WA": "WA",
+    "India-SK": "Sikkim",
+    "Italy-NO": "NOVARA",
+    "United States-VI": "VI",
+    "Japan-KGM": "KAGOSHIMA",
+    "Mexico-CHIS": "CHIAPAS",
+    "South Africa-GP": "Gauteng",
+    "Japan-TYM": "TOYAMA",
+    "United States-VT": "VT",
+    "Italy-RA": "RAVENNA",
+    "Italy-RC": "REGGIO CALABRIA",
+    "Italy-RE": "REGGIO EMILIA",
+    "Japan-KOC": "KOCHI",
+    "Italy-RG": "RAGUSA",
+    "Canada-MB": "MANITOBA",
+    "India-NL": "Nagaland",
+    "Mexico-NL": "NUEVO LEON",
+    "Japan-KNG": "KANAGAWA",
+    "United States-TX": "TX",
+    "Canada-NL": "NEWFOUNDLAND",
+    "Switzerland-BL": "BASEL-LAND",
+    "India-MP": "Madhya Pradesh",
+    "Italy-PV": "PAVIA",
+    "Wales-M GLAM": "MID GLAMORGAN",
+    "India-MN": "Manipur",
+    "Italy-PZ": "POTENZA",
+    "Switzerland-BS": "BASILEA-CITTA",
+    "India-MH": "Maharashtra",
+    "India-MI": "Mizoram",
+    "Canada-NB": "NEW BRUNSWICK",
+    "Italy-PN": "PORDENONE",
+    "Italy-PO": "PRATO",
+    "India-ME": "Meghalaya",
+    "Italy-PR": "PARMA",
+    "Italy-PT": "PISTOIA",
+    "Italy-PU": "PESARO E URBINO",
+    "Argentina-NQN": "NEUQUEN",
+    "Italy-PG": "PERUGIA",
+    "Switzerland-BE": "BERNE",
+    "United States-TN": "TN",
+    "Italy-PI": "PISA",
+    "India-PY": "Puducherry",
+    "Italy-TE": "TERAMO",
+    "Switzerland-AI": "APPENZELLO INTERNO",
+    "Switzerland-AG": "ARGOVIE",
+    "Switzerland-AR": "APPENZELLO ESTERNO",
+    "Mexico-JAL": "JALISCO",
+    "Italy-TA": "TARANTO",
+    "Italy-SR": "SIRACUSA",
+    "Taiwan-MIA": "Miaoli",
+    "Italy-SS": "SASSARI",
+    "Wales-S GLAM": "SOUTH GLAMORGAN",
+    "India-PB": "Punjab",
+    "Italy-SV": "SAVONA",
+    "Malaysia-KLT": "KELANTAN",
+    "Italy-SI": "SIENA",
+    "Italy-SO": "SONDRIO",
+    "Italy-SP": "LA SPEZIA",
+    "Malaysia-NSB": "NEGERI SEMBILAN",
+    "Italy-SA": "SALERNO",
+    "Mexico-TLAX": "TLAXCALA",
+    "Japan-YGT": "YAMAGATA",
+    "Argentina-MNE": "MISIONES",
+    "India-OR": "Odisha",
+    "Malaysia-KLP": "KUALA LUMPUR",
+    "United States-SC": "SC",
+    "United States-SD": "SD",
+    "HONG KONG-NT": "NEW TERRITORIES",
+    "South Africa-KN": "KwaZulu-Natal",
+    "United States-RI": "RI",
+    "Italy-RI": "RIETI",
+    "Italy-RM": "ROMA",
+    "Japan-OSK": "OSAKA",
+    "Italy-RN": "RIMINI",
+    "Italy-RO": "ROVIGO",
+    "Switzerland-GR": "GRISONS",
+    "United States-OR": "OR",
+    "Italy-EN": "ENNA",
+    "Canada-QC": "QUEBEC",
+    "United States-PA": "PA",
+    "Cayman Islands-GR CAYMAN": "GRAND CAYMAN",
+    "Malaysia-PLS": "PERLIS",
+    "Malaysia-SRW": "SARAWAK",
+    "South Africa-NP": "Limpopo",
+    "Brazil-TO": "TOCANTINS",
+    "Mexico-BC": "BAJA CALIFORNIA",
+    "Peru-HN": "HUANUCO",
+    "United States-OH": "OH",
+    "Peru-HC": "HUANCAVELICA",
+    "Switzerland-GL": "GLARUS",
+    "United States-OK": "OK",
+    "South Africa-NW": "North West",
+    "Switzerland-GE": "GINEVRA",
+    "Switzerland-FR": "FRIBURGO",
+    "United States-PR": "PR",
+    "Argentina-LRJ": "LA RIOJA",
+    "South Africa-NC": "Northern Cape",
+    "Peru-IC": "ICA",
+    "Japan-TCG": "TOCHIGI",
+    "Japan-SAG": "SAGA",
+    "Australia-NT": "NORTHERN TERRITORY",
+    "Japan-YMG": "YAMAGUCHI",
+    "South Africa-MP": "Mpumalanga",
+    "Mexico-ZAC": "ZACATECAS",
+    "Italy-CZ": "CATANZARO",
+    "Japan-YMA": "YAMANASHI",
+    "Japan-GIF": "GIFU",
+    "Canada-ON": "Ontario",
+    "United States-MO": "MO",
+    "United States-MS": "MS",
+    "Japan-HKD": "HOKKAIDO",
+    "United States-MT": "MT",
+    "Italy-GO": "GORIZIA",
+    "Italy-GR": "GROSSETO",
+    "Italy-GE": "GENOVA",
+    "Mexico-DF": "DISTRITO FEDERAL",
+    "United States-MA": "MA",
+    "Brazil-RO": "RONDONIA",
+    "Brazil-RN": "RIO GRANDE DO NORTE",
+    "United States-ME": "ME",
+    "Brazil-RJ": "RIO DE JANEIRO",
+    "United States-MD": "MD",
+    "Canada-NS": "NOVA SCOTIA",
+    "United States-MI": "MI",
+    "Canada-NT": "NORTHWEST TERRITORIES",
+    "Canada-NU": "NUNAVUT",
+    "United States-MN": "MN",
+    "United States-NV": "NV",
+    "Mexico-QRO": "QUERETARO",
+    "Canada-PE": "PRINCE EDWARD ISLAND",
+    "Argentina-LPA": "LA PAMPA",
+    "United States-NY": "NY",
+    "Brazil-RS": "RIO GRANDE DO SUL",
+    "Brazil-RR": "RORAIMA",
+    "Italy-FR": "FROSINONE",
+    "Brazil-SP": "SAO PAULO",
+    "Italy-FE": "FERRARA",
+    "United States-NC": "NC",
+    "Italy-FG": "FOGGIA",
+    "Italy-FI": "FIRENZE",
+    "United States-ND": "ND",
+    "Japan-HIR": "HIROSHIMA",
+    "United States-NE": "NE",
+    "United States-NJ": "NJ",
+    "United States-NH": "NH",
+    "Australia-ACT": "AUSTRALIAN CAPITAL TERRITORY",
+    "Brazil-SE": "SERGIPE",
+    "Brazil-SC": "SANTA CATARINA",
+    "Italy-FC": "FORLI'-CESENA",
+    "United States-NM": "NM",
+    "United States-KS": "KS",
+    "Japan-ISH": "ISHIKAWA",
+    "Italy-IS": "ISERNIA",
+    "Wales-W GLAM": "WEST GLAMORGAN",
+    "United States-KY": "KY",
+    "United States-CA": "CA",
+    "Italy-IM": "IMPERIA",
+    "Japan-GNM": "GUNMA",
+    "Switzerland-JU": "JURA",
+    "India-UT": "Uttarakhand",
+    "India-UP": "Uttar Pradesh",
+    "United States-LA": "LA",
+    "Mexico-COAH": "COAHUILA",
+    "Australia-SA": "SOUTH AUSTRALIA",
+    "Japan-MYZ": "MIYAZAKI",
+    "Japan-FKI": "FUKUI",
+    "Japan-KUM": "KUMAMOTO",
+    "United States-IN": "IN",
+    "United States-IL": "IL",
+    "Peru-AY": "AYACUCHO",
+    "Italy-KR": "CROTONE",
+    "Japan-MYG": "MIYAGI",
+    "Peru-AM": "AMAZONAS",
+    "Canada-SK": "SASKATCHEWAN",
+    "Mexico-MOR": "MORELOS",
+    "Peru-AP": "APURIMAC",
+    "Peru-AR": "AREQUIPA",
+    "United States-IA": "IA",
+    "Mexico-PUE": "PUEBLA",
+    "United States-ID": "ID",
+    "India-ORI": "Odisha",
+    "Japan-EHM": "EHIME",
+    "Argentina-CBA": "CORDOBA",
+    "Malaysia-PNG": "PULAU PINANG",
+    "Malaysia-KDH": "KEDAH",
+    "Argentina-CAT": "CATAMARCA",
+    "Peru-CJ": "CAJAMARCA",
+    "Peru-CL": "CALLAO",
+    "Mexico-CDMX": "CIUDAD DE MEXICO",
+    "Australia-VIC": "VICTORIA",
+    "India-WB": "West Bengal",
+    "Peru-CC": "CUZCO",
+    "India-BH": "Bihar",
+    "Peru-PC": "PASCO",
+    "Taiwan-TAC": "Taichung",
+    "Argentina-JUJ": "JUJUY",
+    "Switzerland-OW": "OBWALDO",
+    "Canada-YT": "YUKON TERRITORY",
+    "Taiwan-ILA": "Ilan",
+    "Mexico-HGO": "HIDALGO",
+    "Taiwan-TAP": "Taipei",
+    "Argentina-SFE": "SANTA FE",
+    "Japan-IWA": "IWATE",
+    "India-AS": "Assam",
+    "India-AP": "Andhra Pradesh",
+    "United States-GA": "GA",
+    "India-AR": "Arunachal Pradesh",
+    "Peru-PN": "PUNO",
+    "South Africa-WC": "Western Cape",
+    "India-AN": "Andaman & Nicobar Islands",
+    "Peru-PR": "PIURA",
+    "Switzerland-NW": "NIDWALDO",
+    "Japan-TKY": "TOKYO",
+    "Argentina-SGO": "SANTIAGO DEL ESTERO",
+    "Argentina-CHA": "CHACO",
+    "Taiwan-TAT": "Taitung",
+    "Japan-TKM": "TOKUSHIMA",
+    "Australia-WA": "WESTERN AUSTRALIA",
+    "Brazil-MG": "MINAS GERAIS",
+    "Taiwan-TAY": "Taoyuan",
+    "Switzerland-NE": "NEUENBURG",
+    "Brazil-MA": "MARANHAO",
+    "United States-HI": "HI",
+    "India-DL": "Delhi",
+    "Mexico-CAMP": "CAMPECHE",
+    "Japan-KYO": "KYOTO",
+    "Philippines-MAN": "MANILA",
+    "India-DD": "Daman & Diu",
+    "Mexico-TAB": "TABASCO",
+    "Argentina-TFG": "TIERRA DEL FUEGO",
+    "Argentina-SCZ": "SANTA CRUZ",
+    "India-CT": "Chhattisgarh",
+    "Japan-CHI": "CHIBA",
+    "Switzerland-LU": "LUZERN",
+    "United States-FL": "FL",
+    "Australia-TAS": "TASMANIA",
+    "India-CH": "Chandigarh",
+    "Argentina-MZA": "MENDOZA",
+    "Japan-SGA": "SHIGA",
+    "Italy-AO": "AOSTA",
+    "Italy-AP": "ASCOLI PICENO",
+    "Italy-AQ": "L' AQUILA",
+    "Italy-AR": "AREZZO",
+    "Peru-LB": "LAMBAYEQUE",
+    "Italy-AT": "ASTI",
+    "Switzerland-SZ": "SVITTO",
+    "Italy-AV": "AVELLINO",
+    "Italy-AG": "AGRIGENTO",
+    "Japan-FUK": "FUKUOKA",
+    "Switzerland-TI": "TICINO",
+    "United States-CO": "CO",
+    "Japan-HYO": "HYOGO",
+    "Switzerland-TG": "TURGOVIA",
+    "Argentina-SJN": "SAN JUAN",
+    "Italy-AL": "ALESSANDRIA",
+    "United States-CT": "CT",
+    "Italy-AN": "ANCONA",
+    "Switzerland-SO": "SOLOTHURN",
+    "Peru-LR": "LORETO",
+    "Brazil-PI": "PIAUI",
+    "Brazil-PE": "PERNAMBUCO",
+    "Brazil-PB": "PARAIBA",
+    "Brazil-PA": "PARA",
+    "Peru-LL": "LA LIBERTAD",
+    "Peru-LM": "LIMA",
+    "Peru-MD": "MADRE DE DIOS",
+    "Switzerland-SH": "SCIAFFUSA",
+    "Malaysia-PHG": "PAHANG",
+    "Switzerland-SG": "ST-GALL",
+    "Brazil-PR": "PARANA",
+    "Japan-SMN": "SHIMANE",
+    "Peru-MQ": "MOQUEGUA",
+    "Mexico-VER": "VERACRUZ",
+    "Mexico-MICH": "MICHOACAN",
+    "Australia-NSW": "NEW SOUTH WALES",
+    "United States-DE": "DE",
+    "United States-DC": "DC",
+    "Italy-CR": "CREMONA",
+    "Italy-CS": "COSENZA",
+    "Italy-CT": "CATANIA",
+    "Japan-FSM": "FUKUSHIMA",
+    "Brazil-MT": "MATO GROSSO",
+    "Brazil-MS": "MATO GROSSO DO SUL",
+    "Italy-CI": "CARBONIA-IGLESIAS",
+    "Japan-AIC": "AICHI",
+    "United States-AK": "AK",
+    "Italy-CL": "CALTANISSETTA",
+    "United States-AL": "AL",
+    "Italy-CN": "CUNEO",
+    "United States-AR": "AR",
+    "Italy-CO": "COMO",
+    "Italy-CA": "CAGLIARI",
+    "Italy-CB": "CAMPOBASSO",
+    "Peru-JN": "JUNIN",
+    "Italy-CE": "CASERTA",
+    "Argentina-CHU": "CHUBUT",
+    "Italy-CH": "CHIETI",
+    "Italy-BZ": "BOLZANO",
+    "Italy-BR": "BRINDISI",
+    "Italy-BS": "BRESCIA",
+    "Japan-NAR": "NARA",
+    "Malaysia-SLG": "SELANGOR",
+    "Italy-BI": "BIELLA",
+    "Italy-BL": "BELLUNO",
+    "Italy-BN": "BENEVENTO",
+    "Italy-BO": "BOLOGNA",
+    "Japan-NAG": "NAGANO",
+    "Italy-BA": "BARI",
+    "United States-AZ": "AZ",
+    "Italy-BG": "BERGAMO",
+    "Argentina-FOR": "FORMOSA",
+    "Italy-VE": "VENEZIA",
+    "Japan-OKA": "OKAYAMA",
+    "Italy-VI": "VICENZA",
+    "Japan-AOM": "AOMORI",
+    "Taiwan-CHA": "Changhua",
+    "Mexico-DGO": "DURANGO",
+    "India-JH": "Jharkhand",
+    "Mexico-BCS": "BAJA CALIFORNIA SUR",
+    "India-JK": "Jammu & Kashmir",
+    "Brazil-CE": "CEARA",
+    "Italy-VA": "VARESE",
+    "Italy-VB": "VERBANO-CUSIO-OSSOLA",
+    "Taiwan-CHI": "Chiayi",
+    "Italy-VC": "VERCELLI",
+    "Malaysia-SBH": "SABAH",
+    "Japan-TTR": "TOTTORI",
+    "Italy-UD": "UDINE",
+    "Venezuela-DF": "DISTRITO FEDERAL",
+    "Taiwan-HSI": "Hsinchu",
+    "HONG KONG-HK": "HONG KONG",
+    "Brazil-DF": "DISTRITO FEDERAL",
+    "Mexico-EDOMEX": "ESTADO DE MEXICO",
+    "Japan-NGS": "NAGASAKI",
+    "Japan-OIT": "OITA",
+    "Italy-TR": "TERNI",
+    "Switzerland-VS": "WALLIS",
+    "Italy-TS": "TRIESTE",
+    "Italy-TV": "TREVISO",
+    "Canada-AB": "Alberta",
+    "India-HR": "Haryana",
+    "Italy-TN": "TRENTO",
+    "Italy-TO": "TORINO",
+    "Italy-TP": "TRAPANI",
+    "Brazil-AM": "AMAZONAS",
+    "Brazil-AL": "ALAGOAS",
+    "Argentina-SLS": "SAN LUIS",
+    "Brazil-AC": "ACRE",
+    "Switzerland-VD": "WAADT",
+    "Switzerland-UR": "URI",
+    "India-LD": "Lakshadweep",
+    "Taiwan-CIM": "Chinmen",
+    "Brazil-AP": "AMAPA",
+    "Taiwan-YUN": "Yunlin",
+    "Argentina-ERI": "ENTRE RIOS",
+    "India-KL": "Kerala",
+    "Brazil-BA": "BAHIA",
+    "India-KA": "Karnataka",
+    "Italy-VT": "VITERBO",
+    "Italy-VV": "VIBO VALENTIA",
+    "Italy-VR": "VERONA",
+    "Japan-AKT": "AKITA",
+    "Taiwan-HUA": "Hualien",
+    "Italy-VS": "MEDIO CAMPIDANO",
+    "Argentina-TUC": "TUCUMAN",
+    "Japan-KGA": "KAGAWA",
+    "Brazil-GO": "GOIAS",
+    "Taiwan-NAN": "Nantou",
+    "Peru-TC": "TACNA",
+    "Japan-IBR": "IBARAKI",
+    "Mexico-YUC": "YUCATAN",
+    "Argentina-STA": "SALTA",
+    "Peru-UC": "UCAYALI",
+    "Argentina-CTE": "CORRIENTES",
+    "India-DN": "Dadra & Nagar Haveli",
+    "Malaysia-TGN": "TERENGGANU",
+    "Japan-MIE": "MIE",
+    "Brazil-ES": "ESPIRITO SANTO",
+    "Switzerland-ZG": "ZUGO",
+    "India-HP": "Himachal Pradesh",
+    "Mexico-AGS": "AGUASCALIENTES",
+    "South Africa-EC": "Eastern Cape",
+    "Switzerland-ZH": "ZURIGO",
+    "Argentina-RNG": "RIO NEGRO",
+    "Japan-STM": "SAITAMA",
+    "Canada-BC": "British Columbia",
+    "Taiwan-PGH": "Penghu",
+    "India-GJ": "Gujarat",
+    "Peru-SM": "SAN MARTIN",
+    "Japan-OKW": "OKINAWA",
+    "India-GA": "Goa",
+    "Mexico-SIN": "SINALOA",
+    "Japan-NIG": "NIIGATA",
+    "Mexico-OAX": "OAXACA",
+    "Mexico-GRO": "GUERRERO"
+  }
+};

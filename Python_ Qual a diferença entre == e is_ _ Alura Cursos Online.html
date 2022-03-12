@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<!-- saved from url=(0070)https://www.alura.com.br/artigos/qual-a-diferenca-entre-e-is-no-python -->
+<html lang="pt-BR"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0"><title>Python: Qual a diferença entre == e is?  | Alura Cursos Online</title><meta name="description" content="No Python temos dois operadores de comparação similares (e ao mesmo tempo muito diferentes) - o == e o is. Você sabe as diferenças entre eles? Aprenda o funcionamento de cada um e entenda quando devemos usar um ou outro."><link rel="canonical" href="https://www.alura.com.br/artigos/qual-a-diferenca-entre-e-is-no-python"><link rel="icon" href="https://www.alura.com.br/assets/favicon.1636535197.ico"><link href="./Python_ Qual a diferença entre == e is_ _ Alura Cursos Online_files/css" rel="stylesheet" crossorigin=""><link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin=""><link rel="stylesheet" href="./Python_ Qual a diferença entre == e is_ _ Alura Cursos Online_files/titulos.1636535197.css"><link rel="stylesheet" href="./Python_ Qual a diferença entre == e is_ _ Alura Cursos Online_files/index.1645721589.css"><link rel="stylesheet" href="./Python_ Qual a diferença entre == e is_ _ Alura Cursos Online_files/highlight.1636535198.css"><meta property="og:locale" content="pt_BR"><meta property="og:description" content="No Python temos dois operadores de comparação similares (e ao mesmo tempo muito diferentes) - o == e o is. Você sabe as diferenças entre eles? Aprenda o funcionamento de cada um e entenda quando devemos usar um ou outro."><meta property="og:title" content="Python: Qual a diferença entre == e is?  | Alura Cursos Online"><meta property="og:site_name" content="Alura"><meta property="og:url" content="https://www.alura.com.br/artigos/qual-a-diferenca-entre-e-is-no-python"><meta property="og:image" content="https://www.alura.com.br/artigos/assets/code/qual-a-diferenca-entre-e-is-no-python.1646006157.png"><meta property="og:image:alt" content="Alura logo"><meta property="fb:app_id" content="140078819399376"><meta property="og:type" content="website"><meta name="twitter:card" content="summary_large_image"><meta name="theme-color" content="#2A7AE4"><meta name="thumbnail" content="https://www.alura.com.br/artigos/assets/code/qual-a-diferenca-entre-e-is-no-python.1646006157.png"> <script async="" src="./Python_ Qual a diferença entre == e is_ _ Alura Cursos Online_files/insight.old.min.js.download"></script><script type="text/javascript" async="" src="./Python_ Qual a diferença entre == e is_ _ Alura Cursos Online_files/23465.js.download"></script><script type="text/javascript" async="" src="./Python_ Qual a diferença entre == e is_ _ Alura Cursos Online_files/f.txt"></script><script type="text/javascript" async="" src="./Python_ Qual a diferença entre == e is_ _ Alura Cursos Online_files/analytics.js.download"></script><script type="text/javascript" async="" src="./Python_ Qual a diferença entre == e is_ _ Alura Cursos Online_files/insight.min.js.download"></script><script src="./Python_ Qual a diferença entre == e is_ _ Alura Cursos Online_files/1067810189950610" async=""></script><script async="" src="./Python_ Qual a diferença entre == e is_ _ Alura Cursos Online_files/fbevents.js.download"></script><script async="" src="./Python_ Qual a diferença entre == e is_ _ Alura Cursos Online_files/gtm.js.download"></script><script>;(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+                    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+                j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+                'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+            })(window,document,'script','dataLayer','GTM-TN542JN');</script> <script async="" src="./Python_ Qual a diferença entre == e is_ _ Alura Cursos Online_files/hotjar-1029027.js.download"></script><script src="./Python_ Qual a diferença entre == e is_ _ Alura Cursos Online_files/sha256.min.js.download"></script><script async="" src="./Python_ Qual a diferença entre == e is_ _ Alura Cursos Online_files/modules.f9262b22b79803e6feba.js.download" charset="utf-8"></script><style type="text/css">iframe#_hjRemoteVarsFrame {display: none !important; width: 1px !important; height: 1px !important; opacity: 0 !important; pointer-events: none !important;}</style><script src="./Python_ Qual a diferença entre == e is_ _ Alura Cursos Online_files/f(1).txt"></script></head><body class=""> <script src="./Python_ Qual a diferença entre == e is_ _ Alura Cursos Online_files/avatarOnError.1636535198.js.download"></script> <noscript><iframe
+src="https://www.googletagmanager.com/ns.html?id=GTM-TN542JN" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <script>!function(f,b,e,v,n,t,s) {if(f.fbq)return;n=f.fbq=function(){n.callMethod? n.callMethod.apply(n,arguments):n.queue.push(arguments)}; if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0'; n.queue=[];t=b.createElement(e);t.async=!0; t.src=v;s=b.getElementsByTagName(e)[0]; s.parentNode.insertBefore(t,s)}(window, document,'script', 'https://connect.facebook.net/en_US/fbevents.js'); fbq('init', '1067810189950610'); fbq('track', 'PageView');</script> <script src="./Python_ Qual a diferença entre == e is_ _ Alura Cursos Online_files/courseIconFallback.1636535198.js.download"></script>  <script type="application/ld+json">{
+      "@context": "http://schema.org",
+      "@type": "BreadcrumbList",
+
+      "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@id": "https://www.alura.com.br",
+          "name": "Alura"
+        }
+      }   
+              ,{
+          "@type": "ListItem",
+          "position": 2,
+          "item": {
+            "@id": "https://www.alura.com.br/artigos",
+            "name": "Artigos"
+          }
+        }
+              ,{
+          "@type": "ListItem",
+          "position": 3,
+          "item": {
+            "@id": "https://www.alura.com.br/artigos/programacao",
+            "name": "Programação"
+          }
+        }
+              ,{
+          "@type": "ListItem",
+          "position": 4,
+          "item": {
+            "@id": "https://www.alura.com.br/artigos/qual-a-diferenca-entre-e-is-no-python",
+            "name": "Python: Qual a diferença entre == e is? "
+          }
+        }
+            ]
+    }</script> <link rel="stylesheet" href="./Python_ Qual a diferença entre == e is_ _ Alura Cursos Online_files/header.1638241251.css"><link rel="stylesheet" href="./Python_ Qual a diferença entre == e is_ _ Alura Cursos Online_files/dia-do-programador.1636535197.css"><link rel="stylesheet" href="./Python_ Qual a diferença entre == e is_ _ Alura Cursos Online_files/countdown.1636535197.css"><link rel="stylesheet" href="./Python_ Qual a diferença entre == e is_ _ Alura Cursos Online_files/header.1638241251.css"><header class="header"><div class="container"><nav class="header__nav">
+<a href="https://www.alura.com.br/" class="header__nav__link header__nav__link--logo">
+<img class="header__nav__link__logo" alt="Alura" src="./Python_ Qual a diferença entre == e is_ _ Alura Cursos Online_files/alura-logo-white.1636535197.svg">
+</a><div class="header__nav__wrapper header__nav__wrapper--ctas"><div class="header-utilitario-busca" aria-label="Busca">
+<svg class="header-utilitario-busca-icone--home" xmlns:xlink="http://www.w3.org/1999/xlink">
+<use xlink:href="/svg,1636535197/header#icon-header-busca-home"></use>
+</svg></div>
+<a href="https://cursos.alura.com.br/loginForm?urlAfterLogin=https://cursos.alura.com.br/dashboard" class="header__nav__link header__nav__link--entrar">Entrar</a>
+<a href="https://www.alura.com.br/planos-cursos-online" class="header__nav__link header__nav__link--cta">Matricule-se</a></div><div class="header-barraBusca__wrapper"><div class="header-barraBusca"><div class="container"><form action="https://www.alura.com.br/busca" class="header-barraBusca-form">
+<label for="header-barraBusca-form-campoBusca">Qual curso procura?</label>
+<input type="search" id="header-barraBusca-form-campoBusca" name="query" class="header-barraBusca-form-serch-input" placeholder="O que você quer aprender?">
+<button class="header-barraBusca-form-submit" type="submit"></button></form></div></div></div><div class="nav__courses__wrapper header__nav__wrapper header__nav__wrapper--menu"><div class="nav__courses__link header-navegacao-cursos">
+<svg class="header-navegacao-cursos-icone" xmlns:xlink="http://www.w3.org/1999/xlink">
+<use xlink:href="/svg,1605191409/header#icon-header-icon-arrow"></use>
+</svg>
+<span>Todos os</span>
+<span>Cursos</span></div>
+<a href="https://www.alura.com.br/formacoes" class="nav__courses__link">
+<span>Nossas</span>
+<span>Formações</span>
+</a>
+<a href="https://www.alura.com.br/empresas" class="nav__courses__link">
+<span>Para</span>
+<span>Empresas</span>
+</a>
+<a href="https://www.alura.com.br/dev-em-t" class="nav__courses__link">
+<span>Dev</span>
+<span>em  &lt;T&gt;</span>
+</a></div></nav></div><div class="--border-header-top"><div class="container"><ul class="header-navegacao-cursos-lista"><li class="header-cursos-lista-categoria ">
+<a href="https://www.alura.com.br/escola-programacao" class="unlinkify"><div class="header-lista-categoria-nome">
+<span>Programação</span></div>
+</a><div class="header-color--link" style="color: #00c86f;"></div></li><li class="header-cursos-lista-categoria ">
+<a href="https://www.alura.com.br/escola-front-end" class="unlinkify"><div class="header-lista-categoria-nome">
+<span>Front-end</span></div>
+</a><div class="header-color--link" style="color: #6bd1ff;"></div></li><li class="header-cursos-lista-categoria ">
+<a href="https://www.alura.com.br/escola-data-science" class="unlinkify"><div class="header-lista-categoria-nome">
+<span>Data Science</span></div>
+</a><div class="header-color--link" style="color: #9cd33b;"></div></li><li class="header-cursos-lista-categoria ">
+<a href="https://www.alura.com.br/escola-devops" class="unlinkify"><div class="header-lista-categoria-nome">
+<span>DevOps</span></div>
+</a><div class="header-color--link" style="color: #f16165;"></div></li><li class="header-cursos-lista-categoria ">
+<a href="https://www.alura.com.br/escola-design-ux" class="unlinkify"><div class="header-lista-categoria-nome">
+<span>UX &amp; Design</span></div>
+</a><div class="header-color--link" style="color: #dc6ebe;"></div></li><li class="header-cursos-lista-categoria ">
+<a href="https://www.alura.com.br/escola-mobile" class="unlinkify"><div class="header-lista-categoria-nome">
+<span>Mobile</span></div>
+</a><div class="header-color--link" style="color: #ffba05;"></div></li><li class="header-cursos-lista-categoria ">
+<a href="https://www.alura.com.br/escola-inovacao-gestao" class="unlinkify"><div class="header-lista-categoria-nome">
+<span>Inovação &amp; Gestão</span></div>
+</a><div class="header-color--link" style="color: #ff8c2a;"></div></li></ul></div></div></header><section class="cosmos-container-color"><div class="cosmos-color"><div class="cosmos artigos-topo"><div class="container">
+<a href="https://www.alura.com.br/artigos" class="artigos-topo__label">
+Artigos
+</a>
+&gt;
+<a class="artigos-topo__label --artigos-strong" href="https://www.alura.com.br/artigos/programacao" style="color:#00c86f">Programação</a></div></div></div>
+ <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://www.alura.com.br/artigos/qual-a-diferenca-entre-e-is-no-python"
+  },
+  "headline": "Python: Qual a diferença entre == e is? ",
+  "description": "No Python temos dois operadores de comparação similares (e ao mesmo tempo muito diferentes) - o == e o is. Você sabe as diferenças entre eles? Aprenda o funcionamento de cada um e entenda quando devemos usar um ou outro.",
+  "image": "https://www.alura.com.br/artigos/assets/code/qual-a-diferenca-entre-e-is-no-python.1646006157.png",
+  "datePublished": "2018-08-28",
+    "dateModified": "2018-08-28",
+    "author": {
+        "@type": "Organization",
+    "name": "Alura"
+      },
+   "publisher": {
+    "@type": "Organization",
+    "name": "Alura",
+    "url": "https://www.alura.com.br",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.alura.com.br/assets/img/amp/logo-publisher.1636535197.png",
+      "height" : 60, 
+      "width" : 600 
+    }
+  }
+}</script> <section class="cosmos-color"><article class="cosmos"><div class="cosmos-header"><h1>Python: Qual a diferença entre == e is?</h1><div class="cosmos-image__wrapper">
+<img src="./Python_ Qual a diferença entre == e is_ _ Alura Cursos Online_files/qual-a-diferenca-entre-e-is-no-python.1646006157.png" alt="Python: Qual a diferença entre == e is? " class="cosmos-image cosmos-banner-top" style="border: none; padding: 0px; width: 100%; height: 300px; object-fit: cover; max-width: none;"></div><div class="cosmos-header-info"><div class="cosmos-author">
+<img class="cosmos-author-img" src="./Python_ Qual a diferença entre == e is_ _ Alura Cursos Online_files/5ec17c8a1987776b1bcf33c6dcb8927e.png" alt="Yan Orestes" width="50" height="50"><div><div class="cosmos-author-name">Yan Orestes</div>
+<time class="cosmos-author-date" datetime="2018-08-28 21:21">28/08/2018</time></div></div><div class="cosmos-container-social-media"><p class="cosmos-text-social-media">Compartilhe</p><ul class="cosmos-container-flex-social-media"><li class="--icon-twitter">
+<a href="https://twitter.com/share?url=https://www.alura.com.br/artigos/qual-a-diferenca-entre-e-is-no-python"></a></li><li class="--icon-linkedin">
+<a href="https://linkedin.com/shareArticle?url=https://www.alura.com.br/artigos/qual-a-diferenca-entre-e-is-no-python"></a></li><li class="--icon-facebook">
+<a href="https://facebook.com/share.php?u=https://www.alura.com.br/artigos/qual-a-diferenca-entre-e-is-no-python"></a></li><li class="--icon-whatsapp">
+<a href="https://api.whatsapp.com/send?text=https://www.alura.com.br/artigos/qual-a-diferenca-entre-e-is-no-python"></a></li></ul></div><div class="cosmos-related-gruides"><div class="cosmos-related-item cosmos-related-item__formacao">
+<a class="cosmos-related-link-formacao" href="https://www.alura.com.br/formacao-programacao"><div class="cosmos-flex--text">
+<img class="cosmos-related-item-image" src="./Python_ Qual a diferença entre == e is_ _ Alura Cursos Online_files/programacao.svg"><div class="cosmos--margin"><p class="cosmos-text-category">Esse artigo faz parte da</p><p class="cosmos-related-item-title">Formação Iniciante em Programação</p></div></div>
+</a></div></div></div></div><div class="cosmos-header-line"></div><p>Fiz um programa em <strong>Python</strong> para ser iniciado sempre que meu computador liga. O programa pega o nome de usuário de quem está usando e retorna uma mensagem de boas vindas.</p><p>Caso o usuário seja eu mesmo, que sou o administrador do computador, quero que a mensagem seja diferente. Decidi implementar utilizando um operador que aprendi recentemente - <a href="https://docs.python.org/3/reference/expressions.html#is" target="_blank" rel="noopener">o <strong>is</strong></a>:</p><pre><code class="hljs python">
+<span class="hljs-function"><span class="hljs-keyword"><span class="hljs-function"><span class="hljs-keyword">def</span></span></span><span class="hljs-function"> </span><span class="hljs-title"><span class="hljs-function"><span class="hljs-title">pega_usuario</span></span></span><span class="hljs-params"><span class="hljs-function">()</span></span><span class="hljs-function">:</span></span>
+    <span class="hljs-comment"><span class="hljs-comment">## implementação da função</span></span>
+
+usuario = pega_usuario()
+<span class="hljs-keyword"><span class="hljs-keyword">if</span></span> usuario <span class="hljs-keyword"><span class="hljs-keyword">is</span></span> ‘Yan’:
+    print(‘Oi, administrador!’)
+<span class="hljs-keyword"><span class="hljs-keyword">else</span></span>:
+    print(‘Seja bem vindo, {}’.<span class="hljs-built_in">format</span>(usuario)
+</code></pre><p>Loguei no meu computador através do usuário <strong>Visitante</strong> e:</p><pre><code class="hljs python">
+Seja bem vindo, Visitante
+</code></pre><p>Quando loguei como <strong>Yan</strong>:</p><pre><code class="hljs python">
+Oi, administrador!
+</code></pre><p>Certo, aparentemente está tudo funcionando! Acontece que eu resolvi mudar o meu login de <code>Yan</code> para <code>Yan Orestes</code>. Alterei meu código:</p><pre><code class="hljs python">
+<span class="hljs-keyword"><span class="hljs-keyword">if</span></span> usuario <span class="hljs-keyword"><span class="hljs-keyword">is</span></span> ‘Yan Orestes’:
+    print(‘Oi, administrador!’)
+<span class="hljs-keyword"><span class="hljs-keyword">else</span></span>:
+    print(‘Seja bem vindo, {}’.<span class="hljs-built_in">format</span>(usuario)
+</code></pre><p>Fui logar com meu usuário e:</p><pre><code class="hljs python">
+Seja bem vindo, Yan Orestes
+</code></pre><p>Ué! Se o usuário era exatamente o mesmo, por que não deu certo?</p><h3><code>is</code> para identidade, <code>==</code> para igualdade</h3><p>O que acontece é que estamos usando o operador <code>is</code> sem entender de fato como ele funciona! <strong>O <code>is</code> compara a identidade do objeto,</strong> isto é, o valor de referência de seu endereço na memória, não o valor definido por nós.</p><p>Mas espera… já vimos algo assim, não é? O operador <code>==</code> também funciona, a princípio, desta forma, mas <a href="https://www.alura.com.br/artigos/como-comparar-objetos-no-python/"><strong>seu comportamento pode ser alterado através dos métodos de comparação rica</strong></a>, por exemplo.</p><p>Então como podemos alterar o comportamento do <code>is</code>? Bem… na verdade, não podemos. O propósito do <code>is</code> é justamente esse, uma comparação que sempre se baseará na identidade de um objeto, ou seja, se um objeto de fato <strong>é</strong> (<em>is</em>) o objeto que está sendo comparado.</p><p><strong>Quando quisermos comparar um valor (ou qualquer coisa que definirmos) de um objeto, usamos, então, o operador <code>==</code> e os métodos de comparação rica. Quando quisermos comparar a identidade de um objeto, usamos o <code>is</code>.</strong></p><p>Mas, se é assim, por que nossa primeira comparação com <code>is</code> (<code>usuario is 'Yan'</code>) retornou <code>True</code>?</p><h3><em>String interning</em> no Python</h3><p>Por padrão, no Python (na implementação padrão <a href="https://pt.wikipedia.org/wiki/CPython" target="_blank" rel="noopener"><strong>CPython</strong></a>), cada vez que atribuímos um objeto a uma variável, estamos criando um objeto. Ou seja:</p><pre><code class="hljs python">
+nome = ‘Yan Orestes’
+print(nome <span class="hljs-keyword"><span class="hljs-keyword">is</span></span> ‘Yan Orestes’)
+</code></pre><p>Deve resultar em:</p><pre><code class="hljs python">
+<span class="hljs-literal"><span class="hljs-literal">False</span></span>
+</code></pre><p>Mas vimos que esse resultado esperado não foi obtido com a string <code>’Yan’</code>. Por quê? Isso é o que chamamos, na computação, de _<a href="https://en.wikipedia.org/wiki/String_interning" target="_blank" rel="noopener"><strong>string interning</strong></a>_.</p><p><em>String interning</em> é uma técnica que força o armazenamento de <strong>apenas uma</strong> cópia de cada valor de string diferente na memória do computador.</p><p>Essa técnica é de muita utilidade para poupar espaço na memória, mas, ao mesmo tempo, pode prolongar o tempo de processamento de algumas operações, já que ao criar uma string,o computador tem de procurar por todas as strings já existentes se uma já tem o valor dessa nova.</p><p>O Python suporta essa técnica de <em>string interning</em> através da função <strong><a href="https://docs.python.org/3/library/sys.html#sys.intern" target="_blank" rel="noopener">intern()</a></strong> (que é <em>built-in</em> no Python 2 e no Python 3 se localiza no módulo <strong><a href="https://docs.python.org/3/library/sys.html" target="_blank" rel="noopener">sys</a></strong>), mas não a utiliza por padrão nas operações de strings. Entretanto, há algumas exceções em que essa técnica é usada nativamente pela linguagem.</p><p>Um exemplo é com strings de apenas um caractere, que <strong>sempre</strong> passam por esse processo:</p><pre><code class="hljs python">
+a = ‘y’
+print(a <span class="hljs-keyword"><span class="hljs-keyword">is</span></span> ‘y’)
+</code></pre><p>E o resultado:</p><pre><code class="hljs python">
+<span class="hljs-literal"><span class="hljs-literal">True</span></span>
+</code></pre><p>No nosso caso, com a string <code>’Yan’</code>, o que acontece é que as strings que se pareçam com identificadores Python, isto é, contenham apenas letras normais (<code>a-z A-Z</code>), números (<code>0-9</code>) e underlines (<code>_</code>), passam automaticamente pela técnica de <em>string interning</em>.</p><p>Por isso o teste com a string <code>’Yan’</code> teve um resultado diferente de com a string <code>’Yan Orestes’</code>, que contém um espaço em branco. Olha como seria se não tivesse esse espaço:</p><pre><code class="hljs python">
+usuario = ‘YanOrestes’
+print(usuario <span class="hljs-keyword"><span class="hljs-keyword">is</span></span> ‘YanOrestes’)
+</code></pre><p>Como resultado:</p><pre><code class="hljs python">
+<span class="hljs-literal"><span class="hljs-literal">True</span></span>
+</code></pre><h3>Peculiaridades com números inteiros</h3><p>O Python nos traz um comportamento parecido ao do <em>string interning</em> automático quando lidamos com números inteiros. Vamos fazer alguns testes:</p><pre><code class="hljs python">
+a = <span class="hljs-number">-<span class="hljs-number">6</span></span>
+print(‘<span class="hljs-number">-<span class="hljs-number">6</span></span> -&gt; {}’.<span class="hljs-built_in">format</span>(a <span class="hljs-keyword"><span class="hljs-keyword">is</span></span> <span class="hljs-number">-<span class="hljs-number">6</span></span>))
+
+b = <span class="hljs-number">-<span class="hljs-number">5</span></span>
+print(‘<span class="hljs-number">-<span class="hljs-number">5</span></span> -&gt; {}’.<span class="hljs-built_in">format</span>(b <span class="hljs-keyword"><span class="hljs-keyword">is</span></span> <span class="hljs-number">-<span class="hljs-number">5</span></span>))
+
+c = <span class="hljs-number"><span class="hljs-number">256</span></span>
+print(‘<span class="hljs-number"><span class="hljs-number">256</span></span> -&gt; {}’.<span class="hljs-built_in">format</span>(c <span class="hljs-keyword"><span class="hljs-keyword">is</span></span> <span class="hljs-number"><span class="hljs-number">256</span></span>))
+
+d = <span class="hljs-number"><span class="hljs-number">257</span></span>
+print(‘<span class="hljs-number"><span class="hljs-number">257</span></span> -&gt; {}’.<span class="hljs-built_in">format</span>(d <span class="hljs-keyword"><span class="hljs-keyword">is</span></span> <span class="hljs-number"><span class="hljs-number">257</span></span>))
+</code></pre><p>Como resultado, temos:</p><pre><code class="hljs python">
+<span class="hljs-number">-<span class="hljs-number">6</span></span> -&gt; <span class="hljs-literal"><span class="hljs-literal">False</span></span>
+<span class="hljs-number">-<span class="hljs-number">5</span></span> -&gt; <span class="hljs-literal"><span class="hljs-literal">True</span></span>
+<span class="hljs-number"><span class="hljs-number">256</span></span> -&gt; <span class="hljs-literal"><span class="hljs-literal">True</span></span>
+<span class="hljs-number"><span class="hljs-number">257</span></span> -&gt; <span class="hljs-literal"><span class="hljs-literal">False</span></span>
+</code></pre><p>Dessa vez, o resultado é porque, na implementação em C do <strong>Python</strong>, <a href="https://docs.python.org/3.6/c-api/long.html#c.PyLong_FromLong" target="_blank" rel="noopener"><strong>os inteiros entre -5 e 256 são armazenados em uma array</strong></a>. Assim, quando criamos um int nesse alcance recebemos de volta uma referência para o int já criado na array, em vez de criarmos um novo objeto.</p><h3>Relações entre <code>==</code> e <code>is</code></h3><p>Depois de tantos testes e explicações, entendemos que o fato de <code>==</code> resultar em <strong>True</strong> para determinadas variáveis <strong>não significa</strong> que <code>is</code> também retornará o mesmo. Mas como funciona na relação inversa?</p><p>Intuitivamente, podemos pensar que todos as operações com <code>is</code> que retornam <strong>True</strong> também retornam <strong>True</strong> com <code>==</code>, afinal se uma variável <strong>é</strong> outra variável, elas devem ter o mesmo valor (além da mesma identidade).</p><p>Em geral, essa ideia está correta, mas não é uma regra, como nos mostra o próprio Python com o valor <strong><a href="https://docs.python.org/3/library/functions.html#float" target="_blank" rel="noopener">NaN</a></strong> (<em><strong>N</strong>ot <strong>a</strong> <strong>N</strong>umber</em>, não é um número) de tipo float:</p><pre><code class="hljs python">
+a = <span class="hljs-built_in">float</span>(‘nan’)
+print(‘<span class="hljs-keyword"><span class="hljs-keyword">is</span></span> -&gt; {}’.<span class="hljs-built_in">format</span>(a <span class="hljs-keyword"><span class="hljs-keyword">is</span></span> a))
+print(‘== -&gt; {}’.<span class="hljs-built_in">format</span>(a == a))
+</code></pre><p>E o resultado é:</p><pre><code class="hljs python">
+<span class="hljs-keyword"><span class="hljs-keyword">is</span></span> -&gt; <span class="hljs-literal"><span class="hljs-literal">True</span></span>
+== -&gt; <span class="hljs-literal"><span class="hljs-literal">False</span></span>
+</code></pre><h3>Conclusão</h3><p>Nesse post, entendemos a diferença dos comparadores <code>==</code> e <code>is</code> e vimos quando devemos usar cada um deles, concluindo que o operador <code>is</code> deve ser usado <strong>sempre e somente</strong> quando queremos comparar a identidade de um objeto, isto é, seu endereço na memória.</p><p>O <code>==</code>, por sua vez, deve ser usado quando quisermos comparar valores (ou, na verdade, qualquer outra coisa!) de objetos.</p><p>Além disso, analisamos algumas peculiaridades específicas da implementação CPython, tornando mais pleno nosso conhecimento sobre o tópico.</p><p>Finalmente matamos essa dúvida, hein? E aí, gostou do conteúdo? Se quiser aprender mais sobre Python, se aprofundando nessa interessante linguagem, dê uma olhada em nossos <a href="https://www.alura.com.br/cursos-online-programacao/python"><strong>cursos de Python na Alura</strong></a>!</p><div class="cosmos-related-articles"><h5 class="cosmos-related-articles-title">Leia também:</h5><ul class="cosmos-related-articles-list"><li><a href="https://www.alura.com.br/artigos/como-fazer-copia-de-lista-python">Como fazer uma cópia de uma lista no Python </a></li><li><a href="https://www.alura.com.br/artigos/conhecendo-as-assignment-expressions-pep-572-aceita">Conhecendo as assignment expressions - PEP 572 aceita! </a></li><li><a href="https://www.alura.com.br/artigos/o-que-significa-if-name-main-no-python">Python: O que significa if __name__ == '__main__'? </a></li><li><a href="https://www.alura.com.br/artigos/conhecendo-as-tuplas-no-python">Conhecendo as tuplas no Python </a></li><li><a href="https://www.alura.com.br/artigos/como-publicar-seu-codigo-python-no-pypi">Como publicar seu código Python no PyPI </a></li><li><a href="https://www.alura.com.br/artigos/o-que-sao-iteradores-no-python">Python: Saiba o que são iteradores</a></li></ul></div></article></section><div class="cosmos-other-files"><div class="container --container-banner-flex"><div class="categories-artigos" style="background:#00c86f;">
+<svg class="categories-artigos-icon" style="fill:#ffffff" xmlns:xlink="http://www.w3.org/1999/xlink">
+<use xlink:href="/svg,1636535197/categorias#icon-categorias-programacao"></use>
+</svg></div><p class="cosmos-other-files-text">Veja outros artigos sobre <a href="https://www.alura.com.br/artigos/programacao" style="color:#00c86f">Programação</a></p></div></div><div class="cosmos-color"><div class="cosmos --newsletter-spacing"><link rel="stylesheet" href="./Python_ Qual a diferença entre == e is_ _ Alura Cursos Online_files/subscribeNewsletterCard.1636535197.css"><div class="subscribeNewsletterCard-container"><section class="subscribeNewsletterCard-wrapper"><div class="subscribeNewsletterCard-decoration"></div><div class="subscribeNewsletterCard-busca-box container"><div class="subscribeNewsletterCard-box-texto"><p class="subscribeNewsletterCard-texto-bold">Quer mergulhar em tecnologia e aprendizagem?</p><p class="subscribeNewsletterCard-texto-normal">Receba a newsletter que o nosso CEO escreve pessoalmente,
+com insights do mercado de trabalho, ciência e desenvolvimento de software</p></div><form id="subscribeNewsletterCard__activecampaign" class="subscribeNewsletterCard-form" action="https://www.alura.com.br/api/activecampaign" method="POST">
+<input type="hidden" name="list" value="14">
+<input type="hidden" name="retorno" value="/newsletter-cadastrado">
+<input class="activecampaign-input subscribeNewsletterCard-input" id="activecampaing-email" type="email" placeholder="Escreva seu email" name="email" required="">
+<button class="activecampaign-button subscribeNewsletterCard-button" type="submit">Me inscreva</button><input type="hidden" name="full_url" value="https://www.alura.com.br/artigos/qual-a-diferenca-entre-e-is-no-python"><input type="hidden" name="user_agent" value="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.0.4758.102 Safari/537.36"><input type="hidden" name="referral" value="https://cursos.alura.com.br/"></form></div></section></div> <script>(function() {
+            function criaCampo(nome, valor, form) {
+                if (valor === null) return;
+
+                var input = document.createElement('input');
+                input.type = 'hidden';
+                input.name = nome;
+                input.value = valor;
+
+                form.appendChild(input);
+            }
+
+            function param(name) {
+                var url = location.href;
+                name = name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");
+                var regexS = "[\\?&]"+name+"=([^&#]*)";
+                var regex = new RegExp( regexS );
+                var results = regex.exec( url );
+                return results == null ? null : results[1];
+            }
+
+            function showNewsletterError() {
+                document.querySelector('.newsletter-message-error').classList.remove('newsletter-message-error--disabled');
+            }
+
+            function valida() {
+                var isValid = true;
+                var inputList = document.querySelector('#subscribeNewsletterCard__activecampaign')['list'];
+                var inputEmail = document.querySelector('#subscribeNewsletterCard__activecampaign')['email'];
+
+                isValid = validaEmail(inputEmail.value) && validaList(inputList.value);
+
+                if(!isValid) {
+                    showNewsletterError();
+                }
+
+                return isValid;
+            }
+
+            function validaList(list) {
+                return list != '-1';
+            }
+
+            function validaEmail(email) {
+                var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+                return re.test(email);
+            }
+
+            var form = document.querySelector('#subscribeNewsletterCard__activecampaign');
+            if(!form) return;
+
+            criaCampo('utm_source', param('utm_source'), form);
+            criaCampo('utm_campaign', param('utm_campaign'), form);
+            criaCampo('utm_medium', param('utm_medium'), form);
+            criaCampo('utm_term', param('utm_term'), form);
+            criaCampo('utm_content', param('utm_content'), form);
+            criaCampo('full_url', location.href, form);
+            criaCampo('user_agent', navigator.userAgent, form);
+            criaCampo('referral', document.referrer, form);
+
+            form.onsubmit = valida;
+
+        })();</script> </div></div></section> <script async="" src="./Python_ Qual a diferença entre == e is_ _ Alura Cursos Online_files/ei.js.download"></script> <link rel="stylesheet" href="./Python_ Qual a diferença entre == e is_ _ Alura Cursos Online_files/footer.1638241251.css"><footer class="footer"><div class="container"><div class="footer-navegue"><h2 class="footer-navegacao-titulo">Navegação</h2><ul class="footer-navegue-lista"><li class="footer-navegue-lista-link"><a href="https://www.alura.com.br/planos-cursos-online" gtm-data="footer_primeira_secao_053">Planos</a></li><li class="footer-navegue-lista-link"><a href="https://www.alura.com.br/cursos-online-tecnologia" gtm-data="footer_primeira_secao_054">Todos os cursos</a></li><li class="footer-navegue-lista-link"><a href="https://www.alura.com.br/cases">Alura Cases</a></li><li class="footer-navegue-lista-link"><a href="https://www.alura.com.br/guias">Guia de carreira</a></li><li class="footer-navegue-lista-link"><a href="https://www.alura.com.br/instrutores" gtm-data="footer_primeira_secao_056">Instrutores</a></li><li class="footer-navegue-lista-link"><a href="https://grupoalura.gupy.io/">Trabalhe conosco</a></li><li class="footer-navegue-lista-link"><a href="https://www.alura.com.br/quero-ser-instrutor" gtm-data="footer_primeira_secao_057">Como virar instrutor</a></li><li class="footer-navegue-lista-link"><a href="https://www.alura.com.br/artigos" gtm-data="footer_primeira_secao_058">Artigos</a></li><li class="footer-navegue-lista-link"><a href="https://www.alura.com.br/escolas">Para Escolas</a></li><li class="footer-navegue-lista-link"><a href="https://www.alura.com.br/podcasts">Podcasts</a></li><li class="footer-navegue-lista-link"><a href="https://www.alura.com.br/politica-de-privacidade" gtm-data="footer_primeira_secao_061">Política de Privacidade</a></li><li class="footer-navegue-lista-link"><a href="https://www.alura.com.br/termos-de-uso" gtm-data="footer_primeira_secao_062">Termos de Uso</a></li><li class="footer-navegue-lista-link"><a href="https://www.alura.com.br/sobre" gtm-data="footer_primeira_secao_063">Sobre nós</a></li><li class="footer-navegue-lista-link"><a href="https://www.alura.com.br/como-funciona" gtm-data="footer_primeira_secao_064">Como Funciona</a></li><li class="footer-navegue-lista-link"><a href="https://www.alura.com.br/dev-em-t" gtm-data="footer_primeira_secao_065">Dev em &lt;T&gt;</a></li><li class="footer-navegue-lista-link"><a href="https://suporte.alura.com.br/" gtm-data="footer_primeira_secao_066">Perguntas frequentes</a></li><li class="footer-navegue-lista-link"><a href="https://status.alura.com.br/">Status</a></li><li class="footer-navegue-lista-link"><a href="https://www.alura.com.br/mapa-do-site">Mapa do Site</a></li></ul><h2 class="footer-navegacao-titulo">Fale com a gente</h2><ul class="footer-navegue-lista"><li class="footer-navegue-lista-link whatsapp-icon"><a href="https://api.whatsapp.com/send?phone=5511984510286">Whatsapp</a></li><li class="footer-navegue-lista-link"><a href="https://www.alura.com.br/contato">Email e telefone</a></li></ul><h2 class="footer-navegacao-titulo">Blog</h2><ul class="footer-navegue-lista"><li class="footer-navegue-lista-link">
+<a href="https://www.alura.com.br/artigos/programacao">
+Programação							</a></li><li class="footer-navegue-lista-link">
+<a href="https://www.alura.com.br/artigos/front-end">
+Front-end							</a></li><li class="footer-navegue-lista-link">
+<a href="https://www.alura.com.br/artigos/data-science">
+Data Science							</a></li><li class="footer-navegue-lista-link">
+<a href="https://www.alura.com.br/artigos/devops">
+DevOps							</a></li><li class="footer-navegue-lista-link">
+<a href="https://www.alura.com.br/artigos/design-ux">
+UX &amp; Design							</a></li><li class="footer-navegue-lista-link">
+<a href="https://www.alura.com.br/artigos/mobile">
+Mobile							</a></li><li class="footer-navegue-lista-link">
+<a href="https://www.alura.com.br/artigos/inovacao-gestao">
+Inovação &amp; Gestão							</a></li></ul></div><div class="footer-card-hotLinks social-mobile"><p class="footer-navegue-lista-link --description">
+<span class="footer-empresa-item">AOVS Sistemas de Informática S.A</span>
+<span class="footer-empresa-item">CNPJ 05.555.382/0001-33</span></p><h2 class="footer-card-hotLinks-titulo">Nossas redes e apps</h2><div class="footer-card-hotLinks-info footer-card-redes">
+<a href="https://www.youtube.com/alura" gtm-data="footer_primeira_secao_065" class="footer-card-hotLinks-link" target="_blank" rel="noopener" title="YouTube da Alura">
+<svg class="footer-card-hotLinks-icon footer-card-hotLinks-youtube"><use xlink:href="/svg,1636535197/footer#icon-footer-youtube"></use></svg>
+<span>YouTube</span>
+</a>
+<a href="https://www.facebook.com/AluraCursosOnline/" gtm-data="footer_primeira_secao_066" class="footer-card-hotLinks-link" target="_blank" rel="noopener" title="Facebook da Alura">
+<svg class="footer-card-hotLinks-icon footer-card-hotLinks-facebook"><use xlink:href="/svg,1636535197/footer#icon-footer-facebook"></use></svg>
+<span>Facebook</span>
+</a>
+<a href="https://twitter.com/aluraonline" gtm-data="footer_primeira_secao_067" class="footer-card-hotLinks-link" target="_blank" rel="noopener" title="Twitter da Alura">
+<svg class="footer-card-hotLinks-icon footer-card-hotLinks-twitter"><use xlink:href="/svg,1636535197/footer#icon-footer-twitter"></use></svg>
+<span>Twitter</span>
+</a>
+<a href="https://instagram.com/aluraonline" class="footer-card-hotLinks-link" gtm-data="footer_primeira_secao_073" target="_blank" rel="noopener" title="Instagram da Alura">
+<svg class="footer-card-hotLinks-icon footer-card-hotLinks-instagram"><use xlink:href="/svg,1636535197/footer#icon-footer-instagram"></use></svg>
+<span>Instagram</span>
+</a></div><div class="footer-card-hotLinks-info footer-card-mobile">
+<a href="https://play.google.com/store/apps/details?id=br.com.alura.mobi&amp;hl=pt_BR" gtm-data="footer_primeira_secao_069" class="footer-card-hotLinks-link" target="_blank" rel="noopener" title="Baixar na Google Play Store">
+<svg class="footer-card-hotLinks-icon footer-card-hotLinks-mobile"><use xlink:href="/svg,1636535197/footer#icon-footer-googleplay"></use></svg>
+<span>Google Play Store</span>
+</a>
+<a href="https://itunes.apple.com/br/app/alura-cursos-online/id1225776635" gtm-data="footer_primeira_secao_070" class="footer-card-hotLinks-link" target="_blank" rel="noopener" title="Baixar na AppStore">
+<svg class="footer-card-hotLinks-icon footer-card-hotLinks-mobile"><use xlink:href="/svg,1636535197/footer#icon-footer-appstore"></use></svg>
+<span>AppStore</span>
+</a></div></div><div class="footer-column footer-column-cards"><link rel="stylesheet" href="./Python_ Qual a diferença entre == e is_ _ Alura Cursos Online_files/activeCampaignNewsletterForm.1636535197.css"><div class="newsletter"><h2 class="newsletter-titulo">Novidades e Lançamentos</h2><form id="newsletter-form__activecampaign" class="newsletter-form" action="https://www.alura.com.br/api/activecampaign" method="POST"><input type="hidden" name="list" value="14">
+<input type="hidden" name="retorno" value="/newsletter-cadastrado"><label for="email-newsletter">Email</label>
+<input type="email" name="email" class="newsletter-input" placeholder="Seu e-mail" id="email-newsletter"><button type="submit" class="newsletter-button buttonForm">Receber</button>
+<span class="newsletter-message-error newsletter-message-error--disabled">Não foi possível assinar a newsletter</span><input type="hidden" name="full_url" value="https://www.alura.com.br/artigos/qual-a-diferenca-entre-e-is-no-python"><input type="hidden" name="user_agent" value="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.0.4758.102 Safari/537.36"><input type="hidden" name="referral" value="https://cursos.alura.com.br/"></form></div> <script>(function() {
+            function criaCampo(nome, valor, form) {
+                if (valor === null) return;
+
+                var input = document.createElement('input');
+                input.type = 'hidden';
+                input.name = nome;
+                input.value = valor;
+
+                form.appendChild(input);
+            }
+
+            function param(name) {
+                var url = location.href;
+                name = name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");
+                var regexS = "[\\?&]"+name+"=([^&#]*)";
+                var regex = new RegExp( regexS );
+                var results = regex.exec( url );
+                return results == null ? null : results[1];
+            }
+
+            function showNewsletterError() {
+                document.querySelector('.newsletter-message-error').classList.remove('newsletter-message-error--disabled');
+            }
+
+            function valida() {
+                var isValid = true;
+                var inputList = document.querySelector('#newsletter-form__activecampaign')['list'];
+                var inputEmail = document.querySelector('#newsletter-form__activecampaign')['email'];
+
+                isValid = validaEmail(inputEmail.value) && validaList(inputList.value);
+
+                if(!isValid) {
+                    showNewsletterError();
+                }
+
+                return isValid;
+            }
+
+            function validaList(list) {
+                return list != '-1';
+            }
+
+            function validaEmail(email) {
+                var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+                return re.test(email);
+            }
+
+            var form = document.querySelector('#newsletter-form__activecampaign');
+            if(!form) return;
+
+            criaCampo('utm_source', param('utm_source'), form);
+            criaCampo('utm_campaign', param('utm_campaign'), form);
+            criaCampo('utm_medium', param('utm_medium'), form);
+            criaCampo('utm_term', param('utm_term'), form);
+            criaCampo('utm_content', param('utm_content'), form);
+            criaCampo('full_url', location.href, form);
+            criaCampo('user_agent', navigator.userAgent, form);
+            criaCampo('referral', document.referrer, form);
+
+            form.onsubmit = valida;
+
+        })();</script> <div class="footer-navegue empresa-governo"><h2 class="footer-navegacao-titulo">Alura na sua empresa</h2><ul class="footer-navegue-lista"><li class="footer-navegue-lista-link --description">Desenvolva seu time com apoio da nossa solução</li><li class="footer-navegue-lista-link"><a href="https://www.alura.com.br/empresas/cases">Cases</a></li><li class="footer-navegue-lista-link"><a href="https://www.alura.com.br/empresas/comunidade">Comunidade</a></li><li class="footer-navegue-lista-link"><a href="https://www.alura.com.br/empresas/guias-de-carreira">Guia de Carreira</a></li><li class="footer-navegue-lista-link"><a href="https://www.alura.com.br/empresas/na-midia">Na Mídia</a></li><li class="footer-navegue-lista-link --description"><a href="https://www.alura.com.br/empresas">Conheça mais</a></li></ul><h2 class="footer-navegacao-titulo">Comunidade</h2><ul class="footer-navegue-lista"><li class="footer-navegue-lista-link"><a href="https://www.scuba.dev.br/" gtm-data="footer_primeira_secao_067">Scuba Dev</a></li><li class="footer-navegue-lista-link"><a href="https://www.alura.com.br/imersao" gtm-data="footer_primeira_secao_068">Imersões</a></li><li class="footer-navegue-lista-link"><a href="https://www.alura.com.br/depoimentos" gtm-data="footer_primeira_secao_069">Depoimentos</a></li><li class="footer-navegue-lista-link"><a href="https://www.alura.com.br/instrutores" gtm-data="footer_primeira_secao_061">Nossos Instrutores</a></li></ul><h2 class="footer-navegacao-titulo">Parceiros</h2><ul class="footer-navegue-lista"><li class="footer-navegue-lista-link --description">
+<img src="./Python_ Qual a diferença entre == e is_ _ Alura Cursos Online_files/scale-up-endeavor.1636535197.png" alt="Programa de aceleração Scale-Up Endeavor" class="footer-navegue-lista__image" loading="lazy"></li><li class="footer-navegue-lista-link --description --partners">
+Nós, da Alura, somos uma das Scale-Ups selecionadas pela Endeavor, programa de aceleração das empresas que mais crescem no país.</li><li class="footer-navegue-lista-link --description">
+<img src="./Python_ Qual a diferença entre == e is_ _ Alura Cursos Online_files/google-alumni-2021.1636535197.png" alt="Growth Academy 2021 do Google For Startups" class="footer-navegue-lista__image" loading="lazy"></li><li class="footer-navegue-lista-link --description --partners">
+Fomos uma das 7 startups selecionadas pelo Google For Startups a participar do programa Growth Academy em 2021.</li></ul></div></div><div class="footer-info"><div class="footer-logos">
+<a class="footer-logos-home" gtm-data="footer_primeira_secao_050" href="https://www.alura.com.br/">
+<img src="./Python_ Qual a diferença entre == e is_ _ Alura Cursos Online_files/alura-logo.1642527450.svg" alt="Alura" class="footer-logo" loading="lazy">
+</a></div><div class="footer-card-hotLinks social-desktop"><p class="footer-navegue-lista-link --description">
+<span class="footer-empresa-item">AOVS Sistemas de Informática S.A</span>
+<span class="footer-empresa-item">CNPJ 05.555.382/0001-33</span></p><h2 class="footer-card-hotLinks-titulo">Nossas redes e apps</h2><div class="footer-card-hotLinks-info footer-card-redes">
+<a href="https://www.youtube.com/alura" gtm-data="footer_primeira_secao_065" class="footer-card-hotLinks-link" target="_blank" rel="noopener" title="YouTube da Alura">
+<svg class="footer-card-hotLinks-icon footer-card-hotLinks-youtube"><use xlink:href="/svg,1636535197/footer#icon-footer-youtube"></use></svg>
+<span>YouTube</span>
+</a>
+<a href="https://www.facebook.com/AluraCursosOnline/" gtm-data="footer_primeira_secao_066" class="footer-card-hotLinks-link" target="_blank" rel="noopener" title="Facebook da Alura">
+<svg class="footer-card-hotLinks-icon footer-card-hotLinks-facebook"><use xlink:href="/svg,1636535197/footer#icon-footer-facebook"></use></svg>
+<span>Facebook</span>
+</a>
+<a href="https://twitter.com/aluraonline" gtm-data="footer_primeira_secao_067" class="footer-card-hotLinks-link" target="_blank" rel="noopener" title="Twitter da Alura">
+<svg class="footer-card-hotLinks-icon footer-card-hotLinks-twitter"><use xlink:href="/svg,1636535197/footer#icon-footer-twitter"></use></svg>
+<span>Twitter</span>
+</a>
+<a href="https://instagram.com/aluraonline" class="footer-card-hotLinks-link" gtm-data="footer_primeira_secao_073" target="_blank" rel="noopener" title="Instagram da Alura">
+<svg class="footer-card-hotLinks-icon footer-card-hotLinks-instagram"><use xlink:href="/svg,1636535197/footer#icon-footer-instagram"></use></svg>
+<span>Instagram</span>
+</a></div><div class="footer-card-hotLinks-info footer-card-mobile">
+<a href="https://play.google.com/store/apps/details?id=br.com.alura.mobi&amp;hl=pt_BR" gtm-data="footer_primeira_secao_069" class="footer-card-hotLinks-link" target="_blank" rel="noopener" title="Baixar na Google Play Store">
+<svg class="footer-card-hotLinks-icon footer-card-hotLinks-mobile"><use xlink:href="/svg,1636535197/footer#icon-footer-googleplay"></use></svg>
+<span>Google Play Store</span>
+</a>
+<a href="https://itunes.apple.com/br/app/alura-cursos-online/id1225776635" gtm-data="footer_primeira_secao_070" class="footer-card-hotLinks-link" target="_blank" rel="noopener" title="Baixar na AppStore">
+<svg class="footer-card-hotLinks-icon footer-card-hotLinks-mobile"><use xlink:href="/svg,1636535197/footer#icon-footer-appstore"></use></svg>
+<span>AppStore</span>
+</a></div></div></div></div></footer><section class="footer_categorias-formacoes"><div class="container"><div class="footer_categorias_wrapper"><h2 class="footer_categorias_title">Cursos</h2><div class="footer_categorias_categorias footer-navegue-lista-link"><div class="footer_categorias_categoria">
+<a href="https://www.alura.com.br/cursos-online-programacao">Cursos de Programação</a><div class="footer_categorias_subcategorias">
+<a href="https://www.alura.com.br/cursos-online-programacao/logica">
+Lógica										</a>
+|																			<a href="https://www.alura.com.br/cursos-online-programacao/python">
+Python										</a>
+|																			<a href="https://www.alura.com.br/cursos-online-programacao/php">
+PHP										</a>
+|																			<a href="https://www.alura.com.br/cursos-online-programacao/java">
+Java										</a>
+|																			<a href="https://www.alura.com.br/cursos-online-programacao/dotnet">
+.NET										</a>
+|																			<a href="https://www.alura.com.br/cursos-online-programacao/node-js">
+Node JS										</a>
+|																			<a href="https://www.alura.com.br/cursos-online-programacao/linguagem-c">
+C										</a>
+|																			<a href="https://www.alura.com.br/cursos-online-programacao/computacao">
+Computação										</a>
+|																			<a href="https://www.alura.com.br/cursos-online-programacao/jogos">
+Jogos										</a>
+|																			<a href="https://www.alura.com.br/cursos-online-programacao/internet-das-coisas">
+IoT										</a></div></div><div class="footer_categorias_categoria">
+<a href="https://www.alura.com.br/cursos-online-front-end">Cursos de Front-end</a><div class="footer_categorias_subcategorias">
+<a href="https://www.alura.com.br/cursos-online-front-end/front-end">
+HTML, CSS										</a>
+|																			<a href="https://www.alura.com.br/cursos-online-front-end/reactjs">
+React										</a>
+|																			<a href="https://www.alura.com.br/cursos-online-front-end/angular">
+Angular										</a>
+|																			<a href="https://www.alura.com.br/cursos-online-front-end/javascript">
+JavaScript										</a>
+|																			<a href="https://www.alura.com.br/cursos-online-front-end/jquery">
+jQuery										</a></div></div><div class="footer_categorias_categoria">
+<a href="https://www.alura.com.br/cursos-online-data-science">Cursos de Data Science</a><div class="footer_categorias_subcategorias">
+<a href="https://www.alura.com.br/cursos-online-data-science/data-science">
+Ciência de dados										</a>
+|																			<a href="https://www.alura.com.br/cursos-online-data-science/business-intelligence">
+BI										</a>
+|																			<a href="https://www.alura.com.br/cursos-online-data-science/sql">
+SQL e Banco de Dados										</a>
+|																			<a href="https://www.alura.com.br/cursos-online-data-science/excel">
+Excel										</a>
+|																			<a href="https://www.alura.com.br/cursos-online-data-science/machine-learning">
+Machine Learning										</a>
+|																			<a href="https://www.alura.com.br/cursos-online-data-science/nosql">
+NoSQL										</a>
+|																			<a href="https://www.alura.com.br/cursos-online-data-science/estatistica">
+Estatística										</a></div></div><div class="footer_categorias_categoria">
+<a href="https://www.alura.com.br/cursos-online-devops">Cursos de DevOps</a><div class="footer_categorias_subcategorias">
+<a href="https://www.alura.com.br/cursos-online-devops/aws">
+AWS										</a>
+|																			<a href="https://www.alura.com.br/cursos-online-devops/azure">
+Azure										</a>
+|																			<a href="https://www.alura.com.br/cursos-online-devops/containers">
+Docker										</a>
+|																			<a href="https://www.alura.com.br/cursos-online-devops/seguranca">
+Segurança										</a>
+|																			<a href="https://www.alura.com.br/cursos-online-devops/infraestrutura-como-codigo">
+IaC										</a>
+|																			<a href="https://www.alura.com.br/cursos-online-devops/linux-comandos-e-processos">
+Linux										</a></div></div><div class="footer_categorias_categoria">
+<a href="https://www.alura.com.br/cursos-online-design-ux">Cursos de UX &amp; Design</a><div class="footer_categorias_subcategorias">
+<a href="https://www.alura.com.br/cursos-online-design-ux/wwww">
+Photoshop e Illustrator										</a>
+|																			<a href="https://www.alura.com.br/cursos-online-design-ux/ux">
+Usabilidade e UX										</a>
+|																			<a href="https://www.alura.com.br/cursos-online-design-ux/video">
+Vídeo e Motion										</a>
+|																			<a href="https://www.alura.com.br/cursos-online-design-ux/3d">
+3D										</a></div></div><div class="footer_categorias_categoria">
+<a href="https://www.alura.com.br/cursos-online-mobile">Cursos de Mobile</a><div class="footer_categorias_subcategorias">
+<a href="https://www.alura.com.br/cursos-online-mobile/react-native">
+React Native										</a>
+|																			<a href="https://www.alura.com.br/cursos-online-mobile/flutter">
+Flutter										</a>
+|																			<a href="https://www.alura.com.br/cursos-online-mobile/ios">
+iOS e Swift										</a>
+|																			<a href="https://www.alura.com.br/cursos-online-mobile/android">
+Android, Kotlin										</a>
+|																			<a href="https://www.alura.com.br/cursos-online-mobile/jogos">
+Jogos										</a></div></div><div class="footer_categorias_categoria">
+<a href="https://www.alura.com.br/cursos-online-inovacao-gestao">Cursos de Inovação &amp; Gestão</a><div class="footer_categorias_subcategorias">
+<a href="https://www.alura.com.br/cursos-online-inovacao-gestao/agilidade">
+Métodos Ágeis										</a>
+|																			<a href="https://www.alura.com.br/cursos-online-inovacao-gestao/softskills-carreira">
+Softskills										</a>
+|																			<a href="https://www.alura.com.br/cursos-online-inovacao-gestao/gestao-corporativa">
+Liderança e Gestão										</a>
+|																			<a href="https://www.alura.com.br/cursos-online-inovacao-gestao/startup-empreendedorismo">
+Startups										</a>
+|																			<a href="https://www.alura.com.br/cursos-online-inovacao-gestao/vendas">
+Vendas										</a></div></div></div></div></div></section><style>@media not all and (min-width: 1000px){
+		.grupoCaelum{
+			display: none;
+		}
+	}
+
+	.grupoCaelum{
+		background: #fff;
+		height: 400px;
+		border-top: 1px solid #EBEBEE;
+	}
+
+	.grupoCaelum .container{
+		display: flex;
+		justify-content: space-between;
+		align-items: flex-start;
+		padding-top: 0;
+		padding-bottom: 0;
+		height: 100%;
+	}
+
+		.grupoCaelum-list{
+			display: flex;
+			list-style: none;
+			width: 60%;
+			justify-content: space-between;
+			align-items: flex-start;
+			margin-top: 20px;
+		}
+
+		.grupoCaelum-title{
+			width: 20%;
+		}
+
+		.grupoCaelum-column {
+			display: inline-block;
+			padding-left: 19px;
+			width: 240px;
+			height: 350px;
+			min-width: 160px;
+		}
+			.grupoCaelum-column-title {
+				font-size: 10px;
+				color: #d7e0e5;
+				text-transform: uppercase;
+				font-weight: 600;
+				margin-bottom: 19px;
+			}
+
+			.grupoCaelum-column-list {
+				list-style: none;
+			}
+
+			.column-item-title {
+				font-size: 11px;
+				text-align: center;
+				vertical-align: middle;
+				display: inline-block;
+				margin-left: 6.5px;
+			}
+
+		.grupoCaelum-column:not(:first-child) {
+			border-left: solid 1px #e3e9ed;
+		}
+
+		.grupoCaelum-title {
+			display: inline-block;
+			text-decoration: none;
+			color: #657176;
+			letter-spacing: normal;
+			font-size: 18px;
+			margin-top: 54px;
+		}
+
+	.column-item-logo {
+		width: 30px;
+		height: 30px;
+		vertical-align: middle;
+		display: inline-block;
+	}
+
+	.column-item {
+		margin-bottom: 17px;
+	}
+
+	.column-item a{
+		text-decoration: none;
+		color: #657176;
+	}</style><footer class="caelum-footer"><div class="grupoCaelum"><div class="container"><p class="grupoCaelum-title">Grupo Alura</p><ul class="grupoCaelum-list"><li class="grupoCaelum-column"><p class="grupoCaelum-column-title">Educação</p><ul class="grupoCaelum-column-list"><li class="column-item">
+<a target="_blank" href="https://www.caelum.com.br/">
+<svg class="column-item-logo">
+<use xlink:href="/svg,1636535197/caelumFooter#icon-caelumFooter-novo-logo-caelum">
+</use></svg><span class="column-item-title">Caelum</span>
+
+</a></li><li class="column-item">
+<a target="_blank" href="https://www.casadocodigo.com.br/">
+<svg class="column-item-logo"><use xlink:href="/svg,1636535197/caelumFooter#icon-caelumFooter-cdc"></use></svg><span class="column-item-title">Casa do Código</span>
+</a></li></ul></li><li class="grupoCaelum-column"><p class="grupoCaelum-column-title">Educação Online</p><ul class="grupoCaelum-column-list"><li class="column-item">
+<a target="_blank" href="https://www.alura.com.br/">
+<svg class="column-item-logo"><use xlink:href="/svg,1636535197/caelumFooter#icon-caelumFooter-alura"></use></svg><span class="column-item-title">Alura</span>
+</a></li><li class="column-item">
+<a target="_blank" href="https://www.alura.com.br/empresas">
+<svg class="column-item-logo" style="fill: white;"><use xlink:href="/svg,1636535197/caelumFooter#icon-caelumFooter-alura"></use></svg><span class="column-item-title">Alura Para Empresas</span>
+</a></li><li class="column-item">
+<a target="_blank" href="https://www.aluracursos.com/">
+<svg class="column-item-logo"><use xlink:href="/svg,1636535197/caelumFooter#icon-caelumFooter-alura"></use></svg><span class="column-item-title">Alura LATAM</span>
+</a></li><li class="column-item">
+<a target="_blank" href="https://www.alurastart.com.br/">
+<svg class="column-item-logo"><use xlink:href="/svg,1636535197/caelumFooter#icon-caelumFooter-alurastart"></use></svg><span class="column-item-title">Alura Start</span>
+</a></li><li class="column-item">
+<a target="_blank" href="https://www.musicdot.com.br/">
+<svg class="column-item-logo"><use xlink:href="/svg,1636535197/caelumFooter#icon-caelumFooter-musicdot"></use></svg><span class="column-item-title">MusicDot</span>
+</a></li><li class="column-item">
+<a target="_blank" href="https://www.aluralingua.com.br/">
+<svg class="column-item-logo"><use xlink:href="/svg,1636535197/caelumFooter#icon-caelumFooter-aluralingua"></use></svg><span class="column-item-title">Alura Língua</span>
+</a></li><li class="column-item">
+<a target="_blank" style="fill: #657176" href="https://www.cursospm3.com.br/">
+<svg class="column-item-logo"><use xlink:href="/svg,1636535197/caelumFooter#icon-caelumFooter-pm3"></use></svg><span class="column-item-title">PM3 - Cursos de Produto</span>
+</a></li></ul></li><li class="grupoCaelum-column"><p class="grupoCaelum-column-title">Comunidade</p><ul class="grupoCaelum-column-list"><li class="column-item">
+<a target="_blank" href="https://hipsters.tech/">
+<svg class="column-item-logo"><use xlink:href="/svg,1636535197/caelumFooter#icon-caelumFooter-hipsterstech"></use></svg><span class="column-item-title">Hipsters ponto Tech</span>
+</a></li><li class="column-item">
+<a target="_blank" href="https://scuba.dev.br/">
+<svg class="column-item-logo" style="fill: #657176"><use xlink:href="/svg,1636535197/caelumFooter#icon-caelumFooter-scubadev"></use></svg><span class="column-item-title">Scuba Dev</span>
+</a></li><li class="column-item">
+<a target="_blank" href="https://layerspontotech.com.br/">
+<svg class="column-item-logo"><use xlink:href="/svg,1636535197/caelumFooter#icon-caelumFooter-layerstech"></use></svg><span class="column-item-title">Layers ponto Tech</span>
+</a></li><li class="column-item">
+<a target="_blank" href="https://likeaboss.com.br/">
+<svg class="column-item-logo" style="fill: #657176"><use xlink:href="/svg,1636535197/caelumFooter#icon-caelumFooter-likeaboss"></use></svg><span class="column-item-title">Like a Boss</span>
+</a></li><li class="column-item">
+<a target="_blank" href="https://www.carreirasemfronteiras.com.br/">
+<svg class="column-item-logo" style="fill: #657176"><use xlink:href="/svg,1636535197/caelumFooter#icon-caelumFooter-carreira-sem-fronteiras"></use></svg><span class="column-item-title">Carreira sem Fronteiras</span>
+</a></li><li class="column-item">
+<a target="_blank" href="https://hipsters.jobs/">
+<svg class="column-item-logo"><use xlink:href="/svg,1636535197/caelumFooter#icon-caelumFooter-hipstersjobs"></use></svg><span class="column-item-title">Hipsters ponto Jobs</span>
+</a></li><li class="column-item">
+<a target="_blank" href="https://www.guj.com.br/">
+<svg class="column-item-logo"><use xlink:href="/svg,1636535197/caelumFooter#icon-caelumFooter-guj"></use></svg><span class="column-item-title">GUJ</span>
+</a></li></ul></li></ul></div></div></footer> <script>(function(){
+    var match = location.pathname.match(/\/(bf-|black-?friday\/)([^\/]+)/);
+    if (match != null) {
+        var links = document.querySelectorAll('a[href]');
+        for (var i = 0; i < links.length; i++) {
+            var href = links[i].getAttribute('href');
+            if (href[0] === '/') {
+                links[i].setAttribute('href', '/bf-' + match[2] + href);
+            }
+        }
+    }
+})();</script> <script src="./Python_ Qual a diferença entre == e is_ _ Alura Cursos Online_files/jquery.min.js.download"></script> <script src="./Python_ Qual a diferença entre == e is_ _ Alura Cursos Online_files/svg4everybody.min.1636535198.js.download" async=""></script> <script src="./Python_ Qual a diferença entre == e is_ _ Alura Cursos Online_files/menu.1636535198.js.download" async=""></script> <script src="./Python_ Qual a diferença entre == e is_ _ Alura Cursos Online_files/busca.1636535198.js.download" async=""></script> <script src="./Python_ Qual a diferença entre == e is_ _ Alura Cursos Online_files/cursos.1636535198.js.download" async=""></script> <script src="./Python_ Qual a diferença entre == e is_ _ Alura Cursos Online_files/detect.1636535198.js.download" async=""></script> <script src="./Python_ Qual a diferença entre == e is_ _ Alura Cursos Online_files/video.1636535198.js.download" async=""></script> <script src="./Python_ Qual a diferença entre == e is_ _ Alura Cursos Online_files/Countdown.1636535198.js.download" async=""></script> <script>var userId = (document.cookie.match('alura.userId=([^;]+)')||[null,null])[1];
+  window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+
+  	ga('create', 'UA-42101548-1', 'alura.com.br', 'tracker0', {'siteSpeedSampleRate': 50});
+
+	if (userId) ga('tracker0.set', 'userId', userId);
+
+	ga('tracker0.require', 'displayfeatures');
+	ga('tracker0.send', 'pageview');
+  	ga('create', 'UA-42101548-9', 'alura.com.br', 'tracker1', {'siteSpeedSampleRate': 50});
+
+	if (userId) ga('tracker1.set', 'userId', userId);
+
+	ga('tracker1.require', 'displayfeatures');
+	ga('tracker1.send', 'pageview');</script> <script async="" src="./Python_ Qual a diferença entre == e is_ _ Alura Cursos Online_files/analytics.js.download"></script> <script src="./Python_ Qual a diferença entre == e is_ _ Alura Cursos Online_files/footer.1636535198.js.download" async=""></script> <script src="./Python_ Qual a diferença entre == e is_ _ Alura Cursos Online_files/highlight.min.js.download"></script> <script>hljs.initHighlightingOnLoad();</script> <script>(function(h,o,t,j,a,r){
+        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+        h._hjSettings={hjid:1029027,hjsv:6};
+        a=o.getElementsByTagName('head')[0];
+        r=o.createElement('script');r.async=1;
+        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+        a.appendChild(r);
+    })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');</script> <script type="text/javascript">_linkedin_partner_id = "465017";
+			window._linkedin_data_partner_ids = window._linkedin_data_partner_ids || [];
+			window._linkedin_data_partner_ids.push(_linkedin_partner_id);</script> <script type="text/javascript">(function(){var s = document.getElementsByTagName("script")[0];
+			var b = document.createElement("script");
+			b.type = "text/javascript";b.async = true;
+			b.src = "https://snap.licdn.com/li.lms-analytics/insight.min.js";
+			s.parentNode.insertBefore(b, s);})();</script> <noscript>
+<img
+height="1" width="1" style="display:none;" alt=""
+src="https://dc.ads.linkedin.com/collect/?pid=465017&fmt=gif" />
+</noscript><script type="text/javascript" id="">elements=document.querySelectorAll("input, select");elements.forEach(function(b,c){b.addEventListener("change",function(a){a=this.getAttribute("name");dataLayer.push({event:"gaEvent",eventCategory:"Formul\u00e1rios",eventAction:"Altera\u00e7\u00e3o",eventLabel:a})})});</script>
+<script type="text/javascript" id="">var key="Think_Again45984$%";function log(a){console.log(a)}function getPars(){var a={};window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi,function(b,c,d){a[c]=d});return a}function userId(a){a=sha256.hmac(key,a);dataLayer.push({event:"userId",userId:a})}var script=document.createElement("script");script.onload=function(){var a=getPars().e;a&&userId(a);a=document.querySelectorAll('[type\x3d"email"]');for(var b=0;b<a.length;b++)a[b].onchange=function(){userId(this.value)}};script.src="https://cdnjs.cloudflare.com/ajax/libs/js-sha256/0.9.0/sha256.min.js";
+document.head.appendChild(script);</script><iframe name="_hjRemoteVarsFrame" title="_hjRemoteVarsFrame" id="_hjRemoteVarsFrame" src="./Python_ Qual a diferença entre == e is_ _ Alura Cursos Online_files/box-acca23410e696f2ca3087d947271c3d0.html" style="display: none !important; width: 1px !important; height: 1px !important; opacity: 0 !important; pointer-events: none !important;"></iframe></body></html>

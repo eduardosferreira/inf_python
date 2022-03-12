@@ -1,0 +1,38 @@
+$( document ).ready(function() {
+	$(".container_search").parent('li').addClass('searchLiContainer');
+
+
+	$('.row').each(function(){
+		$(this).find('.card-col').each(function(n){
+			$(this).addClass('card-' + n)
+		});
+	});
+
+   	var html = "";
+	html += "<h1 class=\"formTitle\"> Software Integrity Blog </h1>";
+	html += "<p class=\"line1\">Subscribe to our newsletter for the latest application security news, best practices, and trends. <span>Enter your email address:</span></p>";
+	// html += "<p class=\"line2\">Enter your email address:</p>";
+	// html += "<input type=\"text\" class=\"emailAddress\">";
+	// html += "<input type=\"button\" class=\"formInputButton\" value=\"Subscribe\">";
+
+	$("#message_header > .row > .col-xs-12").prepend(html);
+
+	$(".tags_all_bottom").click(function(){
+		if ($(this).hasClass('tags_showLess')){
+			$(this).parent().siblings(".component-text-all").css('height', '0px');
+			$(this).parent().siblings(".component-text").css('height', 'auto');
+			$(this).parent().siblings('.flag').children('.text').text('Related Tags');
+			$(this).removeClass('tags_showLess');
+			$(this).text('SEE ALL TAGS');
+		} else {
+			$(this).parent().siblings(".component-text").css('height', '0px');
+			$(this).parent().siblings(".component-text-all").css('height', 'auto');
+			$(this).parent().siblings('.flag').children('.text').text('All Tags');
+			$(this).addClass('tags_showLess');
+			$(this).text('SEE RELATED TAGS');
+		}		
+	});
+
+
+
+});
