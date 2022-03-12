@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<!-- saved from url=(0074)https://cx-oracle.readthedocs.io/en/latest/user_guide/plsql_execution.html -->
+<html class=" js flexbox canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface no-generatedcontent video audio localstorage sessionstorage webworkers no-applicationcache svg inlinesvg smil svgclippaths" lang="en" style=""><!--<![endif]--><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>PL/SQL Execution — cx_Oracle 8.3.0-dev documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="./PL_SQL Execution — cx_Oracle 8.3.0-dev documentation_files/modernizr.min.js.download"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="./PL_SQL Execution — cx_Oracle 8.3.0-dev documentation_files/documentation_options.js.download"></script>
+        <script type="text/javascript" src="./PL_SQL Execution — cx_Oracle 8.3.0-dev documentation_files/jquery.js.download"></script>
+        <script type="text/javascript" src="./PL_SQL Execution — cx_Oracle 8.3.0-dev documentation_files/underscore.js.download"></script>
+        <script type="text/javascript" src="./PL_SQL Execution — cx_Oracle 8.3.0-dev documentation_files/doctools.js.download"></script>
+        <script type="text/javascript" src="./PL_SQL Execution — cx_Oracle 8.3.0-dev documentation_files/language_data.js.download"></script>
+        <script async="async" type="text/javascript" src="./PL_SQL Execution — cx_Oracle 8.3.0-dev documentation_files/readthedocs-doc-embed.js.download"></script>
+    
+    <script type="text/javascript" src="./PL_SQL Execution — cx_Oracle 8.3.0-dev documentation_files/theme.js.download"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="./PL_SQL Execution — cx_Oracle 8.3.0-dev documentation_files/theme.css" type="text/css">
+  <link rel="stylesheet" href="./PL_SQL Execution — cx_Oracle 8.3.0-dev documentation_files/pygments.css" type="text/css">
+    <link rel="index" title="Index" href="https://cx-oracle.readthedocs.io/en/latest/genindex.html">
+    <link rel="search" title="Search" href="https://cx-oracle.readthedocs.io/en/latest/search.html">
+    <link rel="next" title="Using Bind Variables" href="https://cx-oracle.readthedocs.io/en/latest/user_guide/bind.html">
+    <link rel="prev" title="SQL Execution" href="https://cx-oracle.readthedocs.io/en/latest/user_guide/sql_execution.html"> 
+
+<!-- RTD Extra Head -->
+
+<link rel="stylesheet" href="./PL_SQL Execution — cx_Oracle 8.3.0-dev documentation_files/readthedocs-doc-embed.css" type="text/css">
+
+<script type="application/json" id="READTHEDOCS_DATA">{"ad_free": false, "api_host": "https://readthedocs.org", "build_date": "2021-07-26T19:37:19Z", "builder": "sphinx", "canonical_url": null, "commit": "08117db4", "docroot": "/doc/src/", "features": {"docsearch_disabled": false}, "global_analytics_code": "UA-17997319-1", "language": "en", "page": "user_guide/plsql_execution", "programming_language": "c", "project": "cx-oracle", "proxied_api_host": "/_", "source_suffix": ".rst", "subprojects": {}, "theme": "sphinx_rtd_theme", "user_analytics_code": "", "version": "latest"}</script>
+
+<!--
+Using this variable directly instead of using `JSON.parse` is deprecated.
+The READTHEDOCS_DATA global variable will be removed in the future.
+-->
+<script type="text/javascript">
+READTHEDOCS_DATA = JSON.parse(document.getElementById('READTHEDOCS_DATA').innerHTML);
+</script>
+
+<script type="text/javascript" src="./PL_SQL Execution — cx_Oracle 8.3.0-dev documentation_files/readthedocs-analytics.js.download" async="async"></script>
+
+<!-- end RTD <extrahead> -->
+<script src="./PL_SQL Execution — cx_Oracle 8.3.0-dev documentation_files/ethicalads.min.js.download" type="text/javascript" async="" id="ethicaladsjs"></script><style>[data-ea-publisher].loaded,[data-ea-type].loaded{font-size:14px;font-family:-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;font-weight:normal;font-style:normal;leter-spacing:0px;vertical-align:baseline;line-height:1.3em}[data-ea-publisher].loaded a,[data-ea-type].loaded a{text-decoration:none}[data-ea-publisher].loaded .ea-pixel,[data-ea-type].loaded .ea-pixel{display:none}[data-ea-publisher].loaded .ea-content,[data-ea-type].loaded .ea-content{margin:1em 1em 0.5em 1em;padding:1em;background:rgba(0,0,0,0.03);color:#505050}[data-ea-publisher].loaded .ea-content a:link,[data-ea-type].loaded .ea-content a:link{color:#505050}[data-ea-publisher].loaded .ea-content a:visited,[data-ea-type].loaded .ea-content a:visited{color:#505050}[data-ea-publisher].loaded .ea-content a:hover,[data-ea-type].loaded .ea-content a:hover{color:#373737}[data-ea-publisher].loaded .ea-content a:active,[data-ea-type].loaded .ea-content a:active{color:#373737}[data-ea-publisher].loaded .ea-content a strong,[data-ea-publisher].loaded .ea-content a b,[data-ea-type].loaded .ea-content a strong,[data-ea-type].loaded .ea-content a b{color:#088cdb}[data-ea-publisher].loaded .ea-callout a:link,[data-ea-type].loaded .ea-callout a:link{color:#6a6a6a}[data-ea-publisher].loaded .ea-callout a:visited,[data-ea-type].loaded .ea-callout a:visited{color:#6a6a6a}[data-ea-publisher].loaded .ea-callout a:hover,[data-ea-type].loaded .ea-callout a:hover{color:#505050}[data-ea-publisher].loaded .ea-callout a:active,[data-ea-type].loaded .ea-callout a:active{color:#505050}[data-ea-publisher].loaded .ea-callout a strong,[data-ea-publisher].loaded .ea-callout a b,[data-ea-type].loaded .ea-callout a strong,[data-ea-type].loaded .ea-callout a b{color:#088cdb}[data-ea-publisher].loaded .ea-callout a,[data-ea-type].loaded .ea-callout a{font-size:0.8em}[data-ea-publisher].loaded.dark .ea-content,[data-ea-type].loaded.dark .ea-content{background:rgba(255,255,255,0.05);color:#dcdcdc}[data-ea-publisher].loaded.dark .ea-content a:link,[data-ea-type].loaded.dark .ea-content a:link{color:#dcdcdc}[data-ea-publisher].loaded.dark .ea-content a:visited,[data-ea-type].loaded.dark .ea-content a:visited{color:#dcdcdc}[data-ea-publisher].loaded.dark .ea-content a:hover,[data-ea-type].loaded.dark .ea-content a:hover{color:#f6f6f6}[data-ea-publisher].loaded.dark .ea-content a:active,[data-ea-type].loaded.dark .ea-content a:active{color:#f6f6f6}[data-ea-publisher].loaded.dark .ea-content a strong,[data-ea-publisher].loaded.dark .ea-content a b,[data-ea-type].loaded.dark .ea-content a strong,[data-ea-type].loaded.dark .ea-content a b{color:#50baf9}[data-ea-publisher].loaded.dark .ea-callout a:link,[data-ea-type].loaded.dark .ea-callout a:link{color:#c3c3c3}[data-ea-publisher].loaded.dark .ea-callout a:visited,[data-ea-type].loaded.dark .ea-callout a:visited{color:#c3c3c3}[data-ea-publisher].loaded.dark .ea-callout a:hover,[data-ea-type].loaded.dark .ea-callout a:hover{color:#dcdcdc}[data-ea-publisher].loaded.dark .ea-callout a:active,[data-ea-type].loaded.dark .ea-callout a:active{color:#dcdcdc}[data-ea-publisher].loaded.dark .ea-callout a strong,[data-ea-publisher].loaded.dark .ea-callout a b,[data-ea-type].loaded.dark .ea-callout a strong,[data-ea-type].loaded.dark .ea-callout a b{color:#50baf9}@media (prefers-color-scheme: dark){[data-ea-publisher].loaded.adaptive .ea-content,[data-ea-type].loaded.adaptive .ea-content{background:rgba(255,255,255,0.05);color:#dcdcdc}[data-ea-publisher].loaded.adaptive .ea-content a:link,[data-ea-type].loaded.adaptive .ea-content a:link{color:#dcdcdc}[data-ea-publisher].loaded.adaptive .ea-content a:visited,[data-ea-type].loaded.adaptive .ea-content a:visited{color:#dcdcdc}[data-ea-publisher].loaded.adaptive .ea-content a:hover,[data-ea-type].loaded.adaptive .ea-content a:hover{color:#f6f6f6}[data-ea-publisher].loaded.adaptive .ea-content a:active,[data-ea-type].loaded.adaptive .ea-content a:active{color:#f6f6f6}[data-ea-publisher].loaded.adaptive .ea-content a strong,[data-ea-publisher].loaded.adaptive .ea-content a b,[data-ea-type].loaded.adaptive .ea-content a strong,[data-ea-type].loaded.adaptive .ea-content a b{color:#50baf9}[data-ea-publisher].loaded.adaptive .ea-callout a:link,[data-ea-type].loaded.adaptive .ea-callout a:link{color:#c3c3c3}[data-ea-publisher].loaded.adaptive .ea-callout a:visited,[data-ea-type].loaded.adaptive .ea-callout a:visited{color:#c3c3c3}[data-ea-publisher].loaded.adaptive .ea-callout a:hover,[data-ea-type].loaded.adaptive .ea-callout a:hover{color:#dcdcdc}[data-ea-publisher].loaded.adaptive .ea-callout a:active,[data-ea-type].loaded.adaptive .ea-callout a:active{color:#dcdcdc}[data-ea-publisher].loaded.adaptive .ea-callout a strong,[data-ea-publisher].loaded.adaptive .ea-callout a b,[data-ea-type].loaded.adaptive .ea-callout a strong,[data-ea-type].loaded.adaptive .ea-callout a b{color:#50baf9}}[data-ea-publisher].loaded .ea-content,[data-ea-type].loaded .ea-content{border:0px;border-radius:3px;box-shadow:0px 2px 3px rgba(0,0,0,0.15)}[data-ea-publisher].loaded.raised .ea-content,[data-ea-type].loaded.raised .ea-content{border:0px;border-radius:3px;box-shadow:0px 2px 3px rgba(0,0,0,0.15)}[data-ea-publisher].loaded.bordered .ea-content,[data-ea-type].loaded.bordered .ea-content{border:1px solid rgba(0,0,0,0.04);border-radius:3px;box-shadow:none}[data-ea-publisher].loaded.bordered.dark .ea-content,[data-ea-type].loaded.bordered.dark .ea-content{border:1px solid rgba(255,255,255,0.07)}@media (prefers-color-scheme: dark){[data-ea-publisher].loaded.bordered.adaptive .ea-content,[data-ea-type].loaded.bordered.adaptive .ea-content{border:1px solid rgba(255,255,255,0.07)}}[data-ea-publisher].loaded.flat .ea-content,[data-ea-type].loaded.flat .ea-content{border:0px;border-radius:3px;box-shadow:none}[data-ea-type="image"].loaded,[data-ea-publisher]:not([data-ea-type]).loaded,.ea-type-image{display:inline-block}[data-ea-type="image"].loaded .ea-content,[data-ea-publisher]:not([data-ea-type]).loaded .ea-content,.ea-type-image .ea-content{max-width:180px;overflow:auto;text-align:center}[data-ea-type="image"].loaded .ea-content>a>img,[data-ea-publisher]:not([data-ea-type]).loaded .ea-content>a>img,.ea-type-image .ea-content>a>img{width:120px;height:90px;display:inline-block}[data-ea-type="image"].loaded .ea-content>.ea-text,[data-ea-publisher]:not([data-ea-type]).loaded .ea-content>.ea-text,.ea-type-image .ea-content>.ea-text{margin-top:1em;font-size:1em;text-align:center}[data-ea-type="image"].loaded .ea-callout,[data-ea-publisher]:not([data-ea-type]).loaded .ea-callout,.ea-type-image .ea-callout{max-width:180px;margin:0em 1em 1em 1em;padding-left:1em;padding-right:1em;font-style:italic;text-align:right}[data-ea-type="image"].loaded.horizontal .ea-content,[data-ea-publisher]:not([data-ea-type]).loaded.horizontal .ea-content,.ea-type-image.horizontal .ea-content{max-width:320px}[data-ea-type="image"].loaded.horizontal .ea-content>a>img,[data-ea-publisher]:not([data-ea-type]).loaded.horizontal .ea-content>a>img,.ea-type-image.horizontal .ea-content>a>img{float:left;margin-right:1em}[data-ea-type="image"].loaded.horizontal .ea-content .ea-text,[data-ea-publisher]:not([data-ea-type]).loaded.horizontal .ea-content .ea-text,.ea-type-image.horizontal .ea-content .ea-text{margin-top:0em;text-align:left;overflow:auto}[data-ea-type="image"].loaded.horizontal .ea-callout,[data-ea-publisher]:not([data-ea-type]).loaded.horizontal .ea-callout,.ea-type-image.horizontal .ea-callout{max-width:320px;text-align:right}[data-ea-type="text"].loaded,.ea-type-text{font-size:14px}[data-ea-type="text"].loaded .ea-content,.ea-type-text .ea-content{text-align:left}[data-ea-type="text"].loaded .ea-callout,.ea-type-text .ea-callout{margin:0.5em 1em 1em 1em;padding-left:1em;padding-right:1em;text-align:right;font-style:italic}
+</style><script src="./PL_SQL Execution — cx_Oracle 8.3.0-dev documentation_files/saved_resource" type="text/javascript" async=""></script></head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="https://cx-oracle.readthedocs.io/en/latest/index.html" class="icon icon-home"> cx_Oracle
+          
+
+          
+          </a>
+
+          
+            
+            
+            
+              <div class="version">
+                latest
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="https://cx-oracle.readthedocs.io/en/latest/search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs">
+    <input type="hidden" name="check_keywords" value="yes">
+    <input type="hidden" name="area" value="default">
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="https://cx-oracle.readthedocs.io/en/latest/user_guide/introduction.html">Introduction to cx_Oracle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://cx-oracle.readthedocs.io/en/latest/user_guide/installation.html">cx_Oracle 8 Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://cx-oracle.readthedocs.io/en/latest/user_guide/initialization.html">cx_Oracle 8 Initialization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://cx-oracle.readthedocs.io/en/latest/user_guide/connection_handling.html">Connecting to Oracle Database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://cx-oracle.readthedocs.io/en/latest/user_guide/sql_execution.html">SQL Execution</a></li>
+<li class="toctree-l1 current"><a class="reference internal current" href="https://cx-oracle.readthedocs.io/en/latest/user_guide/plsql_execution.html#"><span class="toctree-expand"></span>PL/SQL Execution</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="https://cx-oracle.readthedocs.io/en/latest/user_guide/plsql_execution.html#pl-sql-stored-procedures">PL/SQL Stored Procedures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://cx-oracle.readthedocs.io/en/latest/user_guide/plsql_execution.html#pl-sql-stored-functions">PL/SQL Stored Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://cx-oracle.readthedocs.io/en/latest/user_guide/plsql_execution.html#anonymous-pl-sql-blocks">Anonymous PL/SQL Blocks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://cx-oracle.readthedocs.io/en/latest/user_guide/plsql_execution.html#creating-stored-procedures-and-packages">Creating Stored Procedures and Packages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://cx-oracle.readthedocs.io/en/latest/user_guide/plsql_execution.html#using-dbms-output">Using DBMS_OUTPUT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://cx-oracle.readthedocs.io/en/latest/user_guide/plsql_execution.html#implicit-results">Implicit results</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://cx-oracle.readthedocs.io/en/latest/user_guide/plsql_execution.html#edition-based-redefinition-ebr">Edition-Based Redefinition (EBR)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="https://cx-oracle.readthedocs.io/en/latest/user_guide/bind.html">Using Bind Variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://cx-oracle.readthedocs.io/en/latest/user_guide/lob_data.html">Using CLOB and BLOB Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://cx-oracle.readthedocs.io/en/latest/user_guide/json_data_type.html">Working with the JSON Data Type</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://cx-oracle.readthedocs.io/en/latest/user_guide/soda.html">Simple Oracle Document Access (SODA)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://cx-oracle.readthedocs.io/en/latest/user_guide/xml_data_type.html">Working with XMLTYPE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://cx-oracle.readthedocs.io/en/latest/user_guide/batch_statement.html">Batch Statement Execution and Bulk Loading</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://cx-oracle.readthedocs.io/en/latest/user_guide/exception_handling.html">Exception Handling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://cx-oracle.readthedocs.io/en/latest/user_guide/aq.html">Oracle Advanced Queuing (AQ)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://cx-oracle.readthedocs.io/en/latest/user_guide/cqn.html">Continuous Query Notification (CQN)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://cx-oracle.readthedocs.io/en/latest/user_guide/txn_management.html">Transaction Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://cx-oracle.readthedocs.io/en/latest/user_guide/tuning.html">Tuning cx_Oracle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://cx-oracle.readthedocs.io/en/latest/user_guide/globalization.html">Character Sets and Globalization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://cx-oracle.readthedocs.io/en/latest/user_guide/startup.html">Starting and Stopping Oracle Database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://cx-oracle.readthedocs.io/en/latest/user_guide/ha.html">High Availability with cx_Oracle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://cx-oracle.readthedocs.io/en/latest/user_guide/tracing_sql.html">Tracing SQL and PL/SQL Statements</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="https://cx-oracle.readthedocs.io/en/latest/api_manual/module.html">Module Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://cx-oracle.readthedocs.io/en/latest/api_manual/connection.html">Connection Object</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://cx-oracle.readthedocs.io/en/latest/api_manual/cursor.html">Cursor Object</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://cx-oracle.readthedocs.io/en/latest/api_manual/variable.html">Variable Objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://cx-oracle.readthedocs.io/en/latest/api_manual/session_pool.html">SessionPool Object</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://cx-oracle.readthedocs.io/en/latest/api_manual/subscription.html">Subscription Object</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://cx-oracle.readthedocs.io/en/latest/api_manual/lob.html">LOB Objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://cx-oracle.readthedocs.io/en/latest/api_manual/object_type.html">Object Type Objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://cx-oracle.readthedocs.io/en/latest/api_manual/aq.html">Advanced Queuing (AQ)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://cx-oracle.readthedocs.io/en/latest/api_manual/soda.html">SODA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://cx-oracle.readthedocs.io/en/latest/api_manual/deprecations.html">Deprecations</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="https://cx-oracle.readthedocs.io/en/latest/index.html">cx_Oracle</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="https://cx-oracle.readthedocs.io/en/latest/index.html">Docs</a> »</li>
+        
+      <li>PL/SQL Execution</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com/oracle/python-cx_Oracle/blob/main/doc/src/user_guide/plsql_execution.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="pl-sql-execution">
+<span id="plsqlexecution"></span><h1>PL/SQL Execution<a class="headerlink" href="https://cx-oracle.readthedocs.io/en/latest/user_guide/plsql_execution.html#pl-sql-execution" title="Permalink to this headline">¶</a></h1>
+<p>PL/SQL stored procedures, functions and anonymous blocks can be called from
+cx_Oracle.</p>
+<div class="section" id="pl-sql-stored-procedures">
+<span id="plsqlproc"></span><h2>PL/SQL Stored Procedures<a class="headerlink" href="https://cx-oracle.readthedocs.io/en/latest/user_guide/plsql_execution.html#pl-sql-stored-procedures" title="Permalink to this headline">¶</a></h2>
+<p>The <a class="reference internal" href="https://cx-oracle.readthedocs.io/en/latest/api_manual/cursor.html#Cursor.callproc" title="Cursor.callproc"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Cursor.callproc()</span></code></a> method is used to call PL/SQL procedures.</p>
+<p>If a procedure with the following definition exists:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">create</span> <span class="k">or</span> <span class="k">replace</span> <span class="k">procedure</span> <span class="n">myproc</span> <span class="p">(</span>
+    <span class="n">a_Value1</span>                            <span class="nb">number</span><span class="p">,</span>
+    <span class="n">a_Value2</span>                            <span class="k">out</span> <span class="nb">number</span>
+<span class="p">)</span> <span class="k">as</span>
+<span class="k">begin</span>
+    <span class="n">a_Value2</span> <span class="p">:</span><span class="o">=</span> <span class="n">a_Value1</span> <span class="o">*</span> <span class="mi">2</span><span class="p">;</span>
+<span class="k">end</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>then the following Python code can be used to call it:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">out_val</span> <span class="o">=</span> <span class="n">cursor</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+<span class="n">cursor</span><span class="o">.</span><span class="n">callproc</span><span class="p">(</span><span class="s1">'myproc'</span><span class="p">,</span> <span class="p">[</span><span class="mi">123</span><span class="p">,</span> <span class="n">out_val</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">out_val</span><span class="o">.</span><span class="n">getvalue</span><span class="p">())</span>        <span class="c1"># will print 246</span>
+</pre></div>
+</div>
+<p>Calling <a class="reference internal" href="https://cx-oracle.readthedocs.io/en/latest/api_manual/cursor.html#Cursor.callproc" title="Cursor.callproc"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Cursor.callproc()</span></code></a> actually generates an anonymous PL/SQL block
+as shown below, which is then executed:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">"begin myproc(:1,:2); end;"</span><span class="p">,</span> <span class="p">[</span><span class="mi">123</span><span class="p">,</span> <span class="n">out_val</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>See <a class="reference internal" href="https://cx-oracle.readthedocs.io/en/latest/user_guide/bind.html#bind"><span class="std std-ref">Using Bind Variables</span></a> for information on binding.</p>
+</div>
+<div class="section" id="pl-sql-stored-functions">
+<span id="plsqlfunc"></span><h2>PL/SQL Stored Functions<a class="headerlink" href="https://cx-oracle.readthedocs.io/en/latest/user_guide/plsql_execution.html#pl-sql-stored-functions" title="Permalink to this headline">¶</a></h2>
+<p>The <a class="reference internal" href="https://cx-oracle.readthedocs.io/en/latest/api_manual/cursor.html#Cursor.callfunc" title="Cursor.callfunc"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Cursor.callfunc()</span></code></a> method is used to call PL/SQL functions.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">returnType</span></code> parameter for <a class="reference internal" href="https://cx-oracle.readthedocs.io/en/latest/api_manual/cursor.html#Cursor.callfunc" title="Cursor.callfunc"><code class="xref py py-meth docutils literal notranslate"><span class="pre">callfunc()</span></code></a> is
+expected to be a Python type, one of the <a class="reference internal" href="https://cx-oracle.readthedocs.io/en/latest/api_manual/module.html#types"><span class="std std-ref">cx_Oracle types</span></a> or
+an <a class="reference internal" href="https://cx-oracle.readthedocs.io/en/latest/api_manual/object_type.html#objecttype"><span class="std std-ref">Object Type</span></a>.</p>
+<p>If a function with the following definition exists:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">create</span> <span class="k">or</span> <span class="k">replace</span> <span class="k">function</span> <span class="n">myfunc</span> <span class="p">(</span>
+    <span class="n">a_StrVal</span> <span class="n">varchar2</span><span class="p">,</span>
+    <span class="n">a_NumVal</span> <span class="nb">number</span>
+<span class="p">)</span> <span class="k">return</span> <span class="nb">number</span> <span class="k">as</span>
+<span class="k">begin</span>
+    <span class="k">return</span> <span class="k">length</span><span class="p">(</span><span class="n">a_StrVal</span><span class="p">)</span> <span class="o">+</span> <span class="n">a_NumVal</span> <span class="o">*</span> <span class="mi">2</span><span class="p">;</span>
+<span class="k">end</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>then the following Python code can be used to call it:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">return_val</span> <span class="o">=</span> <span class="n">cursor</span><span class="o">.</span><span class="n">callfunc</span><span class="p">(</span><span class="s2">"myfunc"</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="p">[</span><span class="s2">"a string"</span><span class="p">,</span> <span class="mi">15</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">return_val</span><span class="p">)</span>        <span class="c1"># will print 38</span>
+</pre></div>
+</div>
+<p>A more complex example that returns a spatial (SDO) object can be seen below.
+First, the SQL statements necessary to set up the example:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">create</span> <span class="k">table</span> <span class="n">MyPoints</span> <span class="p">(</span>
+    <span class="n">id</span> <span class="nb">number</span><span class="p">(</span><span class="mi">9</span><span class="p">)</span> <span class="k">not</span> <span class="k">null</span><span class="p">,</span>
+    <span class="n">point</span> <span class="n">sdo_point_type</span> <span class="k">not</span> <span class="k">null</span>
+<span class="p">);</span>
+
+<span class="k">insert</span> <span class="k">into</span> <span class="n">MyPoints</span> <span class="k">values</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">sdo_point_type</span><span class="p">(</span><span class="mi">125</span><span class="p">,</span> <span class="mi">375</span><span class="p">,</span> <span class="mi">0</span><span class="p">));</span>
+
+<span class="k">create</span> <span class="k">or</span> <span class="k">replace</span> <span class="k">function</span> <span class="n">spatial_queryfn</span> <span class="p">(</span>
+    <span class="n">a_Id</span>     <span class="nb">number</span>
+<span class="p">)</span> <span class="k">return</span> <span class="n">sdo_point_type</span> <span class="k">is</span>
+    <span class="n">t_Result</span> <span class="n">sdo_point_type</span><span class="p">;</span>
+<span class="k">begin</span>
+    <span class="k">select</span> <span class="n">point</span>
+    <span class="k">into</span> <span class="n">t_Result</span>
+    <span class="k">from</span> <span class="n">MyPoints</span>
+    <span class="k">where</span> <span class="n">Id</span> <span class="o">=</span> <span class="n">a_Id</span><span class="p">;</span>
+
+    <span class="k">return</span> <span class="n">t_Result</span><span class="p">;</span>
+<span class="k">end</span><span class="p">;</span>
+<span class="o">/</span>
+</pre></div>
+</div>
+<p>The Python code that will call this procedure looks as follows:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">obj_type</span> <span class="o">=</span> <span class="n">connection</span><span class="o">.</span><span class="n">gettype</span><span class="p">(</span><span class="s2">"SDO_POINT_TYPE"</span><span class="p">)</span>
+<span class="n">cursor</span> <span class="o">=</span> <span class="n">connection</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+<span class="n">return_val</span> <span class="o">=</span> <span class="n">cursor</span><span class="o">.</span><span class="n">callfunc</span><span class="p">(</span><span class="s2">"spatial_queryfn"</span><span class="p">,</span> <span class="n">obj_type</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"(</span><span class="si">{</span><span class="n">return_val</span><span class="o">.</span><span class="n">X</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">return_val</span><span class="o">.</span><span class="n">Y</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">return_val</span><span class="o">.</span><span class="n">Z</span><span class="si">}</span><span class="s2">)"</span><span class="p">)</span>
+<span class="c1"># will print (125, 375, 0)</span>
+</pre></div>
+</div>
+<p>See <a class="reference internal" href="https://cx-oracle.readthedocs.io/en/latest/user_guide/bind.html#bind"><span class="std std-ref">Using Bind Variables</span></a> for information on binding.</p>
+</div>
+<div class="section" id="anonymous-pl-sql-blocks">
+<h2>Anonymous PL/SQL Blocks<a class="headerlink" href="https://cx-oracle.readthedocs.io/en/latest/user_guide/plsql_execution.html#anonymous-pl-sql-blocks" title="Permalink to this headline">¶</a></h2>
+<p>An anonymous PL/SQL block can be called as shown:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="o">=</span> <span class="n">cursor</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+<span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">"""</span>
+<span class="s2">        begin</span>
+<span class="s2">            :out_val := length(:in_val);</span>
+<span class="s2">        end;"""</span><span class="p">,</span> <span class="n">in_val</span><span class="o">=</span><span class="s2">"A sample string"</span><span class="p">,</span> <span class="n">out_val</span><span class="o">=</span><span class="n">var</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">var</span><span class="o">.</span><span class="n">getvalue</span><span class="p">())</span>        <span class="c1"># will print 15</span>
+</pre></div>
+</div>
+<p>See <a class="reference internal" href="https://cx-oracle.readthedocs.io/en/latest/user_guide/bind.html#bind"><span class="std std-ref">Using Bind Variables</span></a> for information on binding.</p>
+</div>
+<div class="section" id="creating-stored-procedures-and-packages">
+<h2>Creating Stored Procedures and Packages<a class="headerlink" href="https://cx-oracle.readthedocs.io/en/latest/user_guide/plsql_execution.html#creating-stored-procedures-and-packages" title="Permalink to this headline">¶</a></h2>
+<p>To create PL/SQL stored procedures and packages, use <a class="reference internal" href="https://cx-oracle.readthedocs.io/en/latest/api_manual/cursor.html#Cursor.execute" title="Cursor.execute"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Cursor.execute()</span></code></a>
+with a SQL CREATE command.</p>
+<p>Creation warning messages can be found from database views like USER_ERRORS.</p>
+<p>For example, creating a procedure with an error could be like:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">connection</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span> <span class="k">as</span> <span class="n">cursor</span><span class="p">:</span>
+    <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">"""</span>
+<span class="s2">            create or replace procedure badproc (a in number) as</span>
+<span class="s2">            begin</span>
+<span class="s2">                WRONG WRONG WRONG</span>
+<span class="s2">            end;"""</span><span class="p">)</span>
+    <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">"""</span>
+<span class="s2">            select line, position, text</span>
+<span class="s2">            from user_errors</span>
+<span class="s2">            where name = 'BADPROC' and type = 'PROCEDURE'</span>
+<span class="s2">            order by name, type, line, position"""</span><span class="p">)</span>
+    <span class="n">errors</span> <span class="o">=</span> <span class="n">cursor</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">errors</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">info</span> <span class="ow">in</span> <span class="n">errors</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">"Error at line </span><span class="si">{}</span><span class="s2"> position </span><span class="si">{}</span><span class="s2">:</span><span class="se">\n</span><span class="si">{}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">*</span><span class="n">info</span><span class="p">))</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">"Created successfully"</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The output would be:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">PLS</span><span class="o">-</span><span class="mi">00103</span><span class="p">:</span> <span class="n">Encountered</span> <span class="n">the</span> <span class="n">symbol</span> <span class="s2">"WRONG"</span> <span class="n">when</span> <span class="n">expecting</span> <span class="n">one</span> <span class="n">of</span> <span class="n">the</span> <span class="n">following</span><span class="p">:</span>
+
+   <span class="o">:=</span> <span class="o">.</span> <span class="p">(</span> <span class="o">@</span> <span class="o">%</span> <span class="p">;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="using-dbms-output">
+<h2>Using DBMS_OUTPUT<a class="headerlink" href="https://cx-oracle.readthedocs.io/en/latest/user_guide/plsql_execution.html#using-dbms-output" title="Permalink to this headline">¶</a></h2>
+<p>The standard way to print output from PL/SQL is with the package <a class="reference external" href="https://www.oracle.com/pls/topic/lookup?ctx=dblatest&amp;id=GUID-C1400094-18D5-4F36-A2C9-D28B0E12FD8C">DBMS_OUTPUT</a>.  Note, PL/SQL code that uses
+<code class="docutils literal notranslate"><span class="pre">DBMS_OUTPUT</span></code> runs to completion before any output is available to the user.
+Also, other database connections cannot access the buffer.</p>
+<p>To use DBMS_OUTPUT:</p>
+<ul class="simple">
+<li>Call the PL/SQL procedure <code class="docutils literal notranslate"><span class="pre">DBMS_OUTPUT.ENABLE()</span></code> to enable output to be
+buffered for the connection.</li>
+<li>Execute some PL/SQL that calls <code class="docutils literal notranslate"><span class="pre">DBMS_OUTPUT.PUT_LINE()</span></code> to put text in the
+buffer.</li>
+<li>Call <code class="docutils literal notranslate"><span class="pre">DBMS_OUTPUT.GET_LINE()</span></code> or <code class="docutils literal notranslate"><span class="pre">DBMS_OUTPUT.GET_LINES()</span></code> repeatedly to
+fetch the text from the buffer until there is no more output.</li>
+</ul>
+<p>For example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># enable DBMS_OUTPUT</span>
+<span class="n">cursor</span><span class="o">.</span><span class="n">callproc</span><span class="p">(</span><span class="s2">"dbms_output.enable"</span><span class="p">)</span>
+
+<span class="c1"># execute some PL/SQL that calls DBMS_OUTPUT.PUT_LINE</span>
+<span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">"""</span>
+<span class="s2">        begin</span>
+<span class="s2">            dbms_output.put_line('This is the cx_Oracle manual');</span>
+<span class="s2">            dbms_output.put_line('Demonstrating how to use DBMS_OUTPUT');</span>
+<span class="s2">        end;"""</span><span class="p">)</span>
+
+<span class="c1"># tune this size for your application</span>
+<span class="n">chunk_size</span> <span class="o">=</span> <span class="mi">100</span>
+
+<span class="c1"># create variables to hold the output</span>
+<span class="n">lines_var</span> <span class="o">=</span> <span class="n">cursor</span><span class="o">.</span><span class="n">arrayvar</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">chunk_size</span><span class="p">)</span>
+<span class="n">num_lines_var</span> <span class="o">=</span> <span class="n">cursor</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+<span class="n">num_lines_var</span><span class="o">.</span><span class="n">setvalue</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">chunk_size</span><span class="p">)</span>
+
+<span class="c1"># fetch the text that was added by PL/SQL</span>
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="n">cursor</span><span class="o">.</span><span class="n">callproc</span><span class="p">(</span><span class="s2">"dbms_output.get_lines"</span><span class="p">,</span> <span class="p">(</span><span class="n">lines_var</span><span class="p">,</span> <span class="n">num_lines_var</span><span class="p">))</span>
+    <span class="n">num_lines</span> <span class="o">=</span> <span class="n">num_lines_var</span><span class="o">.</span><span class="n">getvalue</span><span class="p">()</span>
+    <span class="n">lines</span> <span class="o">=</span> <span class="n">lines_var</span><span class="o">.</span><span class="n">getvalue</span><span class="p">()[:</span><span class="n">num_lines</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">lines</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">line</span> <span class="ow">or</span> <span class="s2">""</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">num_lines</span> <span class="o">&lt;</span> <span class="n">chunk_size</span><span class="p">:</span>
+        <span class="k">break</span>
+</pre></div>
+</div>
+<p>This will produce the following output:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">This</span> <span class="ow">is</span> <span class="n">the</span> <span class="n">cx_Oracle</span> <span class="n">manual</span>
+<span class="n">Demonstrating</span> <span class="n">use</span> <span class="n">of</span> <span class="n">DBMS_OUTPUT</span>
+</pre></div>
+</div>
+<p>An alternative is to call <code class="docutils literal notranslate"><span class="pre">DBMS_OUTPUT.GET_LINE()</span></code> once per output line,
+which may be much slower:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">text_var</span> <span class="o">=</span> <span class="n">cursor</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
+<span class="n">status_var</span> <span class="o">=</span> <span class="n">cursor</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="n">cursor</span><span class="o">.</span><span class="n">callproc</span><span class="p">(</span><span class="s2">"dbms_output.get_line"</span><span class="p">,</span> <span class="p">(</span><span class="n">text_var</span><span class="p">,</span> <span class="n">status_var</span><span class="p">))</span>
+    <span class="k">if</span> <span class="n">status_var</span><span class="o">.</span><span class="n">getvalue</span><span class="p">()</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">break</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">text_var</span><span class="o">.</span><span class="n">getvalue</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="implicit-results">
+<h2>Implicit results<a class="headerlink" href="https://cx-oracle.readthedocs.io/en/latest/user_guide/plsql_execution.html#implicit-results" title="Permalink to this headline">¶</a></h2>
+<p>Implicit results permit a Python program to consume cursors returned by a
+PL/SQL block without the requirement to use OUT REF CURSOR parameters. The
+method <a class="reference internal" href="https://cx-oracle.readthedocs.io/en/latest/api_manual/cursor.html#Cursor.getimplicitresults" title="Cursor.getimplicitresults"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Cursor.getimplicitresults()</span></code></a> can be used for this purpose. It
+requires both the Oracle Client and Oracle Database to be 12.1 or higher.</p>
+<p>An example using implicit results is as shown:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">"""</span>
+<span class="s2">        declare</span>
+<span class="s2">            cust_cur sys_refcursor;</span>
+<span class="s2">            sales_cur sys_refcursor;</span>
+<span class="s2">        begin</span>
+<span class="s2">            open cust_cur for SELECT * FROM cust_table;</span>
+<span class="s2">            dbms_sql.return_result(cust_cur);</span>
+
+<span class="s2">            open sales_cur for SELECT * FROM sales_table;</span>
+<span class="s2">            dbms_sql.return_result(sales_cur);</span>
+<span class="s2">        end;"""</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">implicit_cursor</span> <span class="ow">in</span> <span class="n">cursor</span><span class="o">.</span><span class="n">getimplicitresults</span><span class="p">():</span>
+    <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">implicit_cursor</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Data from both the result sets are returned:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">'Tom'</span><span class="p">)</span>
+<span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s1">'Julia'</span><span class="p">)</span>
+<span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">'BOOKS'</span><span class="p">)</span>
+<span class="p">(</span><span class="mi">2000</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">'FURNITURE'</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="edition-based-redefinition-ebr">
+<span id="ebr"></span><h2>Edition-Based Redefinition (EBR)<a class="headerlink" href="https://cx-oracle.readthedocs.io/en/latest/user_guide/plsql_execution.html#edition-based-redefinition-ebr" title="Permalink to this headline">¶</a></h2>
+<p>Oracle Database’s <a class="reference external" href="https://www.oracle.com/pls/topic/lookup?ctx=dblatest&amp;id=GUID-58DE05A0-5DEF-4791-8FA8-F04D11964906">Edition-Based Redefinition</a> feature enables upgrading of
+the database component of an application while it is in use, thereby minimizing
+or eliminating down time. This feature allows multiple versions of views,
+synonyms, PL/SQL objects and SQL Translation profiles to be used concurrently.
+Different versions of the database objects are associated with an “edition”.</p>
+<p>The simplest way to set an edition is to pass the <code class="docutils literal notranslate"><span class="pre">edition</span></code> parameter to
+<a class="reference internal" href="https://cx-oracle.readthedocs.io/en/latest/api_manual/module.html#cx_Oracle.connect" title="cx_Oracle.connect"><code class="xref py py-meth docutils literal notranslate"><span class="pre">cx_Oracle.connect()</span></code></a> or <a class="reference internal" href="https://cx-oracle.readthedocs.io/en/latest/api_manual/module.html#cx_Oracle.SessionPool" title="cx_Oracle.SessionPool"><code class="xref py py-meth docutils literal notranslate"><span class="pre">cx_Oracle.SessionPool()</span></code></a>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">connection</span> <span class="o">=</span> <span class="n">cx_Oracle</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">user</span><span class="o">=</span><span class="s2">"hr"</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="n">userpwd</span><span class="p">,</span>
+                               <span class="n">dsn</span><span class="o">=</span><span class="s2">"dbhost.example.com/orclpdb1"</span><span class="p">,</span>
+                               <span class="n">edition</span><span class="o">=</span><span class="s2">"newsales"</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">"UTF-8"</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The edition could also be set by setting the environment variable
+<code class="docutils literal notranslate"><span class="pre">ORA_EDITION</span></code> or by executing the SQL statement:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">alter</span> <span class="k">session</span> <span class="k">set</span> <span class="n">edition</span> <span class="o">=</span> <span class="o">&lt;</span><span class="n">edition</span> <span class="n">name</span><span class="o">&gt;</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Regardless of which method is used to set the edition, the value that is in use
+can be seen by examining the attribute <a class="reference internal" href="https://cx-oracle.readthedocs.io/en/latest/api_manual/connection.html#Connection.edition" title="Connection.edition"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Connection.edition</span></code></a>. If no value
+has been set, the value will be None. This corresponds to the database default
+edition <code class="docutils literal notranslate"><span class="pre">ORA$BASE</span></code>.</p>
+<p>Consider an example where one version of a PL/SQL function <code class="docutils literal notranslate"><span class="pre">Discount</span></code> is
+defined in the database default edition <code class="docutils literal notranslate"><span class="pre">ORA$BASE</span></code> and the other version of
+the same function is defined in a user created edition <code class="docutils literal notranslate"><span class="pre">DEMO</span></code>.</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">connect</span> <span class="o">&lt;</span><span class="n">username</span><span class="o">&gt;/&lt;</span><span class="n">password</span><span class="o">&gt;</span>
+
+<span class="c1">-- create function using the database default edition</span>
+<span class="k">CREATE</span> <span class="k">OR</span> <span class="k">REPLACE</span> <span class="k">FUNCTION</span> <span class="n">Discount</span><span class="p">(</span><span class="n">price</span> <span class="k">IN</span> <span class="nb">NUMBER</span><span class="p">)</span> <span class="k">RETURN</span> <span class="nb">NUMBER</span> <span class="k">IS</span>
+<span class="k">BEGIN</span>
+    <span class="k">return</span> <span class="n">price</span> <span class="o">*</span> <span class="mi">0</span><span class="p">.</span><span class="mi">9</span><span class="p">;</span>
+<span class="k">END</span><span class="p">;</span>
+<span class="o">/</span>
+</pre></div>
+</div>
+<p>A new edition named ‘DEMO’ is created and the user given permission to use
+editions. The use of <code class="docutils literal notranslate"><span class="pre">FORCE</span></code> is required if the user already contains one or
+more objects whose type is editionable and that also have non-editioned
+dependent objects.</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">connect</span> <span class="k">system</span><span class="o">/&lt;</span><span class="n">password</span><span class="o">&gt;</span>
+
+<span class="k">CREATE</span> <span class="n">EDITION</span> <span class="n">demo</span><span class="p">;</span>
+<span class="k">ALTER</span> <span class="k">USER</span> <span class="o">&lt;</span><span class="n">username</span><span class="o">&gt;</span> <span class="n">ENABLE</span> <span class="n">EDITIONS</span> <span class="k">FORCE</span><span class="p">;</span>
+<span class="k">GRANT</span> <span class="n">USE</span> <span class="k">ON</span> <span class="n">EDITION</span> <span class="n">demo</span> <span class="k">to</span> <span class="o">&lt;</span><span class="n">username</span><span class="o">&gt;</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">Discount</span></code> function for the demo edition is as follows:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">connect</span> <span class="o">&lt;</span><span class="n">username</span><span class="o">&gt;/&lt;</span><span class="n">password</span><span class="o">&gt;</span>
+
+<span class="k">alter</span> <span class="k">session</span> <span class="k">set</span> <span class="n">edition</span> <span class="o">=</span> <span class="n">demo</span><span class="p">;</span>
+
+<span class="c1">-- Function for the demo edition</span>
+<span class="k">CREATE</span> <span class="k">OR</span> <span class="k">REPLACE</span> <span class="k">FUNCTION</span> <span class="n">Discount</span><span class="p">(</span><span class="n">price</span> <span class="k">IN</span> <span class="nb">NUMBER</span><span class="p">)</span> <span class="k">RETURN</span> <span class="nb">NUMBER</span> <span class="k">IS</span>
+<span class="k">BEGIN</span>
+    <span class="k">return</span> <span class="n">price</span> <span class="o">*</span> <span class="mi">0</span><span class="p">.</span><span class="mi">5</span><span class="p">;</span>
+<span class="k">END</span><span class="p">;</span>
+<span class="o">/</span>
+</pre></div>
+</div>
+<p>The Python application can then call the required version of the PL/SQL
+function as shown:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">connection</span> <span class="o">=</span> <span class="n">cx_Oracle</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">user</span><span class="o">=</span><span class="n">user</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="n">password</span><span class="p">,</span>
+                               <span class="n">dsn</span><span class="o">=</span><span class="s2">"dbhost.example.com/orclpdb1"</span><span class="p">,</span>
+                               <span class="n">encoding</span><span class="o">=</span><span class="s2">"UTF-8"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Edition is:"</span><span class="p">,</span> <span class="nb">repr</span><span class="p">(</span><span class="n">connection</span><span class="o">.</span><span class="n">edition</span><span class="p">))</span>
+
+<span class="n">cursor</span> <span class="o">=</span> <span class="n">connection</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+<span class="n">discounted_price</span> <span class="o">=</span> <span class="n">cursor</span><span class="o">.</span><span class="n">callfunc</span><span class="p">(</span><span class="s2">"Discount"</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="p">[</span><span class="mi">100</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Price after discount is:"</span><span class="p">,</span> <span class="n">discounted_price</span><span class="p">)</span>
+
+<span class="c1"># Use the edition parameter for the connection</span>
+<span class="n">connection</span> <span class="o">=</span> <span class="n">cx_Oracle</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">user</span><span class="o">=</span><span class="n">user</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="n">password</span><span class="p">,</span>
+                               <span class="n">dsn</span><span class="o">=</span><span class="s2">"dbhost.example.com/orclpdb1"</span><span class="p">,</span>
+                               <span class="n">edition</span><span class="o">=</span><span class="s2">"demo"</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">"UTF-8"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Edition is:"</span><span class="p">,</span> <span class="nb">repr</span><span class="p">(</span><span class="n">connection</span><span class="o">.</span><span class="n">edition</span><span class="p">))</span>
+
+<span class="n">cursor</span> <span class="o">=</span> <span class="n">connection</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+<span class="n">discounted_price</span> <span class="o">=</span> <span class="n">cursor</span><span class="o">.</span><span class="n">callfunc</span><span class="p">(</span><span class="s2">"Discount"</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="p">[</span><span class="mi">100</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Price after discount is:"</span><span class="p">,</span> <span class="n">discounted_price</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The output of the function call for the default and demo edition is as shown:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Edition</span> <span class="ow">is</span><span class="p">:</span> <span class="kc">None</span>
+<span class="n">Price</span> <span class="n">after</span> <span class="n">discount</span> <span class="ow">is</span><span class="p">:</span>  <span class="mi">90</span>
+<span class="n">Edition</span> <span class="ow">is</span><span class="p">:</span> <span class="s1">'DEMO'</span>
+<span class="n">Price</span> <span class="n">after</span> <span class="n">discount</span> <span class="ow">is</span><span class="p">:</span>  <span class="mi">50</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="https://cx-oracle.readthedocs.io/en/latest/user_guide/bind.html" class="btn btn-neutral float-right" title="Using Bind Variables" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="https://cx-oracle.readthedocs.io/en/latest/user_guide/sql_execution.html" class="btn btn-neutral float-left" title="SQL Execution" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr><div><div id="rtd-sidebar" data-ea-publisher="readthedocs" data-ea-type="readthedocs-sidebar" data-ea-manual="true" class="ethical-rtd loaded" data-ea-keywords="c|database|database-connector|db-connection|odpi|oracle-database|oracle-db|python|python-library|python-module|readthedocs-project-15012|readthedocs-project-cx-oracle" data-ea-campaign-types="community|house|paid"><div class="ethical-sidebar"><div class="ethical-content"><a href="https://server.ethicalads.io/proxy/click/1558/f560a292-10d7-4f54-89ca-bf8f1e9166e2/" rel="nofollow noopener" target="_blank" class="ethical-image-link"><img src="./PL_SQL Execution — cx_Oracle 8.3.0-dev documentation_files/Screen_Shot_2021-06-24_at_4.52.44_PM.png" alt="Sponsored: EthicalAds"></a><div class="ethical-text"><a href="https://server.ethicalads.io/proxy/click/1558/f560a292-10d7-4f54-89ca-bf8f1e9166e2/" rel="nofollow noopener" target="_blank"><strong>Monetize your Python site </strong><span>with privacy-preserving ads from</span><strong> EthicalAds</strong></a></div></div><div class="ethical-callout"><small><em><a href="https://www.ethicalads.io/advertisers/?ref=rtd-sidebar">Sponsored</a><span> · </span><a href="https://docs.readthedocs.io/en/latest/ethical-advertising.html">Ads served ethically</a></em></small></div></div></div></div>
+
+  <div role="contentinfo">
+    <p>
+        © Copyright 2016, 2020, Oracle and/or its affiliates. All rights reserved. Portions Copyright © 2007-2015, Anthony Tuininga. All rights reserved. Portions Copyright © 2001-2007, Computronix (Canada) Ltd., Edmonton, Alberta, Canada. All rights reserved
+      
+        <span class="commit">
+          Revision <code>08117db4</code>.
+        </span>
+      
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org/">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions"><!-- Inserted RTD Footer -->
+
+<div class="injected">
+
+  
+
+      
+      
+      
+      <dl>
+        <dt>Versões</dt>
+        
+        <dd class="rtd-current-item">
+          <a href="https://cx-oracle.readthedocs.io/en/latest/user_guide/plsql_execution.html">latest</a>
+        </dd>
+        
+        <dd>
+          <a href="https://cx-oracle.readthedocs.io/en/stable/user_guide/plsql_execution.html">stable</a>
+        </dd>
+        
+        <dd>
+          <a href="https://cx-oracle.readthedocs.io/en/8.2.1/user_guide/plsql_execution.html">8.2.1</a>
+        </dd>
+        
+        <dd>
+          <a href="https://cx-oracle.readthedocs.io/en/8.2.0/user_guide/plsql_execution.html">8.2.0</a>
+        </dd>
+        
+        <dd>
+          <a href="https://cx-oracle.readthedocs.io/en/8.1/user_guide/plsql_execution.html">8.1</a>
+        </dd>
+        
+        <dd>
+          <a href="https://cx-oracle.readthedocs.io/en/8.0.1/user_guide/plsql_execution.html">8.0.1</a>
+        </dd>
+        
+        <dd>
+          <a href="https://cx-oracle.readthedocs.io/en/8.0/user_guide/plsql_execution.html">8.0</a>
+        </dd>
+        
+        <dd>
+          <a href="https://cx-oracle.readthedocs.io/en/7.3/user_guide/plsql_execution.html">7.3</a>
+        </dd>
+        
+        <dd>
+          <a href="https://cx-oracle.readthedocs.io/en/7.2.3/user_guide/plsql_execution.html">7.2.3</a>
+        </dd>
+        
+        <dd>
+          <a href="https://cx-oracle.readthedocs.io/en/7.2.2/user_guide/plsql_execution.html">7.2.2</a>
+        </dd>
+        
+        <dd>
+          <a href="https://cx-oracle.readthedocs.io/en/7.2.1/user_guide/plsql_execution.html">7.2.1</a>
+        </dd>
+        
+        <dd>
+          <a href="https://cx-oracle.readthedocs.io/en/7.2/user_guide/plsql_execution.html">7.2</a>
+        </dd>
+        
+        <dd>
+          <a href="https://cx-oracle.readthedocs.io/en/7.1.3/user_guide/plsql_execution.html">7.1.3</a>
+        </dd>
+        
+        <dd>
+          <a href="https://cx-oracle.readthedocs.io/en/7.1.2/user_guide/plsql_execution.html">7.1.2</a>
+        </dd>
+        
+        <dd>
+          <a href="https://cx-oracle.readthedocs.io/en/7.1.1/user_guide/plsql_execution.html">7.1.1</a>
+        </dd>
+        
+        <dd>
+          <a href="https://cx-oracle.readthedocs.io/en/7.1/user_guide/plsql_execution.html">7.1</a>
+        </dd>
+        
+        <dd>
+          <a href="https://cx-oracle.readthedocs.io/en/7.0/user_guide/plsql_execution.html">7.0</a>
+        </dd>
+        
+        <dd>
+          <a href="https://cx-oracle.readthedocs.io/en/6.4.1/user_guide/plsql_execution.html">6.4.1</a>
+        </dd>
+        
+        <dd>
+          <a href="https://cx-oracle.readthedocs.io/en/6.4/user_guide/plsql_execution.html">6.4</a>
+        </dd>
+        
+        <dd>
+          <a href="https://cx-oracle.readthedocs.io/en/6.3.1/user_guide/plsql_execution.html">6.3.1</a>
+        </dd>
+        
+        <dd>
+          <a href="https://cx-oracle.readthedocs.io/en/6.3/user_guide/plsql_execution.html">6.3</a>
+        </dd>
+        
+        <dd>
+          <a href="https://cx-oracle.readthedocs.io/en/6.2.1/user_guide/plsql_execution.html">6.2.1</a>
+        </dd>
+        
+        <dd>
+          <a href="https://cx-oracle.readthedocs.io/en/6.1/user_guide/plsql_execution.html">6.1</a>
+        </dd>
+        
+        <dd>
+          <a href="https://cx-oracle.readthedocs.io/en/6.0.3/user_guide/plsql_execution.html">6.0.3</a>
+        </dd>
+        
+        <dd>
+          <a href="https://cx-oracle.readthedocs.io/en/6.0.2/user_guide/plsql_execution.html">6.0.2</a>
+        </dd>
+        
+        <dd>
+          <a href="https://cx-oracle.readthedocs.io/en/6.0.1/user_guide/plsql_execution.html">6.0.1</a>
+        </dd>
+        
+        <dd>
+          <a href="https://cx-oracle.readthedocs.io/en/6.0/user_guide/plsql_execution.html">6.0</a>
+        </dd>
+        
+        <dd>
+          <a href="https://cx-oracle.readthedocs.io/en/5.3/user_guide/plsql_execution.html">5.3</a>
+        </dd>
+        
+        <dd>
+          <a href="https://cx-oracle.readthedocs.io/en/v5.x/user_guide/plsql_execution.html">v5.x</a>
+        </dd>
+        
+      </dl>
+      
+      
+
+      
+      
+      <dl>
+        <dt>Downloads</dt>
+        
+        <dd><a href="https://cx-oracle.readthedocs.io/_/downloads/en/latest/pdf/">PDF</a></dd>
+        
+        <dd><a href="https://cx-oracle.readthedocs.io/_/downloads/en/latest/htmlzip/">HTML</a></dd>
+        
+        <dd><a href="https://cx-oracle.readthedocs.io/_/downloads/en/latest/epub/">Epub</a></dd>
+        
+      </dl>
+      
+      
+
+      
+      <dl>
+        
+        <!-- These are kept as relative links for internal installs that are http -->
+        <dt>On Read the Docs</dt>
+        <dd>
+          <a href="https://readthedocs.org/projects/cx-oracle/">Project Home</a>
+        </dd>
+        <dd>
+          <a href="https://readthedocs.org/projects/cx-oracle/builds/">Builds</a>
+        </dd>
+        <dd>
+          <a href="https://readthedocs.org/projects/cx-oracle/downloads/">Downloads</a>
+        </dd>
+      </dl>
+      
+
+      
+
+      
+      <dl>
+        <dt>On GitHub</dt>
+        <dd>
+          <a href="https://github.com/oracle/python-cx_Oracle/blob/main/doc/src/user_guide/plsql_execution.rst">Visualizar</a>
+        </dd>
+        
+        <dd>
+          <a href="https://github.com/oracle/python-cx_Oracle/edit/main/doc/src/user_guide/plsql_execution.rst">Editar</a>
+        </dd>
+        
+      </dl>
+      
+      
+
+      
+      <dl>
+        <dt>Pesquisar</dt>
+        <dd>
+          <div style="padding: 6px;">
+            
+            <form id="flyout-search-form" class="wy-form" target="_blank" action="https://readthedocs.org/projects/cx-oracle/search/" method="get">
+              <input type="text" name="q" aria-label="Search docs" placeholder="Search docs">
+              </form>
+          </div>
+        </dd>
+      </dl>
+      
+
+      
+      
+
+      <hr>
+      
+        <small>
+          <span>Hosted by <a href="https://readthedocs.org/">Read the Docs</a></span>
+          <span> · </span>
+          <a href="https://docs.readthedocs.io/page/privacy-policy.html">Privacy Policy</a>
+        </small>
+      
+
+      
+
+</div>
+</div>
+  </div>
+
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+   
+
+
+<div id="gtx-trans" style="position: absolute; left: 643px; top: 2283.86px;"><div class="gtx-trans-icon"></div></div></body></html>
