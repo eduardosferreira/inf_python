@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<!-- saved from url=(0071)https://hkotsubo.github.io/blog/2019-04-13/como-ler-e-manipular-um-json -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Como ler e manipular um JSON | hkotsubo_programming_blog</title>
+<meta name="generator" content="Jekyll v3.9.0">
+<meta property="og:title" content="Como ler e manipular um JSON">
+<meta name="author" content="Hugo Kotsubo">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="Aprenda de uma vez por todas a mexer com esse tal de JSON.">
+<meta property="og:description" content="Aprenda de uma vez por todas a mexer com esse tal de JSON.">
+<link rel="canonical" href="https://hkotsubo.github.io/blog/2019-04-13/como-ler-e-manipular-um-json">
+<meta property="og:url" content="https://hkotsubo.github.io/blog/2019-04-13/como-ler-e-manipular-um-json">
+<meta property="og:site_name" content="hkotsubo_programming_blog">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2019-04-13T15:07:00-03:00">
+<meta name="twitter:card" content="summary">
+<meta property="twitter:title" content="Como ler e manipular um JSON">
+<script type="text/javascript" async="" src="./Como ler e manipular um JSON _ hkotsubo_programming_blog_files/analytics.js.download"></script><script type="application/ld+json">
+{"headline":"Como ler e manipular um JSON","dateModified":"2019-04-13T15:07:00-03:00","description":"Aprenda de uma vez por todas a mexer com esse tal de JSON.","datePublished":"2019-04-13T15:07:00-03:00","url":"https://hkotsubo.github.io/blog/2019-04-13/como-ler-e-manipular-um-json","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://hkotsubo.github.io/blog/2019-04-13/como-ler-e-manipular-um-json"},"author":{"@type":"Person","name":"Hugo Kotsubo"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="./Como ler e manipular um JSON _ hkotsubo_programming_blog_files/main.css"><link type="application/atom+xml" rel="alternate" href="https://hkotsubo.github.io/feed.xml" title="hkotsubo_programming_blog"><script src="./Como ler e manipular um JSON _ hkotsubo_programming_blog_files/embed.js.download" data-timestamp="1648145491728"></script><link rel="prefetch" as="style" href="https://c.disquscdn.com/next/embed/styles/lounge.63860eb743c7d9d2adf0fa435788abe7.css"><link rel="prefetch" as="script" href="https://c.disquscdn.com/next/embed/common.bundle.9450cde9dd2c9d366781a8fc5ff6e933.js"><link rel="prefetch" as="script" href="https://c.disquscdn.com/next/embed/lounge.bundle.90614da243fa6052a038b5539f5086e5.js"><link rel="prefetch" as="script" href="https://disqus.com/next/config.js"><script async="" id="dsq_recs_scr" src="./Como ler e manipular um JSON _ hkotsubo_programming_blog_files/recommendations.js.download"></script><link rel="prefetch" as="style" href="https://c.disquscdn.com/next/recommendations/styles/recommendations.10022a97346f1c6e3798931bbd8e4bb5.css"><link rel="prefetch" as="script" href="https://c.disquscdn.com/next/recommendations/common.bundle.e74fcfd3f6ed52bbcd40cf72972ae6c3.js"><link rel="prefetch" as="script" href="https://c.disquscdn.com/next/recommendations/recommendations.bundle.926bc472e4859a48daa346b4ba2ab4f4.js"><link rel="prefetch" as="script" href="https://disqus.com/next/config.js"><script src="./Como ler e manipular um JSON _ hkotsubo_programming_blog_files/alfie_v4.63f1ab6d6b9d5807dc0c94ef3fe0b851.js.download" async="" charset="UTF-8"></script></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="https://hkotsubo.github.io/">hkotsubo_programming_blog</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger">
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"></path>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="https://hkotsubo.github.io/about/">Sobre mim</a><a class="page-link" href="https://hkotsubo.github.io/tags/">Tags</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        
+
+
+  
+  
+  <title>Como ler e manipular um JSON</title>
+  <link rel="stylesheet" href="./Como ler e manipular um JSON _ hkotsubo_programming_blog_files/posts.css">
+  <script type="text/javascript" src="./Como ler e manipular um JSON _ hkotsubo_programming_blog_files/post.js.download"></script>
+
+
+  <h1 class="post-title p-name" itemprop="name headline">
+	Como ler e manipular um JSON
+  </h1>
+
+  
+  <h4 class="post-desc">Aprenda de uma vez por todas a mexer com esse tal de JSON.</h4>
+  
+
+  <hr class="post-division">
+  <p class="post-meta">
+    <time class="dt-published" datetime="2019-04-13 15:07:00 -0300 " itemprop="datePublished">
+        2019-04-13
+    </time>
+    <span>
+		(13 de 
+
+abril
+  
+de 2019)
+    </span>
+    
+    
+        <span class="tag">
+            <a href="https://hkotsubo.github.io/tag/json" target="_blank">#json</a>
+        </span>
+    
+  </p>
+<p>JSON significa “JavaScript Object Notation” (Notação de Objetos JavaScript). Apesar de ter “JavaScript” no nome, ele pode ser usado em outras linguagens, pois o JSON é na verdade um <a href="http://json.org/" target="_blank"><strong>formato</strong> para representar dados</a>. A sua sintaxe foi inspirada no JavaScript - daí o nome - mas hoje em dia várias linguagens possuem algum suporte para ele, seja nativo ou via bibliotecas.</p>
+
+<p>Dentro de um JSON podemos ter vários tipos de dados diferentes. Para começar, temos os tipos “básicos”:</p>
+
+<ul>
+  <li>strings: quaisquer caracteres entre aspas duplas. Ex: <code class="language-plaintext highlighter-rouge">"sou uma string"</code>. Também são aceitas aquelas sequências de escape comuns em várias linguagens, como <code class="language-plaintext highlighter-rouge">\n</code> para representar a quebra de linha, <code class="language-plaintext highlighter-rouge">\t</code> para <kbd>TAB</kbd>, etc.</li>
+  <li>números: pode ser um valor inteiro positivo (<code class="language-plaintext highlighter-rouge">42</code>), negativo (<code class="language-plaintext highlighter-rouge">-10</code>), com casas decimais (<code class="language-plaintext highlighter-rouge">12.34</code> - e repare que o ponto - e não a vírgula - é o separador das casas decimais) ou em notação científica (<code class="language-plaintext highlighter-rouge">2.53962e15</code>)</li>
+  <li>valores <em>booleanos</em> (<code class="language-plaintext highlighter-rouge">true</code> e <code class="language-plaintext highlighter-rouge">false</code>) e o valor nulo (<code class="language-plaintext highlighter-rouge">null</code>)</li>
+</ul>
+
+<p>Além destes, podemos ter também <strong>arrays</strong> e <strong>objetos</strong>.</p>
+
+<h3 id="array" class="subtitulo"><a href="https://hkotsubo.github.io/blog/2019-04-13/como-ler-e-manipular-um-json#array" style="color: black;">Array</a></h3>
+
+<p>Um array é uma lista ordenada de valores, dentro de colchetes (<code class="language-plaintext highlighter-rouge">[</code> e <code class="language-plaintext highlighter-rouge">]</code>) e separados por vírgulas. Exemplo:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">[</span> <span class="mi">1</span><span class="p">,</span> <span class="dl">"</span><span class="s2">segundo elemento</span><span class="dl">"</span><span class="p">,</span> <span class="mf">3.4</span> <span class="p">]</span>
+</code></pre></div></div>
+
+<p>Este array tem 3 elementos: o primeiro é o número <code class="language-plaintext highlighter-rouge">1</code>, o segundo é a string <code class="language-plaintext highlighter-rouge">"segundo elemento"</code> e o terceiro é o número <code class="language-plaintext highlighter-rouge">3.4</code>. Veja que ele começa com <code class="language-plaintext highlighter-rouge">[</code> e termina com <code class="language-plaintext highlighter-rouge">]</code>, e os elementos são separados por vírgulas, .</p>
+
+<p>Um detalhe importante é que um array não precisa ter necessariamente todos os elementos do mesmo tipo<sup id="fnref:array" role="doc-noteref"><a href="https://hkotsubo.github.io/blog/2019-04-13/como-ler-e-manipular-um-json#fn:array" class="footnote" rel="footnote">1</a></sup>.</p>
+
+<p>Além disso, em um array, a ordem é importante. Então <code class="language-plaintext highlighter-rouge">[ 1, "segundo elemento", 3.4 ]</code> <strong>não</strong> é o mesmo que <code class="language-plaintext highlighter-rouge">[ 1, 3.4, "segundo elemento" ]</code>.</p>
+
+<h3 id="objeto" class="subtitulo"><a href="https://hkotsubo.github.io/blog/2019-04-13/como-ler-e-manipular-um-json#objeto" style="color: black;">Objeto</a></h3>
+
+<p>Um objeto é um conjunto de pares “chave: valor”, dentro de chaves (<code class="language-plaintext highlighter-rouge">{</code> e <code class="language-plaintext highlighter-rouge">}</code>) e separados por vírgulas. A chave sempre é uma string, e o valor pode ser qualquer tipo válido. Exemplo:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span> <span class="dl">"</span><span class="s2">nome</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Fulano</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">idade</span><span class="dl">"</span><span class="p">:</span> <span class="mi">90</span> <span class="p">}</span>
+</code></pre></div></div>
+
+<p>Este objeto possui duas chaves:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">"nome"</code>, cujo valor é a string <code class="language-plaintext highlighter-rouge">"Fulano"</code></li>
+  <li><code class="language-plaintext highlighter-rouge">"idade"</code>, cujo valor é o número <code class="language-plaintext highlighter-rouge">90</code></li>
+</ul>
+
+<p>Repare que ele começa com <code class="language-plaintext highlighter-rouge">{</code> e termina com <code class="language-plaintext highlighter-rouge">}</code>. Entre uma chave e seu respectivo valor, sempre tem o caractere <code class="language-plaintext highlighter-rouge">:</code>, e entre cada par “chave: valor” há uma vírgula.</p>
+
+<p>Um detalhe importante é que em um objeto a ordem dos pares “chave: valor” <strong>não importa</strong>. Ou seja, <code class="language-plaintext highlighter-rouge">{ "nome": "Fulano", "idade": 90 }</code> e <code class="language-plaintext highlighter-rouge">{ "idade": 90, "nome": "Fulano" }</code> são exatamente o mesmo objeto.</p>
+
+<hr>
+
+<p>Dentro de um array ou objeto, os valores podem ser qualquer um dos tipos acima. Ou seja, podemos ter não só os tipos básicos, mas também outros arrays e objetos. Então podemos ter coisas como:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span>
+    <span class="dl">"</span><span class="s2">nome</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Fulano</span><span class="dl">"</span><span class="p">,</span>
+    <span class="dl">"</span><span class="s2">idade</span><span class="dl">"</span><span class="p">:</span> <span class="mi">90</span><span class="p">,</span>
+    <span class="dl">"</span><span class="s2">filmes_preferidos</span><span class="dl">"</span><span class="p">:</span> <span class="p">[</span> <span class="dl">"</span><span class="s2">Pulp Fiction</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">Clube da Luta</span><span class="dl">"</span> <span class="p">],</span>
+    <span class="dl">"</span><span class="s2">contatos</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="dl">"</span><span class="s2">telefone</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">(11) 91111-2222</span><span class="dl">"</span><span class="p">,</span>
+        <span class="dl">"</span><span class="s2">emails</span><span class="dl">"</span><span class="p">:</span> <span class="p">[</span> <span class="dl">"</span><span class="s2">fulano@gmail.com</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">fulano@yahoo.com</span><span class="dl">"</span> <span class="p">]</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>O JSON acima é um objeto, pois está delimitado por <code class="language-plaintext highlighter-rouge">{</code> e <code class="language-plaintext highlighter-rouge">}</code>. Dentro dele temos 4 chaves:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">"nome"</code>, cujo valor é a string <code class="language-plaintext highlighter-rouge">"Fulano"</code></li>
+  <li><code class="language-plaintext highlighter-rouge">"idade"</code>, cujo valor é o número <code class="language-plaintext highlighter-rouge">90</code></li>
+  <li><code class="language-plaintext highlighter-rouge">"filmes_preferidos"</code>, cujo valor é um array (pois está delimitado por colchetes: <code class="language-plaintext highlighter-rouge">[</code> e <code class="language-plaintext highlighter-rouge">]</code>)
+    <ul>
+      <li>este array, por sua vez, possui dois elementos: as strings <code class="language-plaintext highlighter-rouge">"Pulp Fiction"</code> e <code class="language-plaintext highlighter-rouge">"Clube da Luta"</code></li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">"contatos"</code>, cujo valor é <strong>outro</strong> objeto (pois este também está delimitado por <code class="language-plaintext highlighter-rouge">{</code> e <code class="language-plaintext highlighter-rouge">}</code>)
+    <ul>
+      <li>este objeto, por sua vez, possui duas chaves:
+        <ul>
+          <li><code class="language-plaintext highlighter-rouge">"telefone"</code>: cujo valor é a string <code class="language-plaintext highlighter-rouge">"(11) 91111-2222"</code></li>
+          <li><code class="language-plaintext highlighter-rouge">"emails"</code>: cujo valor é um array (pois está delimitado por colchetes)
+            <ul>
+              <li>este array, por sua vez, possui dois elementos: as strings <code class="language-plaintext highlighter-rouge">"fulano@gmail.com"</code> e <code class="language-plaintext highlighter-rouge">"fulano@yahoo.com"</code></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<p>Outro exemplo:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">[</span>
+    <span class="p">{</span>
+        <span class="dl">"</span><span class="s2">nome</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Fulano</span><span class="dl">"</span><span class="p">,</span>
+        <span class="dl">"</span><span class="s2">idade</span><span class="dl">"</span><span class="p">:</span> <span class="mi">90</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="dl">"</span><span class="s2">nome</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Ciclano</span><span class="dl">"</span><span class="p">,</span>
+        <span class="dl">"</span><span class="s2">idade</span><span class="dl">"</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+        <span class="dl">"</span><span class="s2">email</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">ciclano@gmail.com</span><span class="dl">"</span>
+    <span class="p">}</span>
+<span class="p">]</span>
+</code></pre></div></div>
+
+<p>O JSON acima é um array, pois está delimitado por <code class="language-plaintext highlighter-rouge">[</code> e <code class="language-plaintext highlighter-rouge">]</code>. Ele contém 2 elementos:</p>
+
+<ul>
+  <li>o primeiro elemento é um objeto (pois está delimitado por <code class="language-plaintext highlighter-rouge">{</code> e <code class="language-plaintext highlighter-rouge">}</code>), que por sua vez possui duas chaves:
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">"nome"</code>, cujo valor é a string <code class="language-plaintext highlighter-rouge">"Fulano"</code></li>
+      <li><code class="language-plaintext highlighter-rouge">"idade"</code>, cujo valor é o número <code class="language-plaintext highlighter-rouge">90</code></li>
+    </ul>
+  </li>
+  <li>o segundo elemento também é um objeto (pois está delimitado por <code class="language-plaintext highlighter-rouge">{</code> e <code class="language-plaintext highlighter-rouge">}</code>), que por sua vez possui três chaves:
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">"nome"</code>, cujo valor é a string <code class="language-plaintext highlighter-rouge">"Ciclano"</code></li>
+      <li><code class="language-plaintext highlighter-rouge">"idade"</code>, cujo valor é o número <code class="language-plaintext highlighter-rouge">10</code></li>
+      <li><code class="language-plaintext highlighter-rouge">"email"</code>, cujo valor é a  string <code class="language-plaintext highlighter-rouge">"ciclano@gmail.com"</code></li>
+    </ul>
+  </li>
+</ul>
+
+<p>Repare que depois do fechamento do primeiro objeto (ou seja, depois do <code class="language-plaintext highlighter-rouge">}</code>) há uma vírgula, que é o separador de elementos de um array. Da mesma forma que um array de números teria a vírgula entre cada número (como por exemplo <code class="language-plaintext highlighter-rouge">[ 1, 2, 3 ]</code>), um array de objetos também deve ter a vírgula separando-os.</p>
+
+<h2 id="regra-básica-para-ler-um-json" class="subtitulo"><a href="https://hkotsubo.github.io/blog/2019-04-13/como-ler-e-manipular-um-json#regra-b%C3%A1sica-para-ler-um-json" style="color: black;">Regra básica para ler um JSON</a></h2>
+
+<p>A regra básica é: antes de sair escrevendo código, <strong>pare e olhe</strong> para o JSON. Veja se ele é um objeto ou array (que é o que a grande maioria das APIs REST retorna hoje em dia): se começa com <code class="language-plaintext highlighter-rouge">{</code> é um objeto, se começa com <code class="language-plaintext highlighter-rouge">[</code> é um array.</p>
+
+<p>Depois veja o que tem dentro desse objeto ou array. Se for um array, procure pelas vírgulas que separam os elementos e verifique os seus tipos, e preocupe-se com a ordem em que eles estão, para saber como obter cada um. Se for um objeto, veja quais são as chaves e os respectivos valores.</p>
+
+<p>Se o JSON é muito grande e/ou com muitas estruturas aninhadas (objetos dentro de arrays, dentro outros arrays, dentro de outros objetos, etc), formatá-lo ajuda a visualizar a sua estrutura. Há vários sites como <a href="https://jsonlint.com/" target="_blank">esse</a>, que validam e formatam um JSON. Além disso, as linguagens/APIs que trabalham com JSON geralmente possuem uma opção para formatá-lo (veremos alguns exemplos mais abaixo).</p>
+
+<p>Outro ponto importante é verificar se o JSON que você está tentando ler é de fato um JSON válido. Um exemplo clássico é:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span>
+    <span class="dl">"</span><span class="s2">nome</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Fulano</span><span class="dl">"</span><span class="p">,</span>
+    <span class="dl">"</span><span class="s2">idade</span><span class="dl">"</span><span class="p">:</span> <span class="mi">90</span>
+<span class="p">},</span>
+<span class="p">{</span>
+    <span class="dl">"</span><span class="s2">nome</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Ciclano</span><span class="dl">"</span><span class="p">,</span>
+    <span class="dl">"</span><span class="s2">idade</span><span class="dl">"</span><span class="p">:</span> <span class="mi">10</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Inicialmente você pode pensar que, como começa com <code class="language-plaintext highlighter-rouge">{</code>, então é um objeto. Mas repare bem: o primeiro objeto (o que tem <code class="language-plaintext highlighter-rouge">"nome": "Fulano"</code>) termina na quarta linha (onde há o <code class="language-plaintext highlighter-rouge">}</code>), e logo em seguida há uma vírgula. Logo depois, temos <strong>outro</strong> objeto (o que tem <code class="language-plaintext highlighter-rouge">"nome": "Ciclano"</code>).</p>
+
+<p><strong>Este não é um JSON válido</strong>. Há dois objetos “soltos”, separados por vírgula. <strong>Cada um deles individualmente</strong> é um JSON válido, mas ter ambos separados por vírgula não é.</p>
+
+<p>O que poderia deixar esta estrutura válida é colocá-la entre <code class="language-plaintext highlighter-rouge">[</code> e <code class="language-plaintext highlighter-rouge">]</code>:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">[</span>
+  <span class="p">{</span>
+    <span class="dl">"</span><span class="s2">nome</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Fulano</span><span class="dl">"</span><span class="p">,</span>
+    <span class="dl">"</span><span class="s2">idade</span><span class="dl">"</span><span class="p">:</span> <span class="mi">90</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="dl">"</span><span class="s2">nome</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Ciclano</span><span class="dl">"</span><span class="p">,</span>
+    <span class="dl">"</span><span class="s2">idade</span><span class="dl">"</span><span class="p">:</span> <span class="mi">10</span>
+  <span class="p">}</span>
+<span class="p">]</span>
+</code></pre></div></div>
+
+<p>Pois agora ela se tornou um array com dois objetos. Mas da forma que estava (sem o <code class="language-plaintext highlighter-rouge">[</code> e <code class="language-plaintext highlighter-rouge">]</code>), a estrutura é inválida, e muitas APIs dão erro ao tentar processá-la (ou ignoram o segundo objeto, varia conforme a implementação).</p>
+
+<p>Depois de ler o JSON e verificar se ele é um array ou objeto, você pode acessar seus elementos. Cada linguagem fornece seu mecanismo para tal, e abaixo coloquei exemplos em algumas linguagens.</p>
+
+<hr>
+<p>Antes de prosseguir, um detalhe importante: JSON é um formato para troca de dados, ou seja, para informações que serão mandadas “para lá e para cá”. E no fim, tudo isso vira texto (um monte de caracteres que você vai ter que interpretar). O que quer dizer que todos os exemplos de JSON que vimos até agora são na verdade strings (ou o resultado retornado por uma API, ou um arquivo).</p>
+
+<p>Se eu consulto uma API e ela retorna <code class="language-plaintext highlighter-rouge">{ "nome": "Fulano", "idade": 90 }</code>, o que eu terei é uma <strong>string</strong> que contém o caractere <code class="language-plaintext highlighter-rouge">{</code>, depois o espaço, depois a aspas, depois a letra <code class="language-plaintext highlighter-rouge">n</code> e assim por diante. O que as APIs de JSON fazem é transformar esta string em alguma estrutura similar na linguagem em questão (geralmente arrays/listas e maps/dicionários/objects, além dos tipos numéricos e strings da própria linguagem). Sempre veja a documentação para saber como é feito o mapeamento entre tipos.</p>
+
+<p>Agora sim, vamos ao código. Para todos os exemplos abaixo, usarei este JSON:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span>
+    <span class="dl">"</span><span class="s2">nome</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Fulano</span><span class="dl">"</span><span class="p">,</span>
+    <span class="dl">"</span><span class="s2">idade</span><span class="dl">"</span><span class="p">:</span> <span class="mi">90</span><span class="p">,</span>
+    <span class="dl">"</span><span class="s2">filmes_preferidos</span><span class="dl">"</span><span class="p">:</span> <span class="p">[</span> <span class="dl">"</span><span class="s2">Pulp Fiction</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">Clube da Luta</span><span class="dl">"</span> <span class="p">],</span>
+    <span class="dl">"</span><span class="s2">contatos</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="dl">"</span><span class="s2">telefone</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">(11) 91111-2222</span><span class="dl">"</span><span class="p">,</span>
+        <span class="dl">"</span><span class="s2">emails</span><span class="dl">"</span><span class="p">:</span> <span class="p">[</span> <span class="dl">"</span><span class="s2">fulano@gmail.com</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">fulano@yahoo.com</span><span class="dl">"</span> <span class="p">]</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Se quiser, pode usar os links abaixo para ir direto para a sua linguagem de sua preferência:</p>
+
+<ul>
+
+  
+<li><a href="https://hkotsubo.github.io/blog/2019-04-13/como-ler-e-manipular-um-json#java">Java</a></li>
+  
+
+  
+<li><a href="https://hkotsubo.github.io/blog/2019-04-13/como-ler-e-manipular-um-json#net">.NET</a></li>
+  
+
+  
+<li><a href="https://hkotsubo.github.io/blog/2019-04-13/como-ler-e-manipular-um-json#python">Python</a></li>
+  
+
+  
+<li><a href="https://hkotsubo.github.io/blog/2019-04-13/como-ler-e-manipular-um-json#php">PHP</a></li>
+  
+
+  
+<li><a href="https://hkotsubo.github.io/blog/2019-04-13/como-ler-e-manipular-um-json#javascript">JavaScript</a></li>
+  
+
+  
+<li><a href="https://hkotsubo.github.io/blog/2019-04-13/como-ler-e-manipular-um-json#regex">Regex</a></li>
+  
+
+</ul>
+
+<p><sup>Mas já adianto que o exemplo em Java é um <em>pouquinho</em> mais completo que os demais, por ser a linguagem com a qual tenho mais familiaridade.</sup></p>
+
+<h3 id="java" class="subtitulo"><a href="https://hkotsubo.github.io/blog/2019-04-13/como-ler-e-manipular-um-json#java" style="color: black;">Java</a></h3>
+
+<p>No Java existem várias APIs disponíveis, como o pacote <a href="https://mvnrepository.com/artifact/org.json/json/" target="_blank"><code class="language-plaintext highlighter-rouge">org.json</code></a> e a biblioteca <a href="https://github.com/google/gson" target="_blank">Gson do Google</a>. Todas são bem parecidas, possuindo classes para representar objetos e arrays. Um exemplo com <code class="language-plaintext highlighter-rouge">org.json</code>:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">org.json.JSONArray</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.json.JSONObject</span><span class="o">;</span>
+
+<span class="nc">String</span> <span class="n">texto</span> <span class="o">=</span> <span class="s">"{ \"nome\": \"Fulano\", \"idade\": 90, \"filmes_preferidos\": [ \"Pulp Fiction\", \"Clube da Luta\" ],"</span>
+                <span class="o">+</span> <span class="s">" \"contatos\": { \"telefone\": \"(11) 91111-2222\", \"emails\": [ \"fulano@gmail.com\", \"fulano@yahoo.com\" ]  } }"</span><span class="o">;</span>
+<span class="c1">// cria o JSONObject</span>
+<span class="nc">JSONObject</span> <span class="n">obj</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JSONObject</span><span class="o">(</span><span class="n">texto</span><span class="o">);</span>
+<span class="c1">// verifica se possui a chave "nome"</span>
+<span class="k">if</span> <span class="o">(</span><span class="n">obj</span><span class="o">.</span><span class="na">has</span><span class="o">(</span><span class="s">"nome"</span><span class="o">))</span> <span class="o">{</span>
+    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"possui nome="</span> <span class="o">+</span> <span class="n">obj</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="s">"nome"</span><span class="o">));</span> <span class="c1">// nome é uma String</span>
+<span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"não possui nome"</span><span class="o">);</span>
+<span class="o">}</span>
+<span class="c1">// obtém o array de filmes</span>
+<span class="nc">JSONArray</span> <span class="n">filmes</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="na">getJSONArray</span><span class="o">(</span><span class="s">"filmes_preferidos"</span><span class="o">);</span>
+<span class="n">filmes</span><span class="o">.</span><span class="na">forEach</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">::</span><span class="n">println</span><span class="o">);</span> <span class="c1">// imprime todos os filmes</span>
+<span class="c1">// obtém o objeto com os contatos</span>
+<span class="nc">JSONObject</span> <span class="n">contatos</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="na">getJSONObject</span><span class="o">(</span><span class="s">"contatos"</span><span class="o">);</span>
+<span class="k">for</span> <span class="o">(</span><span class="nc">String</span> <span class="n">chave</span> <span class="o">:</span> <span class="n">contatos</span><span class="o">.</span><span class="na">keySet</span><span class="o">())</span> <span class="o">{</span>
+    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">chave</span> <span class="o">+</span> <span class="s">"="</span> <span class="o">+</span> <span class="n">contatos</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">chave</span><span class="o">));</span>
+<span class="o">}</span>
+<span class="c1">//----------------------------------------------------------</span>
+<span class="c1">// adicionar mais um contato</span>
+<span class="n">contatos</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"twitter"</span><span class="o">,</span> <span class="s">"@fulano"</span><span class="o">);</span>
+<span class="c1">// imprime o JSON formatado (indentando com 2 espaços)</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">obj</span><span class="o">.</span><span class="na">toString</span><span class="o">(</span><span class="mi">2</span><span class="o">));</span>
+</code></pre></div></div>
+
+<p>A primeira parte pega uma <code class="language-plaintext highlighter-rouge">String</code> contendo todo o JSON e transforma em um <code class="language-plaintext highlighter-rouge">JSONObject</code>. Em seguida eu uso o método <code class="language-plaintext highlighter-rouge">has</code> para verificar se o objeto possui determinada chave e o método <code class="language-plaintext highlighter-rouge">getString</code> para obter o valor de uma chave como uma <code class="language-plaintext highlighter-rouge">String</code>.</p>
+
+<p>Depois eu uso <code class="language-plaintext highlighter-rouge">getJSONArray</code> para obter o array correspondente à chave <code class="language-plaintext highlighter-rouge">"filmes_preferidos"</code> e percorro o mesmo, imprimindo cada um dos seus valores. Também faço algo similar com a chave <code class="language-plaintext highlighter-rouge">"contatos"</code>, obtendo o objeto correspondente (com <code class="language-plaintext highlighter-rouge">getJSONObject</code>) e percorrendo todas suas chaves e valores. Até este ponto, a saída é:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>possui nome=Fulano
+Pulp Fiction
+Clube da Luta
+emails=["fulano@gmail.com","fulano@yahoo.com"]
+telefone=(11) 91111-2222
+</code></pre></div></div>
+
+<p>Repare como os elementos do array (<code class="language-plaintext highlighter-rouge">"Pulp Fiction"</code> e <code class="language-plaintext highlighter-rouge">"Clube da Luta"</code>) mantêm a sua ordem, já que em um array a ordem dos elementos é importante. Já as chaves do objeto “contatos” aparecem fora de ordem (na <code class="language-plaintext highlighter-rouge">String</code> original, <code class="language-plaintext highlighter-rouge">"telefone"</code> estava antes de <code class="language-plaintext highlighter-rouge">"emails"</code>, mas ao percorrer o objeto, elas são retornadas em outra ordem), pois em um objeto não importa a ordem das chaves - e a ordem mostrada vai depender dos detalhes internos de implementação da API. Mas note que a chave <code class="language-plaintext highlighter-rouge">"emails"</code> possui como valor um array com os endereços de email, e dentro deste array, a ordem dos elementos é preservada.</p>
+
+<p>Por fim, eu uso o método <code class="language-plaintext highlighter-rouge">put</code> para adicionar mais um par “chave: valor” ao objeto <code class="language-plaintext highlighter-rouge">"contatos"</code>, e uso o método <code class="language-plaintext highlighter-rouge">toString()</code>, passando como parâmetro a quantidade de espaços usada para formatar o JSON (no caso, usei 2 espaços). A saída é:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{
+  "idade": 90,
+  "filmes_preferidos": [
+    "Pulp Fiction",
+    "Clube da Luta"
+  ],
+  "contatos": {
+    "emails": [
+      "fulano@gmail.com",
+      "fulano@yahoo.com"
+    ],
+    "telefone": "(11) 91111-2222",
+    "twitter": "@fulano"
+  },
+  "nome": "Fulano"
+}
+</code></pre></div></div>
+
+<p>Repare novamente que nos arrays a ordem dos elementos é mantida, mas nas chaves dos objetos, não necessariamente é a mesma. <strong>Lembre-se que em um objeto JSON, a ordem das chaves não importa, e portanto nenhuma implementação é obrigada a manter a mesma ordem</strong>.</p>
+
+<p>Se a variável <code class="language-plaintext highlighter-rouge">texto</code> tivesse um array em vez de um objeto, bastaria você usar <code class="language-plaintext highlighter-rouge">new JSONArray(texto)</code>.</p>
+
+<p>Caso o JSON seja inválido, os construtores de <code class="language-plaintext highlighter-rouge">JSONObject</code> e <code class="language-plaintext highlighter-rouge">JSONArray</code> lançam um <code class="language-plaintext highlighter-rouge">org.json.JSONException</code>.</p>
+
+<hr>
+<p>Com a API Gson, podemos ir além e mapear o JSON para um objeto específico. Para o nosso JSON, podemos criar uma classe <code class="language-plaintext highlighter-rouge">Pessoa</code>, por exemplo:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.util.List</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Map</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.google.gson.annotations.SerializedName</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Pessoa</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">nome</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">idade</span><span class="o">;</span>
+    <span class="nd">@SerializedName</span><span class="o">(</span><span class="s">"filmes_preferidos"</span><span class="o">)</span>
+    <span class="kd">private</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">filmesPreferidos</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">Map</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">,</span> <span class="nc">Object</span><span class="o">&gt;</span> <span class="n">contatos</span><span class="o">;</span>
+    <span class="c1">// construtores, getters, setters, etc...</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Com isso, podemos ler o JSON e criar uma instância de <code class="language-plaintext highlighter-rouge">Pessoa</code> com os campos já preenchidos:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">com.google.gson.Gson</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.google.gson.GsonBuilder</span><span class="o">;</span>
+
+<span class="nc">String</span> <span class="n">texto</span> <span class="o">=</span> <span class="s">"{ \"nome\": \"Fulano\", \"idade\": 90, \"filmes_preferidos\": [ \"Pulp Fiction\", \"Clube da Luta\" ],"</span>
+                <span class="o">+</span> <span class="s">" \"contatos\": { \"telefone\": \"(11) 91111-2222\", \"emails\": [ \"fulano@gmail.com\", \"fulano@yahoo.com\" ]  } }"</span><span class="o">;</span>
+<span class="nc">Gson</span> <span class="n">gson</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">GsonBuilder</span><span class="o">().</span><span class="na">setPrettyPrinting</span><span class="o">().</span><span class="na">create</span><span class="o">();</span>
+<span class="c1">// lê o JSON e cria uma Pessoa com os campos preenchidos</span>
+<span class="nc">Pessoa</span> <span class="n">pessoa</span> <span class="o">=</span> <span class="n">gson</span><span class="o">.</span><span class="na">fromJson</span><span class="o">(</span><span class="n">texto</span><span class="o">,</span> <span class="nc">Pessoa</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"nome="</span> <span class="o">+</span> <span class="n">pessoa</span><span class="o">.</span><span class="na">getNome</span><span class="o">());</span>
+<span class="k">for</span> <span class="o">(</span><span class="nc">String</span> <span class="n">filme</span> <span class="o">:</span> <span class="n">pessoa</span><span class="o">.</span><span class="na">getFilmesPreferidos</span><span class="o">())</span> <span class="o">{</span>
+    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">filme</span><span class="o">);</span>
+<span class="o">}</span>
+<span class="k">for</span> <span class="o">(</span><span class="nc">Map</span><span class="o">.</span><span class="na">Entry</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">,</span> <span class="nc">Object</span><span class="o">&gt;</span> <span class="n">contato</span> <span class="o">:</span> <span class="n">pessoa</span><span class="o">.</span><span class="na">getContatos</span><span class="o">().</span><span class="na">entrySet</span><span class="o">())</span> <span class="o">{</span>
+    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">contato</span><span class="o">.</span><span class="na">getKey</span><span class="o">()</span> <span class="o">+</span> <span class="s">"="</span> <span class="o">+</span> <span class="n">contato</span><span class="o">.</span><span class="na">getValue</span><span class="o">());</span>
+<span class="o">}</span>
+
+<span class="c1">// adicionar um novo contato</span>
+<span class="n">pessoa</span><span class="o">.</span><span class="na">getContatos</span><span class="o">().</span><span class="na">put</span><span class="o">(</span><span class="s">"twitter"</span><span class="o">,</span> <span class="s">"@fulano"</span><span class="o">);</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">gson</span><span class="o">.</span><span class="na">toJson</span><span class="o">(</span><span class="n">pessoa</span><span class="o">));</span>
+</code></pre></div></div>
+
+<p>Com isso fica bem mais fácil obter os campos do JSON e adicionar novas informações ao mesmo. A saída é:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>nome=Fulano
+Pulp Fiction
+Clube da Luta
+telefone=(11) 91111-2222
+emails=[fulano@gmail.com, fulano@yahoo.com]
+{
+  "nome": "Fulano",
+  "idade": 90,
+  "filmes_preferidos": [
+    "Pulp Fiction",
+    "Clube da Luta"
+  ],
+  "contatos": {
+    "telefone": "(11) 91111-2222",
+    "emails": [
+      "fulano@gmail.com",
+      "fulano@yahoo.com"
+    ],
+    "twitter": "@fulano"
+  }
+}
+</code></pre></div></div>
+
+<p>Claro que, dependendo da situação, nem sempre é desejável mapear o JSON para uma classe. Pode ser que sejam muitos dados e você não precise de todos, então não vale a pena mapear tudo, por exemplo. Neste caso, você pode usar um <code class="language-plaintext highlighter-rouge">java.util.Map</code>:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">Map</span> <span class="n">json</span> <span class="o">=</span> <span class="n">gson</span><span class="o">.</span><span class="na">fromJson</span><span class="o">(</span><span class="n">texto</span><span class="o">,</span> <span class="nc">Map</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+</code></pre></div></div>
+
+<p>Assim, o JSON vira um <code class="language-plaintext highlighter-rouge">Map</code>, sendo que as chaves são <code class="language-plaintext highlighter-rouge">Strings</code> e os valores podem ser <code class="language-plaintext highlighter-rouge">List</code>, <code class="language-plaintext highlighter-rouge">Map</code>, <code class="language-plaintext highlighter-rouge">String</code>, <code class="language-plaintext highlighter-rouge">Double</code>, etc, dependendo do que eles eram no JSON original. Para obter o telefone, por exemplo, você poderia fazer <code class="language-plaintext highlighter-rouge">((Map) json.get("contatos")).get("telefone")</code>. Não é muito “bonito”, mas se você só precisa deste campo, e o JSON é muito grande e complexo, talvez não valha a pena mapeá-lo para uma classe só para obter um único campo.</p>
+
+<p>Além disso, a classe <code class="language-plaintext highlighter-rouge">Gson</code> possui métodos que trabalham com <code class="language-plaintext highlighter-rouge">java.io.Reader</code> e <code class="language-plaintext highlighter-rouge">java.io.Writer</code>, permitindo que o JSON seja lido e escrito de/para arquivos e quaisquer outros <em>streams</em> de dados diretamente.</p>
+
+<p>Se o JSON for inválido, o método <code class="language-plaintext highlighter-rouge">fromJSON</code> lança um <code class="language-plaintext highlighter-rouge">com.google.gson.JsonSyntaxException</code>.</p>
+
+<h3 id="net" class="subtitulo"><a href="https://hkotsubo.github.io/blog/2019-04-13/como-ler-e-manipular-um-json#net" style="color: black;">.NET</a></h3>
+
+<p>Em .NET existem várias APIs diferentes para manipular JSON, como você pode ver <a href="http://sagistech.blogspot.com/2010/03/parsing-twitter-json-comparing-c.html" target="_blank">neste comparativo</a>. Pelo que vi, são todas bem parecidas em termos de funcionamento básico. Segue abaixo um exemplo com o <a href="https://www.newtonsoft.com/json" target="_blank">Json.NET</a>:</p>
+
+<div class="language-c# highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">using</span> <span class="nn">Newtonsoft.Json</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">Newtonsoft.Json.Linq</span><span class="p">;</span>
+
+<span class="kt">string</span> <span class="n">texto</span> <span class="p">=</span> <span class="s">"{ \"nome\": \"Fulano\", \"idade\": 90, \"filmes_preferidos\": [ \"Pulp Fiction\", \"Clube da Luta\" ],"</span>
+                <span class="p">+</span> <span class="s">" \"contatos\": { \"telefone\": \"(11) 91111-2222\", \"emails\": [ \"fulano@gmail.com\", \"fulano@yahoo.com\" ]  } }"</span><span class="p">;</span>
+<span class="kt">dynamic</span> <span class="n">dobj</span> <span class="p">=</span> <span class="n">JsonConvert</span><span class="p">.</span><span class="n">DeserializeObject</span><span class="p">&lt;</span><span class="kt">dynamic</span><span class="p">&gt;(</span><span class="n">texto</span><span class="p">);</span>
+<span class="c1">// obter nome</span>
+<span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="n">dobj</span><span class="p">[</span><span class="s">"nome"</span><span class="p">].</span><span class="nf">ToString</span><span class="p">());</span>
+<span class="c1">// percorrer array de filmes</span>
+<span class="k">foreach</span> <span class="p">(</span><span class="kt">string</span> <span class="n">filme</span> <span class="k">in</span> <span class="n">dobj</span><span class="p">[</span><span class="s">"filmes_preferidos"</span><span class="p">])</span>
+<span class="p">{</span>
+    <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="n">filme</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="c1">// percorrer contatos</span>
+<span class="k">foreach</span> <span class="p">(</span><span class="n">JProperty</span> <span class="n">c</span> <span class="k">in</span> <span class="n">dobj</span><span class="p">[</span><span class="s">"contatos"</span><span class="p">])</span>
+<span class="p">{</span>
+    <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="s">$"</span><span class="p">{</span><span class="n">c</span><span class="p">.</span><span class="n">Name</span><span class="p">}</span><span class="s"> = </span><span class="p">{</span><span class="n">c</span><span class="p">.</span><span class="n">Value</span><span class="p">}</span><span class="s">"</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// incluir novo contato</span>
+<span class="n">dobj</span><span class="p">[</span><span class="s">"contatos"</span><span class="p">][</span><span class="s">"twitter"</span><span class="p">]</span> <span class="p">=</span> <span class="s">"@fulano"</span><span class="p">;</span>
+<span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="n">JsonConvert</span><span class="p">.</span><span class="nf">SerializeObject</span><span class="p">(</span><span class="n">dobj</span><span class="p">,</span> <span class="n">Formatting</span><span class="p">.</span><span class="n">Indented</span><span class="p">));</span>
+</code></pre></div></div>
+
+<p>Fazemos algo parecido com o código anterior em <a href="https://hkotsubo.github.io/blog/2019-04-13/como-ler-e-manipular-um-json#java">Java</a>: imprimimos o nome, depois percorremos o array de filmes e por fim os contatos. Depois criamos um novo contato. A saída é:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Fulano
+Pulp Fiction
+Clube da Luta
+telefone = (11) 91111-2222
+emails = [
+  "fulano@gmail.com",
+  "fulano@yahoo.com"
+]
+{
+  "nome": "Fulano",
+  "idade": 90,
+  "filmes_preferidos": [
+    "Pulp Fiction",
+    "Clube da Luta"
+  ],
+  "contatos": {
+    "telefone": "(11) 91111-2222",
+    "emails": [
+      "fulano@gmail.com",
+      "fulano@yahoo.com"
+    ],
+    "twitter": "@fulano"
+  }
+}
+</code></pre></div></div>
+
+<p>Se o JSON for inválido, é lançado um <code class="language-plaintext highlighter-rouge">Newtonsoft.Json.JsonReaderException</code>. Veja mais exemplos com outras bibliotecas <a href="https://pt.stackoverflow.com/q/706/112052" target="_blank">aqui</a>.</p>
+
+<h3 id="python" class="subtitulo"><a href="https://hkotsubo.github.io/blog/2019-04-13/como-ler-e-manipular-um-json#python" style="color: black;">Python</a></h3>
+
+<p>Em Python, você pode usar o <a href="https://docs.python.org/3.6/library/json.html" target="_blank">módulo <code class="language-plaintext highlighter-rouge">json</code></a>. A conversão de tipos do JSON de/para o Python é feita com base <a href="https://docs.python.org/3.6/library/json.html#json-to-py-table" target="_blank">nesta tabela</a>:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">JSON</th>
+      <th style="text-align: left">Python</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">object</td>
+      <td style="text-align: left">dict</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">array</td>
+      <td style="text-align: left">list</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">string</td>
+      <td style="text-align: left">str</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">number (int)</td>
+      <td style="text-align: left">int</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">number (real)</td>
+      <td style="text-align: left">float</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">true</td>
+      <td style="text-align: left">True</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">false</td>
+      <td style="text-align: left">False</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">null</td>
+      <td style="text-align: left">None</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Portanto, objetos JSON serão transformados em <a href="https://docs.python.org/3.6/library/stdtypes.html#dict" target="_blank">dicionários</a>, e arrays serão transformados em <a href="https://docs.python.org/3.6/library/stdtypes.html#list" target="_blank">listas</a>. Com isso fica fácil manipular o JSON:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">json</span>
+
+<span class="n">texto</span> <span class="o">=</span> <span class="s">"""
+{
+    "nome": "Fulano",
+    "idade": 90,
+    "filmes_preferidos": [ "Pulp Fiction", "Clube da Luta" ],
+    "contatos": {
+        "telefone": "(11) 91111-2222",
+        "emails": [ "fulano@gmail.com", "fulano@yahoo.com" ]
+    }
+}
+"""</span>
+
+<span class="n">obj</span> <span class="o">=</span> <span class="n">json</span><span class="p">.</span><span class="n">loads</span><span class="p">(</span><span class="n">texto</span><span class="p">)</span>
+<span class="c1"># obter o nome
+</span><span class="k">print</span><span class="p">(</span><span class="n">obj</span><span class="p">[</span><span class="s">'nome'</span><span class="p">])</span>
+<span class="c1"># percorrer o array de filmes
+</span><span class="k">for</span> <span class="n">filme</span> <span class="ow">in</span> <span class="n">obj</span><span class="p">[</span><span class="s">'filmes_preferidos'</span><span class="p">]:</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">filme</span><span class="p">)</span>
+<span class="c1"># percorrer as chaves e valores do objeto "contatos"
+</span><span class="k">for</span> <span class="n">tipo</span><span class="p">,</span> <span class="n">contato</span> <span class="ow">in</span> <span class="n">obj</span><span class="p">[</span><span class="s">'contatos'</span><span class="p">].</span><span class="n">items</span><span class="p">():</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">'{}={}'</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="n">tipo</span><span class="p">,</span> <span class="n">contato</span><span class="p">))</span>
+
+<span class="c1"># incluir um novo contato
+</span><span class="n">obj</span><span class="p">[</span><span class="s">'contatos'</span><span class="p">][</span><span class="s">'twitter'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'@fulano'</span>
+<span class="c1"># imprimir o json (indentando com 2 espaços)
+</span><span class="k">print</span><span class="p">(</span><span class="n">json</span><span class="p">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span>
+</code></pre></div></div>
+
+<p>Para transformar uma string que contém um JSON nos objetos correspondentes do Python, basta usar o método <a href="https://docs.python.org/3/library/json.html#json.loads" target="_blank"><code class="language-plaintext highlighter-rouge">loads</code></a>. Como o JSON é um objeto, o retorno de <code class="language-plaintext highlighter-rouge">loads</code> é um dicionário, que podemos manipular normalmente, como qualquer outro dicionário do Python. O mesmo vale para os seus valores. A chave <code class="language-plaintext highlighter-rouge">"filmes_preferidos"</code>, por exemplo, contém um array, que o método <code class="language-plaintext highlighter-rouge">loads</code> transforma em uma lista. Já a chave <code class="language-plaintext highlighter-rouge">"contatos"</code> possui um objeto, e portanto ela se torna um dicionário. Para percorrê-los, usamos as formas tradicionais da linguagem, como faríamos com qualquer outra lista ou dicionário.</p>
+
+<p>Para modificar o JSON, é a mesma coisa: basta manipular as listas e dicionários normalmente, adicionando, removendo ou mudando seus elementos. Por fim, podemos gerar uma string contendo todo o JSON, usando o método <a href="https://docs.python.org/3/library/json.html#json.dumps" target="_blank"><code class="language-plaintext highlighter-rouge">dumps</code></a>. Usei o parâmetro <code class="language-plaintext highlighter-rouge">indent=2</code> para que o JSON fique bem formatado, usando 2 espaços para indentação. A saída do código acima é:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Fulano
+Pulp Fiction
+Clube da Luta
+telefone=(11) 91111-2222
+emails=['fulano@gmail.com', 'fulano@yahoo.com']
+{
+  "nome": "Fulano",
+  "idade": 90,
+  "filmes_preferidos": [
+    "Pulp Fiction",
+    "Clube da Luta"
+  ],
+  "contatos": {
+    "telefone": "(11) 91111-2222",
+    "emails": [
+      "fulano@gmail.com",
+      "fulano@yahoo.com"
+    ],
+    "twitter": "@fulano"
+  }
+}
+</code></pre></div></div>
+
+<p>Existem ainda os métodos <a href="https://docs.python.org/3/library/json.html#json.load" target="_blank"><code class="language-plaintext highlighter-rouge">load</code></a> e <a href="https://docs.python.org/3/library/json.html#json.dump" target="_blank"><code class="language-plaintext highlighter-rouge">dump</code></a>, que em vez de ler e escrever o JSON de/para strings, faz a leitura e escrita em arquivos:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># ler de um arquivo
+</span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">'entrada.json'</span><span class="p">,</span> <span class="s">'r'</span><span class="p">)</span> <span class="k">as</span> <span class="n">arq</span><span class="p">:</span>
+    <span class="n">obj</span> <span class="o">=</span> <span class="n">json</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="n">arq</span><span class="p">)</span>
+    <span class="c1"># manipular o obj ...
+</span>
+<span class="c1"># gravar obj em outro arquivo
+</span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">'saida.json'</span><span class="p">,</span> <span class="s">'w'</span><span class="p">)</span> <span class="k">as</span> <span class="n">arq</span><span class="p">:</span>
+    <span class="n">json</span><span class="p">.</span><span class="n">dump</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">arq</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Se o JSON for inválido, os métodos <code class="language-plaintext highlighter-rouge">loads</code> e <code class="language-plaintext highlighter-rouge">load</code> lançam um <a href="https://docs.python.org/3/library/json.html#json.JSONDecodeError" target="_blank"><code class="language-plaintext highlighter-rouge">JSONDecodeError</code></a>.</p>
+
+<h3 id="php" class="subtitulo"><a href="https://hkotsubo.github.io/blog/2019-04-13/como-ler-e-manipular-um-json#php" style="color: black;">PHP</a></h3>
+
+<p>Em PHP, você pode usar a função <a href="https://www.php.net/manual/en/function.json-decode.php" target="_blank"><code class="language-plaintext highlighter-rouge">json_decode</code></a> para transformar uma string contendo um JSON no objeto correspondente. O primeiro parâmetro é a string contendo o JSON, e o segundo parâmetro (opcional) controla o tipo que será retornado. No exemplo abaixo eu passo <code class="language-plaintext highlighter-rouge">true</code>, indicando que o retorno será um array associativo:</p>
+
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$texto</span> <span class="o">=</span> <span class="sh">&lt;&lt;&lt;JSON
+{
+    "nome": "Fulano",
+    "idade": 90,
+    "filmes_preferidos": [ "Pulp Fiction", "Clube da Luta" ],
+    "contatos": {
+        "telefone": "(11) 91111-2222",
+        "emails": [ "fulano@gmail.com", "fulano@yahoo.com" ]
+    }
+}
+JSON;</span>
+<span class="c1">// converte o texto para um array</span>
+<span class="nv">$json</span> <span class="o">=</span> <span class="nb">json_decode</span><span class="p">(</span><span class="nv">$texto</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
+<span class="c1">// obter o nome</span>
+<span class="k">echo</span> <span class="nv">$json</span><span class="p">[</span><span class="s1">'nome'</span><span class="p">],</span> <span class="kc">PHP_EOL</span><span class="p">;</span>
+<span class="c1">// percorrer o array de filmes</span>
+<span class="k">foreach</span> <span class="p">(</span><span class="nv">$json</span><span class="p">[</span><span class="s1">'filmes_preferidos'</span><span class="p">]</span> <span class="k">as</span> <span class="nv">$filme</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="nv">$filme</span><span class="p">,</span> <span class="kc">PHP_EOL</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="c1"># percorrer os contatos</span>
+<span class="k">foreach</span> <span class="p">(</span><span class="nv">$json</span><span class="p">[</span><span class="s1">'contatos'</span><span class="p">]</span> <span class="k">as</span> <span class="nv">$tipo</span> <span class="o">=&gt;</span> <span class="nv">$contato</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s2">"</span><span class="si">{</span><span class="nv">$tipo</span><span class="si">}</span><span class="s2"> = "</span><span class="mf">.</span> <span class="p">(</span><span class="nb">is_array</span><span class="p">(</span><span class="nv">$contato</span><span class="p">)</span> <span class="o">?</span> <span class="nb">implode</span><span class="p">(</span><span class="s2">", "</span><span class="p">,</span> <span class="nv">$contato</span><span class="p">)</span> <span class="o">:</span> <span class="nv">$contato</span><span class="p">),</span> <span class="kc">PHP_EOL</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// adicionar novo contato</span>
+<span class="nv">$json</span><span class="p">[</span><span class="s1">'contatos'</span><span class="p">][</span><span class="s1">'twitter'</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'@fulano'</span><span class="p">;</span>
+<span class="c1">// imprimir o JSON formatado</span>
+<span class="k">echo</span> <span class="nb">json_encode</span><span class="p">(</span><span class="nv">$json</span><span class="p">,</span> <span class="no">JSON_PRETTY_PRINT</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>Com isso, cada chave do objeto JSON se torna uma chave no array associativo, e seus respectivos valores podem ser números, strings ou outros arrays. E para transformar esse array em uma string contendo todo o JSON, eu uso a função <a href="https://www.php.net/manual/en/function.json-encode.php" target="_blank"><code class="language-plaintext highlighter-rouge">json_encode</code></a>. E também uso a opção <code class="language-plaintext highlighter-rouge">JSON_PRETTY_PRINT</code> para que ele fique formatado. A saída é:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Fulano
+Pulp Fiction
+Clube da Luta
+telefone = (11) 91111-2222
+emails = fulano@gmail.com, fulano@yahoo.com
+{
+    "nome": "Fulano",
+    "idade": 90,
+    "filmes_preferidos": [
+        "Pulp Fiction",
+        "Clube da Luta"
+    ],
+    "contatos": {
+        "telefone": "(11) 91111-2222",
+        "emails": [
+            "fulano@gmail.com",
+            "fulano@yahoo.com"
+        ],
+        "twitter": "@fulano"
+    }
+}
+</code></pre></div></div>
+
+<p>Se eu fizer apenas <code class="language-plaintext highlighter-rouge">json_decode($texto)</code> (ou <code class="language-plaintext highlighter-rouge">json_decode($texto, false)</code>), o retorno será um objeto em vez de um array. Com isso, o modo de acessar os elementos muda um pouco:</p>
+
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// converte o texto para um objeto (e não mais um array)</span>
+<span class="nv">$json</span> <span class="o">=</span> <span class="nb">json_decode</span><span class="p">(</span><span class="nv">$texto</span><span class="p">,</span> <span class="kc">false</span><span class="p">);</span>
+<span class="c1">// obter o nome</span>
+<span class="k">echo</span> <span class="nv">$json</span><span class="o">-&gt;</span><span class="n">nome</span><span class="p">,</span> <span class="kc">PHP_EOL</span><span class="p">;</span>
+<span class="c1">// percorrer o array de filmes</span>
+<span class="k">foreach</span> <span class="p">(</span><span class="nv">$json</span><span class="o">-&gt;</span><span class="n">filmes_preferidos</span> <span class="k">as</span> <span class="nv">$filme</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="nv">$filme</span><span class="p">,</span> <span class="kc">PHP_EOL</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="c1"># percorrer os contatos</span>
+<span class="k">foreach</span> <span class="p">(</span><span class="nv">$json</span><span class="o">-&gt;</span><span class="n">contatos</span> <span class="k">as</span> <span class="nv">$tipo</span> <span class="o">=&gt;</span> <span class="nv">$contato</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s2">"</span><span class="si">{</span><span class="nv">$tipo</span><span class="si">}</span><span class="s2"> = "</span><span class="mf">.</span> <span class="p">(</span><span class="nb">is_array</span><span class="p">(</span><span class="nv">$contato</span><span class="p">)</span> <span class="o">?</span> <span class="nb">implode</span><span class="p">(</span><span class="s2">", "</span><span class="p">,</span> <span class="nv">$contato</span><span class="p">)</span> <span class="o">:</span> <span class="nv">$contato</span><span class="p">),</span> <span class="kc">PHP_EOL</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// adicionar novo contato</span>
+<span class="nv">$json</span><span class="o">-&gt;</span><span class="n">contatos</span><span class="o">-&gt;</span><span class="n">twitter</span> <span class="o">=</span> <span class="s1">'@fulano'</span><span class="p">;</span>
+<span class="c1">// imprimir o JSON formatado</span>
+<span class="k">echo</span> <span class="nb">json_encode</span><span class="p">(</span><span class="nv">$json</span><span class="p">,</span> <span class="no">JSON_PRETTY_PRINT</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>Se <code class="language-plaintext highlighter-rouge">$texto</code> contém um JSON inválido, <code class="language-plaintext highlighter-rouge">json_decode</code> retorna <code class="language-plaintext highlighter-rouge">NULL</code>.</p>
+
+<h3 id="javascript" class="subtitulo"><a href="https://hkotsubo.github.io/blog/2019-04-13/como-ler-e-manipular-um-json#javascript" style="color: black;">JavaScript</a></h3>
+
+<p>Em JavaScript, existe o <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON" target="_blank">objeto <code class="language-plaintext highlighter-rouge">JSON</code></a>, que possui os métodos <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse" target="_blank"><code class="language-plaintext highlighter-rouge">parse</code></a> (para transformar uma string contendo todo o JSON na estrutura correspondente do JavaScript - ou seja, um array, objeto, string, número, etc), e <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify" target="_blank"><code class="language-plaintext highlighter-rouge">stringify</code></a>, que faz o oposto (transforma uma variável do JavaScript em uma string no formato JSON).</p>
+
+<p>No código abaixo estou usando <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals" target="_blank"><em>Template Strings</em></a>, por facilitar a criação de uma string com várias linhas. <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals#Browser_compatibility" target="_blank">Veja se seu browser é compatível com este recurso</a> (caso não seja, há uma alternativa abaixo, usando uma string tradicional).</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">texto</span> <span class="o">=</span> <span class="s2">`{
+    "nome": "Fulano",
+    "idade": 90,
+    "filmes_preferidos": [ "Pulp Fiction", "Clube da Luta" ],
+    "contatos": {
+        "telefone": "(11) 91111-2222",
+        "emails": [ "fulano@gmail.com", "fulano@yahoo.com" ]
+    }
+}`</span><span class="p">;</span>
+<span class="c1">// se o seu browser não suporta a template string acima, use a linha abaixo</span>
+<span class="c1">//let texto = '{ "nome": "Fulano", "idade": 90, "filmes_preferidos": [ "Pulp Fiction", "Clube da Luta" ], "contatos": { "telefone": "(11) 91111-2222", "emails": [ "fulano@gmail.com", "fulano@yahoo.com" ] } }';</span>
+
+<span class="kd">let</span> <span class="nx">json</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">texto</span><span class="p">);</span>
+<span class="c1">// imprimir nome</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">json</span><span class="p">.</span><span class="nx">nome</span><span class="p">);</span>
+<span class="c1">// imprimir filmes</span>
+<span class="nx">json</span><span class="p">.</span><span class="nx">filmes_preferidos</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">filme</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">filme</span><span class="p">));</span>
+<span class="c1">// imprimir contatos</span>
+<span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="p">[</span><span class="nx">tipo</span><span class="p">,</span> <span class="nx">contato</span><span class="p">]</span> <span class="k">of</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">entries</span><span class="p">(</span><span class="nx">json</span><span class="p">.</span><span class="nx">contatos</span><span class="p">))</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">tipo</span><span class="p">,</span> <span class="dl">'</span><span class="s1">=</span><span class="dl">'</span><span class="p">,</span> <span class="nb">Array</span><span class="p">.</span><span class="nx">isArray</span><span class="p">(</span><span class="nx">contato</span><span class="p">)</span> <span class="p">?</span> <span class="nx">contato</span><span class="p">.</span><span class="nx">join</span><span class="p">()</span> <span class="p">:</span> <span class="nx">contato</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// adicionar novo contato</span>
+<span class="nx">json</span><span class="p">.</span><span class="nx">contatos</span><span class="p">.</span><span class="nx">twitter</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">@fulano</span><span class="dl">'</span><span class="p">;</span>
+<span class="c1">// transformar em string (indentado com 2 espaços)</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">json</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span> <span class="mi">2</span><span class="p">));</span>
+</code></pre></div></div>
+
+<p>Um objeto JSON se torna um objeto do JavaScript, e podemos acessar suas chaves diretamente (como fizemos com <code class="language-plaintext highlighter-rouge">json.nome</code> e <code class="language-plaintext highlighter-rouge">json.contatos</code>, por exemplo). Já um array JSON se torna um array do JavaScript, com todos os métodos que este possui, como o <code class="language-plaintext highlighter-rouge">forEach</code> utilizado acima.</p>
+
+<p>Por fim, <code class="language-plaintext highlighter-rouge">JSON.stringify</code> possui uma opção para formatar a saída, bastando passar a quantidade de espaços usados para indentação. A saída é:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Fulano
+Pulp Fiction
+Clube da Luta
+telefone = (11) 91111-2222
+emails = fulano@gmail.com,fulano@yahoo.com
+{
+  "nome": "Fulano",
+  "idade": 90,
+  "filmes_preferidos": [
+    "Pulp Fiction",
+    "Clube da Luta"
+  ],
+  "contatos": {
+    "telefone": "(11) 91111-2222",
+    "emails": [
+      "fulano@gmail.com",
+      "fulano@yahoo.com"
+    ],
+    "twitter": "@fulano"
+  }
+}
+</code></pre></div></div>
+
+<p>Se o JSON for inválido, <code class="language-plaintext highlighter-rouge">JSON.parse</code> lança um <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/SyntaxError" target="_blank"><code class="language-plaintext highlighter-rouge">SyntaxError</code></a>.</p>
+
+<h3 id="regex" class="subtitulo"><a href="https://hkotsubo.github.io/blog/2019-04-13/como-ler-e-manipular-um-json#regex" style="color: black;">Regex</a></h3>
+
+<p>Sendo bem sincero: <a href="https://pt.stackoverflow.com/a/357086/112052" target="_blank">não use expressões regulares (regex) para ler e manipular um JSON</a>. Não que seja impossível, mas antes avalie se você vai querer usar uma regex <a href="https://stackoverflow.com/a/3845829" target="_blank">como essa</a>:</p>
+
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$pcre_regex</span> <span class="o">=</span> <span class="s1">'
+  /
+  (?(DEFINE)
+     (?&lt;number&gt;   -? (?= [1-9]|0(?!\d) ) \d+ (\.\d+)? ([eE] [+-]? \d+)? )    
+     (?&lt;boolean&gt;   true | false | null )
+     (?&lt;string&gt;    " ([^"\\\\]* | \\\\ ["\\\\bfnrt\/] | \\\\ u [0-9a-f]{4} )* " )
+     (?&lt;array&gt;     \[  (?:  (?&amp;json)  (?: , (?&amp;json)  )*  )?  \s* \] )
+     (?&lt;pair&gt;      \s* (?&amp;string) \s* : (?&amp;json)  )
+     (?&lt;object&gt;    \{  (?:  (?&amp;pair)  (?: , (?&amp;pair)  )*  )?  \s* \} )
+     (?&lt;json&gt;   \s* (?: (?&amp;number) | (?&amp;boolean) | (?&amp;string) | (?&amp;array) | (?&amp;object) ) \s* )
+  )
+  \A (?&amp;json) \Z
+  /six   
+'</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>Esta regex funciona com PHP. A opção <code class="language-plaintext highlighter-rouge">x</code> habilita o modo <em>extended</em>, no qual espaços e quebras de linha são ignorados pela regex, assim ela pode ser escrita de uma maneira mais “amigável” (não que ela seja fácil, mas imagine se estivesse tudo na mesma linha e sem espaços).</p>
+
+<p>Em outras linguagens não é garantido que funcione, já que nem todas as <em>engines</em> possuem todos os recursos, e até mesmo a sintaxe de algumas estruturas pode ser diferente. Em Python é possível usá-la com o <a href="https://pypi.org/project/regex/" target="_blank">módulo <code class="language-plaintext highlighter-rouge">regex</code> (disponível no PyPI)</a>, mas o <a href="https://docs.python.org/3/library/re.html" target="_blank">módulo <code class="language-plaintext highlighter-rouge">re</code></a> nativo não suporta esta regex. Java e JavaScript também não possuem suporte a todos os recursos usados nesta expressão.</p>
+
+<p>O ponto crucial desta regex são as <a href="https://www.rexegg.com/regex-disambiguation.html#define" target="_blank">sub-rotinas</a>, que nem todas as linguagens possuem (são os trechos com <code class="language-plaintext highlighter-rouge">(?&amp;</code>). Outra limitação é que <strong>a regex acima só verifica se o JSON é válido, mas não extrai os seus valores</strong>.</p>
+
+<p>Para obter uma estrutura que possui os valores devidamente separados e organizados (seja em um map, array, dicionário ou objeto), você terá que usar um <em>parser</em> específico, que a maioria das linguagens possuem. E os <em>parsers</em> que vimos acima já verificam se o JSON é válido, então para que usar a regex?</p>
+
+<hr>
+
+<p>Com isso, acredito que agora você já está mais preparado para ler e manipular um JSON. Não é tão difícil: o grande problema - que pelo menos eu vejo - é que as pessoas não param para analisar a estrutura e já saem escrevendo código sem pensar. Se você olha a estrutura antes, consegue ver como percorrê-la, um nível de cada vez, até chegar na informação que você precisa.</p>
+<div class="footnotes" role="doc-endnotes">
+  <ol>
+    <li id="fn:array" role="doc-endnote">
+      <p>Se a linguagem que você está usando para ler o JSON não permite que existam elementos de tipos diferentes em um mesmo array, aí é outra história…&nbsp;<a href="https://hkotsubo.github.io/blog/2019-04-13/como-ler-e-manipular-um-json#fnref:array" class="reversefootnote" role="doc-backlink">↩</a></p>
+    </li>
+  </ol>
+</div>
+
+
+
+  <div id="disqus_recommendations" style="margin-bottom: 12px;"><iframe id="dsq-app7441" name="dsq-app7441" allowtransparency="true" frameborder="0" scrolling="no" tabindex="0" title="Disqus" width="100%" src="./Como ler e manipular um JSON _ hkotsubo_programming_blog_files/saved_resource.html" style="width: 100% !important; border: none !important; overflow: hidden !important; height: 0px !important; display: inline !important; box-sizing: border-box !important;" horizontalscrolling="no" verticalscrolling="no"></iframe></div><div id="disqus_thread"><iframe id="dsq-app964" name="dsq-app964" allowtransparency="true" frameborder="0" scrolling="no" tabindex="0" title="Disqus" width="100%" src="./Como ler e manipular um JSON _ hkotsubo_programming_blog_files/saved_resource(1).html" style="width: 1px !important; min-width: 100% !important; border: none !important; overflow: hidden !important; height: 1357px !important;" horizontalscrolling="no" verticalscrolling="no"></iframe></div>
+<script>
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+     */
+    /*
+    var disqus_config = function () {
+        this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    var disqus_shortname = 'hkotsubo-programming-blog'; // required: replace example with your forum shortname
+var disqus_url = 'https://hkotsubo.github.io/blog/2019-04-13/como-ler-e-manipular-um-json';
+    (function() {  // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://hkotsubo-programming-blog.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Habilite o JavaScript para poder <a href="http://disqus.com/?ref_noscript">comentar com o Disqus.</a></noscript>
+
+
+
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async="" src="./Como ler e manipular um JSON _ hkotsubo_programming_blog_files/js"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-138628766-1');
+</script>
+
+
+  
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+    <p class="footer-heading">
+      <a href="https://hkotsubo.github.io/">hkotsubo_programming_blog</a>
+      <span class="rss-link"><a href="https://hkotsubo.github.io/feed.xml" target="_blank"><img src="./Como ler e manipular um JSON _ hkotsubo_programming_blog_files/rss-icon.png"></a></span><a href="https://hkotsubo.github.io/feed.xml" target="_blank">
+    </a></p><a href="https://hkotsubo.github.io/feed.xml" target="_blank">
+    </a><div class="footer-col-wrapper"><a href="https://hkotsubo.github.io/feed.xml" target="_blank">
+      </a><div class="footer-col footer-col-1"><a href="https://hkotsubo.github.io/feed.xml" target="_blank">
+        </a><ul class="contact-list"><a href="https://hkotsubo.github.io/feed.xml" target="_blank">
+          <li class="p-name">Hugo Kotsubo</li></a><li><a href="https://hkotsubo.github.io/feed.xml" target="_blank"></a><a class="u-email" href="mailto:hkotsubo@gmail.com">hkotsubo@gmail.com</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-3">
+        <p>Meus pitacos sobre programação.</p>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list">
+  
+   <li><a href="https://github.com/hkotsubo" title="github" target="_blank" style="margin-left: 0;" data-sitename="github/hkotsubo">
+  	
+  	<svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg>
+  	
+   </a></li>
+  
+   <li><a href="https://pt.stackoverflow.com/users/112052/hkotsubo" title="stackoverflow" target="_blank" style="margin-left: -5px;" data-sitename="stackoverflow/hkotsubo">
+  	
+  	<img src="./Como ler e manipular um JSON _ hkotsubo_programming_blog_files/so-icon.png" style="width: 26px ">
+  	
+   </a></li>
+  
+</ul>
+</div>
+    </div>
+  </div>
+</footer>
+
+
+
+<iframe style="display: none;" src="./Como ler e manipular um JSON _ hkotsubo_programming_blog_files/saved_resource(2).html"></iframe><iframe style="display: none;" src="./Como ler e manipular um JSON _ hkotsubo_programming_blog_files/saved_resource(3).html"></iframe></body></html>

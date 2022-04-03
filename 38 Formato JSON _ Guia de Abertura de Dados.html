@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<!-- saved from url=(0049)https://ceweb.br/guias/dados-abertos/capitulo-38/ -->
+<html lang="pt-BR"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>38 Formato JSON | Guia de Abertura de Dados</title>
+	<meta name="description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
+">
+
+	<link rel="stylesheet" href="./38 Formato JSON _ Guia de Abertura de Dados_files/main.css">
+	<link rel="canonical" href="https://ceweb.br/guias/dados-abertos/capitulo-38/">
+	<link href="./38 Formato JSON _ Guia de Abertura de Dados_files/css" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" type="text/css" href="./38 Formato JSON _ Guia de Abertura de Dados_files/font-awesome.css">
+</head>
+
+
+<body>
+
+	<header role="banner">
+  <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+
+          <li><a href="https://ceweb.br/guias/dados-abertos/"><span class="glyphicon glyphicon-home"></span></a></li>
+
+          <li class="dropdown">
+            <a href="https://ceweb.br/guias/dados-abertos/indice/" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Capítulos 1 - 10 <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="https://ceweb.br/guias/dados-abertos/capitulo-1/">1. Introdução</a></li>
+              <li><a href="https://ceweb.br/guias/dados-abertos/capitulo-2/">2. O que são "Dados Abertos"?</a></li>
+              <li><a href="https://ceweb.br/guias/dados-abertos/capitulo-3/">3. Qualquer dado pode ser aberto?</a></li>
+              <li><a href="https://ceweb.br/guias/dados-abertos/capitulo-4/">4. Os benefícios da abertura de dados</a></li>
+              <li><a href="https://ceweb.br/guias/dados-abertos/capitulo-5/">5. Transporte Público (Iniciativa Privada)</a></li>
+              <li><a href="https://ceweb.br/guias/dados-abertos/capitulo-6/">6. Legislativo &amp; Executivo, Participação (Terceiro Setor)</a></li>
+              <li><a href="https://ceweb.br/guias/dados-abertos/capitulo-7/">7. Educação &amp; Pesquisa (Terceiro setor)</a></li>
+              <li><a href="https://ceweb.br/guias/dados-abertos/capitulo-8/">8. Saúde &amp; Gastos Públicos (Governo, Cidadãos)</a></li>
+              <li><a href="https://ceweb.br/guias/dados-abertos/capitulo-9/">9. Lei de Acesso à Informação</a></li>
+              <li><a href="https://ceweb.br/guias/dados-abertos/capitulo-10/">10. O acesso à informação em São Paulo</a></li>
+            </ul>
+          </li>
+          <!-- End Dropdown -->
+
+          <li class="dropdown">
+            <a href="https://ceweb.br/guias/dados-abertos/indice/" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Capítulos 11 - 20 <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="https://ceweb.br/guias/dados-abertos/capitulo-11/">11. Transparência Ativa</a></li>
+              <li><a href="https://ceweb.br/guias/dados-abertos/capitulo-12/">12. Quais são as exceções para abertura de dados?</a></li>
+              <li><a href="https://ceweb.br/guias/dados-abertos/capitulo-13/">13. Segurança da sociedade e do Estado </a></li>
+              <li><a href="https://ceweb.br/guias/dados-abertos/capitulo-14/">14. Informações pessoais</a></li>
+              <li><a href="https://ceweb.br/guias/dados-abertos/capitulo-15/">15. Plano de Abertura de Dados </a></li>
+              <li><a href="https://ceweb.br/guias/dados-abertos/capitulo-16/">16. As cinco estrelas dos dados abertos: </a></li>
+              <li><a href="https://ceweb.br/guias/dados-abertos/capitulo-17/">17. Quais os benefícios de 1 estrela</a></li>
+              <li><a href="https://ceweb.br/guias/dados-abertos/capitulo-18/">18. Quais os benefícios de 2 estrelas</a></li>
+              <li><a href="https://ceweb.br/guias/dados-abertos/capitulo-19/">19. Quais os benefícios de 3 estrelas</a></li>
+              <li><a href="https://ceweb.br/guias/dados-abertos/capitulo-20/">20. Quais os benefícios de 4 estrelas</a></li>
+            </ul>
+          </li>
+          <!-- End Dropdown -->
+
+          <li class="dropdown">
+            <a href="https://ceweb.br/guias/dados-abertos/indice/" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Capítulos 21 - 30 <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="https://ceweb.br/guias/dados-abertos/capitulo-21/">21. Quais os benefícios de 5 estrelas</a></li><a href="https://ceweb.br/guias/dados-abertos/capitulo-21/">
+              </a><li><a href="https://ceweb.br/guias/dados-abertos/capitulo-21/"></a><a href="https://ceweb.br/guias/dados-abertos/capitulo-22/">22. Resumo sobre as 5 estrelas</a></li>
+              <li><a href="https://ceweb.br/guias/dados-abertos/capitulo-23/">23. Equipes de Abertura de Dados</a></li>
+              <li><a href="https://ceweb.br/guias/dados-abertos/capitulo-24/">24. Publicação</a></li>
+              <li><a href="https://ceweb.br/guias/dados-abertos/capitulo-25/">25. O desenvolvimento de uma API é necessário?</a></li>
+              <li><a href="https://ceweb.br/guias/dados-abertos/capitulo-26/">26. Mapa de decisões tecnológicas</a></li>
+              <li><a href="https://ceweb.br/guias/dados-abertos/capitulo-27/">27. Catálogo/Repositório de dados</a></li>
+              <li><a href="https://ceweb.br/guias/dados-abertos/capitulo-28/">28. Cenários técnicos, opções tecnológicas</a></li>
+              <li><a href="https://ceweb.br/guias/dados-abertos/capitulo-29/">29. Nível 1</a></li>
+              <li><a href="https://ceweb.br/guias/dados-abertos/capitulo-30/">30. Nível 2</a></li>
+            </ul>
+          </li>
+          <!-- End Dropdown -->
+
+
+          <li class="dropdown">
+            <a href="https://ceweb.br/guias/dados-abertos/indice/" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Capítulos 31 - 41 <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="https://ceweb.br/guias/dados-abertos/capitulo-31/">31. Nível 3</a></li>
+              <li><a href="https://ceweb.br/guias/dados-abertos/capitulo-32/">32. Licença de utilização dos dados</a></li>
+              <li><a href="https://ceweb.br/guias/dados-abertos/capitulo-33/">33. Regras de utilização do Governo Aberto SP</a></li>
+              <li><a href="https://ceweb.br/guias/dados-abertos/capitulo-34/">34. Formatos das bases</a></li>
+              <li><a href="https://ceweb.br/guias/dados-abertos/capitulo-35/">35. Formatos separados por delimitadores (CSV)</a></li>
+              <li><a href="https://ceweb.br/guias/dados-abertos/capitulo-36/">36. Formato XML</a></li>
+              <li><a href="https://ceweb.br/guias/dados-abertos/capitulo-37/">37. Formato KML</a></li>
+              <li><a href="https://ceweb.br/guias/dados-abertos/capitulo-38/">38. Formato JSON</a></li>
+              <li><a href="https://ceweb.br/guias/dados-abertos/capitulo-39/">39. geoJSON/topoJSON</a></li>
+              <li><a href="https://ceweb.br/guias/dados-abertos/capitulo-40/">40. Formato SQL (dump)</a></li>
+              <li><a href="https://ceweb.br/guias/dados-abertos/capitulo-41/">41. Formato Shapefile</a></li>
+            </ul>
+          </li>
+          <!-- End Dropdown -->
+
+          <li><a href="https://ceweb.br/guias/dados-abertos/creditos/">Créditos</a></li>
+
+          <li><a href="https://ceweb.br/guias/dados-abertos/referencias/">Referências</a></li>
+        </ul>
+
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="http://igovsp.net/spuk/" target="_blank">Site do SPUK <span class="glyphicon glyphicon-new-window"></span></a></li>
+        </ul>
+      </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+  </div>
+</nav>
+
+</header>
+
+
+	<main role="main">
+		<div class="container book-page">
+			<div class="container">
+	<article class="single-page">
+		<header>
+			<h1>38 Formato JSON</h1>
+		</header>
+		<p>
+			O formato JSON (JavaScript Object Notation) é um formato aberto usado como alternativa ao XML para a transferência de dados estruturados entre um servidor de Web e uma aplicação Web. Sua lógica de organização tem semelhanças com o XML, mas possui notação diferente. O formato ganhou popularidade em serviços da Web, como clientes de email e sítios de compras, pois consegue transmitir uma grande quantidade de informações entre o cliente e o servidor usando uma quantidade menor de caracteres.
+		</p>
+		
+		<p>
+			Os arquivos JSON também trabalham com pares de atributos e valores e em vez de marcadores, como no XML, utilizam delimitadores em cadeias: {}, []; e "". Um típico arquivo JSON é estruturado da seguinte forma:
+		</p>
+		<p>
+			<span style="display:inline-block;text-indent:0px;vertical-align:baseline;width:26.000em;">
+				<img alt="Macintosh HD:Users:cburle:Documents:W3C Br:Dados Abertos:SPUK:Guias Abertura de Dados e Web Semântica:Ilustrações:FINAL_arte_final_figuras_guia_de_abertura_de_dados 2:PDF:codigo_pag63.pdf" src="./38 Formato JSON _ Guia de Abertura de Dados_files/image25.png">
+			</span>
+		</p>
+		<p>
+			O delimitador { marca o início de uma seção e o } marca seu fim. Os pares de valor e atributo são separados por : e seus valores, quando texto, ficam entre aspas (números, por exemplo, não recebem as aspas). No exemplo abaixo, a "localidade 6" é um atributo que recebe uma série de valores (Continente, País e Capital):
+		</p>
+		
+		<p>
+			<span style="display:inline-block;text-indent:0px;vertical-align:baseline;width:26.001em;">
+				<img alt="Macintosh HD:Users:cburle:Documents:W3C Br:Dados Abertos:SPUK:Guias Abertura de Dados e Web Semântica:Ilustrações:FINAL_arte_final_figuras_guia_de_abertura_de_dados 2:PDF:codigo_pag64.pdf" src="./38 Formato JSON _ Guia de Abertura de Dados_files/image26.png" class="img-responsive">
+			</span>
+		</p>
+
+		<p>
+			Repare que o valor da "localidade 6" é um novo conjunto de pares atributo-valor. Esse novo conjunto é iniciado com o delimitador { e finalizado com }. Essa lógica de encadear conjuntos de pares pode ser repetida inúmeras vezes, criando diversos níveis para a estrutura de dados desejada.
+		</p>
+	</article>
+</div>
+
+
+<div class="col-xs-12 color-pages">
+	<div class="text-center">
+
+		<a href="https://ceweb.br/guias/dados-abertos/capitulo-37/"> 
+			<span class="caps">anterior</span> 
+			<i class="fa fa-arrow-left fa-2x" aria-hidden="true"></i>
+		</a>
+		<a href="https://ceweb.br/guias/dados-abertos/capitulo-39/" alt="next chapter">
+			<i class="fa fa-arrow-right fa-2x" aria-hidden="true"></i> 
+			<span class="caps">próximo</span>
+		</a>
+
+	</div>
+</div>
+		</div>
+	</main>
+
+	<footer>
+	
+</footer>
+
+
+
+<script src="./38 Formato JSON _ Guia de Abertura de Dados_files/jquery-2.1.4.min.js.download"></script>
+<script src="./38 Formato JSON _ Guia de Abertura de Dados_files/bootstrap.min.js.download"></script>
+<script src="./38 Formato JSON _ Guia de Abertura de Dados_files/main.js.download"></script>
+
+</body></html>

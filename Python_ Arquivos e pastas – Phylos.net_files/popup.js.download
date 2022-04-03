@@ -1,0 +1,9 @@
+jQuery(document).ready(function($) {
+    $('.popup').click(function() {
+        var popupWindow = window.open($(this).prop('href'), '', 'scrollbars=1, height=400, width=400');
+        if (window.focus)   {
+            popupWindow.focus();
+        }
+        return false;
+    });
+});

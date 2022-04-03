@@ -1,0 +1,901 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0063)http://pgdocptbr.sourceforge.net/pg80/functions-formatting.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="generator" content="HTML Tidy, see www.w3.org">
+<meta http-equiv="Content-Language" content="pt-br">
+<meta name="author" content="Traduzido por Halley Pacheco de Oliveira - Câmara Municipal do Rio de Janeiro">
+<meta name="description" content="PostgreSQL 8.0.0 - Funções para formatar tipo de dado">
+<title>Funções para formatar tipo de dado</title>
+<meta name="GENERATOR" content="Modular DocBook HTML Stylesheet Version 1.79">
+<link rev="MADE" href="mailto:halleypo@users.sourceforge.net">
+<link rel="HOME" title="Documentação do PostgreSQL 8.0.0" href="http://pgdocptbr.sourceforge.net/pg80/index.html">
+<link rel="UP" title="Funções e Operadores" href="http://pgdocptbr.sourceforge.net/pg80/functions.html">
+<link rel="PREVIOUS" title="Correspondência com padrão" href="http://pgdocptbr.sourceforge.net/pg80/functions-matching.html">
+<link rel="NEXT" title="Funções e operadores para data e hora" href="http://pgdocptbr.sourceforge.net/pg80/functions-datetime.html">
+<link rel="STYLESHEET" type="text/css" href="./Funções para formatar tipo de dado_files/stylesheet.css">
+
+<meta name="creation" content="2007-04-09T21:40:30">
+</head>
+<body class="SECT1">
+<div id="docHeader">
+<div id="docHeaderLogo"><a href="http://pgdocptbr.sourceforge.net/" title="Projeto pgdocptbr no SourceForge"><img src="./Funções para formatar tipo de dado_files/cab_logo.png" width="206" height="80" alt="Projeto pgdocptbr no SourceForge"></a></div>
+</div>
+
+<div><!-- Início da procura pelo AltaVista -->
+<form id="frmAltaVista" method="get" action="http://www.altavista.com/web/results"><input type="hidden" name="itag" value="ody"> <input type="hidden" name="dt" value="tmperiod"> <input type="hidden" name="d2" value="0"> <input type="hidden" name="rc" value="url"> <input type="hidden" name="lh" value="pgdocptbr.sourceforge.net/pg80/"> <input type="hidden" name="nbq" value="10"> <input type="hidden" name="pg" value="aq"> <input type="hidden" name="aqmode" value="s"> <input type="text" name="aqa" value="Altavista" id="txtAltaVista" onfocus="limpaTexto(this);letraPreta(this)"> <input type="submit" name="submit" value="Procurar" id="subAltaVista"> <img alt="AltaVista" src="./Funções para formatar tipo de dado_files/altavista.gif" height="16" width="16" id="imgAltaVista"></form>
+
+<script type="text/javascript">
+function letraPreta(campo) {
+campo.style.color = "black";
+}
+function limpaTexto(campo) {
+if (campo.defaultValue==campo.value)
+campo.value = ""
+}
+</script>
+
+ <!-- Fim da procura pelo AltaVista -->
+<!-- Início da procura pelo Google -->
+<form id="frmGoogle" action="http://pgdocptbr.sourceforge.net/pg80/google.html"><input type="hidden" name="cx" value="002672633044435958246:bpy8wrjdwg8"> <input type="hidden" name="cof" value="FORID:11"> <input id="txtGoogle" name="q" type="text" placeholder="" style="background: url(&quot;https://www.google.com/cse/static/images/1x/pt_BR/branding.png&quot;) left 9px top 50% no-repeat rgb(255, 255, 255);"> <input id="subGoogle" type="submit" name="sa" value="Procurar"> <img alt="Google" src="./Funções para formatar tipo de dado_files/google.gif" height="16" width="16" id="imgGoogle"><input name="siteurl" value="pgdocptbr.sourceforge.net/pg80/functions-formatting.html" type="hidden"><input name="ref" value="www.google.com/" type="hidden"><input name="ss" value="" type="hidden"></form>
+
+<script type="text/javascript" src="./Funções para formatar tipo de dado_files/brand">
+</script>
+
+ <!-- Fim da procura pelo Google -->
+</div>
+
+<div class="NAVHEADER">
+<table summary="Header navigation table" width="100%" border="0" cellpadding="0" cellspacing="0">
+<tbody><tr>
+<th colspan="5" align="center" valign="bottom">Documentação do PostgreSQL 8.0.0</th>
+</tr>
+
+<tr>
+<td width="10%" align="left" valign="top"><a href="http://pgdocptbr.sourceforge.net/pg80/functions-matching.html" accesskey="P">Anterior</a> </td>
+<td width="10%" align="left" valign="top"><a href="http://pgdocptbr.sourceforge.net/pg80/functions.html">Início</a> </td>
+<td width="60%" align="center" valign="bottom">Capítulo 9. Funções e Operadores</td>
+<td width="10%" align="right" valign="top"><a href="http://pgdocptbr.sourceforge.net/pg80/functions.html">Fim</a> </td>
+<td width="10%" align="right" valign="top"><a href="http://pgdocptbr.sourceforge.net/pg80/functions-datetime.html" accesskey="N">Próxima</a> </td>
+</tr>
+</tbody></table>
+
+<hr align="LEFT" width="100%">
+</div>
+
+<div class="SECT1">
+<h1 class="SECT1"><a name="FUNCTIONS-FORMATTING">9.8. Funções para formatar tipo de dado</a></h1>
+
+<a name="AEN12881"></a> <a name="AEN12883"></a> 
+
+<p>As funções de formatação do <span class="PRODUCTNAME">PostgreSQL</span> fornecem um poderoso conjunto de ferramentas para converter vários tipos de dado (<span class="LITERAL">date/time, integer, floating point, numeric</span>) em cadeias de caracteres formatadas, e para converter cadeias de caracteres formatadas em tipos de dado específicos. A <a href="http://pgdocptbr.sourceforge.net/pg80/functions-formatting.html#FUNCTIONS-FORMATTING-TABLE">Tabela 9-22</a> mostra estas funções, que seguem uma convenção de chamada comum: o primeiro argumento é o valor a ser formatado, e o segundo argumento é o modelo que define o formato da entrada ou da saída.</p>
+
+<div class="TABLE"><a name="FUNCTIONS-FORMATTING-TABLE"></a> 
+
+<p><b>Tabela 9-22. Funções de formatação</b></p>
+
+<table border="1" class="CALSTABLE">
+<colgroup><col>
+<col>
+<col>
+<col>
+</colgroup><thead>
+<tr>
+<th>Função</th>
+<th>Tipo retornado</th>
+<th>Descrição</th>
+<th>Exemplo</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><span class="LITERAL"><span class="FUNCTION">to_char</span>(<span class="TYPE">timestamp</span>, <span class="TYPE">text</span>)</span></td>
+<td><span class="TYPE">text</span></td>
+<td>converte carimbo do tempo (<span class="LITERAL">time stamp</span>) em cadeia de caracteres</td>
+<td><span class="LITERAL">to_char(current_timestamp, 'HH12:MI:SS')</span></td>
+</tr>
+
+<tr>
+<td><span class="LITERAL"><span class="FUNCTION">to_char</span>(<span class="TYPE">interval</span>, <span class="TYPE">text</span>)</span></td>
+<td><span class="TYPE">text</span></td>
+<td>converte intervalo em cadeia de caracteres</td>
+<td><span class="LITERAL">to_char(interval '15h&nbsp;2m&nbsp;12s', 'HH24:MI:SS')</span></td>
+</tr>
+
+<tr>
+<td><span class="LITERAL"><span class="FUNCTION">to_char</span>(<span class="TYPE">int</span>, <span class="TYPE">text</span>)</span></td>
+<td><span class="TYPE">text</span></td>
+<td>converte inteiro em cadeia de caracteres</td>
+<td><span class="LITERAL">to_char(125, '999')</span></td>
+</tr>
+
+<tr>
+<td><span class="LITERAL"><span class="FUNCTION">to_char</span>(<span class="TYPE">double precision</span>, <span class="TYPE">text</span>)</span></td>
+<td><span class="TYPE">text</span></td>
+<td>converte real e precisão dupla em cadeia de caracteres</td>
+<td><span class="LITERAL">to_char(125.8::real, '999D9')</span></td>
+</tr>
+
+<tr>
+<td><span class="LITERAL"><span class="FUNCTION">to_char</span>(<span class="TYPE">numeric</span>, <span class="TYPE">text</span>)</span></td>
+<td><span class="TYPE">text</span></td>
+<td>converte numérico em cadeia de caracteres</td>
+<td><span class="LITERAL">to_char(-125.8, '999D99S')</span></td>
+</tr>
+
+<tr>
+<td><span class="LITERAL"><span class="FUNCTION">to_date</span>(<span class="TYPE">text</span>, <span class="TYPE">text</span>)</span></td>
+<td><span class="TYPE">date</span></td>
+<td>converte cadeia de caracteres em data</td>
+<td><span class="LITERAL">to_date('05&nbsp;Dec&nbsp;2000', 'DD&nbsp;Mon&nbsp;YYYY')</span></td>
+</tr>
+
+<tr>
+<td><span class="LITERAL"><span class="FUNCTION">to_timestamp</span>(<span class="TYPE">text</span>, <span class="TYPE">text</span>)</span></td>
+<td><span class="TYPE">timestamp with time zone</span></td>
+<td>converte cadeia de caracteres em carimbo do tempo</td>
+<td><span class="LITERAL">to_timestamp('05&nbsp;Dec&nbsp;2000', 'DD&nbsp;Mon&nbsp;YYYY')</span></td>
+</tr>
+
+<tr>
+<td><span class="LITERAL"><span class="FUNCTION">to_number</span>(<span class="TYPE">text</span>, <span class="TYPE">text</span>)</span></td>
+<td><span class="TYPE">numeric</span></td>
+<td>converte cadeia de caracteres em numérico</td>
+<td><span class="LITERAL">to_number('12,454.8-', '99G999D9S')</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<p>Advertência: <span class="LITERAL"><span class="FUNCTION">to_char</span>(<span class="TYPE">interval</span>, <span class="TYPE">text</span>)</span> está obsoleta, não devendo ser utilizada nos novos aplicativos. Será removida na próxima versão.</p>
+
+<p>Em uma cadeia de caracteres modelo de saída (para <span class="FUNCTION">to_char</span>), existem certos padrões que são reconhecidos e substituídos pelos dados devidamente formatados a partir do valor a ser formatado. Qualquer texto que não seja um modelo padrão é simplesmente copiado sem alteração. Da mesma forma, em uma cadeia de caracteres modelo de entrada (para qualquer coisa menos <span class="FUNCTION">to_char</span>), os modelos padrão identificam as partes da cadeia de caracteres da entrada de dados a serem procuradas, e os valores a serem encontrados nestas partes.</p>
+
+<p>A <a href="http://pgdocptbr.sourceforge.net/pg80/functions-formatting.html#FUNCTIONS-FORMATTING-DATETIME-TABLE">Tabela 9-23</a> mostra os modelos padrão disponíveis para formatar valores de data e de hora.</p>
+
+<div class="TABLE"><a name="FUNCTIONS-FORMATTING-DATETIME-TABLE"></a> 
+
+<p><b>Tabela 9-23. Modelos padrão para formatação de data e hora</b></p>
+
+<table border="1" class="CALSTABLE">
+<colgroup><col>
+<col>
+</colgroup><thead>
+<tr>
+<th>Modelo</th>
+<th>Descrição</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><span class="LITERAL">HH</span></td>
+<td>hora do dia (01-12)</td>
+</tr>
+
+<tr>
+<td><span class="LITERAL">HH12</span></td>
+<td>hora do dia (01-12)</td>
+</tr>
+
+<tr>
+<td><span class="LITERAL">HH24</span></td>
+<td>hora do dia (00-23)</td>
+</tr>
+
+<tr>
+<td><span class="LITERAL">MI</span></td>
+<td>minuto (00-59)</td>
+</tr>
+
+<tr>
+<td><span class="LITERAL">SS</span></td>
+<td>segundo (00-59)</td>
+</tr>
+
+<tr>
+<td><span class="LITERAL">MS</span></td>
+<td>milissegundo (000-999)</td>
+</tr>
+
+<tr>
+<td><span class="LITERAL">US</span></td>
+<td>microssegundo (000000-999999)</td>
+</tr>
+
+<tr>
+<td><span class="LITERAL">SSSS</span></td>
+<td>segundos após a meia-noite (0-86399)</td>
+</tr>
+
+<tr>
+<td><span class="LITERAL">AM</span> ou <span class="LITERAL">A.M.</span> ou <span class="LITERAL">PM</span> ou <span class="LITERAL">P.M.</span></td>
+<td>indicador de meridiano (maiúsculas)</td>
+</tr>
+
+<tr>
+<td><span class="LITERAL">am</span> ou <span class="LITERAL">a.m.</span> ou <span class="LITERAL">pm</span> ou <span class="LITERAL">p.m.</span></td>
+<td>indicador de meridiano (minúsculas)</td>
+</tr>
+
+<tr>
+<td><span class="LITERAL">Y,YYY</span></td>
+<td>ano (4 e mais dígitos) com vírgula</td>
+</tr>
+
+<tr>
+<td><span class="LITERAL">YYYY</span></td>
+<td>ano (4 e mais dígitos)</td>
+</tr>
+
+<tr>
+<td><span class="LITERAL">YYY</span></td>
+<td>últimos 3 dígitos do ano</td>
+</tr>
+
+<tr>
+<td><span class="LITERAL">YY</span></td>
+<td>últimos 2 dígitos do ano</td>
+</tr>
+
+<tr>
+<td><span class="LITERAL">Y</span></td>
+<td>último dígito do ano</td>
+</tr>
+
+<tr>
+<td><span class="LITERAL">IYYY</span></td>
+<td>ano ISO (4 ou mais dígitos)</td>
+</tr>
+
+<tr>
+<td><span class="LITERAL">IYY</span></td>
+<td>últimos 3 dígitos do ano ISO</td>
+</tr>
+
+<tr>
+<td><span class="LITERAL">IY</span></td>
+<td>últimos 2 dígitos do ano ISO</td>
+</tr>
+
+<tr>
+<td><span class="LITERAL">I</span></td>
+<td>último dígito do ano ISO</td>
+</tr>
+
+<tr>
+<td><span class="LITERAL">BC</span> ou <span class="LITERAL">B.C.</span> ou <span class="LITERAL">AD</span> ou <span class="LITERAL">A.D.</span></td>
+<td>indicador de era (maiúscula)</td>
+</tr>
+
+<tr>
+<td><span class="LITERAL">bc</span> ou <span class="LITERAL">b.c.</span> ou <span class="LITERAL">ad</span> ou <span class="LITERAL">a.d.</span></td>
+<td>indicador de era (minúscula)</td>
+</tr>
+
+<tr>
+<td><span class="LITERAL">MONTH</span></td>
+<td>nome completo do mês em maiúsculas (9 caracteres completado com espaços)</td>
+</tr>
+
+<tr>
+<td><span class="LITERAL">Month</span></td>
+<td>nome completo do mês em maiúsculas e minúsculas (9 caracteres completado com espaços)</td>
+</tr>
+
+<tr>
+<td><span class="LITERAL">month</span></td>
+<td>nome completo do mês em minúsculas (9 caracteres completado com espaços)</td>
+</tr>
+
+<tr>
+<td><span class="LITERAL">MON</span></td>
+<td>nome abreviado do mês em maiúsculas (3 caracteres)</td>
+</tr>
+
+<tr>
+<td><span class="LITERAL">Mon</span></td>
+<td>nome abreviado do mês em maiúsculas e minúsculas (3 caracteres)</td>
+</tr>
+
+<tr>
+<td><span class="LITERAL">mon</span></td>
+<td>nome abreviado do mês em minúsculas (3 caracteres)</td>
+</tr>
+
+<tr>
+<td><span class="LITERAL">MM</span></td>
+<td>número do mês (01-12)</td>
+</tr>
+
+<tr>
+<td><span class="LITERAL">DAY</span></td>
+<td>nome completo do dia em maiúsculas (9 caracteres completado com espaços)</td>
+</tr>
+
+<tr>
+<td><span class="LITERAL">Day</span></td>
+<td>nome completo do dia em maiúsculas e minúsculas (9 caracteres completado com espaços)</td>
+</tr>
+
+<tr>
+<td><span class="LITERAL">day</span></td>
+<td>nome completo do dia em minúsculas (9 caracteres completado com espaços)</td>
+</tr>
+
+<tr>
+<td><span class="LITERAL">DY</span></td>
+<td>nome abreviado do dia em maiúsculas (3 caracteres)</td>
+</tr>
+
+<tr>
+<td><span class="LITERAL">Dy</span></td>
+<td>nome abreviado do dia em maiúsculas e minúsculas (3 caracteres)</td>
+</tr>
+
+<tr>
+<td><span class="LITERAL">dy</span></td>
+<td>nome abreviado do dia em minúsculas (3 caracteres)</td>
+</tr>
+
+<tr>
+<td><span class="LITERAL">DDD</span></td>
+<td>dia do ano (001-366)</td>
+</tr>
+
+<tr>
+<td><span class="LITERAL">DD</span></td>
+<td>dia do mês (01-31)</td>
+</tr>
+
+<tr>
+<td><span class="LITERAL">D</span></td>
+<td>dia da semana (1-7; Domingo é 1)</td>
+</tr>
+
+<tr>
+<td><span class="LITERAL">W</span></td>
+<td>semana do mês (1-5) onde a primeira semana começa no primeiro dia do mês</td>
+</tr>
+
+<tr>
+<td><span class="LITERAL">WW</span></td>
+<td>número da semana do ano (1-53) onde a primeira semana começa no primeiro dia do ano</td>
+</tr>
+
+<tr>
+<td><span class="LITERAL">IW</span></td>
+<td>número da semana do ano ISO (A primeira quinta-feira do novo ano está na semana 1)</td>
+</tr>
+
+<tr>
+<td><span class="LITERAL">CC</span></td>
+<td>século (2 dígitos)</td>
+</tr>
+
+<tr>
+<td><span class="LITERAL">J</span></td>
+<td>Dia Juliano (dias desde 1 de janeiro de 4712 AC)</td>
+</tr>
+
+<tr>
+<td><span class="LITERAL">Q</span></td>
+<td>trimestre</td>
+</tr>
+
+<tr>
+<td><span class="LITERAL">RM</span></td>
+<td>mês em algarismos romanos (I-XII; I=Janeiro) - maiúsculas</td>
+</tr>
+
+<tr>
+<td><span class="LITERAL">rm</span></td>
+<td>mês em algarismos romanos (I-XII; I=Janeiro) - minúsculas</td>
+</tr>
+
+<tr>
+<td><span class="LITERAL">TZ</span></td>
+<td>nome da zona horária - maiúsculas</td>
+</tr>
+
+<tr>
+<td><span class="LITERAL">tz</span></td>
+<td>nome da zona horária - minúsculas</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<p>Certos modificadores podem ser aplicados aos modelos padrão para alterar seu comportamento. Por exemplo, <span class="LITERAL">FMMonth</span> é o modelo <span class="QUOTE">"<span class="LITERAL">Month</span>"</span> com o modificador <span class="QUOTE">"<span class="LITERAL">FM</span>"</span>. A <a href="http://pgdocptbr.sourceforge.net/pg80/functions-formatting.html#FUNCTIONS-FORMATTING-DATETIMEMOD-TABLE">Tabela 9-24</a> mostra os modificadores de modelo para formatação de data e hora.</p>
+
+<div class="TABLE"><a name="FUNCTIONS-FORMATTING-DATETIMEMOD-TABLE"></a> 
+
+<p><b>Tabela 9-24. Modificadores de modelo padrão para formatação de data e hora</b></p>
+
+<table border="1" class="CALSTABLE">
+<colgroup><col>
+<col>
+<col>
+</colgroup><thead>
+<tr>
+<th>Modificador</th>
+<th>Descrição</th>
+<th>Exemplo</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>prefixo <span class="LITERAL">FM</span></td>
+<td>modo de preenchimento (suprime completar com brancos e zeros)</td>
+<td><span class="LITERAL">FMMonth</span></td>
+</tr>
+
+<tr>
+<td>sufixo <span class="LITERAL">TH</span></td>
+<td>sufixo de número ordinal maiúsculo</td>
+<td><span class="LITERAL">DDTH</span></td>
+</tr>
+
+<tr>
+<td>sufixo <span class="LITERAL">th</span></td>
+<td>sufixo de número ordinal minúsculo</td>
+<td><span class="LITERAL">DDth</span></td>
+</tr>
+
+<tr>
+<td>prefixo <span class="LITERAL">FX</span></td>
+<td>opção global de formato fixo (veja nota de utilização)</td>
+<td><span class="LITERAL">FX&nbsp;Month&nbsp;DD&nbsp;Day</span></td>
+</tr>
+
+<tr>
+<td>sufixo <span class="LITERAL">SP</span></td>
+<td>modo de falar (<span class="LITERAL">spell mode</span>) (ainda não implementado)</td>
+<td><span class="LITERAL">DDSP</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<p>Notas sobre a utilização da formatação de data e hora:</p>
+
+<ul>
+<li>
+<p>O <span class="LITERAL">FM</span> suprime zeros à esquerda e espaços à direita, que de outra forma seriam adicionados para fazer a saída do modelo ter comprimento fixo.</p>
+</li>
+
+<li>
+<p>As funções <span class="FUNCTION">to_timestamp</span> e <span class="FUNCTION">to_date</span> saltam espaços em branco múltiplos na cadeia de caracteres de entrada quando a opção <span class="LITERAL">FX</span> não é utilizada. O <span class="LITERAL">FX</span> deve ser especificado como o primeiro item do modelo; por exemplo, <span class="LITERAL">to_timestamp('2000&nbsp;&nbsp;&nbsp;&nbsp;JUN','YYYY MON')</span> está correto, mas <span class="LITERAL">to_timestamp('2000&nbsp;&nbsp;&nbsp;&nbsp;JUN','FXYYYY MON')</span> retorna erro, porque <span class="FUNCTION">to_timestamp</span> espera um único espaço apenas.</p>
+</li>
+
+<li>
+<p>É permitida a presença de texto comum nos modelos para <span class="FUNCTION">to_char</span>, sendo mostrados literalmente na saída. Uma parte da cadeia de caracteres pode ser colocada entre aspas, para obrigar sua interpretação como um texto literal mesmo contendo palavras chave do modelo. Por exemplo, em <span class="LITERAL">'"Hello Year "YYYY'</span>, o <span class="LITERAL">YYYY</span> será substituído pelo ano do fornecido, mas o único <span class="LITERAL">Y</span> em <span class="LITERAL">Year</span> não será substituído.</p>
+</li>
+
+<li>
+<p>Se for desejada a presença de aspas na saída, as mesmas devem ser precedidas por contrabarra. Por exemplo <span class="LITERAL">'\\"YYYY Month\\"'</span>. (Duas contrabarras são necessárias, porque a contrabarra possui significado especial em uma constante cadeia de caracteres).</p>
+</li>
+
+<li>
+<p>A conversão <span class="LITERAL">YYYY</span> de cadeia de caracteres para <span class="TYPE">timestamp</span> ou para <span class="TYPE">date</span> tem restrição quando são utilizados anos com mais de 4 dígitos. Deve ser utilizado um modelo, ou algum caractere que não seja um dígito, após <span class="LITERAL">YYYY</span>, senão o ano será sempre interpretado como tendo 4 dígitos. Por exemplo, (com o ano 20000): <span class="LITERAL">to_date('200001121', 'YYYYMMDD')</span> é interpretado como um ano de 4 dígitos; em vez disso, deve ser utilizado um separador que não seja um dígito após o ano, como <span class="LITERAL">to_date('20000-1121', 'YYYY-MMDD')</span> ou <span class="LITERAL">to_date('20000Nov21', 'YYYYMonDD')</span>.</p>
+</li>
+
+<li>
+<p>Os valores de milissegundos <span class="LITERAL">MS</span> e microssegundos <span class="LITERAL">US</span> na conversão de uma cadeia de caracteres para um carimbo do tempo (<i class="FOREIGNPHRASE">timestamp</i>), são interpretados como a sendo parte dos segundos após o ponto decimal. Por exemplo, <span class="LITERAL">to_timestamp('12:3', 'SS:MS')</span> não são 3 milissegundos, mas 300, porque a conversão interpreta como sendo 12 + 0.3 segundos. Isto significa que, para o formato <span class="LITERAL">SS:MS</span>, os valores de entrada <span class="LITERAL">12:3</span>, <span class="LITERAL">12:30</span> e <span class="LITERAL">12:300</span> especificam o mesmo número de milissegundos. Para especificar três milissegundos deve ser utilizado <span class="LITERAL">12:003</span>, que na conversão é interpretado como 12 + 0.003 = 12.003 segundos.</p>
+
+<p>A seguir está mostrado um exemplo mais complexo: <span class="LITERAL">to_timestamp('15:12:02.020.001230','HH:MI:SS.MS.US')</span> é interpretado como 15 horas, 12 minutos e 2 segundos + 20 milissegundos + 1230 microssegundos = 2.021230 segundos.</p>
+</li>
+
+<li>
+<p>A numeração do dia da semana de <span class="FUNCTION">to_char</span> (veja o modelo padrão de formatação 'D') é diferente do dia da semana da função <span class="FUNCTION">extract</span>.</p>
+</li>
+</ul>
+
+<p>A <a href="http://pgdocptbr.sourceforge.net/pg80/functions-formatting.html#FUNCTIONS-FORMATTING-NUMERIC-TABLE">Tabela 9-25</a> mostra os modelos padrão disponíveis para formatar valores numéricos.</p>
+
+<div class="TABLE"><a name="FUNCTIONS-FORMATTING-NUMERIC-TABLE"></a> 
+
+<p><b>Tabela 9-25. Modelos padrão para formatação de números</b></p>
+
+<table border="1" class="CALSTABLE">
+<colgroup><col>
+<col>
+</colgroup><thead>
+<tr>
+<th>Modelo</th>
+<th>Descrição</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><span class="LITERAL">9</span></td>
+<td>valor com o número especificado de dígitos</td>
+</tr>
+
+<tr>
+<td><span class="LITERAL">0</span></td>
+<td>valor com zeros à esquerda</td>
+</tr>
+
+<tr>
+<td><span class="LITERAL">.</span> (ponto)</td>
+<td>ponto decimal</td>
+</tr>
+
+<tr>
+<td><span class="LITERAL">,</span> (vírgula)</td>
+<td>separador de grupo (milhares)</td>
+</tr>
+
+<tr>
+<td><span class="LITERAL">PR</span></td>
+<td>valor negativo entre &lt; e &gt;</td>
+</tr>
+
+<tr>
+<td><span class="LITERAL">S</span></td>
+<td>sinal preso ao número (utiliza o idioma)</td>
+</tr>
+
+<tr>
+<td><span class="LITERAL">L</span></td>
+<td>símbolo da moeda (utiliza o idioma)</td>
+</tr>
+
+<tr>
+<td><span class="LITERAL">D</span></td>
+<td>ponto decimal (utiliza o idioma)</td>
+</tr>
+
+<tr>
+<td><span class="LITERAL">G</span></td>
+<td>separador de grupo (utiliza o idioma)</td>
+</tr>
+
+<tr>
+<td><span class="LITERAL">MI</span></td>
+<td>sinal de menos na posição especificada (se número &lt; 0)</td>
+</tr>
+
+<tr>
+<td><span class="LITERAL">PL</span></td>
+<td>sinal de mais na posição especificada (se número &gt; 0)</td>
+</tr>
+
+<tr>
+<td><span class="LITERAL">SG</span></td>
+<td>sinal de mais/menos na posição especificada</td>
+</tr>
+
+<tr>
+<td><span class="LITERAL">RN</span> <a name="AEN13364" href="http://pgdocptbr.sourceforge.net/pg80/functions-formatting.html#FTN.AEN13364">[a]</a> </td>
+<td>algarismos romanos (entrada entre 1 e 3999)</td>
+</tr>
+
+<tr>
+<td><span class="LITERAL">TH</span> ou <span class="LITERAL">th</span></td>
+<td>sufixo de número ordinal</td>
+</tr>
+
+<tr>
+<td><span class="LITERAL">V</span></td>
+<td>desloca o número especificado de dígitos (veja as notas sobre utilização)</td>
+</tr>
+
+<tr>
+<td><span class="LITERAL">EEEE</span></td>
+<td>notação científica (ainda não implementada)</td>
+</tr>
+</tbody>
+
+<tbody><tr>
+<td colspan="2">Notas:<br>
+<a name="FTN.AEN13364">a.</a> RN — roman numerals.<br>
+</td>
+</tr>
+</tbody></table>
+</div>
+
+<p>Notas sobre a utilização da formatação numérica:</p>
+
+<ul>
+<li>
+<p>O sinal formatado utilizando <span class="LITERAL">SG</span>, <span class="LITERAL">PL</span> ou <span class="LITERAL">MI</span> não está ancorado ao número; por exemplo, <span class="LITERAL">to_char(-12, 'S9999')</span> produz <span class="LITERAL">'&nbsp;&nbsp;-12'</span>, mas <span class="LITERAL">to_char(-12, 'MI9999')</span> produz <span class="LITERAL">'-&nbsp;&nbsp;12'</span>. A implementação do Oracle não permite utilizar o <span class="LITERAL">MI</span> antes do <span class="LITERAL">9</span>, requerendo que o <span class="LITERAL">9</span> preceda o <span class="LITERAL">MI</span>.</p>
+</li>
+
+<li>
+<p>O <span class="LITERAL">9</span> resulta em um valor com o mesmo número de dígitos que o número de <span class="LITERAL">9</span>s. Se não houver um dígito para colocar, é colocado espaço.</p>
+</li>
+
+<li>
+<p>O <span class="LITERAL">TH</span> não converte valores menores que zero e não converte números fracionários.</p>
+</li>
+
+<li>
+<p>O <span class="LITERAL">PL</span>, o <span class="LITERAL">SG</span> e o <span class="LITERAL">TH</span> são extensões do <span class="PRODUCTNAME">PostgreSQL</span>.</p>
+</li>
+
+<li>
+<p>O <span class="LITERAL">V</span> multiplica efetivamente os valores da entrada por <span class="LITERAL">10^<span class="REPLACEABLE">n</span></span>, onde <span class="REPLACEABLE">n</span> é o número de dígitos após o <span class="LITERAL">V</span>. A função <span class="FUNCTION">to_char</span> não permite o uso de <span class="LITERAL">V</span> junto com o ponto decimal (Por exemplo, <span class="LITERAL">99.9V99</span> não é permitido).</p>
+</li>
+</ul>
+
+<p>A <a href="http://pgdocptbr.sourceforge.net/pg80/functions-formatting.html#FUNCTIONS-FORMATTING-EXAMPLES-TABLE">Tabela 9-26</a> mostra alguns exemplos de uso da função <span class="FUNCTION">to_char</span>.</p>
+
+<div class="TABLE"><a name="FUNCTIONS-FORMATTING-EXAMPLES-TABLE"></a> 
+
+<p><b>Tabela 9-26. Exemplos de utilização da função to_char</b></p>
+
+<table border="1" class="CALSTABLE">
+<colgroup><col>
+<col>
+<col>
+</colgroup><thead>
+<tr>
+<th>Expressão</th>
+<th>PostgreSQL 8.0.0 <a name="AEN13428" href="http://pgdocptbr.sourceforge.net/pg80/functions-formatting.html#FTN.AEN13428">[a]</a> </th>
+<th>Oracle 10g (N. do T.) <a name="AEN13431" href="http://pgdocptbr.sourceforge.net/pg80/functions-formatting.html#FTN.AEN13431">[b]</a> </th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><span class="LITERAL">to_char(current_timestamp, 'Day,&nbsp;DD&nbsp;&nbsp;HH12:MI:SS')</span></td>
+<td><span class="LITERAL">'Friday&nbsp;&nbsp;&nbsp;,&nbsp;04&nbsp;&nbsp;02:22:24'</span></td>
+<td><span class="LITERAL">'Friday&nbsp;&nbsp;&nbsp;,&nbsp;04&nbsp;&nbsp;02:22:24'</span></td>
+</tr>
+
+<tr>
+<td><span class="LITERAL">to_char(current_timestamp, 'FMDay,&nbsp;FMDD&nbsp;&nbsp;HH12:MI:SS')</span></td>
+<td><span class="LITERAL">'Friday,&nbsp;4&nbsp;&nbsp;02:22:24'</span></td>
+<td><span class="LITERAL">'Friday,&nbsp;04&nbsp;&nbsp;02:22:24'</span></td>
+</tr>
+
+<tr>
+<td><span class="LITERAL">to_char(-0.1, '99.99')</span></td>
+<td><span class="LITERAL">'&nbsp;&nbsp;-.10'</span></td>
+<td><span class="LITERAL">'&nbsp;&nbsp;-.10'</span></td>
+</tr>
+
+<tr>
+<td><span class="LITERAL">to_char(-0.1, 'FM9.99')</span></td>
+<td><span class="LITERAL">'-.1'</span></td>
+<td><span class="LITERAL">'-.1'</span></td>
+</tr>
+
+<tr>
+<td><span class="LITERAL">to_char(0.1, '0.9')</span></td>
+<td><span class="LITERAL">'&nbsp;0.1'</span></td>
+<td><span class="LITERAL">'&nbsp;0.1'</span></td>
+</tr>
+
+<tr>
+<td><span class="LITERAL">to_char(12, '9990999.9')</span></td>
+<td><span class="LITERAL">'&nbsp;&nbsp;&nbsp;&nbsp;0012.0'</span></td>
+<td><span class="LITERAL">'&nbsp;&nbsp;&nbsp;&nbsp;0012.0'</span></td>
+</tr>
+
+<tr>
+<td><span class="LITERAL">to_char(12, 'FM9990999.9')</span></td>
+<td><span class="LITERAL">'0012.'</span></td>
+<td><span class="LITERAL">'0012.'</span></td>
+</tr>
+
+<tr>
+<td><span class="LITERAL">to_char(485, '999')</span></td>
+<td><span class="LITERAL">'&nbsp;485'</span></td>
+<td><span class="LITERAL">'&nbsp;485'</span></td>
+</tr>
+
+<tr>
+<td><span class="LITERAL">to_char(-485, '999')</span></td>
+<td><span class="LITERAL">'-485'</span></td>
+<td><span class="LITERAL">'-485'</span></td>
+</tr>
+
+<tr>
+<td><span class="LITERAL">to_char(485, '9&nbsp;9&nbsp;9')</span></td>
+<td><span class="LITERAL">'&nbsp;4&nbsp;8&nbsp;5'</span></td>
+<td><span class="LITERAL">formato inválido</span></td>
+</tr>
+
+<tr>
+<td><span class="LITERAL">to_char(1485, '9,999')</span></td>
+<td><span class="LITERAL">'&nbsp;1,485'</span></td>
+<td><span class="LITERAL">'&nbsp;1,485'</span></td>
+</tr>
+
+<tr>
+<td><span class="LITERAL">to_char(1485, '9G999')</span></td>
+<td><span class="LITERAL">'&nbsp;1,485'</span></td>
+<td><span class="LITERAL">'&nbsp;1,485'</span></td>
+</tr>
+
+<tr>
+<td><span class="LITERAL">to_char(148.5, '999.999')</span></td>
+<td><span class="LITERAL">'&nbsp;148.500'</span></td>
+<td><span class="LITERAL">'&nbsp;148.500'</span></td>
+</tr>
+
+<tr>
+<td><span class="LITERAL">to_char(148.5, 'FM999.999')</span></td>
+<td><span class="LITERAL">'148.5'</span></td>
+<td><span class="LITERAL">'148.5'</span></td>
+</tr>
+
+<tr>
+<td><span class="LITERAL">to_char(148.5, 'FM999.990')</span></td>
+<td><span class="LITERAL">'148.500'</span></td>
+<td><span class="LITERAL">'148.500'</span></td>
+</tr>
+
+<tr>
+<td><span class="LITERAL">to_char(148.5, '999D999') -- com idioma</span></td>
+<td><span class="LITERAL">'&nbsp;148,500'</span></td>
+<td><span class="LITERAL">'&nbsp;148,500'</span></td>
+</tr>
+
+<tr>
+<td><span class="LITERAL">to_char(3148.5, '9G999D999')</span></td>
+<td><span class="LITERAL">'&nbsp;3,148.500'</span></td>
+<td><span class="LITERAL">'&nbsp;3,148.500'</span></td>
+</tr>
+
+<tr>
+<td><span class="LITERAL">to_char(-485, '999S')</span></td>
+<td><span class="LITERAL">'485-'</span></td>
+<td><span class="LITERAL">'485-'</span></td>
+</tr>
+
+<tr>
+<td><span class="LITERAL">to_char(-485, '999MI')</span></td>
+<td><span class="LITERAL">'485-'</span></td>
+<td><span class="LITERAL">'485-'</span></td>
+</tr>
+
+<tr>
+<td><span class="LITERAL">to_char(485, '999MI')</span></td>
+<td><span class="LITERAL">'485&nbsp;'</span></td>
+<td><span class="LITERAL">'485&nbsp;'</span></td>
+</tr>
+
+<tr>
+<td><span class="LITERAL">to_char(485, 'FM999MI')</span></td>
+<td><span class="LITERAL">'485'</span></td>
+<td><span class="LITERAL">'485'</span></td>
+</tr>
+
+<tr>
+<td><span class="LITERAL">to_char(485, 'PL999')</span></td>
+<td><span class="LITERAL">'+485'</span></td>
+<td><span class="LITERAL">formato inválido</span></td>
+</tr>
+
+<tr>
+<td><span class="LITERAL">to_char(485, 'SG999')</span></td>
+<td><span class="LITERAL">'+485'</span></td>
+<td><span class="LITERAL">formato inválido</span></td>
+</tr>
+
+<tr>
+<td><span class="LITERAL">to_char(-485, 'SG999')</span></td>
+<td><span class="LITERAL">'-485'</span></td>
+<td><span class="LITERAL">formato inválido</span></td>
+</tr>
+
+<tr>
+<td><span class="LITERAL">to_char(-485, '9SG99')</span></td>
+<td><span class="LITERAL">'4-85'</span></td>
+<td><span class="LITERAL">formato inválido</span></td>
+</tr>
+
+<tr>
+<td><span class="LITERAL">to_char(-485, '999PR')</span></td>
+<td><span class="LITERAL">'&lt;485&gt;'</span></td>
+<td><span class="LITERAL">'&lt;485&gt;'</span></td>
+</tr>
+
+<tr>
+<td><span class="LITERAL">to_char(485, 'L999') -- com idioma</span></td>
+<td><span class="LITERAL">'R$&nbsp;485'</span></td>
+<td><span class="LITERAL">'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;R$485'</span></td>
+</tr>
+
+<tr>
+<td><span class="LITERAL">to_char(485, 'RN')</span></td>
+<td><span class="LITERAL">'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CDLXXXV'</span></td>
+<td><span class="LITERAL">'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CDLXXXV'</span></td>
+</tr>
+
+<tr>
+<td><span class="LITERAL">to_char(485, 'FMRN')</span></td>
+<td><span class="LITERAL">'CDLXXXV'</span></td>
+<td><span class="LITERAL">'CDLXXXV'</span></td>
+</tr>
+
+<tr>
+<td><span class="LITERAL">to_char(5.2, 'FMRN')</span></td>
+<td><span class="LITERAL">'V'</span></td>
+<td><span class="LITERAL">'V'</span></td>
+</tr>
+
+<tr>
+<td><span class="LITERAL">to_char(482, '999th')</span></td>
+<td><span class="LITERAL">'&nbsp;482nd'</span></td>
+<td><span class="LITERAL">formato inválido</span></td>
+</tr>
+
+<tr>
+<td><span class="LITERAL">to_char(485, '"Good&nbsp;number:"999')</span></td>
+<td><span class="LITERAL">'Good&nbsp;number:&nbsp;485'</span></td>
+<td><span class="LITERAL">formato inválido</span></td>
+</tr>
+
+<tr>
+<td><span class="LITERAL">to_char(485.8, '"Pre:"999"&nbsp;Post:"&nbsp;.999')</span></td>
+<td><span class="LITERAL">'Pre:&nbsp;485&nbsp;Post:&nbsp;.800'</span></td>
+<td><span class="LITERAL">formato inválido</span></td>
+</tr>
+
+<tr>
+<td><span class="LITERAL">to_char(12, '99V999')</span></td>
+<td><span class="LITERAL">'&nbsp;12000'</span></td>
+<td><span class="LITERAL">'&nbsp;12000'</span></td>
+</tr>
+
+<tr>
+<td><span class="LITERAL">to_char(12.4, '99V999')</span></td>
+<td><span class="LITERAL">'&nbsp;12400'</span></td>
+<td><span class="LITERAL">'&nbsp;12400'</span></td>
+</tr>
+
+<tr>
+<td><span class="LITERAL">to_char(12.45, '99V9')</span></td>
+<td><span class="LITERAL">'&nbsp;125'</span></td>
+<td><span class="LITERAL">'&nbsp;125'</span></td>
+</tr>
+</tbody>
+
+<tbody><tr>
+<td colspan="3">Notas:<br>
+<a name="FTN.AEN13428">a.</a> idioma — set lc_numeric to 'pt_BR'; set lc_monetary to 'pt_BR'; (N. do T.)<br>
+<a name="FTN.AEN13431">b.</a> idioma — ALTER SESSION SET NLS_TERRITORY="BRAZIL"; (N. do T.)<br>
+</td>
+</tr>
+</tbody></table>
+</div>
+</div>
+
+<div class="NAVFOOTER">
+<hr align="LEFT" width="100%">
+<table summary="Footer navigation table" width="100%" border="0" cellpadding="0" cellspacing="0">
+<tbody><tr>
+<td width="33%" align="left" valign="top"><a href="http://pgdocptbr.sourceforge.net/pg80/functions-matching.html" accesskey="P">Anterior</a> </td>
+<td width="34%" align="center" valign="top"><a href="http://pgdocptbr.sourceforge.net/pg80/index.html" accesskey="H">Principal</a> </td>
+<td width="33%" align="right" valign="top"><a href="http://pgdocptbr.sourceforge.net/pg80/functions-datetime.html" accesskey="N">Próxima</a> </td>
+</tr>
+
+<tr>
+<td width="33%" align="left" valign="top">Correspondência com padrão</td>
+<td width="34%" align="center" valign="top"><a href="http://pgdocptbr.sourceforge.net/pg80/functions.html" accesskey="U">Acima</a> </td>
+<td width="33%" align="right" valign="top">Funções e operadores para data e hora</td>
+</tr>
+</tbody></table>
+</div>
+
+<div><a href="http://sourceforge.net/"><img id="imgSourceForge" src="./Funções para formatar tipo de dado_files/sflogo.php" alt="SourceForge.net Logo"></a> <a href="http://jigsaw.w3.org/css-validator/"><img id="imgW3C_CSS" src="./Funções para formatar tipo de dado_files/vcss" alt="CSS válido!"></a></div>
+
+<!-- Google Analytics -->
+<script src="./Funções para formatar tipo de dado_files/urchin.js.download" type="text/javascript">
+</script>
+
+<script type="text/javascript">
+_uacct = "UA-1589133-1";
+urchinTracker();
+</script>
+
+
+
+</body></html>
